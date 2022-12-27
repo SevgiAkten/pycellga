@@ -1,4 +1,7 @@
+# Knapsack problem solution with classical GA
+
 from collections import namedtuple
+import time
 from functools import partial
 from random import choices, randint, random, randrange
 from typing import Callable, List, Tuple
@@ -35,10 +38,12 @@ def generate_genome(length: int) -> Genome:
 
 
 def generate_population(size: int, genome_length: int) -> Population:
-    return [generate_genome(genome_length) for _ in range(size)]
+    return [
+        generate_genome(genome_length) for _ in range(size)
+    ]  # tek satırda for bayılıyorum ya
 
 
-def fitness(genome: Genome, things: [Thing], weight_limit: int) -> int:
+def fitness(genome: Genome, things: List[Thing], weight_limit: int) -> int:
     if len(genome) != len(things):
         raise ValueError("genome and things must be of the same length")
 
@@ -50,7 +55,7 @@ def fitness(genome: Genome, things: [Thing], weight_limit: int) -> int:
             weight += thing.weight
             value += thing.value
 
-            if weight > weight_limit:
+            if weight > weight_limit:  # punishment for weight constraint
                 return 0
     return value
 
@@ -79,13 +84,16 @@ def mutation(genome: Genome, num: int = 1, probability: float = 0.5) -> Genome:
     for _ in range(num):
         index = randrange(len(genome))
         genome[index] = (
-            genome[index] if random() > probability else abs(genome[index] - 1)
+            genome[index]
+            if random() > probability
+            else abs(genome[index] - 1)  # tek satırda if else bayılıyorum ya
         )
         return genome
 
 
 def run_evolution(
-    populate_func: FitnessFunc,
+    populate_func: PopulateFunc,
+    fitness_func: FitnessFunc,
     fitness_limit: int,
     selection_func: SelectionFunc = selection_pair,
     crossover_func: CrossoverFunc = single_point_crossover,
@@ -96,7 +104,9 @@ def run_evolution(
 
     for i in range(generation_limit):
         population = sorted(
-            population, key=lambda genome: fitness_func(genome), reverse=True
+            population,
+            key=lambda genome: fitness_func(genome),  # lambda func bunu da seviyom
+            reverse=True,
         )
 
         if fitness_func(population[0]) >= fitness_limit:
@@ -118,15 +128,17 @@ def run_evolution(
     return population, i
 
 
-Population, generations = run_evolution(
-    populate_func=partial(generate_population, size=10, genome_length=len(things)),
-    fitness_func=partial(fitness, things=things, weight_limit=3000),
-    fitness_limit=740,
+start = time.time()
+population, generations = run_evolution(
+    populate_func=partial(generate_population, size=10, genome_length=len(more_things)),
+    fitness_func=partial(fitness, things=more_things, weight_limit=3000),
+    fitness_limit=1310,
     generation_limit=100,
 )
+end = time.time()
 
-
-def genome_to_things(genome: Genome, things: [Thing]) -> [Thing]:
+# decoding best solution
+def genome_to_things(genome: Genome, things: List[Thing]) -> List[Thing]:
     result = []
     for i, thing in enumerate(things):
         if genome[i] == 1:
@@ -135,4 +147,5 @@ def genome_to_things(genome: Genome, things: [Thing]) -> [Thing]:
 
 
 print(f"number of generations: {generations}")
-print(f"best solution: {genome_to_things(population[0], things)}")
+print(f"time: {end-start}s")
+print(f"best solution: {genome_to_things(population[0], more_things)}")
