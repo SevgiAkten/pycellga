@@ -1,4 +1,8 @@
-# Knapsack problem solution with classical GA
+## -----Knapsack problem solution with classical GA----- ##
+
+# Souce: Genetic Algorithm from Scratch in Python (tutorial with code), Kie Codes
+# https://www.youtube.com/watch?v=nhT56blfRpE
+
 
 from collections import namedtuple
 import time
