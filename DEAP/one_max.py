@@ -45,6 +45,12 @@ toolbox.register(
 # define the population to be a list of individuals
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
+# grid
+# N_COL = 10
+# N_ROW = 10
+# toolbox.register("row", tools.initRepeat, list, toolbox.individual, n=N_COL)
+# toolbox.register("population", tools.initRepeat, list, toolbox.row, n=N_ROW)
+
 # the goal ('fitness') function to be maximized
 def evalOneMax(individual):
     return (sum(individual),)
