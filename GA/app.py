@@ -28,3 +28,10 @@ params.sigma = 0.1
 out = ga.run(problem, params)
 
 # Results
+plt.plot(out.bestcost)
+plt.xlim(0, params.maxit)
+plt.xlabel("Iterations")
+plt.ylabel("Best Cost")
+plt.title("Genetic Algorithm (GA)")
+plt.grid(True)
+plt.show()
