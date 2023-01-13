@@ -1,5 +1,7 @@
 from Individual import *
 from Grid import *
+from Problems.Combinatorial.OneMax import *
+from Neighborhoods.Linear5 import *
 
 
 class Population:
@@ -20,7 +22,11 @@ class Population:
             ind = Individual(gen_type=self.gen_type, ch_size=self.ch_size)
             ind.chromosome = ind.setChromosome()
             ind.position = grid[i]
-            print(ind.position)
-            ind.fitness_value = None
+            ind.fitness_value = OneMax(ind.chromosome).evalOneMax()
+            ind.neighbors_positions = Linear5(
+                position=ind.position, n_rows=self.n_rows, n_cols=self.n_cols
+            ).calculateNeighborsPositions()
             ind.neighbors = None
             pop_list.append(ind)
+
+        return pop_list

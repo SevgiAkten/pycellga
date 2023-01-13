@@ -9,6 +9,7 @@ class Individual:
     chromosome = []
     fitness_value = 0
     position = (0, 0)
+    neighbors_positions = None
     neighbors = None
 
     def setChromosome(self):
