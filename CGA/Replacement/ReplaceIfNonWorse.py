@@ -1,0 +1,2 @@
+class ReplaceIfNonWorse:
+    pass

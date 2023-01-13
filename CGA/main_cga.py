@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import Classes.Individual
 import Classes.Grid
 import Classes.Population
+import Classes.Selection.TournamentSelection
 
 
 # Parameter Definition for cga
