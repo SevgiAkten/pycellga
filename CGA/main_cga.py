@@ -1,10 +1,10 @@
 import numpy as np
 from numpy import random
 import matplotlib.pyplot as plt
-import Classes.Individual
-import Classes.Grid
-import Classes.Population
-import Classes.Selection.TournamentSelection
+import Individual
+import Grid
+import Population
+import Selection.TournamentSelection
 
 
 # Parameter Definition for cga
