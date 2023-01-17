@@ -18,12 +18,14 @@ class Linear5:
             n_left = (x, y - 1)
             n_above = (x - 1, y)
             n_belove = (x + 1, y)
-            pass
 
-        neighbors_positions.append()
+        neighbors_positions.append(n_right)
+        neighbors_positions.append(n_left)
+        neighbors_positions.append(n_above)
+        neighbors_positions.append(n_belove)
 
         return neighbors_positions
 
 
-deneme = Linear5((3, 3), 5).calculateNeighborsPositions()
-print(deneme)
+# deneme = Linear5((3, 3), 5, 5).calculateNeighborsPositions()
+# print(deneme)

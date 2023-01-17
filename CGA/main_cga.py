@@ -16,9 +16,7 @@ GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
 # Generate Initial Population
 population = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE).InitialPopulation()
 
-
-# Evaluate Initial Population
-# ....
+Pop_list_ordered = sorted(population, key=lambda x: x.chromosome)
 
 # Evolution Process
 """
