@@ -9,23 +9,35 @@ class Linear5:
         point = self.position
         x = point[0]
         y = point[1]
+        dx = [0, 0, -1, 1]
+        dy = [1, -1, 0, 0]
 
-        if x == self.n_rows or y == self.n_cols:
-            pass
-        # burası yazılacak
-        else:
-            n_right = (x, y + 1)
-            n_left = (x, y - 1)
-            n_above = (x - 1, y)
-            n_belove = (x + 1, y)
+        if x == self.n_rows or y == self.n_rows:
+            for i in range(len(dx)):
+                npx = (x + dx[i]) % self.n_rows
+                npy = (y + dy[i]) % self.n_rows
+                if npx == 0:
+                    npx = self.n_rows
+                if npy == 0:
+                    npy = self.n_rows
 
-        neighbors_positions.append(n_right)
-        neighbors_positions.append(n_left)
-        neighbors_positions.append(n_above)
-        neighbors_positions.append(n_belove)
+                neighbor_position = (npx, npy)
+                neighbors_positions.append(neighbor_position)
+
+        elif x != self.n_rows or y != self.n_rows:
+            for i in range(len(dx)):
+                npx = x + dx[i]
+                npy = y + dy[i]
+                if npx == 0:
+                    npx = self.n_rows
+                if npy == 0:
+                    npy = self.n_rows
+
+                neighbor_position = (npx, npy)
+                neighbors_positions.append(neighbor_position)
 
         return neighbors_positions
 
 
-# deneme = Linear5((3, 3), 5, 5).calculateNeighborsPositions()
+# deneme = Linear5((1, 1), 5, 5).calculateNeighborsPositions()
 # print(deneme)
