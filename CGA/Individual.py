@@ -2,7 +2,7 @@ from numpy import random
 
 
 class Individual:
-    def __init__(self, gen_type, ch_size):
+    def __init__(self, gen_type="Binary", ch_size=0):
         self.gen_type = gen_type
         self.ch_size = ch_size
 

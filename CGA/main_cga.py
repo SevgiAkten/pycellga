@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from Population import *
 from Selection.TournamentSelection import *
 from Recombination.TwoPointsCrossover import *
+from Mutation.BitFlipMutation import *
 
 
 #                      Parameter Definition for Cellular GA                                 #
@@ -48,6 +49,19 @@ for i in range(1, N_GEN + 1):
 
         if rnd < p_crossover:
             Offsprings = TwoPointsCrossover(Parents).getRecombinations()
+        else:
+            Offsprings = Parents
+
+        New_gen_Pop_list += Offsprings
+
+    for p in range(len(New_gen_Pop_list)):
+
+        mutation_cand = New_gen_Pop_list[p]
+        rnd = np.random.rand()
+
+        if rnd < p_mutation:
+            mutated = BitFlipMutation(mutation_cand).mutate()
+            New_gen_Pop_list[p] = mutated
 
 
 # Evolution Process

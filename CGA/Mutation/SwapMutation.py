@@ -2,4 +2,9 @@
 
 
 class SwapMutation:
-    pass
+    def __init__(self, mutation_cand):
+        self.mutation_cand = mutation_cand
+
+    def mutate(self):
+
+        return None
