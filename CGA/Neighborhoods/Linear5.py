@@ -9,8 +9,8 @@ class Linear5:
         point = self.position
         x = point[0]
         y = point[1]
-        dx = [0, 0, -1, 1]
-        dy = [1, -1, 0, 0]
+        dx = [0, 0, -1, 1]  # Change in x
+        dy = [1, -1, 0, 0]  # Change in y
 
         if x == self.n_rows or y == self.n_rows:
             for i in range(len(dx)):
