@@ -6,7 +6,7 @@ class TournamentSelection:
         self.Pop_list = Pop_list
 
     def getParents(self):
-        K = 4  # How many people will be chosen at random from neighbors
+        K = 2  # How many people will be chosen at random from neighbors
         parents = []
         index = np.random.randint(0, len(self.Pop_list))
         p1 = self.Pop_list[index]
@@ -21,8 +21,13 @@ class TournamentSelection:
         tournament_selection_pool = []
 
         while len(tournament_selection_pool) < K:
+
             index = np.random.randint(0, len(Neighbors))
-            tournament_selection_pool.append(Neighbors[index])
+
+            if Neighbors[index] not in tournament_selection_pool:
+                tournament_selection_pool.append(Neighbors[index])
+            else:
+                pass
 
         tournament_selection_pool_ordered = sorted(
             tournament_selection_pool, key=lambda x: x.fitness_value, reverse=True

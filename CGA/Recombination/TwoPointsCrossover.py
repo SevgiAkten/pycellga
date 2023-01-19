@@ -22,14 +22,14 @@ class TwoPointsCrossover:
         co_point_1 = np.random.randint(min_c, max_c)
         co_point_2 = np.random.randint(min_c, max_c)
 
-        p1_seg1 = p1.chromosome[0:co_point_1]
-        p1_seg2 = p1.chromosome[co_point_1 : len(p1.chromosome)]
+        p1_seg1 = list(p1.chromosome[0:co_point_1])
+        p1_seg2 = list(p1.chromosome[co_point_1 : len(p1.chromosome)])
 
-        p2_seg1 = p2.chromosome[0:co_point_2]
-        p2_seg2 = p2.chromosome[co_point_2 : len(p2.chromosome)]
+        p2_seg1 = list(p2.chromosome[0:co_point_2])
+        p2_seg2 = list(p2.chromosome[co_point_2 : len(p2.chromosome)])
 
-        temp1_seg = list(p2)
-        temp2_seg = list(p1)
+        temp1_seg = list(p1.chromosome)
+        temp2_seg = list(p2.chromosome)
 
         # First child
         child_1 = Individual()
