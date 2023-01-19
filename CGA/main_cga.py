@@ -59,6 +59,7 @@ def getElitism(Pop_list):
     return Elit_list
 
 
+# Evolution Process
 for i in range(1, N_GEN + 1):
     New_gen_Pop_list = []
 
