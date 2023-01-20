@@ -9,7 +9,7 @@ class TwoPointsCrossover:
         self.Parents = Parents
 
     def getRecombinations(self):
-
+        # burda bi sıkıntı var çocuklar ebeveynin aynısı oluyo
         Offsprings = []
 
         p1 = self.Parents[0]
