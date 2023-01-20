@@ -1,4 +1,5 @@
 import numpy as np
+from Problems.Combinatorial.OneMax import *
 
 
 class BitFlipMutation:
@@ -14,4 +15,5 @@ class BitFlipMutation:
             self.mutation_cand.chromosome[index] = 0
 
         mutated = self.mutation_cand
+        mutated.fitness_value = OneMax(mutated.chromosome).evalOneMax()
         return mutated
