@@ -3,7 +3,7 @@ from numpy import random
 import matplotlib.pyplot as plt
 from Population import *
 from Selection.TournamentSelection import *
-from Recombination.TwoPointsCrossover import *
+from Recombination.OnePointCrossover import *
 from Mutation.BitFlipMutation import *
 
 
@@ -12,13 +12,13 @@ from Mutation.BitFlipMutation import *
 N_COLS = 5  # Number of colums in grid
 N_ROWS = 5  # Number of rows in grid
 POP_SIZE = N_COLS * N_ROWS  # Number of population
-N_GEN = 10  # Number of generation
-CH_SIZE = 4  # Size of chromosome
+N_GEN = 500  # Number of generation
+CH_SIZE = 20  # Size of chromosome
 GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
 E = 10  # Elite list size, how many of the best I will pass directly to the next generation
-p_crossover = 0.7  # Probability of crossover
+p_crossover = 0.8  # Probability of crossover
 p_mutation = 0.4  # Probability of mutation
-Known_Best = 10
+Known_Best = 20
 # -------------------------------------------------------------------------------------------
 
 Best_Solutions = []
@@ -68,7 +68,7 @@ while g != N_GEN:
         rnd = np.random.rand()
 
         if rnd < p_crossover:
-            Offsprings = TwoPointsCrossover(Parents).getRecombinations()
+            Offsprings = OnePointCrossover(Parents).getRecombinations()
         else:
             Offsprings = Parents
 
@@ -103,12 +103,15 @@ while g != N_GEN:
         Best_Ever_Solution = (
             Pop_list_ordered[0].chromosome,
             Pop_list_ordered[0].fitness_value,
-            i,
+            g,
         )
     else:
         pass
+
     mean = sum(map(lambda x: x.fitness_value, Pop_list)) / len(Pop_list)
     Avg_Objectives.append(mean)
+    print(f"{g+1} - {Best_Solutions[0]} - {Best_Objectives[0]}")
+    g += 1
 
 print()
 print("#### Solution Output ####")
@@ -124,7 +127,7 @@ print(f"Number of generation      :{N_GEN}")
 print(f"Population size           :{N_COLS*N_ROWS}")
 print(f"Probability of crossover  :{p_crossover*100}")
 print(f"Probability of mutation   :{p_mutation*100}")
-print(f"Tournament selection      :{4}")
+print(f"Tournament selection      :{2}")
 print(f"Elitism selection         :{E}")
 
 plt.plot(Best_Objectives)
