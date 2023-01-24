@@ -59,6 +59,7 @@ def getElitism(Pop_list):
     return Elit_list
 
 
+# sil
 # -----------------------------------------------------------------
 g = 0
 while g != N_GEN:
