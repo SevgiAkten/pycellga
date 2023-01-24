@@ -9,16 +9,16 @@ from Mutation.BitFlipMutation import *
 
 #                      Parameter Definition for Cellular GA                                 #
 # -------------------------------------------------------------------------------------------
-N_COLS = 5  # Number of colums in grid
-N_ROWS = 5  # Number of rows in grid
+N_COLS = 10  # Number of colums in grid
+N_ROWS = 10  # Number of rows in grid
 POP_SIZE = N_COLS * N_ROWS  # Number of population
-N_GEN = 500  # Number of generation
-CH_SIZE = 20  # Size of chromosome
+N_GEN = 20  # Number of generation
+CH_SIZE = 6  # Size of chromosome
 GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
 E = 10  # Elite list size, how many of the best I will pass directly to the next generation
 p_crossover = 0.8  # Probability of crossover
 p_mutation = 0.4  # Probability of mutation
-Known_Best = 20
+Known_Best = 6
 # -------------------------------------------------------------------------------------------
 
 Best_Solutions = []
@@ -33,11 +33,11 @@ Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
 
 Best_Solutions.append(Pop_list_ordered[0].chromosome)
 Best_Objectives.append(Pop_list_ordered[0].fitness_value)
-Best_Ever_Solution = (
+Best_Ever_Solution = [
     Pop_list_ordered[0].chromosome,
     Pop_list_ordered[0].fitness_value,
     0,
-)
+]
 
 mean = sum(map(lambda x: x.fitness_value, Pop_list)) / len(Pop_list)
 Avg_Objectives.append(mean)
@@ -82,15 +82,12 @@ while g != N_GEN:
                 Offsprings[p] = mutated
             else:
                 pass
-            # Replacement: Replace if better
-            x = Offsprings[p]
-            a = x.fitness_value
-            c = Parents[p]
-            b = Parents[p].fitness_value
 
+            # Replacement: Replace if better
             if Offsprings[p].fitness_value > Parents[p].fitness_value:
                 index = Pop_list.index(Parents[p])
                 Pop_list[index] = Offsprings[p]
+                new = Pop_list[index]
             else:
                 pass
 
@@ -99,18 +96,21 @@ while g != N_GEN:
     Best_Solutions.append(Pop_list_ordered[0].chromosome)
     Best_Objectives.append(Pop_list_ordered[0].fitness_value)
 
-    if Pop_list_ordered[0].fitness_value > Best_Ever_Solution[1]:
-        Best_Ever_Solution = (
+    if (Pop_list_ordered[0].fitness_value) > Best_Ever_Solution[1]:
+        Best_Ever_Solution = [
             Pop_list_ordered[0].chromosome,
             Pop_list_ordered[0].fitness_value,
             g,
-        )
+        ]
     else:
         pass
 
     mean = sum(map(lambda x: x.fitness_value, Pop_list)) / len(Pop_list)
     Avg_Objectives.append(mean)
-    print(f"{g+1} - {Best_Solutions[0]} - {Best_Objectives[0]}")
+
+    print(
+        f"{g+1} - {Pop_list_ordered[0].chromosome} - {Pop_list_ordered[0].fitness_value}"
+    )
     g += 1
 
 print()

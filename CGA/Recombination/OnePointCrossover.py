@@ -27,7 +27,8 @@ class OnePointCrossover:
 
         # First child
         child_1 = Individual()
-        child_1.chromosome = p1_seg1 + p2_seg2
+        new_chromosome = p1_seg1 + p2_seg2
+        child_1.chromosome = new_chromosome
 
         child_1.position = p1.position
         child_1.neighbors_positions = p1.neighbors_positions
