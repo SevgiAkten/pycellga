@@ -9,14 +9,16 @@ class BitFlipMutation:
 
     def mutate(self):
 
-        index = np.random.randint(0, len(self.mutation_cand.chromosome))
-        if self.mutation_cand.chromosome[index] == 0:
-            self.mutation_cand.chromosome[index] = 1
+        m_ch = list(self.mutation_cand.chromosome)
+        index = np.random.randint(0, len(m_ch))
+        if m_ch[index] == 0:
+            m_ch[index] = 1
         else:
-            self.mutation_cand.chromosome[index] = 0
+            m_ch[index] = 0
 
         mutated = Individual()
-        mutated.chromosome = self.mutation_cand.chromosome
+
+        mutated.chromosome = m_ch
         mutated.position = self.mutation_cand.position
         mutated.neighbors_positions = self.mutation_cand.neighbors_positions
         mutated.fitness_value = OneMax(mutated.chromosome).evalOneMax()

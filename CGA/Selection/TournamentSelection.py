@@ -2,14 +2,15 @@ import numpy as np
 
 
 class TournamentSelection:
-    def __init__(self, Pop_list):
+    def __init__(self, Pop_list, c):
         self.Pop_list = Pop_list
+        self.c = c
 
     def getParents(self):
         K = 2  # How many people will be chosen at random from neighbors
         parents = []
-        index = np.random.randint(0, len(self.Pop_list))
-        p1 = self.Pop_list[index]
+        p1 = self.Pop_list[self.c - 1]
+
         parents.append(p1)
         Neighbors_positions = p1.neighbors_positions
         Neighbors = []

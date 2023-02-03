@@ -9,16 +9,16 @@ from Mutation.BitFlipMutation import *
 
 #                      Parameter Definition for Cellular GA                                 #
 # -------------------------------------------------------------------------------------------
-N_COLS = 10  # Number of colums in grid
-N_ROWS = 10  # Number of rows in grid
+N_COLS = 7  # Number of colums in grid
+N_ROWS = 7  # Number of rows in grid
 POP_SIZE = N_COLS * N_ROWS  # Number of population
-N_GEN = 20  # Number of generation
-CH_SIZE = 6  # Size of chromosome
+N_GEN = 10  # Number of generation
+CH_SIZE = 10  # Size of chromosome
 GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
 E = 10  # Elite list size, how many of the best I will pass directly to the next generation
 p_crossover = 0.8  # Probability of crossover
 p_mutation = 0.4  # Probability of mutation
-Known_Best = 6
+Known_Best = 10
 # -------------------------------------------------------------------------------------------
 
 Best_Solutions = []
@@ -59,13 +59,14 @@ def getElitism(Pop_list):
     return Elit_list
 
 
-# sil
 # -----------------------------------------------------------------
-g = 0
-while g != N_GEN:
+g = 1
+while g != N_GEN + 1:
+    New_gen_Pop_list = []
+
     for c in range(POP_SIZE):
         Offsprings = []
-        Parents = TournamentSelection(Pop_list).getParents()
+        Parents = TournamentSelection(Pop_list, c).getParents()
         rnd = np.random.rand()
 
         if rnd < p_crossover:
@@ -73,25 +74,26 @@ while g != N_GEN:
         else:
             Offsprings = Parents
 
-        for p in range(len(Offsprings)):
+        New_gen_Pop_list += Offsprings
 
-            mutation_cand = Offsprings[p]
+        for p in range(len(New_gen_Pop_list)):
+
+            mutation_cand = New_gen_Pop_list[p]
             rnd = np.random.rand()
 
             if rnd < p_mutation:
                 mutated = BitFlipMutation(mutation_cand).mutate()
-                Offsprings[p] = mutated
+                New_gen_Pop_list[p] = mutated
             else:
                 pass
 
-            # Replacement: Replace if better
-            if Offsprings[p].fitness_value > Parents[p].fitness_value:
-                index = Pop_list.index(Parents[p])
-                Pop_list[index] = Offsprings[p]
-                new = Pop_list[index]
-            else:
-                pass
-
+            # # Replacement: Replace if better
+            # if New_gen_Pop_list[p].fitness_value > Parents[p].fitness_value:
+            #     index = Pop_list.index(Parents[p])
+            #     Pop_list[index] = New_gen_Pop_list[p]
+            # else:
+            #     pass
+    Pop_list = list(New_gen_Pop_list)
     Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
 
     Best_Solutions.append(Pop_list_ordered[0].chromosome)
@@ -110,9 +112,10 @@ while g != N_GEN:
     Avg_Objectives.append(mean)
 
     print(
-        f"{g+1} - {Pop_list_ordered[0].chromosome} - {Pop_list_ordered[0].fitness_value}"
+        f"{g} - {Pop_list_ordered[0].chromosome} - {Pop_list_ordered[0].fitness_value}"
     )
     g += 1
+# -----------------------------------------------------------------
 
 print()
 print("#### Solution Output ####")
