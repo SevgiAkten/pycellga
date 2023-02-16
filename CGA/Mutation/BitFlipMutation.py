@@ -1,11 +1,12 @@
 import numpy as np
 from Individual import *
-from Problems.Combinatorial.OneMax import *
+from Problems.abstractproblem import AbstractProblem
 
 
 class BitFlipMutation:
-    def __init__(self, mutation_cand):
+    def __init__(self, mutation_cand, problem: AbstractProblem):
         self.mutation_cand = mutation_cand
+        self.problem = problem 
 
     def mutate(self):
 
@@ -21,6 +22,6 @@ class BitFlipMutation:
         mutated.chromosome = m_ch
         mutated.position = self.mutation_cand.position
         mutated.neighbors_positions = self.mutation_cand.neighbors_positions
-        mutated.fitness_value = OneMax(mutated.chromosome).evalOneMax()
+        mutated.fitness_value = self.problem.f(mutated.chromosome)
 
         return mutated

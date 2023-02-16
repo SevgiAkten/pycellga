@@ -5,7 +5,7 @@ from Population import *
 from Selection.TournamentSelection import *
 from Recombination.OnePointCrossover import *
 from Mutation.BitFlipMutation import *
-
+from Problems.Combinatorial.OneMax import OneMax
 
 #                      Parameter Definition for Cellular GA                                 #
 # -------------------------------------------------------------------------------------------
@@ -18,6 +18,7 @@ GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
 p_crossover = 0.8  # Probability of crossover
 p_mutation = 0.4  # Probability of mutation
 Known_Best = 50 # It can be change according to the problem
+problem = OneMax()
 # -------------------------------------------------------------------------------------------
 
 Best_Solutions = []
@@ -26,7 +27,7 @@ Best_Ever_Solution = []
 Avg_Objectives = []
 
 # Generate Initial Population
-Pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE).InitialPopulation()
+Pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).InitialPopulation()
 
 Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
 
@@ -50,7 +51,7 @@ while g != N_GEN + 1:
         rnd = np.random.rand()
 
         if rnd < p_crossover:
-            Offsprings = OnePointCrossover(Parents).getRecombinations()
+            Offsprings = OnePointCrossover(Parents, problem).getRecombinations()
         else:
             Offsprings = Parents
 
@@ -60,7 +61,7 @@ while g != N_GEN + 1:
             rnd = np.random.rand()
 
             if rnd < p_mutation:
-                mutated = BitFlipMutation(mutation_cand).mutate()
+                mutated = BitFlipMutation(mutation_cand, problem).mutate()
                 Offsprings[p] = mutated
             else:
                 pass

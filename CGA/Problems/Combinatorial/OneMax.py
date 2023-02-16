@@ -1,6 +1,5 @@
-class OneMax:
-    def __init__(self, chromosome):
-        self.chromosome = chromosome
+from Problems.abstractproblem import AbstractProblem
 
-    def evalOneMax(self):
-        return sum(self.chromosome)
+class OneMax(AbstractProblem):
+    def f(self, x):
+        return sum(x)

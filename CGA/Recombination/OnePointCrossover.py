@@ -1,11 +1,12 @@
 import numpy as np
 from Individual import *
-from Problems.Combinatorial.OneMax import *
+from Problems.abstractproblem import AbstractProblem
 
 
 class OnePointCrossover:
-    def __init__(self, Parents):
+    def __init__(self, Parents, problem: AbstractProblem):
         self.Parents = Parents
+        self.problem = problem
 
     def getRecombinations(self):
 
@@ -28,7 +29,7 @@ class OnePointCrossover:
 
         child_1.position = p1.position
         child_1.neighbors_positions = p1.neighbors_positions
-        child_1.fitness_value = OneMax(child_1.chromosome).evalOneMax()
+        child_1.fitness_value = self.problem.f(child_1.chromosome)
         Offsprings.append(child_1)
 
         # Second child
@@ -37,7 +38,7 @@ class OnePointCrossover:
 
         child_2.position = p2.position
         child_2.neighbors_positions = p2.neighbors_positions
-        child_2.fitness_value = OneMax(child_2.chromosome).evalOneMax()
+        child_2.fitness_value = self.problem.f(child_2.chromosome)
 
         Offsprings.append(child_2)
 
