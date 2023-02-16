@@ -3,22 +3,21 @@ from numpy import random
 import matplotlib.pyplot as plt
 from Population import *
 from Selection.TournamentSelection import *
-from Recombination.TwoPointsCrossover import *
+from Recombination.OnePointCrossover import *
 from Mutation.BitFlipMutation import *
 
 
 #                      Parameter Definition for Cellular GA                                 #
 # -------------------------------------------------------------------------------------------
-N_COLS = 5  # Number of colums in grid
-N_ROWS = 5  # Number of rows in grid
+N_COLS = 10  # Number of colums in grid
+N_ROWS = 10  # Number of rows in grid
 POP_SIZE = N_COLS * N_ROWS  # Number of population
-N_GEN = 10  # Number of generation
-CH_SIZE = 10  # Size of chromosome
+N_GEN = 50  # Number of generation
+CH_SIZE = 50  # Size of chromosome
 GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
-E = 10  # Elite list size, how many of the best I will pass directly to the next generation
-p_crossover = 0.7  # Probability of crossover
+p_crossover = 0.8  # Probability of crossover
 p_mutation = 0.4  # Probability of mutation
-Known_Best = 10
+Known_Best = 50 # It can be change according to the problem
 # -------------------------------------------------------------------------------------------
 
 Best_Solutions = []
@@ -33,86 +32,76 @@ Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
 
 Best_Solutions.append(Pop_list_ordered[0].chromosome)
 Best_Objectives.append(Pop_list_ordered[0].fitness_value)
-Best_Ever_Solution = (
+Best_Ever_Solution = [
     Pop_list_ordered[0].chromosome,
     Pop_list_ordered[0].fitness_value,
     0,
-)
+]
 
 mean = sum(map(lambda x: x.fitness_value, Pop_list)) / len(Pop_list)
 Avg_Objectives.append(mean)
 
-
-def getElitism(Pop_list):
-    Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
-    Elit_list = []
-
-    i = 0
-    while len(Elit_list) < E:
-        solution = Pop_list_ordered[i]
-        Elit_add = solution
-
-        if Elit_add not in Elit_list:
-            Elit_list.append(Elit_add)
-        i += 1
-
-    return Elit_list
-
-
-# Evolution Process
-for i in range(1, N_GEN + 1):
-    New_gen_Pop_list = []
-
-    for c in range(int(((POP_SIZE) - E) / 2)):
-
+# -----------------------------------------------------------------
+g = 1
+while g != N_GEN + 1:
+    for c in range(POP_SIZE):
         Offsprings = []
-        Parents = TournamentSelection(Pop_list).getParents()
-
+        Parents = TournamentSelection(Pop_list, c).getParents()
         rnd = np.random.rand()
 
         if rnd < p_crossover:
-            Offsprings = TwoPointsCrossover(Parents).getRecombinations()
+            Offsprings = OnePointCrossover(Parents).getRecombinations()
         else:
             Offsprings = Parents
 
-        New_gen_Pop_list += Offsprings
+        for p in range(len(Offsprings)):
 
-    for p in range(len(New_gen_Pop_list)):
+            mutation_cand = Offsprings[p]
+            rnd = np.random.rand()
 
-        mutation_cand = New_gen_Pop_list[p]
-        rnd = np.random.rand()
+            if rnd < p_mutation:
+                mutated = BitFlipMutation(mutation_cand).mutate()
+                Offsprings[p] = mutated
+            else:
+                pass
 
-        if rnd < p_mutation:
-            mutated = BitFlipMutation(mutation_cand).mutate()
-            New_gen_Pop_list[p] = mutated
-        else:
-            pass
-    Elit_list = getElitism(Pop_list)
-    New_gen_Pop_list += Elit_list
-
-    Pop_list = list(New_gen_Pop_list)
+        # # Replacement: Replace if better
+            if Offsprings[p].fitness_value > Parents[p].fitness_value:
+                index = Pop_list.index(Parents[p])
+                new_p = Offsprings[p]
+                old_p = Pop_list[index]
+                Pop_list[index] = new_p
+                
+            else:
+                pass   
     Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
 
     Best_Solutions.append(Pop_list_ordered[0].chromosome)
     Best_Objectives.append(Pop_list_ordered[0].fitness_value)
 
-    if Pop_list_ordered[0].fitness_value > Best_Ever_Solution[1]:
-        Best_Ever_Solution = (
+    if (Pop_list_ordered[0].fitness_value) > Best_Ever_Solution[1]:
+        Best_Ever_Solution = [
             Pop_list_ordered[0].chromosome,
             Pop_list_ordered[0].fitness_value,
-            i,
-        )
+            g,
+        ]
     else:
         pass
+
     mean = sum(map(lambda x: x.fitness_value, Pop_list)) / len(Pop_list)
     Avg_Objectives.append(mean)
 
+    print(
+        f"{g} - {Pop_list_ordered[0].chromosome} - {Pop_list_ordered[0].fitness_value}"
+    )
+    g += 1
+# -----------------------------------------------------------------
 
 print()
 print("#### Solution Output ####")
-print("Best Solution             :", Best_Ever_Solution[0])
+print("Best Solution Chromosome  :", Best_Ever_Solution[0])
 print()
-print("Cost                      :", Best_Ever_Solution[1])
+print("Best Solution             :", Best_Ever_Solution[1])
 print("Found at generation       :", Best_Ever_Solution[2])
 print("Known Best Solution       :", Known_Best)
 print(f"Gap                      : {(Best_Ever_Solution[1]-Known_Best)*100/Known_Best}")
@@ -122,8 +111,7 @@ print(f"Number of generation      :{N_GEN}")
 print(f"Population size           :{N_COLS*N_ROWS}")
 print(f"Probability of crossover  :{p_crossover*100}")
 print(f"Probability of mutation   :{p_mutation*100}")
-print(f"Tournament selection      :{4}")
-print(f"Elitism selection         :{E}")
+print(f"Tournament selection      :{2}")
 
 plt.plot(Best_Objectives)
 plt.plot(Avg_Objectives)

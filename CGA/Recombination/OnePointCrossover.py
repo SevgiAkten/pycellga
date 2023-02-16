@@ -13,11 +13,7 @@ class OnePointCrossover:
         p1 = self.Parents[0]
         p2 = self.Parents[1]
 
-        param = len(p1.chromosome) * 0.20
-        min_c = param
-        max_c = len(p1.chromosome) - (param - 1)
-
-        co_point = np.random.randint(min_c, max_c)
+        co_point = np.random.randint(len(p1.chromosome))
 
         p1_seg1 = list(p1.chromosome[0:co_point])
         p1_seg2 = list(p1.chromosome[co_point:])
