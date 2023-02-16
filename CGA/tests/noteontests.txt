@@ -1,0 +1,5 @@
+Tests can be run by typing
+
+$> pytest *
+
+in tests folder. 
