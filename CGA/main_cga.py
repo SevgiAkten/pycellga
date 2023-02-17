@@ -1,11 +1,10 @@
 import numpy as np
-from numpy import random
 import matplotlib.pyplot as plt
-from Population import *
-from Selection.TournamentSelection import *
-from Recombination.OnePointCrossover import *
-from Mutation.BitFlipMutation import *
-from Problems.Combinatorial.OneMax import OneMax
+from population import *
+from selection.tournament_selection import *
+from recombination.one_point_crossover import *
+from mutation.bit_flip_mutation import *
+from problems.combinatorial.one_max import OneMax
 
 #                      Parameter Definition for Cellular GA                                 #
 # -------------------------------------------------------------------------------------------
@@ -15,107 +14,107 @@ POP_SIZE = N_COLS * N_ROWS  # Number of population
 N_GEN = 50  # Number of generation
 CH_SIZE = 50  # Size of chromosome
 GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
-p_crossover = 0.8  # Probability of crossover
-p_mutation = 0.4  # Probability of mutation
-Known_Best = 50 # It can be change according to the problem
+P_CROSSOVER = 0.8  # Probability of crossover
+P_MUTATION = 0.4  # Probability of mutation
+KNOWN_BEST = 50 # It can be change according to the problem
 problem = OneMax()
 # -------------------------------------------------------------------------------------------
 
-Best_Solutions = []
-Best_Objectives = []
-Best_Ever_Solution = []
-Avg_Objectives = []
+best_solutions = []
+best_objectives = []
+best_ever_solution = []
+avg_objectives = []
 
 # Generate Initial Population
-Pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).InitialPopulation()
+pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
 
-Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
+pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value, reverse=True)
 
-Best_Solutions.append(Pop_list_ordered[0].chromosome)
-Best_Objectives.append(Pop_list_ordered[0].fitness_value)
-Best_Ever_Solution = [
-    Pop_list_ordered[0].chromosome,
-    Pop_list_ordered[0].fitness_value,
+best_solutions.append(pop_list_ordered[0].chromosome)
+best_objectives.append(pop_list_ordered[0].fitness_value)
+best_ever_solution = [
+    pop_list_ordered[0].chromosome,
+    pop_list_ordered[0].fitness_value,
     0,
 ]
 
-mean = sum(map(lambda x: x.fitness_value, Pop_list)) / len(Pop_list)
-Avg_Objectives.append(mean)
+mean = sum(map(lambda x: x.fitness_value, pop_list)) / len(pop_list)
+avg_objectives.append(mean)
 
 # -----------------------------------------------------------------
 g = 1
 while g != N_GEN + 1:
     for c in range(POP_SIZE):
-        Offsprings = []
-        Parents = TournamentSelection(Pop_list, c).getParents()
+        offsprings = []
+        parents = TournamentSelection(pop_list, c).get_parents()
         rnd = np.random.rand()
 
-        if rnd < p_crossover:
-            Offsprings = OnePointCrossover(Parents, problem).getRecombinations()
+        if rnd < P_CROSSOVER:
+            offsprings = OnePointCrossover(parents, problem).get_recombinations()
         else:
-            Offsprings = Parents
+            offsprings = parents
 
-        for p in range(len(Offsprings)):
+        for p in range(len(offsprings)):
 
-            mutation_cand = Offsprings[p]
+            mutation_cand = offsprings[p]
             rnd = np.random.rand()
 
-            if rnd < p_mutation:
+            if rnd < P_MUTATION:
                 mutated = BitFlipMutation(mutation_cand, problem).mutate()
-                Offsprings[p] = mutated
+                offsprings[p] = mutated
             else:
                 pass
 
         # # Replacement: Replace if better
-            if Offsprings[p].fitness_value > Parents[p].fitness_value:
-                index = Pop_list.index(Parents[p])
-                new_p = Offsprings[p]
-                old_p = Pop_list[index]
-                Pop_list[index] = new_p
+            if offsprings[p].fitness_value > parents[p].fitness_value:
+                index = pop_list.index(parents[p])
+                new_p = offsprings[p]
+                old_p = pop_list[index]
+                pop_list[index] = new_p
                 
             else:
                 pass   
-    Pop_list_ordered = sorted(Pop_list, key=lambda x: x.fitness_value, reverse=True)
+    pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value, reverse=True)
 
-    Best_Solutions.append(Pop_list_ordered[0].chromosome)
-    Best_Objectives.append(Pop_list_ordered[0].fitness_value)
+    best_solutions.append(pop_list_ordered[0].chromosome)
+    best_objectives.append(pop_list_ordered[0].fitness_value)
 
-    if (Pop_list_ordered[0].fitness_value) > Best_Ever_Solution[1]:
-        Best_Ever_Solution = [
-            Pop_list_ordered[0].chromosome,
-            Pop_list_ordered[0].fitness_value,
+    if (pop_list_ordered[0].fitness_value) > best_ever_solution[1]:
+        best_ever_solution = [
+            pop_list_ordered[0].chromosome,
+            pop_list_ordered[0].fitness_value,
             g,
         ]
     else:
         pass
 
-    mean = sum(map(lambda x: x.fitness_value, Pop_list)) / len(Pop_list)
-    Avg_Objectives.append(mean)
+    mean = sum(map(lambda x: x.fitness_value, pop_list)) / len(pop_list)
+    avg_objectives.append(mean)
 
     print(
-        f"{g} - {Pop_list_ordered[0].chromosome} - {Pop_list_ordered[0].fitness_value}"
+        f"{g} - {pop_list_ordered[0].chromosome} - {pop_list_ordered[0].fitness_value}"
     )
     g += 1
 # -----------------------------------------------------------------
 
 print()
 print("#### Solution Output ####")
-print("Best Solution Chromosome  :", Best_Ever_Solution[0])
+print("Best Solution Chromosome  :", best_ever_solution[0])
 print()
-print("Best Solution             :", Best_Ever_Solution[1])
-print("Found at generation       :", Best_Ever_Solution[2])
-print("Known Best Solution       :", Known_Best)
-print(f"Gap                      : {(Best_Ever_Solution[1]-Known_Best)*100/Known_Best}")
+print("Best Solution             :", best_ever_solution[1])
+print("Found at generation       :", best_ever_solution[2])
+print("Known Best Solution       :", KNOWN_BEST)
+print(f"Gap                      : {(best_ever_solution[1]-KNOWN_BEST)*100/KNOWN_BEST}")
 print()
 print("##### Parameters #####")
 print(f"Number of generation      :{N_GEN}")
 print(f"Population size           :{N_COLS*N_ROWS}")
-print(f"Probability of crossover  :{p_crossover*100}")
-print(f"Probability of mutation   :{p_mutation*100}")
+print(f"Probability of crossover  :{P_CROSSOVER*100}")
+print(f"Probability of mutation   :{P_MUTATION*100}")
 print(f"Tournament selection      :{2}")
 
-plt.plot(Best_Objectives)
-plt.plot(Avg_Objectives)
+plt.plot(best_objectives)
+plt.plot(avg_objectives)
 plt.title("Objectives", fontsize=20, fontweight="bold")
 plt.xlabel("Generations", fontsize=16, fontweight="bold")
 plt.ylabel("Cost", fontsize=16, fontweight="bold")

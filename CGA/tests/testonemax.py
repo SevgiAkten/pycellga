@@ -1,7 +1,7 @@
 import sys 
 sys.path.append('..')
 
-from Problems.Combinatorial.OneMax import OneMax
+from problems.combinatorial.one_max import OneMax
 
 def test_onemax():
     theproblem = OneMax()

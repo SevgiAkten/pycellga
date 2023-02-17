@@ -1,18 +1,18 @@
 import numpy as np
-from Individual import *
-from Problems.abstractproblem import AbstractProblem
+from individual import *
+from problems.abstract_problem import AbstractProblem
 
 
 class OnePointCrossover:
-    def __init__(self, Parents, problem: AbstractProblem):
-        self.Parents = Parents
+    def __init__(self, parents, problem: AbstractProblem):
+        self.parents = parents
         self.problem = problem
 
-    def getRecombinations(self):
+    def get_recombinations(self):
 
-        Offsprings = []
-        p1 = self.Parents[0]
-        p2 = self.Parents[1]
+        offsprings = []
+        p1 = self.parents[0]
+        p2 = self.parents[1]
 
         co_point = np.random.randint(len(p1.chromosome))
 
@@ -30,7 +30,7 @@ class OnePointCrossover:
         child_1.position = p1.position
         child_1.neighbors_positions = p1.neighbors_positions
         child_1.fitness_value = self.problem.f(child_1.chromosome)
-        Offsprings.append(child_1)
+        offsprings.append(child_1)
 
         # Second child
         child_2 = Individual()
@@ -40,6 +40,6 @@ class OnePointCrossover:
         child_2.neighbors_positions = p2.neighbors_positions
         child_2.fitness_value = self.problem.f(child_2.chromosome)
 
-        Offsprings.append(child_2)
+        offsprings.append(child_2)
 
-        return Offsprings
+        return offsprings

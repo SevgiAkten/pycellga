@@ -4,7 +4,7 @@ class Linear5:
         self.n_rows = n_rows
         self.n_cols = n_cols
 
-    def calculateNeighborsPositions(self):
+    def calculate_neighbors_positions(self):
         neighbors_positions = []
         point = self.position
         x = point[0]

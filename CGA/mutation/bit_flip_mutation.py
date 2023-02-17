@@ -1,6 +1,6 @@
 import numpy as np
-from Individual import *
-from Problems.abstractproblem import AbstractProblem
+from individual import *
+from problems.abstract_problem import AbstractProblem
 
 
 class BitFlipMutation:
