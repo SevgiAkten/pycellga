@@ -9,7 +9,7 @@ class UniformCrossover:
         self.problem = problem
 
 
-    def combine(self, p1: Individual, p2: Individual):
+    def combine(self, p1: Individual, p2: Individual, locationsource: Individual) -> Individual:
         chsize = len(p1.chromosome)
         child = [0 for i in range(chsize)]
         for i in range(chsize):
@@ -18,7 +18,12 @@ class UniformCrossover:
             else:
                 child[i] = p2.chromosome[i]
 
-        return child 
+        indv = Individual(p1.gen_type, p1.ch_size)
+        indv.position = locationsource.position
+        indv.neighbors_positions = locationsource.neighbors_positions
+        indv.chromosome = list(child)
+        indv.fitness_value = self.problem.f(child)
+        return indv
     
 
     def get_recombinations(self):
@@ -27,6 +32,6 @@ class UniformCrossover:
         p2 = self.parents[1]
 
         return [
-            self.combine(p1, p2), 
-            self.combine(p1, p2)
+            self.combine(p1, p2, p1),
+            self.combine(p1, p2, p2)
         ]
