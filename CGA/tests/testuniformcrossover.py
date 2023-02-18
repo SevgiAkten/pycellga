@@ -4,6 +4,7 @@ sys.path.append('..')
 
 from individual import Individual
 from recombination.uniformcrossover import UniformCrossover
+from problems.combinatorial.one_max import OneMax
 
 def test_uniformcrossover():
 
@@ -16,16 +17,18 @@ def test_uniformcrossover():
     indv2.randomize()
 
     parents = [indv1, indv2]
+
+    theproblem = OneMax()
     
-    ucx = UniformCrossover(parents, None)
+    ucx = UniformCrossover(parents, theproblem)
     child1, child2 = ucx.get_recombinations()
     
-    assert len(child1) == len(child2)
-    assert len(child1) == CHSIZE
+    assert child1.ch_size == child2.ch_size
+    assert child1.ch_size == CHSIZE
 
     for i in range(CHSIZE): 
-        assert child1[i] == 1 or child1[i] == 0
+        assert child1.chromosome[i] == 1 or child1.chromosome[i] == 0
     
     for i in range(CHSIZE):
-        assert child2[i] == 1 or child2[i] == 0
+        assert child2.chromosome[i] == 1 or child2.chromosome[i] == 0
 
