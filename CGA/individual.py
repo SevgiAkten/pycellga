@@ -20,3 +20,17 @@ class Individual:
         else: 
             raise NotImplementedError(self.gen_type + " not implemented yet.")
 
+    def getneighbors_positions(self):
+        return self.neighbors_positions
+    
+    def setneighbors_positions(self, positions):
+        self.neighbors_positions = positions
+
+    def getneighbors(self):
+        return self.neighbors
+    
+    def setneighbors(self, neighbors):
+        self.neighbors = list(neighbors) # Copies the argument, not getting the argument itself
+    
+    
+    
