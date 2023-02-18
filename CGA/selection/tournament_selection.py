@@ -1,8 +1,10 @@
 import numpy as np
 
+from individual import Individual
+from typing import List
 
 class TournamentSelection:
-    def __init__(self, pop_list, c):
+    def __init__(self, pop_list: List[Individual], c):
         self.pop_list = pop_list
         self.c = c
 
