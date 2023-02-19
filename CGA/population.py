@@ -2,6 +2,7 @@ from individual import *
 from grid import *
 from neighborhoods.linear_5 import *
 from problems.abstract_problem import AbstractProblem
+from typing import List
 
 class Population:
     def __init__(self, ch_size: int, n_rows: int, n_cols: int, gen_type: str, problem: AbstractProblem):
@@ -11,7 +12,7 @@ class Population:
         self.gen_type = gen_type
         self.problem = problem
 
-    def initial_population(self) -> list:
+    def initial_population(self) -> List[Individual]:
 
         pop_size = self.n_rows * self.n_cols
         pop_list = []

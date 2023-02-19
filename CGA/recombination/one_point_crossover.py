@@ -1,14 +1,15 @@
 import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
+from typing import List
 
 
 class OnePointCrossover:
-    def __init__(self, parents, problem: AbstractProblem):
+    def __init__(self, parents: list, problem: AbstractProblem):
         self.parents = parents
         self.problem = problem
 
-    def get_recombinations(self):
+    def get_recombinations(self) -> List[Individual]:
 
         offsprings = []
         p1 = self.parents[0]
