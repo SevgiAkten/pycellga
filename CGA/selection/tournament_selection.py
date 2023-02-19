@@ -8,7 +8,7 @@ class TournamentSelection:
         self.pop_list = pop_list
         self.c = c
 
-    def get_parents(self):
+    def get_parents(self) -> List[Individual]:
         K = 2  # How many people will be chosen at random from neighbors
         parents = []
         p1 = self.pop_list[self.c - 1]
