@@ -4,11 +4,11 @@ from problems.abstract_problem import AbstractProblem
 
 
 class BitFlipMutation:
-    def __init__(self, mutation_cand, problem: AbstractProblem):
+    def __init__(self, mutation_cand:list, problem: AbstractProblem):
         self.mutation_cand = mutation_cand
         self.problem = problem 
 
-    def mutate(self):
+    def mutate(self) -> Individual:
 
         m_ch = list(self.mutation_cand.chromosome)
         index = np.random.randint(0, len(m_ch))

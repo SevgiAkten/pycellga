@@ -4,7 +4,7 @@ from individual import Individual
 from typing import List
 
 class TournamentSelection:
-    def __init__(self, pop_list: List[Individual], c):
+    def __init__(self, pop_list: List[Individual], c: int):
         self.pop_list = pop_list
         self.c = c
 
