@@ -4,7 +4,7 @@ from problems.abstract_problem import AbstractProblem
 
 
 class BitFlipMutation:
-    def __init__(self, mutation_cand:list, problem: AbstractProblem):
+    def __init__(self, mutation_cand:Individual, problem: AbstractProblem):
         self.mutation_cand = mutation_cand
         self.problem = problem 
 
