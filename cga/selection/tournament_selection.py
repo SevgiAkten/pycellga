@@ -4,12 +4,12 @@ from individual import Individual
 from typing import List
 
 class TournamentSelection:
-    def __init__(self, pop_list: List[Individual], c: int):
+    def __init__(self, pop_list: List[Individual], c: int, K: int = 2):
         self.pop_list = pop_list
         self.c = c
+        self.K = K # How many people will be chosen at random from neighbors
 
     def get_parents(self) -> List[Individual]:
-        K = 2  # How many people will be chosen at random from neighbors
         parents = []
         p1 = self.pop_list[self.c - 1]
 
@@ -23,7 +23,7 @@ class TournamentSelection:
 
         tournament_selection_pool = []
 
-        while len(tournament_selection_pool) < K:
+        while len(tournament_selection_pool) < self.K:
 
             index = np.random.randint(0, len(neighbors))
 

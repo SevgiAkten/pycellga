@@ -17,6 +17,7 @@ GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
 P_CROSSOVER = 0.8  # Probability of crossover
 P_MUTATION = 0.4  # Probability of mutation
 KNOWN_BEST = 50 # It can be change according to the problem
+K_TOURNAMENT = 2 # Number of elements used in tournament selection
 problem = OneMax()
 # -------------------------------------------------------------------------------------------
 
@@ -46,7 +47,7 @@ g = 1
 while g != N_GEN + 1:
     for c in range(POP_SIZE):
         offsprings = []
-        parents = TournamentSelection(pop_list, c).get_parents()
+        parents = TournamentSelection(pop_list, c, K_TOURNAMENT).get_parents()
         rnd = np.random.rand()
 
         if rnd < P_CROSSOVER:
@@ -111,7 +112,7 @@ print(f"Number of generation      :{N_GEN}")
 print(f"Population size           :{N_COLS*N_ROWS}")
 print(f"Probability of crossover  :{P_CROSSOVER*100}")
 print(f"Probability of mutation   :{P_MUTATION*100}")
-print(f"Tournament selection      :{2}")
+print(f"Tournament selection      :{K_TOURNAMENT}")
 
 plt.plot(best_objectives)
 plt.plot(avg_objectives)
