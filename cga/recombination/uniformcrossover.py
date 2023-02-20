@@ -1,7 +1,7 @@
 import numpy.random as randomgenerator
 from individual import *
 from problems.abstract_problem import AbstractProblem
-
+from typing import List
 
 class UniformCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):
@@ -26,7 +26,7 @@ class UniformCrossover:
         return indv
     
 
-    def get_recombinations(self):
+    def get_recombinations(self) -> List[Individual]:
 
         p1 = self.parents[0]
         p2 = self.parents[1]
