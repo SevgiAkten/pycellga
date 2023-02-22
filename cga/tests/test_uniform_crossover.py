@@ -1,12 +1,14 @@
-from grid import Grid
+import os
 import sys
-sys.path.append('..')
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
 from individual import Individual
-from recombination.uniformcrossover import UniformCrossover
+from recombination.uniform_crossover import UniformCrossover
 from problems.combinatorial.one_max import OneMax
 
-def test_uniformcrossover():
+def test_uniform_crossover():
 
     CHSIZE = 10
 

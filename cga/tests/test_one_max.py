@@ -1,9 +1,12 @@
-import sys 
-sys.path.append('..')
+import os
+import sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
 from problems.combinatorial.one_max import OneMax
 
-def test_onemax():
+def test_one_max():
     theproblem = OneMax()
     assert theproblem.f([1, 1, 1, 1, 1]) == 5
     assert theproblem.f([1, 1, 1, 1, 1, 1]) == 6

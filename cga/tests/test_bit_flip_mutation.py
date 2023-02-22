@@ -1,12 +1,15 @@
+import os
 import sys
-sys.path.append('..')
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
 
 from individual import Individual
 from problems.combinatorial.one_max import OneMax
 from mutation.bit_flip_mutation import BitFlipMutation
 
-def testFlipMutation():
+def test_bit_flip_mutation():
     CHSIZE = 20
 
     ind = Individual("Binary", CHSIZE)

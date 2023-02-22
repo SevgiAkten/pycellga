@@ -1,12 +1,13 @@
+import os
 import sys
-import os 
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
-sys.path.append('..')
-
-from dbutility import DBUtility
+from db_utility import DBUtility
 
 
-def test_dbUtility():
+def test_db_utility():
 
     tmpdb = "./temporary.db"
     if os.path.exists(tmpdb):
