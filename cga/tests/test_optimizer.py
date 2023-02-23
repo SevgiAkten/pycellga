@@ -1,11 +1,4 @@
 from optimizer import *
-from problems.combinatorial.one_max import OneMax
-from mutation.bit_flip_mutation import *
-from recombination.one_point_crossover import *
-from selection.tournament_selection import *
-from population import *
-import matplotlib.pyplot as plt
-import numpy as np
 import os
 import sys
 currentdir = os.path.dirname(os.path.realpath(__file__))
