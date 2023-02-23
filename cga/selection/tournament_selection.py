@@ -1,19 +1,18 @@
+from typing import List
+from individual import Individual
+import numpy as np
 import os
 import sys
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
-import numpy as np
-
-from individual import Individual
-from typing import List
 
 class TournamentSelection:
-    def __init__(self, pop_list: List[Individual], c: int, K: int = 2):
+    def __init__(self, pop_list: List[Individual] = {}, c: int = 0, K: int = 2):
         self.pop_list = pop_list
         self.c = c
-        self.K = K # How many people will be chosen at random from neighbors
+        self.K = K  # How many people will be chosen at random from neighbors
 
     def get_parents(self) -> List[Individual]:
         parents = []

@@ -5,7 +5,7 @@ from problems.abstract_problem import AbstractProblem
 from typing import List
 
 class Population:
-    def __init__(self, ch_size: int, n_rows: int, n_cols: int, gen_type: str, problem: AbstractProblem):
+    def __init__(self, ch_size: int=0, n_rows: int=0, n_cols: int=0, gen_type: str="", problem:AbstractProblem=None):
         self.ch_size = ch_size
         self.n_rows = n_rows
         self.n_cols = n_cols

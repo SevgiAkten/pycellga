@@ -10,7 +10,7 @@ from problems.abstract_problem import AbstractProblem
 
 
 class BitFlipMutation:
-    def __init__(self, mutation_cand:Individual, problem: AbstractProblem):
+    def __init__(self, mutation_cand:Individual=None, problem: AbstractProblem=None):
         self.mutation_cand = mutation_cand
         self.problem = problem 
 
