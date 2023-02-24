@@ -8,30 +8,30 @@ from problems.combinatorial.one_max import OneMax
 
 
 def optimize(
-    N_COLS: int = 10,
-    N_ROWS: int = 10,
-    N_GEN: int = 50,
-    CH_SIZE: int = 50,
-    GEN_TYPE: str = "Binary",
-    P_CROSSOVER: float = 0.8,
-    P_MUTATION: float = 0.4,
-    KNOWN_BEST: float = 50,
-    K_TOURNAMENT: int = 2,
+    n_cols: int = 10,
+    n_rows: int = 10,
+    n_gen: int = 50,
+    ch_size: int = 50,
+    gen_type: str = "Binary",
+    p_crossover: float = 0.8,
+    p_mutation: float = 0.4,
+    known_best: float = 50,
+    k_tournament: int = 2,
     problem: AbstractProblem = OneMax(),
     selection=TournamentSelection,
     recombination=OnePointCrossover,
     mutation=BitFlipMutation
 ) -> tuple:
 
-    POP_SIZE = N_COLS * N_ROWS
+    pop_size = n_cols * n_rows
     best_solutions = []
     best_objectives = []
     best_ever_solution = []
     avg_objectives = []
 
     # Generate Initial Population
-    pop_list = Population(CH_SIZE, N_ROWS, N_COLS,
-                          GEN_TYPE, problem).initial_population()
+    pop_list = Population(ch_size, n_rows, n_cols,
+                          gen_type, problem).initial_population()
 
     pop_list_ordered = sorted(
         pop_list, key=lambda x: x.fitness_value, reverse=True)
@@ -49,13 +49,13 @@ def optimize(
 
     # -----------------------------------------------------------------
     g = 1
-    while g != N_GEN + 1:
-        for c in range(POP_SIZE):
+    while g != n_gen + 1:
+        for c in range(pop_size):
             offsprings = []
-            parents = selection(pop_list, c, K_TOURNAMENT).get_parents()
+            parents = selection(pop_list, c, k_tournament).get_parents()
             rnd = np.random.rand()
 
-            if rnd < P_CROSSOVER:
+            if rnd < p_crossover:
                 offsprings = recombination(
                     parents, problem).get_recombinations()
             else:
@@ -66,7 +66,7 @@ def optimize(
                 mutation_cand = offsprings[p]
                 rnd = np.random.rand()
 
-                if rnd < P_MUTATION:
+                if rnd < p_mutation:
                     mutated = mutation(mutation_cand, problem).mutate()
                     offsprings[p] = mutated
                 else:
@@ -111,14 +111,14 @@ def optimize(
         "Best Solution Chromosome  :": best_ever_solution[0],
         "Best Solution             :": best_ever_solution[1],
         "Found at generation       :": best_ever_solution[2],
-        "Known Best Solution       :": KNOWN_BEST,
-        "Gap                       :": (best_ever_solution[1]-KNOWN_BEST)*100/KNOWN_BEST,
+        "Known Best Solution       :": known_best,
+        "Gap                       :": (best_ever_solution[1]-known_best)*100/known_best,
         "--------------##### Parameters #####----------------": "",
-        "Number of generation      :": N_GEN,
-        "Population size           :": N_COLS*N_ROWS,
-        "Probability of crossover  :": P_CROSSOVER*100,
-        "Probability of mutation   :": P_MUTATION*100,
-        "Tournament selection      :": K_TOURNAMENT,
+        "Number of generation      :": n_gen,
+        "Population size           :": n_cols*n_rows,
+        "Probability of crossover  :": p_crossover*100,
+        "Probability of mutation   :": p_mutation*100,
+        "Tournament selection      :": k_tournament,
         "-----------------------------------------------------": ""
     }
 
