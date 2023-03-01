@@ -106,18 +106,18 @@ def optimize(
     # -----------------------------------------------------------------
 
     optimizer_result = {
-        "Best Solution Chromosome  :": best_ever_solution[0],
-        "Best Solution             :": best_ever_solution[1],
-        "Found at generation       :": best_ever_solution[2],
-        "Known Best Solution       :": known_best,
-        "Gap                       :": (best_ever_solution[1]-known_best)*100/known_best
+        "best_solution_chromosome": best_ever_solution[0],
+        "best_solution": best_ever_solution[1],
+        "found_at_generation": best_ever_solution[2],
+        "known_best_solution": known_best,
+        "gap": (best_ever_solution[1]-known_best)*100/known_best
     }
     parameters = {
-        "Number of generation      :": n_gen,
-        "Population size           :": n_cols*n_rows,
-        "Probability of crossover  :": p_crossover*100,
-        "Probability of mutation   :": p_mutation*100,
-        "Tournament selection      :": k_tournament
+        "number_of_generation": n_gen,
+        "population_size": n_cols*n_rows,
+        "probability_of_crossover": p_crossover*100,
+        "probability_of_mutation": p_mutation*100,
+        "tournament_selection": k_tournament
     }
 
     return optimizer_result, parameters, best_objectives, avg_objectives
