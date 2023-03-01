@@ -4,7 +4,7 @@ from population import *
 from selection.tournament_selection import *
 from recombination.one_point_crossover import *
 from mutation.bit_flip_mutation import *
-from problems.combinatorial.one_max import OneMax
+from problems.single_objective.discrete.binary.one_max import OneMax
 
 #                      Parameter Definition for Cellular GA                                 #
 # -------------------------------------------------------------------------------------------
@@ -16,8 +16,8 @@ CH_SIZE = 50  # Size of chromosome
 GEN_TYPE = "Binary"  # Type of gene as binary, real-value or etc.
 P_CROSSOVER = 0.8  # Probability of crossover
 P_MUTATION = 0.4  # Probability of mutation
-KNOWN_BEST = 50 # It can be change according to the problem
-K_TOURNAMENT = 2 # Number of elements used in tournament selection
+KNOWN_BEST = 50  # It can be change according to the problem
+K_TOURNAMENT = 2  # Number of elements used in tournament selection
 problem = OneMax()
 # -------------------------------------------------------------------------------------------
 
@@ -27,9 +27,11 @@ best_ever_solution = []
 avg_objectives = []
 
 # Generate Initial Population
-pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
+pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE,
+                      problem).initial_population()
 
-pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value, reverse=True)
+pop_list_ordered = sorted(
+    pop_list, key=lambda x: x.fitness_value, reverse=True)
 
 best_solutions.append(pop_list_ordered[0].chromosome)
 best_objectives.append(pop_list_ordered[0].fitness_value)
@@ -51,7 +53,8 @@ while g != N_GEN + 1:
         rnd = np.random.rand()
 
         if rnd < P_CROSSOVER:
-            offsprings = OnePointCrossover(parents, problem).get_recombinations()
+            offsprings = OnePointCrossover(
+                parents, problem).get_recombinations()
         else:
             offsprings = parents
 
@@ -72,10 +75,11 @@ while g != N_GEN + 1:
                 new_p = offsprings[p]
                 old_p = pop_list[index]
                 pop_list[index] = new_p
-                
+
             else:
-                pass   
-    pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value, reverse=True)
+                pass
+    pop_list_ordered = sorted(
+        pop_list, key=lambda x: x.fitness_value, reverse=True)
 
     best_solutions.append(pop_list_ordered[0].chromosome)
     best_objectives.append(pop_list_ordered[0].fitness_value)
@@ -105,7 +109,8 @@ print()
 print("Best Solution             :", best_ever_solution[1])
 print("Found at generation       :", best_ever_solution[2])
 print("Known Best Solution       :", KNOWN_BEST)
-print(f"Gap                      : {(best_ever_solution[1]-KNOWN_BEST)*100/KNOWN_BEST}")
+print(
+    f"Gap                      : {(best_ever_solution[1]-KNOWN_BEST)*100/KNOWN_BEST}")
 print()
 print("##### Parameters #####")
 print(f"Number of generation      :{N_GEN}")

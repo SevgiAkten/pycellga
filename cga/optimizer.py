@@ -4,7 +4,7 @@ from population import *
 from selection.tournament_selection import *
 from recombination.one_point_crossover import *
 from mutation.bit_flip_mutation import *
-from problems.combinatorial.one_max import OneMax
+from problems.single_objective.discrete.binary.one_max import OneMax
 
 
 def optimize(
