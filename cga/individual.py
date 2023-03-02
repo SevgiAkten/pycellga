@@ -8,7 +8,7 @@ class Individual:
     neighbors_positions = None
     neighbors = None
 
-    def __init__(self, gen_type = "Binary", ch_size = 0):
+    def __init__(self, gen_type="Binary", ch_size=0):
         self.gen_type = gen_type
         self.ch_size = ch_size
         self.chromosome = [0 for i in range(ch_size)]
@@ -17,20 +17,18 @@ class Individual:
         if self.gen_type == "Binary":
             self.chromosome = [random.randint(2) for i in range(self.ch_size)]
             return self.chromosome
-        else: 
+        else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
 
     def getneighbors_positions(self):
         return self.neighbors_positions
-    
+
     def setneighbors_positions(self, positions):
         self.neighbors_positions = positions
 
     def getneighbors(self):
         return self.neighbors
-    
+
     def setneighbors(self, neighbors):
-        self.neighbors = list(neighbors) # Copies the argument, not getting the argument itself
-    
-    
-    
+        #  Copies the argument, not getting the argument itself
+        self.neighbors = list(neighbors)

@@ -1,11 +1,6 @@
 from problems.single_objective.discrete.binary.one_max import OneMax
 from recombination.uniform_crossover import UniformCrossover
 from individual import Individual
-import os
-import sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
 
 
 def test_uniform_crossover():

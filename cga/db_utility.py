@@ -1,18 +1,19 @@
 import sqlite3
 
+
 class DBUtility:
 
     _conn_: sqlite3.Connection = None
 
-    def __init__(self, dbpath = "./simulations.db"):
-        self._conn_ = sqlite3.connect(database = dbpath)
-    
+    def __init__(self, dbpath="./simulations.db"):
+        self._conn_ = sqlite3.connect(database=dbpath)
+
     def getconnection(self) -> sqlite3.Connection:
         return self._conn_
-    
+
     def getcursor(self) -> sqlite3.Cursor:
         return self._conn_.cursor()
-    
+
     def commit(self) -> None:
         self._conn_.commit()
 

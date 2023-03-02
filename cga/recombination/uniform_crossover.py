@@ -1,20 +1,14 @@
-import os
-import sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
-
 
 import numpy.random as randomgenerator
 from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
+
 class UniformCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):
         self.parents = parents
         self.problem = problem
-
 
     def combine(self, p1: Individual, p2: Individual, locationsource: Individual) -> Individual:
         chsize = len(p1.chromosome)
@@ -31,7 +25,6 @@ class UniformCrossover:
         indv.chromosome = list(child)
         indv.fitness_value = self.problem.f(child)
         return indv
-    
 
     def get_recombinations(self) -> List[Individual]:
 

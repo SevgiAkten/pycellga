@@ -1,8 +1,3 @@
-import os
-import sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
 
 import numpy as np
 from individual import *
@@ -10,9 +5,9 @@ from problems.abstract_problem import AbstractProblem
 
 
 class BitFlipMutation:
-    def __init__(self, mutation_cand:Individual=None, problem: AbstractProblem=None):
+    def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):
         self.mutation_cand = mutation_cand
-        self.problem = problem 
+        self.problem = problem
 
     def mutate(self) -> Individual:
 

@@ -1,5 +1,5 @@
 class Grid:
-    def __init__(self, n_rows:int, n_cols:int):
+    def __init__(self, n_rows: int, n_cols: int):
         self.n_rows = n_rows
         self.n_cols = n_cols
 
