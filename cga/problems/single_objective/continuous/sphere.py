@@ -1,5 +1,4 @@
 from problems.abstract_problem import AbstractProblem
-from numpy import sum
 
 # -5.12 ≤ xi ≤ 5.12
 # global minumum at f(0,...,0) = 0
