@@ -1,7 +1,7 @@
 from problems.single_objective.discrete.binary.count_sat import CountSat
 
 
-def test_one_max():
+def test_count_sat():
     theproblem = CountSat()
     assert theproblem.f([1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1,
                         0, 1, 0, 0, 1, 0, 1, 0, 0]) == 6176
