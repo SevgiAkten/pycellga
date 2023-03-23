@@ -1,5 +1,5 @@
 from problems.single_objective.discrete.permutation.tsp import Tsp
-from numpy import random
+import random
 import tsplib95
 
 
@@ -9,13 +9,13 @@ def test_tsp():
 
     random.seed(0)
     assert theproblem.f(
-        list(random.randint(1, 53, size=(52)))) == 32276.58323426501
+        list(random.sample(range(1, 53), 52))) == 29495.465603578683
     random.seed(50)
     assert theproblem.f(
-        list(random.randint(1, 53, size=(52)))) == 29596.82092858752
+        list(random.sample(range(1, 53), 52))) == 30518.155190953657
     random.seed(100)
     assert theproblem.f(
-        list(random.randint(1, 53, size=(52)))) == 25025.128223962678
+        list(random.sample(range(1, 53), 52))) == 31545.914565031067
 
     # Optimal tour
     with open("berlin52.opt.tour.txt") as o:
