@@ -21,6 +21,7 @@ class BitFlipMutation:
         mutated = Individual()
 
         mutated.chromosome = m_ch
+        mutated.ch_size = len(m_ch)
         mutated.position = self.mutation_cand.position
         mutated.neighbors_positions = self.mutation_cand.neighbors_positions
         mutated.fitness_value = self.problem.f(mutated.chromosome)

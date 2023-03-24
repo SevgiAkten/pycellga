@@ -12,24 +12,26 @@ class SwapMutation:
 
     def mutate(self) -> Individual:
 
-        ran_1 = np.random.randint(0, len(self.mutation_cand.chromosome))
-        ran_2 = np.random.randint(0, len(self.mutation_cand.chromosome))
-
-        while ran_1 == ran_2:
-            ran_2 = np.random.randint(0, len(self.mutation_cand.chromosome))
-
-        x = self.mutation_cand.chromosome[ran_1]
-        y = self.mutation_cand.chromosome[ran_2]
-
         mutated_ch = list(self.mutation_cand.chromosome)
 
-        mutated_ch[ran_1] = y
-        mutated_ch[ran_2] = x
+        ran_1 = np.random.randint(0, len(mutated_ch))
+        ran_2 = np.random.randint(0, len(mutated_ch))
+
+        while ran_1 == ran_2:
+            ran_2 = np.random.randint(0, len(mutated_ch))
+
+        x = mutated_ch[ran_1]
+        y = mutated_ch[ran_2]
+
+        mutated_ch_new = list(mutated_ch)
+
+        mutated_ch_new[ran_1] = y
+        mutated_ch_new[ran_2] = x
 
         mutated = Individual()
 
-        mutated.chromosome = mutated_ch
-        mutated.ch_size = len(mutated_ch)
+        mutated.chromosome = mutated_ch_new
+        mutated.ch_size = len(mutated_ch_new)
         mutated.position = self.mutation_cand.position
         mutated.neighbors_positions = self.mutation_cand.neighbors_positions
         mutated.fitness_value = self.problem.f(mutated.chromosome)

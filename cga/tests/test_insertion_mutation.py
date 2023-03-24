@@ -23,3 +23,6 @@ def test_insertion_mutation():
             elementschanged += 1
 
     assert elementschanged > 0
+
+    assert newind.ch_size == CHSIZE
+    assert newind.ch_size == ind.ch_size

@@ -23,7 +23,6 @@ class InsertionMutation:
         mutated_ch_new = list(mutated_ch)
 
         mutated_ch_new.remove(x)
-
         mutated_ch_new.insert(ran_2, x)
 
         mutated = Individual()
