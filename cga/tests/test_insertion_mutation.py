@@ -1,10 +1,10 @@
-from mutation.swap_mutation import SwapMutation
+from mutation.insertion_mutation import InsertionMutation
 from problems.single_objective.discrete.permutation.tsp import Tsp
 from individual import Individual
 import random
 
 
-def test_swap_mutation():
+def test_insertion_mutation():
     CHSIZE = 52
 
     ind = Individual("Permutation", CHSIZE)
@@ -12,7 +12,7 @@ def test_swap_mutation():
 
     problem = Tsp()
 
-    mut = SwapMutation(ind, problem)
+    mut = InsertionMutation(ind, problem)
 
     newind = mut.mutate()
 

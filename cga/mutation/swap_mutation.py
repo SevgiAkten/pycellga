@@ -29,6 +29,7 @@ class SwapMutation:
         mutated = Individual()
 
         mutated.chromosome = mutated_ch
+        mutated.ch_size = len(mutated_ch)
         mutated.position = self.mutation_cand.position
         mutated.neighbors_positions = self.mutation_cand.neighbors_positions
         mutated.fitness_value = self.problem.f(mutated.chromosome)
