@@ -20,13 +20,13 @@ class SwapMutation:
         while ran_1 == ran_2:
             ran_2 = np.random.randint(0, len(mutated_ch))
 
-        x = mutated_ch[ran_1]
-        y = mutated_ch[ran_2]
+        swap_candidate_1 = mutated_ch[ran_1]
+        swap_candidate_2 = mutated_ch[ran_2]
 
         mutated_ch_new = list(mutated_ch)
 
-        mutated_ch_new[ran_1] = y
-        mutated_ch_new[ran_2] = x
+        mutated_ch_new[ran_1] = swap_candidate_2
+        mutated_ch_new[ran_2] = swap_candidate_1
 
         mutated = Individual()
 
