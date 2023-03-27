@@ -1,4 +1,4 @@
-class Compact21:
+class Compact25:
     def __init__(self, position, n_rows, n_cols):
         self.position = position
         self.n_rows = n_rows
@@ -9,10 +9,10 @@ class Compact21:
         point = self.position
         x = point[0]
         y = point[1]
-        dx = [-2, -2, -2, -1, -1, -1, -1, -1, 0, 0, 0,
-              0, 1, 1, 1, 1, 1, 2, 2, 2]  # Change in x
-        dy = [-1, 0, 1, -2, -1, 0, 1, 2, -2, -1, 1,
-              2, -2, -1, 0, 1, 2, -1, 0, 1]  # Change in y
+        dx = [-2, -2, -2, -2, -2, -1, -1, -1, -1, -1, 0, 0,
+              0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2]  # Change in x
+        dy = [-2, -1, 0, 1, 2, -2, -1, 0, 1, 2, -2, -1, 1,
+              2, -2, -1, 0, 1, 2, -2, -1, 0, 1, 2]  # Change in y
 
         if x == self.n_rows or y == self.n_rows:
             for i in range(len(dx)):
@@ -39,3 +39,7 @@ class Compact21:
                 neighbors_positions.append(neighbor_position)
 
         return neighbors_positions
+
+
+a = Compact25((3, 3), 5, 5).calculate_neighbors_positions()
+print(a)
