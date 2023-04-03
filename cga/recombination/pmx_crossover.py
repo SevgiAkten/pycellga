@@ -22,34 +22,41 @@ class PMXCrossover:
         p1_seg_main = list(p1.chromosome[co_point_1:co_point_2])
         p1_seg_left = list(p1.chromosome[0:co_point_1])
         p1_seg_right = list(p1.chromosome[co_point_2:])
+        p1_seg_left_aux = list()
+        p1_seg_right_aux = list()
 
         p2_seg_main = list(p2.chromosome[co_point_1:co_point_2])
         p2_seg_left = list(p2.chromosome[0:co_point_1])
         p2_seg_right = list(p2.chromosome[co_point_2:])
+        p2_seg_left_aux = list()
+        p2_seg_right_aux = list()
 
         # First child
         child_1 = Individual()
-        child_1_aux = p1_seg_left + p2_seg_main + p1_seg_right
 
-        for i in range(len(p1_seg_left)):
-            if p1_seg_left[i] in p2_seg_main + p1_seg_right:
-                mapping_index = p2_seg_main.index(p1_seg_left[i])
+        for seg in p1_seg_left:
+            if seg in p2_seg_main:
+                mapping_index = p2_seg_main.index(seg)
                 mapping_item = p1_seg_main[mapping_index]
-                if (mapping_item in child_1_aux):
+                while mapping_item in p2_seg_main:
                     mapping_index = p2_seg_main.index(mapping_item)
                     mapping_item = p1_seg_main[mapping_index]
-                p1_seg_left[i] = mapping_item
+                p1_seg_left_aux.append(mapping_item)
+            else:
+                p1_seg_left_aux.append(seg)
 
-        for i in range(len(p1_seg_right)):
-            if p1_seg_right[i] in p2_seg_main + p1_seg_left:
-                mapping_index = p2_seg_main.index(p1_seg_right[i])
+        for seg in p1_seg_right:
+            if seg in p2_seg_main:
+                mapping_index = p2_seg_main.index(seg)
                 mapping_item = p1_seg_main[mapping_index]
-                if (mapping_item in child_1_aux):
+                while mapping_item in p2_seg_main:
                     mapping_index = p2_seg_main.index(mapping_item)
                     mapping_item = p1_seg_main[mapping_index]
-                p1_seg_right[i] = mapping_item
+                p1_seg_right_aux.append(mapping_item)
+            else:
+                p1_seg_right_aux.append(seg)
 
-        child_1_ch = p1_seg_left + p2_seg_main + p1_seg_right
+        child_1_ch = p1_seg_left_aux + p2_seg_main + p1_seg_right_aux
 
         child_1.chromosome = child_1_ch
         child_1.ch_size = len(child_1_ch)
@@ -61,27 +68,30 @@ class PMXCrossover:
 
         # Second child
         child_2 = Individual()
-        child_2_aux = p2_seg_left + p1_seg_main + p2_seg_right
 
-        for i in range(len(p2_seg_left)):
-            if p2_seg_left[i] in p1_seg_main + p2_seg_right:
-                mapping_index = p1_seg_main.index(p2_seg_left[i])
+        for seg in p2_seg_left:
+            if seg in p1_seg_main:
+                mapping_index = p1_seg_main.index(seg)
                 mapping_item = p2_seg_main[mapping_index]
-                if (mapping_item in child_2_aux):
+                while mapping_item in p1_seg_main:
                     mapping_index = p1_seg_main.index(mapping_item)
                     mapping_item = p2_seg_main[mapping_index]
-                p2_seg_left[i] = mapping_item
+                p2_seg_left_aux.append(mapping_item)
+            else:
+                p2_seg_left_aux.append(seg)
 
-        for i in range(len(p2_seg_right)):
-            if p2_seg_right[i] in p1_seg_main + p2_seg_left:
-                mapping_index = p1_seg_main.index(p2_seg_right[i])
+        for seg in p2_seg_right:
+            if seg in p1_seg_main:
+                mapping_index = p1_seg_main.index(seg)
                 mapping_item = p2_seg_main[mapping_index]
-                if (mapping_item in child_2_aux):
+                while mapping_item in p1_seg_main:
                     mapping_index = p1_seg_main.index(mapping_item)
                     mapping_item = p2_seg_main[mapping_index]
-                p2_seg_right[i] = mapping_item
+                p2_seg_right_aux.append(mapping_item)
+            else:
+                p2_seg_right_aux.append(seg)
 
-        child_2_ch = p2_seg_left + p1_seg_main + p2_seg_right
+        child_2_ch = p2_seg_left_aux + p1_seg_main + p2_seg_right_aux
 
         child_2.chromosome = child_2_ch
         child_2.ch_size = len(child_2_ch)
