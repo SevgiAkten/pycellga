@@ -8,19 +8,19 @@ from problems.single_objective.discrete.binary.one_max import OneMax
 
 
 def optimize(
-    n_cols: int = 10,
-    n_rows: int = 10,
-    n_gen: int = 50,
-    ch_size: int = 50,
-    gen_type: str = "Binary",
-    p_crossover: float = 0.8,
-    p_mutation: float = 0.4,
-    known_best: float = 50,
-    k_tournament: int = 2,
-    problem: AbstractProblem = OneMax(),
-    selection=TournamentSelection,
-    recombination=OnePointCrossover,
-    mutation=BitFlipMutation
+    n_cols: int,
+    n_rows: int,
+    n_gen: int,
+    ch_size: int,
+    gen_type: str,
+    p_crossover: float,
+    p_mutation: float,
+    known_best: float,
+    k_tournament: int,
+    problem: AbstractProblem,
+    selection,
+    recombination,
+    mutation
 ) -> tuple:
 
     pop_size = n_cols * n_rows
@@ -34,7 +34,7 @@ def optimize(
                           gen_type, problem).initial_population()
 
     pop_list_ordered = sorted(
-        pop_list, key=lambda x: x.fitness_value, reverse=True)
+        pop_list, key=lambda x: x.fitness_value)
 
     best_solutions.append(pop_list_ordered[0].chromosome)
     best_objectives.append(pop_list_ordered[0].fitness_value)
@@ -52,7 +52,7 @@ def optimize(
     while g != n_gen + 1:
         for c in range(pop_size):
             offsprings = []
-            parents = selection(pop_list, c, k_tournament).get_parents()
+            parents = selection(pop_list, c).get_parents()
             rnd = np.random.rand()
 
             if rnd < p_crossover:
@@ -73,7 +73,7 @@ def optimize(
                     pass
 
             # # Replacement: Replace if better
-                if offsprings[p].fitness_value > parents[p].fitness_value:
+                if offsprings[p].fitness_value < parents[p].fitness_value:
                     index = pop_list.index(parents[p])
                     new_p = offsprings[p]
                     old_p = pop_list[index]
@@ -82,12 +82,12 @@ def optimize(
                 else:
                     pass
         pop_list_ordered = sorted(
-            pop_list, key=lambda x: x.fitness_value, reverse=True)
+            pop_list, key=lambda x: x.fitness_value)
 
         best_solutions.append(pop_list_ordered[0].chromosome)
         best_objectives.append(pop_list_ordered[0].fitness_value)
 
-        if (pop_list_ordered[0].fitness_value) > best_ever_solution[1]:
+        if (pop_list_ordered[0].fitness_value) < best_ever_solution[1]:
             best_ever_solution = [
                 pop_list_ordered[0].chromosome,
                 pop_list_ordered[0].fitness_value,
