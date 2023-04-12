@@ -1,6 +1,6 @@
 from individual import *
 from grid import *
-from neighborhoods.linear_5 import *
+from neighborhoods.linear_5 import Linear5
 from problems.abstract_problem import AbstractProblem
 from typing import List
 

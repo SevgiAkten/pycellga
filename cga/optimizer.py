@@ -103,6 +103,8 @@ def optimize(
             f"{g} - {pop_list_ordered[0].chromosome} - {pop_list_ordered[0].fitness_value}"
         )
         g += 1
+
+    gap = (best_ever_solution[1]-known_best)*100/known_best
     # -----------------------------------------------------------------
 
     optimizer_result = {
@@ -110,7 +112,7 @@ def optimize(
         "best_solution": best_ever_solution[1],
         "found_at_generation": best_ever_solution[2],
         "known_best_solution": known_best,
-        "gap": (best_ever_solution[1]-known_best)*100/known_best
+        "gap": gap
     }
     parameters = {
         "number_of_generation": n_gen,
