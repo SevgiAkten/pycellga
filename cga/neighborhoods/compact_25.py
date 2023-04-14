@@ -39,7 +39,3 @@ class Compact25:
                 neighbors_positions.append(neighbor_position)
 
         return neighbors_positions
-
-
-a = Compact25((3, 3), 5, 5).calculate_neighbors_positions()
-print(a)
