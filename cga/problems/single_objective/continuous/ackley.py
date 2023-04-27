@@ -15,4 +15,4 @@ class Ackley(AbstractProblem):
         t1 = -20 * (exp(-0.2 * (sqrt(0.5 * (sum([i*i for i in x]))))))
         t2 = -(exp(0.5 * (sum([cos(2 * pi * i) for i in x]))))
         result = t1 + t2 + e + 20
-        return result
+        return round(result, 3)

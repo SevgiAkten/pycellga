@@ -1,6 +1,12 @@
 from individual import *
 from grid import *
 from neighborhoods.linear_5 import Linear5
+from neighborhoods.linear_9 import Linear9
+from neighborhoods.compact_9 import Compact9
+from neighborhoods.compact_13 import Compact13
+from neighborhoods.compact_21 import Compact21
+from neighborhoods.compact_25 import Compact25
+
 from problems.abstract_problem import AbstractProblem
 from typing import List
 

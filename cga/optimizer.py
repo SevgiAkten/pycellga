@@ -103,8 +103,12 @@ def optimize(
             f"{g} - {pop_list_ordered[0].chromosome} - {pop_list_ordered[0].fitness_value}"
         )
         g += 1
-
-    gap = (best_ever_solution[1]-known_best)*100/known_best
+    try:
+        gap = (best_ever_solution[1]-known_best)*100/known_best
+    except ZeroDivisionError:
+        gap = "The known best zero division error was occurred."
+    except:
+        gap = "Something else went wrong"
     # -----------------------------------------------------------------
 
     optimizer_result = {

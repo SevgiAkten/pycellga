@@ -25,12 +25,19 @@ class TournamentSelection:
 
         while len(tournament_selection_pool) < self.K:
 
+            # ### classical cellular genetic algorithm
             index = np.random.randint(0, len(neighbors))
 
             if neighbors[index] not in tournament_selection_pool:
                 tournament_selection_pool.append(neighbors[index])
-            else:
-                pass
+
+            # ### restrict consanguineous marriage
+            # index = np.random.randint(0, len(self.pop_list))
+            # selected = self.pop_list[index]
+
+            # if selected is not p1:
+            #     if selected not in neighbors:
+            #         tournament_selection_pool.append(selected)
 
         tournament_selection_pool_ordered = sorted(
             tournament_selection_pool, key=lambda x: x.fitness_value, reverse=True

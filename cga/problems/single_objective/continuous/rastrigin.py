@@ -11,4 +11,4 @@ class Rastrigin(AbstractProblem):
 
     def f(self, x: list) -> float:
         A = 10.0
-        return (A*len(x)) + sum([((i*i) - (A * cos(2 * pi * i))) for i in x])
+        return round((A*len(x)) + sum([((i*i) - (A * cos(2 * pi * i))) for i in x]), 2)

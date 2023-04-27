@@ -21,7 +21,25 @@ class Individual:
         elif self.gen_type == "Permutation":
             self.chromosome = list(rd.sample(range(1, 53), self.ch_size))
         elif self.gen_type == "Real-valued":
-            self.chromosome = list(rd(range(1, 53), 10))  # it will change
+            # # Ackley
+            # self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]
+
+            # # Bohachevsky
+            # self.chromosome = [random.randint(-15, 16) for i in range(self.ch_size)]
+
+            # # Rastrigin
+            # self.chromosome = [round(rd.uniform(-5.12, 5.12), 2) for i in range(self.ch_size)]
+
+            # # Rosenbrock
+            # self.chromosome = [random.randint(-5, 11) for i in range(self.ch_size)]
+
+            # # Schwefel
+            # self.chromosome = [round(rd.uniform(-500.0, 500.0), 4) for i in range(self.ch_size)]
+
+            # # Sphere
+            self.chromosome = [round(rd.uniform(-5.12, 5.12), 2)
+                               for i in range(self.ch_size)]
+
         else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome

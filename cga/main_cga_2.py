@@ -2,6 +2,13 @@ from optimizer import *
 import matplotlib.pyplot as plt
 from problems.single_objective.discrete.permutation.tsp import Tsp
 
+from problems.single_objective.continuous.ackley import Ackley
+from problems.single_objective.continuous.bohachevsky import Bohachevsky
+from problems.single_objective.continuous.rastrigin import Rastrigin
+from problems.single_objective.continuous.rosenbrock import Rosenbrock
+from problems.single_objective.continuous.schwefel import Schwefel
+from problems.single_objective.continuous.sphere import Sphere
+
 from selection.tournament_selection import TournamentSelection
 from selection.roulette_wheel_selection import RouletteWheelSelection
 
@@ -18,18 +25,17 @@ from mutation.two_opt_mutation import TwoOptMutation
 result_tuple = optimize(
     n_cols=10,
     n_rows=10,
-    n_gen=2,
-    ch_size=52,
-    gen_type="Permutation",
-    p_crossover=0.8,
-    p_mutation=0.4,
-    known_best=7544.365901904087,
+    n_gen=500,
+    ch_size=10,
+    gen_type="Real-valued",
+    p_crossover=0.9,
+    p_mutation=0.5,
+    known_best=0,
     k_tournament=2,
-    problem=Tsp(),
+    problem=Sphere(),
     selection=TournamentSelection,
-    recombination=PMXCrossover,
-    mutation=InsertionMutation
-
+    recombination=UniformCrossover,
+    mutation=SwapMutation
 )
 # result_tuple[0] = optimizer_result, type is dict
 # result_tuple[1] = parameters, type is dict

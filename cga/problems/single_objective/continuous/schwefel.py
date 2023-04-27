@@ -10,4 +10,4 @@ from problems.abstract_problem import AbstractProblem
 class Schwefel(AbstractProblem):
 
     def f(self, x: list) -> float:
-        return 418.9829*len(x) - sum([i * sin(sqrt(abs(i))) for i in x])
+        return round(418.9829*len(x) - sum([i * sin(sqrt(abs(i))) for i in x]), 4)
