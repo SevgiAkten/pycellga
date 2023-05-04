@@ -16,9 +16,10 @@ class Individual:
 
     def randomize(self):
         if self.gen_type == "Binary":
+            # # CountSat, Fms, Mmdp, OneMax, Peak
             self.chromosome = [random.randint(2) for i in range(self.ch_size)]
-            return self.chromosome
         elif self.gen_type == "Permutation":
+            # # Tsp
             self.chromosome = list(rd.sample(range(1, 53), self.ch_size))
         elif self.gen_type == "Real-valued":
             # # Ackley
@@ -39,7 +40,6 @@ class Individual:
             # # Sphere
             self.chromosome = [round(rd.uniform(-5.12, 5.12), 2)
                                for i in range(self.ch_size)]
-
         else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome

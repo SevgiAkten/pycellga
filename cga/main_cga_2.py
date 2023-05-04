@@ -1,26 +1,44 @@
 from optimizer import *
 import matplotlib.pyplot as plt
-from problems.single_objective.discrete.permutation.tsp import Tsp
 
+# --------------------------------- problems -------------------------------- #
+# Binary
+from problems.single_objective.discrete.binary.count_sat import CountSat
+from problems.single_objective.discrete.binary.fms import Fms
+from problems.single_objective.discrete.binary.mmdp import Mmdp
+from problems.single_objective.discrete.binary.one_max import OneMax
+from problems.single_objective.discrete.binary.peak import Peak
+# Permutation
+from problems.single_objective.discrete.permutation.tsp import Tsp
+# Real-valued
 from problems.single_objective.continuous.ackley import Ackley
 from problems.single_objective.continuous.bohachevsky import Bohachevsky
 from problems.single_objective.continuous.rastrigin import Rastrigin
 from problems.single_objective.continuous.rosenbrock import Rosenbrock
 from problems.single_objective.continuous.schwefel import Schwefel
 from problems.single_objective.continuous.sphere import Sphere
+# -------------------------------------------------------------------------- #
 
-from selection.tournament_selection import TournamentSelection
+# ------------------------------ selection --------------------------------- #
 from selection.roulette_wheel_selection import RouletteWheelSelection
+from selection.tournament_selection import TournamentSelection
+# -------------------------------------------------------------------------- #
 
+# ------------------------------ recombination ----------------------------- #
 from recombination.one_point_crossover import OnePointCrossover
+from recombination.pmx_crossover import PMXCrossover
 from recombination.two_point_crossover import TwoPointCrossover
 from recombination.uniform_crossover import UniformCrossover
-from recombination.pmx_crossover import PMXCrossover
+# -------------------------------------------------------------------------- #
 
+# -------------------------------- mutation -------------------------------- #
+from mutation.bit_flip_mutation import BitFlipMutation
 from mutation.insertion_mutation import InsertionMutation
 from mutation.shuffle_mutation import ShuffleMutation
 from mutation.swap_mutation import SwapMutation
 from mutation.two_opt_mutation import TwoOptMutation
+# -------------------------------------------------------------------------- #
+
 
 result_tuple = optimize(
     n_cols=10,
