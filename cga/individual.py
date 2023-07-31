@@ -20,7 +20,7 @@ class Individual:
             self.chromosome = [random.randint(2) for i in range(self.ch_size)]
         elif self.gen_type == "Permutation":
             # # Tsp
-            self.chromosome = list(rd.sample(range(1, 53), self.ch_size))
+            self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
         elif self.gen_type == "Real-valued":
             # # Ackley
             # self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]

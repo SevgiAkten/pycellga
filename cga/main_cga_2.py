@@ -41,18 +41,18 @@ from mutation.two_opt_mutation import TwoOptMutation
 
 
 result_tuple = optimize(
-    n_cols=10,
-    n_rows=10,
+    n_cols=5,
+    n_rows=5,
     n_gen=500,
-    ch_size=10,
-    gen_type="Real-valued",
+    ch_size=14,
+    gen_type="Permutation",
     p_crossover=0.9,
-    p_mutation=0.5,
-    known_best=0,
+    p_mutation=0.6,
+    known_best=30.878500,
     k_tournament=2,
-    problem=Sphere(),
+    problem=Tsp(),
     selection=TournamentSelection,
-    recombination=UniformCrossover,
+    recombination=PMXCrossover,
     mutation=SwapMutation
 )
 # result_tuple[0] = optimizer_result, type is dict
