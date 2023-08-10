@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from population import *
 from selection.tournament_selection import *
 from recombination.one_point_crossover import *
@@ -48,7 +49,9 @@ def optimize(
 
     # -----------------------------------------------------------------
     g = 1
+    aux_poplist = []
     while g != n_gen + 1:
+        aux_poplist = pop_list
         for c in range(pop_size):
             offsprings = []
             parents = selection(pop_list, c).get_parents()
@@ -76,10 +79,11 @@ def optimize(
                     index = pop_list.index(parents[p])
                     new_p = offsprings[p]
                     old_p = pop_list[index]
-                    pop_list[index] = new_p
+                    aux_poplist[index] = new_p
 
                 else:
                     pass
+        pop_list = aux_poplist
         pop_list_ordered = sorted(
             pop_list, key=lambda x: x.fitness_value)
 

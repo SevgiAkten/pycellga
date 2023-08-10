@@ -1,5 +1,5 @@
 # from optimizer import *
-from optimizer_senkron import *
+from optimizer_sync import *
 import matplotlib.pyplot as plt
 
 # --------------------------------- problems -------------------------------- #
