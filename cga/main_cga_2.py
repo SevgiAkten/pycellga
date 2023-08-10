@@ -1,4 +1,5 @@
-from optimizer import *
+# from optimizer import *
+from optimizer_senkron import *
 import matplotlib.pyplot as plt
 
 # --------------------------------- problems -------------------------------- #
@@ -43,7 +44,7 @@ from mutation.two_opt_mutation import TwoOptMutation
 result_tuple = optimize(
     n_cols=5,
     n_rows=5,
-    n_gen=500,
+    n_gen=100,
     ch_size=14,
     gen_type="Permutation",
     p_crossover=0.9,
