@@ -31,7 +31,7 @@ class Population:
             ind.chromosome = ind.randomize()
             ind.position = grid[i]
             ind.fitness_value = self.problem.f(ind.chromosome)
-            ind.neighbors_positions = Linear5(
+            ind.neighbors_positions = Linear9(
                 position=ind.position, n_rows=self.n_rows, n_cols=self.n_cols
             ).calculate_neighbors_positions()
             ind.neighbors = None
