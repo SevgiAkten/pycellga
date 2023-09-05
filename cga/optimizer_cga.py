@@ -106,7 +106,7 @@ def optimize(
         gap = (best_ever_solution[1]-known_best)*100/known_best
     except ZeroDivisionError:
         gap = "The known best zero division error was occurred."
-    except:
+    except TypeError:
         gap = "Something else went wrong"
     # -----------------------------------------------------------------
 
