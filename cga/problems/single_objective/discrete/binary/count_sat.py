@@ -11,6 +11,7 @@ References
 
 # Length of chromosomes = 20
 # Maximum Fitness Value = 6860
+# Maximum Fitness Value (normalized)= 1
 
 
 class CountSat(AbstractProblem):
@@ -18,11 +19,13 @@ class CountSat(AbstractProblem):
 
         variables = len(x)  # --> n is the length of x
         total_ones = 0
+        fitness = 0
+        fitness_normalized = 0.0
         for i in x:
             if i == 1:
                 total_ones += 1
 
-        fitness = total_ones + variables * (variables - 1) * (variables - 2) - (
-            variables - 2) * total_ones * (total_ones - 1) + total_ones * (total_ones - 1) * (total_ones - 2)
-
-        return fitness
+        fitness = total_ones + (variables * (variables - 1) * (variables - 2)) - ((variables - 2)
+                                                                                  * total_ones * (total_ones - 1)) + (total_ones * (total_ones - 1) * (total_ones - 2))
+        fitness_normalized = fitness/6860
+        return fitness_normalized

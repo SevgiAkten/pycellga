@@ -43,4 +43,6 @@ class Mmdp(AbstractProblem):
 
             fitness = fitness + partial_fitness
 
-        return fitness
+        fitness_normalized = fitness/40
+
+        return round(fitness_normalized, 3)

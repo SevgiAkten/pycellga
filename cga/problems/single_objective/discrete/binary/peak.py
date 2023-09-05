@@ -9,6 +9,7 @@ References
 """
 # Length of chromosomes = 100
 # Maximum Fitness Value = 1.0
+# there is a problem, how can apply crossover and mutation operator for this chorosome structure [[]]
 
 
 class Peak(AbstractProblem):
@@ -30,4 +31,4 @@ class Peak(AbstractProblem):
 
         fitness = distance/100.0
 
-        return fitness
+        return round(fitness, 4)
