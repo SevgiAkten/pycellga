@@ -1,8 +1,8 @@
 
 # --------------------------------- methods ------------------------------------------ #
-# from optimizer_cga import *
+from optimizer_cga import *
 # from optimizer_sync_cga import *
-from optimizer_alpha_cga import *
+# from optimizer_alpha_cga import *
 
 # ------------------------------------------------------------------------------------ #
 
@@ -55,18 +55,18 @@ from mutation.two_opt_mutation import TwoOptMutation
 
 def runSimulation():
     result_tuple = optimize(
-        n_cols=5,
-        n_rows=5,
-        n_gen=500,
-        ch_size=14,
-        gen_type="Permutation",
-        p_crossover=0.7,
-        p_mutation=0.5,
-        known_best=3323,
+        n_cols=20,
+        n_rows=20,
+        n_gen=100,
+        ch_size=5,
+        gen_type="Real-valued",
+        p_crossover=0.9,
+        p_mutation=0.6,
+        known_best=0,
         k_tournament=2,
-        problem=Tsp(),
+        problem=Ackley(),
         selection=TournamentSelection,
-        recombination=PMXCrossover,
+        recombination=UniformCrossover,
         mutation=SwapMutation
     )
     # result_tuple[0] = optimizer_result, type is dict

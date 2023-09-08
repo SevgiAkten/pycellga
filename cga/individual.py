@@ -27,12 +27,12 @@ class Individual:
             self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
         elif self.gen_type == "Real-valued":
             # # Ackley
-            # self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]
+            self.chromosome = [round(rd.uniform(-32.768, 32.768), 3)
+                               for i in range(self.ch_size)]
             # # Bohachevsky
             # self.chromosome = [random.randint(-15, 16) for i in range(self.ch_size)]
             # # Fms
-            self.chromosome = [round(rd.uniform(-6.4, 6.35), 2)
-                               for i in range(self.ch_size)]
+            # self.chromosome = [round(rd.uniform(-6.4, 6.35), 2) for i in range(self.ch_size)]
             # # Rastrigin
             # self.chromosome = [round(rd.uniform(-5.12, 5.12), 2) for i in range(self.ch_size)]
 

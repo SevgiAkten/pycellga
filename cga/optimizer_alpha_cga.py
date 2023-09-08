@@ -1,4 +1,5 @@
 import numpy as np
+import random as rd
 from population import *
 from selection.tournament_selection import *
 from recombination.one_point_crossover import *
@@ -51,6 +52,20 @@ def optimize(
 
     while g != n_gen + 1:
         for c in range(0, pop_size, n_cols):
+            # alpha-male satirlar arası goc mekanizmasi
+            if g % 10 == 0:
+                rnd1 = rd.randrange(1, pop_size+1, n_cols)
+                rnd2 = rd.randrange(1, pop_size+1, n_cols)
+                while rnd1 == rnd2:
+                    rnd2 = np.random.randint(1, n_cols+1)
+
+                alpha_male1 = pop_list[rnd1]
+                alpha_male2 = pop_list[rnd2]
+
+                pop_list[rnd2] = alpha_male1
+                pop_list[rnd1] = alpha_male2
+            ##################################
+
             for n in range(n_cols):
                 offsprings = []
                 parents = []
