@@ -69,4 +69,4 @@ class Compact_GA:
         return best
 
 
-a = Compact_GA(pop_size=10, ch_size=5, n_gen=3).run()
+# a = Compact_GA(pop_size=10, ch_size=5, n_gen=3).run()
