@@ -10,12 +10,12 @@ class Compact_GA:
         self.ch_size = ch_size
         self.pop_size = pop_size
 
-    def generate_candidate(self, vector: list) -> Individual:
-        ind = Individual()
+    def generate_candidate(self, vector: list) -> list:
+        ind = []
 
         for p in vector:
-            ind.chromosome.append(
-                1) if random.rand() < p else ind.chromosome.append(0)
+            ind.append(
+                1) if random.rand() < p else ind.append(0)
 
         return ind
 
@@ -42,8 +42,10 @@ class Compact_GA:
         best = Individual()
 
         for i in range(self.n_gen):
-            p1 = self.generate_candidate(vector)
-            p2 = self.generate_candidate(vector)
+            p1 = Individual()
+            p2 = Individual()
+            p1.chromosome = self.generate_candidate(vector)
+            p2.chromosome = self.generate_candidate(vector)
 
             # fitness calculation
             theproblem = OneMax()
@@ -65,3 +67,6 @@ class Compact_GA:
                 i + 1, best.chromosome, float(best.fitness_value)))
 
         return best
+
+
+a = Compact_GA(pop_size=10, ch_size=5, n_gen=3).run()
