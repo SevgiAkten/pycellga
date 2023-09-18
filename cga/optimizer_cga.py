@@ -63,6 +63,10 @@ def optimize(
             for p in range(len(offsprings)):
 
                 mutation_cand = offsprings[p]
+
+                # for byte_mutation_dynamic and byte_mutation_random_dynamic
+                p_mutation = p_mutation - ((g/n_gen)*p_mutation)
+
                 rnd = np.random.rand()
 
                 if rnd < p_mutation:

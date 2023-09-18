@@ -3,6 +3,7 @@
 from optimizer_cga import *
 # from optimizer_sync_cga import *
 # from optimizer_alpha_cga import *
+# from optimizer_ccga import *
 
 # ------------------------------------------------------------------------------------ #
 
@@ -42,10 +43,15 @@ from recombination.one_point_crossover import OnePointCrossover
 from recombination.pmx_crossover import PMXCrossover
 from recombination.two_point_crossover import TwoPointCrossover
 from recombination.uniform_crossover import UniformCrossover
+from recombination.byte_uniform_crossover import ByteUniformCrossover
+from recombination.byte_one_point_crossover import ByteOnePointCrossover
+
 # -------------------------------------------------------------------------- #
 
 # -------------------------------- mutation -------------------------------- #
 from mutation.bit_flip_mutation import BitFlipMutation
+from mutation.byte_mutation import ByteMutation
+from mutation.byte_mutation_random import ByteMutationRandom
 from mutation.insertion_mutation import InsertionMutation
 from mutation.shuffle_mutation import ShuffleMutation
 from mutation.swap_mutation import SwapMutation
@@ -55,19 +61,19 @@ from mutation.two_opt_mutation import TwoOptMutation
 
 def runSimulation():
     result_tuple = optimize(
-        n_cols=20,
-        n_rows=20,
-        n_gen=100,
-        ch_size=5,
+        n_cols=5,
+        n_rows=5,
+        n_gen=50,
+        ch_size=30,
         gen_type="Real-valued",
-        p_crossover=0.9,
-        p_mutation=0.6,
+        p_crossover=1,
+        p_mutation=0.5,
         known_best=0,
         k_tournament=2,
         problem=Ackley(),
         selection=TournamentSelection,
-        recombination=UniformCrossover,
-        mutation=SwapMutation
+        recombination=ByteOnePointCrossover,
+        mutation=ByteMutationRandom
     )
     # result_tuple[0] = optimizer_result, type is dict
     # result_tuple[1] = parameters, type is dict
@@ -75,8 +81,8 @@ def runSimulation():
     # result_tuple[3] = avg_objectives, type is list
 
     method = "cga"
-    gen_type = "Permutation"
-    test_function = "Tsp"
+    gen_type = "Real-valued"
+    test_function = "Ackley"
     best_solution = result_tuple[0].get('best_solution')
     found_at_generation = result_tuple[0].get('found_at_generation')
     selection = "TournamentSelection"
@@ -110,8 +116,8 @@ def runSimulation():
     plt.title("Objectives", fontsize=20, fontweight="bold"),
     plt.xlabel("Generations", fontsize=16, fontweight="bold"),
     plt.ylabel("Cost", fontsize=16, fontweight="bold"),
-    # plt.show()
+    plt.show()
 
 
-for x in range(10):
+for x in range(1):
     runSimulation()
