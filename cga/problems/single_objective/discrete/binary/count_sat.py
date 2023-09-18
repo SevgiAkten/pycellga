@@ -28,4 +28,4 @@ class CountSat(AbstractProblem):
         fitness = total_ones + (variables * (variables - 1) * (variables - 2)) - ((variables - 2)
                                                                                   * total_ones * (total_ones - 1)) + (total_ones * (total_ones - 1) * (total_ones - 2))
         fitness_normalized = fitness/6860
-        return fitness_normalized
+        return round(fitness_normalized, 3)

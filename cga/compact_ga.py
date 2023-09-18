@@ -1,5 +1,6 @@
 from numpy import random
 from problems.single_objective.discrete.binary.one_max import OneMax
+from problems.single_objective.discrete.binary.count_sat import CountSat
 from individual import *
 
 
@@ -48,7 +49,7 @@ class Compact_GA:
             p2.chromosome = self.generate_candidate(vector)
 
             # fitness calculation
-            theproblem = OneMax()
+            theproblem = CountSat()
             p1.fitness_value = theproblem.f(p1.chromosome)
             p2.fitness_value = theproblem.f(p2.chromosome)
 

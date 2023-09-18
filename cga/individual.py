@@ -48,6 +48,14 @@ class Individual:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome
 
+    def generate_candidate(self, vector: list) -> list:
+        ind = []
+        for p in vector:
+            ind.append(
+                1) if random.rand() < p else ind.append(0)
+
+        return ind
+
     def getneighbors_positions(self):
         return self.neighbors_positions
 
