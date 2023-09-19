@@ -45,6 +45,8 @@ from recombination.two_point_crossover import TwoPointCrossover
 from recombination.uniform_crossover import UniformCrossover
 from recombination.byte_uniform_crossover import ByteUniformCrossover
 from recombination.byte_one_point_crossover import ByteOnePointCrossover
+from recombination.byte_one_point_crossover import ByteOnePointCrossover
+from recombination.flat_crossover import FlatCrossover
 
 # -------------------------------------------------------------------------- #
 
@@ -61,10 +63,10 @@ from mutation.two_opt_mutation import TwoOptMutation
 
 def runSimulation():
     result_tuple = optimize(
-        n_cols=5,
-        n_rows=5,
-        n_gen=50,
-        ch_size=30,
+        n_cols=10,
+        n_rows=10,
+        n_gen=1000,
+        ch_size=5,
         gen_type="Real-valued",
         p_crossover=1,
         p_mutation=0.5,
@@ -72,7 +74,7 @@ def runSimulation():
         k_tournament=2,
         problem=Ackley(),
         selection=TournamentSelection,
-        recombination=ByteOnePointCrossover,
+        recombination=FlatCrossover,
         mutation=ByteMutationRandom
     )
     # result_tuple[0] = optimizer_result, type is dict
