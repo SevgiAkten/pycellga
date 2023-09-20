@@ -48,6 +48,7 @@ from recombination.byte_one_point_crossover import ByteOnePointCrossover
 from recombination.byte_one_point_crossover import ByteOnePointCrossover
 from recombination.flat_crossover import FlatCrossover
 from recombination.arithmetic_crossover import ArithmeticCrossover
+from recombination.blxalpha_crossover import BlxalphaCrossover
 
 # -------------------------------------------------------------------------- #
 
@@ -75,7 +76,7 @@ def runSimulation():
         k_tournament=2,
         problem=Ackley(),
         selection=TournamentSelection,
-        recombination=ArithmeticCrossover,
+        recombination=BlxalphaCrossover,
         mutation=ByteMutationRandom
     )
     # result_tuple[0] = optimizer_result, type is dict
