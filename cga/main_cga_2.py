@@ -50,6 +50,7 @@ from recombination.flat_crossover import FlatCrossover
 from recombination.arithmetic_crossover import ArithmeticCrossover
 from recombination.blxalpha_crossover import BlxalphaCrossover
 from recombination.linear_crossover import LinearCrossover
+from recombination.unfair_avarage_crossover import UnfairAvarageCrossover
 
 # -------------------------------------------------------------------------- #
 
@@ -68,7 +69,7 @@ def runSimulation():
     result_tuple = optimize(
         n_cols=10,
         n_rows=10,
-        n_gen=500,
+        n_gen=100,
         ch_size=5,
         gen_type="Real-valued",
         p_crossover=1,
@@ -77,7 +78,7 @@ def runSimulation():
         k_tournament=2,
         problem=Ackley(),
         selection=TournamentSelection,
-        recombination=LinearCrossover,
+        recombination=UnfairAvarageCrossover,
         mutation=ByteMutationRandom
     )
     # result_tuple[0] = optimizer_result, type is dict
