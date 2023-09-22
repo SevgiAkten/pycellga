@@ -62,6 +62,7 @@ from mutation.insertion_mutation import InsertionMutation
 from mutation.shuffle_mutation import ShuffleMutation
 from mutation.swap_mutation import SwapMutation
 from mutation.two_opt_mutation import TwoOptMutation
+from mutation.float_uniform_mutation import FloatUniformMutation
 # -------------------------------------------------------------------------- #
 
 
@@ -69,17 +70,17 @@ def runSimulation():
     result_tuple = optimize(
         n_cols=10,
         n_rows=10,
-        n_gen=100,
-        ch_size=5,
+        n_gen=200,
+        ch_size=5,  # (25,50,75)
         gen_type="Real-valued",
-        p_crossover=1,
-        p_mutation=0.5,
+        p_crossover=0.8,
+        p_mutation=0.9,
         known_best=0,
         k_tournament=2,
         problem=Ackley(),
         selection=TournamentSelection,
-        recombination=UnfairAvarageCrossover,
-        mutation=ByteMutationRandom
+        recombination=LinearCrossover,
+        mutation=FloatUniformMutation
     )
     # result_tuple[0] = optimizer_result, type is dict
     # result_tuple[1] = parameters, type is dict
