@@ -5,6 +5,8 @@ from problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
 
+# for real-valued problems
+
 
 class ByteUniformCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

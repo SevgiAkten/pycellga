@@ -2,6 +2,8 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
+# for binary and permutation coded problems
+
 
 class TwoOptMutation:
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):

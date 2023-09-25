@@ -2,6 +2,8 @@ import random
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
+# for real-valued problems
+
 
 class FloatUniformMutation:
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):
@@ -15,9 +17,9 @@ class FloatUniformMutation:
         for i in range(len(m_ch)):
             rnd = random.uniform(0, 1)
             if (rnd < 0.5):
-                m_ch[i] -= rnd
+                m_ch[i] = round(m_ch[i] - rnd, 3)
             else:
-                m_ch[i] += rnd
+                m_ch[i] = round(m_ch[i] + rnd, 3)
 
         mutated_ch_new = list(m_ch)
         mutated = Individual()

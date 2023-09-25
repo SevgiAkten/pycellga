@@ -4,6 +4,8 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
+# for binary coded problems
+
 
 class UniformCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

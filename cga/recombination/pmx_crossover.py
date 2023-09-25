@@ -3,6 +3,7 @@ from problems.abstract_problem import AbstractProblem
 from typing import List
 
 # Partially-mapped crossover (PMX)
+# for permutation problems
 
 
 class PMXCrossover:

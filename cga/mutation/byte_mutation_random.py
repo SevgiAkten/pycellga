@@ -4,6 +4,8 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 import struct
 
+# for real-valued problems
+
 
 class ByteMutationRandom:
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):

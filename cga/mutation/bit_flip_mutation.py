@@ -3,6 +3,8 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
+# for binary coded problems
+
 
 class BitFlipMutation:
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):
