@@ -30,6 +30,7 @@ class DBUtility:
             TestFunction TEXT,
             Best_Solution FLOAT,
             Found_at_Generation NUMERIC,
+            Time FLOAT,
             Selection TEXT,
             Recombination TEXT,
             Mutation TEXT,
@@ -44,7 +45,7 @@ class DBUtility:
         self.getcursor().execute(sql2)
         self.commit()
 
-    def insertoptresult(self, method: str, gen_type: str, test_function: str, best_solution: float, found_at_generation: int, selection: str, recombination: str, mutation: str, neighborhood: str, n_cols: int, n_rows: int, n_gen: int, p_cross: float, p_mut: float):
+    def insertoptresult(self, method: str, gen_type: str, test_function: str, best_solution: float, found_at_generation: int, time: float, selection: str, recombination: str, mutation: str, neighborhood: str, n_cols: int, n_rows: int, n_gen: int, p_cross: float, p_mut: float):
         # sql = """
         #     INSERT INTO Simulations
         #     (method, testf, p, optimum)
@@ -53,8 +54,8 @@ class DBUtility:
         # """.format(method, f, p, optimum)
 
         sql2 = """
-            INSERT INTO ExperimentResults VALUES ('{}','{}','{}',{},{},'{}','{}','{}','{}','{}',{},{},{},{})
-        """.format(method, gen_type, test_function, best_solution, found_at_generation, selection, recombination, mutation, neighborhood, n_cols, n_rows, n_gen, p_cross, p_mut)
+            INSERT INTO ExperimentResults VALUES ('{}','{}','{}',{},{},{},'{}','{}','{}','{}','{}',{},{},{},{})
+        """.format(method, gen_type, test_function, best_solution, found_at_generation, time, selection, recombination, mutation, neighborhood, n_cols, n_rows, n_gen, p_cross, p_mut)
 
         self.getcursor().execute(sql2)
         self.commit()
