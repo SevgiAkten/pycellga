@@ -6,4 +6,4 @@ from problems.abstract_problem import AbstractProblem
 
 class Sphere(AbstractProblem):
     def f(self, x: list) -> float:
-        return round(sum([i*i for i in x]), 4)
+        return round(sum([i*i for i in x]), 3)

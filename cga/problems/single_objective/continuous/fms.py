@@ -44,4 +44,4 @@ class Fms(AbstractProblem):
                 a1*sin((w1*theta*k) - (a2 * sin((w2*theta*k)+(a3*sin(w3*theta*k)))))) - yzero(k)
             partialfitnesss = partialfitnesss + (distance*distance)
         fitness = partialfitnesss
-        return round(fitness, 2)
+        return round(fitness, 3)
