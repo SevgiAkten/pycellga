@@ -6,6 +6,7 @@ from neighborhoods.compact_9 import Compact9
 from neighborhoods.compact_13 import Compact13
 from neighborhoods.compact_21 import Compact21
 from neighborhoods.compact_25 import Compact25
+import byte_operators
 
 from problems.abstract_problem import AbstractProblem
 from typing import List
@@ -30,13 +31,15 @@ class Population:
         for i in range(pop_size):
             ind = Individual(gen_type=self.gen_type, ch_size=self.ch_size)
             # for cga
-            ind.chromosome = ind.randomize()
+            # ind.chromosome = ind.randomize()
+            # ind.fitness_value = self.problem.f(ind.chromosome)
 
             # for ccga
-            # ind.chromosome = ind.generate_candidate(self.vector)
+            ind.chromosome = ind.generate_candidate(self.vector)
+            ind_byte_ch = byte_operators.bits_to_floats(ind.chromosome)
+            ind.fitness_value = self.problem.f(ind_byte_ch)
 
             ind.position = grid[i]
-            ind.fitness_value = self.problem.f(ind.chromosome)
             ind.neighbors_positions = Linear9(
                 position=ind.position, n_rows=self.n_rows, n_cols=self.n_cols
             ).calculate_neighbors_positions()

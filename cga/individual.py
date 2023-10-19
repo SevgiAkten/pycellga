@@ -29,21 +29,24 @@ class Individual:
             # # Ackley
             self.chromosome = [round(rd.uniform(-32.768, 32.768), 3)
                                for i in range(self.ch_size)]
+
             # # Bohachevsky
-            # self.chromosome = [random.randint(-15, 16) for i in range(self.ch_size)]
+            # self.chromosome = [random.randint(-15.0, 16.0) for i in range(self.ch_size)]
+
             # # Fms
-            # self.chromosome = [round(rd.uniform(-6.4, 6.35), 2) for i in range(self.ch_size)]
+            # self.chromosome = [round(rd.uniform(-6.4, 6.35), 3) for i in range(self.ch_size)]
+
             # # Rastrigin
-            # self.chromosome = [round(rd.uniform(-5.12, 5.12), 2) for i in range(self.ch_size)]
+            # self.chromosome = [round(rd.uniform(-5.12, 5.13), 2) for i in range(self.ch_size)]
 
             # # Rosenbrock
-            # self.chromosome = [random.randint(-5, 11) for i in range(self.ch_size)]
+            # self.chromosome = [random.randint(-5.0, 11.0) for i in range(self.ch_size)]
 
             # # Schwefel
-            # self.chromosome = [round(rd.uniform(-500.0, 500.0), 4) for i in range(self.ch_size)]
+            # self.chromosome = [round(rd.uniform(-500.0, 500.0), 3) for i in range(self.ch_size)]
 
             # # Sphere
-            # self.chromosome = [round(rd.uniform(-5.12, 5.12), 2) for i in range(self.ch_size)]
+            # self.chromosome = [round(rd.uniform(-5.12, 5.12), 3) for i in range(self.ch_size)]
         else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome
