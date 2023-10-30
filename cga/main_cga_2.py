@@ -1,10 +1,10 @@
 
 # --------------------------------- methods ------------------------------------------ #
-# from optimizer_cga import *
+from optimizer_cga import *
 # from optimizer_sync_cga import *
 # from optimizer_alpha_cga import *
 # from optimizer_ccga import *
-from optimizer_mcccga import *
+# from optimizer_mcccga import *
 
 # ------------------------------------------------------------------------------------ #
 
@@ -32,6 +32,7 @@ from problems.single_objective.continuous.rastrigin import Rastrigin
 from problems.single_objective.continuous.rosenbrock import Rosenbrock
 from problems.single_objective.continuous.schwefel import Schwefel
 from problems.single_objective.continuous.sphere import Sphere
+from problems.single_objective.continuous.pow import Pow
 # -------------------------------------------------------------------------- #
 
 # ------------------------------ selection --------------------------------- #
@@ -72,14 +73,18 @@ def runSimulation():
         n_cols=15,
         n_rows=15,
         n_gen=100,
-        ch_size=10,  # (25,50,75)
+        ch_size=5,  # (2, 5, 10, 15, 20)
         gen_type="Real-valued",
+        p_crossover=1,
+        p_mutation=0.7,
         known_best=0,
         k_tournament=2,
-        problem=Ackley(),
+        problem=Pow(),
         selection=TournamentSelection,
-        mins=[-32.768 for i in range(10)],
-        maxs=[32.768 for i in range(10)]
+        recombination=FlatCrossover,
+        mutation=FloatUniformMutation
+        # mins=[-5.0 for i in range(5)],
+        # maxs=[15.0 for i in range(5)]
     )
     # result_tuple[0] = optimizer_result, type is dict
     # result_tuple[1] = parameters, type is dict
@@ -96,8 +101,8 @@ def runSimulation():
     recombination = "No"
     mutation = "No"
     neighborhood = "Linear9"
-    n_cols = 10
-    n_rows = 10
+    n_cols = 15
+    n_rows = 15
     n_gen = result_tuple[1].get('number_of_generation')
     p_cross = 0
     p_mut = 0
@@ -127,5 +132,7 @@ def runSimulation():
     # plt.show()
 
 
-for x in range(10):
+for x in range(100):
+    print("\n")
+    print(x+1)
     runSimulation()

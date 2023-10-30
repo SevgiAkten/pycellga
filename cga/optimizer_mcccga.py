@@ -84,9 +84,9 @@ def optimize(
         avg_objectives.append(mean)
         best_byte_ch = byte_operators.bits_to_floats(best.chromosome)
 
-        print(
-            f"{g} - {best_byte_ch} - {best.fitness_value}"
-        )
+        # print(
+        #     f"{g} - {best_byte_ch} - {best.fitness_value}"
+        # )
         g += 1
 
     best_byte_ch = byte_operators.bits_to_floats(sample(vector))

@@ -27,11 +27,10 @@ class Individual:
             self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
         elif self.gen_type == "Real-valued":
             # # Ackley
-            self.chromosome = [round(rd.uniform(-32.768, 32.768), 3)
-                               for i in range(self.ch_size)]
+            # self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]
 
             # # Bohachevsky
-            # self.chromosome = [random.randint(-15.0, 16.0) for i in range(self.ch_size)]
+            # self.chromosome = [random.randint(-15.0, 16.0)for i in range(self.ch_size)]
 
             # # Fms
             # self.chromosome = [round(rd.uniform(-6.4, 6.35), 3) for i in range(self.ch_size)]
@@ -47,6 +46,11 @@ class Individual:
 
             # # Sphere
             # self.chromosome = [round(rd.uniform(-5.12, 5.12), 3) for i in range(self.ch_size)]
+
+            # # Pow
+            self.chromosome = [round(rd.uniform(-5.0, 15.0), 2)
+                               for i in range(self.ch_size)]
+
         else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome

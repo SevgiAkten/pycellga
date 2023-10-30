@@ -30,14 +30,15 @@ class Population:
 
         for i in range(pop_size):
             ind = Individual(gen_type=self.gen_type, ch_size=self.ch_size)
-            # for cga
-            # ind.chromosome = ind.randomize()
-            # ind.fitness_value = self.problem.f(ind.chromosome)
 
-            # for ccga
-            ind.chromosome = ind.generate_candidate(self.vector)
-            ind_byte_ch = byte_operators.bits_to_floats(ind.chromosome)
-            ind.fitness_value = self.problem.f(ind_byte_ch)
+            # for cga
+            ind.chromosome = ind.randomize()
+            ind.fitness_value = self.problem.f(ind.chromosome)
+
+            # for mcccga
+            # ind.chromosome = ind.generate_candidate(self.vector)
+            # ind_byte_ch = byte_operators.bits_to_floats(ind.chromosome)
+            # ind.fitness_value = self.problem.f(ind_byte_ch)
 
             ind.position = grid[i]
             ind.neighbors_positions = Linear9(
