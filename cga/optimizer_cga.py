@@ -104,9 +104,9 @@ def optimize(
         mean = sum(map(lambda x: x.fitness_value, pop_list)) / len(pop_list)
         avg_objectives.append(mean)
 
-        print(
-            f"{g} - {pop_list_ordered[0].chromosome} - {pop_list_ordered[0].fitness_value}"
-        )
+        # print(
+        #     f"{g} - {pop_list_ordered[0].chromosome} - {pop_list_ordered[0].fitness_value}"
+        # )
         g += 1
     try:
         gap = (best_ever_solution[1]-known_best)*100/known_best

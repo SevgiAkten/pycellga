@@ -39,7 +39,7 @@ class BlxalphaCrossover:
             max_range = c_max + (l*alpha)
 
             new_allele = random.uniform(min_range, max_range)
-            child[i] = round(new_allele, 3)
+            child[i] = round(new_allele, 5)
 
         indv = Individual(p1.gen_type, p1.ch_size)
         indv.position = locationsource.position

@@ -25,9 +25,9 @@ class LinearCrossover:
             p1_allele = p1.chromosome[i]
             p2_allele = p2.chromosome[i]
 
-            child1_ch[i] = round(0.5*p1_allele + 0.5*p2_allele, 3)
-            child2_ch[i] = round(3*p1_allele/2 - 0.5*p2_allele, 3)
-            child3_ch[i] = round(-0.5*p1_allele + 3*p2_allele/2, 3)
+            child1_ch[i] = round(0.5*p1_allele + 0.5*p2_allele, 5)
+            child2_ch[i] = round(3*p1_allele/2 - 0.5*p2_allele, 5)
+            child3_ch[i] = round(-0.5*p1_allele + 3*p2_allele/2, 5)
 
         chosed_ch = random.randint(1, 4)
         if (chosed_ch == 1):

@@ -30,11 +30,11 @@ class UnfairAvarageCrossover:
 
         for i in range(chsize):
             if (i <= j):
-                child_1_ch[i] = round((1+alpha)*a[i] - alpha*b[i], 3)
-                child_2_ch[i] = round((1-alpha)*a[i] + alpha*b[i], 3)
+                child_1_ch[i] = round((1+alpha)*a[i] - alpha*b[i], 5)
+                child_2_ch[i] = round((1-alpha)*a[i] + alpha*b[i], 5)
             else:
-                child_1_ch[i] = round(-alpha*a[i] + (1+alpha)*b[i], 3)
-                child_2_ch[i] = round(alpha*a[i] + (1-alpha)*b[i], 3)
+                child_1_ch[i] = round(-alpha*a[i] + (1+alpha)*b[i], 5)
+                child_2_ch[i] = round(alpha*a[i] + (1-alpha)*b[i], 5)
 
         # First child
         child_1 = Individual()

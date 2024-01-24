@@ -35,11 +35,56 @@ class Individual:
             # # Fms
             # self.chromosome = [round(rd.uniform(-6.4, 6.35), 3) for i in range(self.ch_size)]
 
+            # # Griewank
+            # self.chromosome = [round(rd.uniform(-600, 600), 3) for i in range(self.ch_size)]
+            
+            # # Holzman
+            # self.chromosome = [round(rd.uniform(-10, 10), 3) for i in range(self.ch_size)]
+
             # # Rastrigin
             # self.chromosome = [round(rd.uniform(-5.12, 5.13), 2) for i in range(self.ch_size)]
 
             # # Rosenbrock
             # self.chromosome = [random.randint(-5.0, 11.0) for i in range(self.ch_size)]
+
+            # # Schaffer and Schaffer2
+            # self.chromosome = [round(rd.uniform(-100, 100), 3) for i in range(self.ch_size)]
+
+            # # Matyas
+            # self.chromosome = [round(rd.uniform(-10, 10), 3) for i in range(self.ch_size)]
+
+            # # Bentcigar
+            # self.chromosome = [round(rd.uniform(-100, 100), 3) for i in range(self.ch_size)]
+
+            # # Sumofdifferentpowers
+            # self.chromosome = [round(rd.uniform(-10.0, 10.0), 3) for i in range(self.ch_size)]
+            
+            # # Powell
+            # self.chromosome = [round(rd.uniform(-4.0, 5.0), 3) for i in range(self.ch_size)]
+
+            # # Rothellipsoid
+            # self.chromosome = [round(rd.uniform(-100, 100), 3) for i in range(self.ch_size)]
+
+            # # Chichinadze
+            # self.chromosome = [round(rd.uniform(-30, 30), 5) for i in range(self.ch_size)]
+
+            # # Levy
+            # self.chromosome = [round(rd.uniform(-10.0, 10.0), 2) for i in range(self.ch_size)]
+
+            # # Zettle
+            # self.chromosome = [round(rd.uniform(-5.0, 5.0), 4) for i in range(self.ch_size)]
+
+            # # Dropwave
+            # self.chromosome = [round(rd.uniform(-5.12, 5.12), 3) for i in range(self.ch_size)]
+
+            # # StyblinskiTang
+            self.chromosome = [round(rd.uniform(-5.0, 5.0), 6) for i in range(self.ch_size)]
+            
+            # # Threehumps
+            # self.chromosome = [round(rd.uniform(-5.0, 5.0), 3) for i in range(self.ch_size)]
+
+            # # Zakharov
+            # self.chromosome = [round(rd.uniform(-5.0, 10.0), 3) for i in range(self.ch_size)]
 
             # # Schwefel
             # self.chromosome = [round(rd.uniform(-500.0, 500.0), 3) for i in range(self.ch_size)]
@@ -48,8 +93,7 @@ class Individual:
             # self.chromosome = [round(rd.uniform(-5.12, 5.12), 3) for i in range(self.ch_size)]
 
             # # Pow
-            self.chromosome = [round(rd.uniform(-5.0, 15.0), 2)
-                               for i in range(self.ch_size)]
+            # self.chromosome = [round(rd.uniform(-5.0, 15.0), 2) for i in range(self.ch_size)]
 
         else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")

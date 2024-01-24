@@ -26,7 +26,7 @@ class FlatCrossover:
                 c_max = p2_allele
                 c_min = p1_allele
             new_allele = random.uniform(c_min, c_max)
-            child[i] = round(new_allele, 3)
+            child[i] = round(new_allele, 5)
 
         indv = Individual(p1.gen_type, p1.ch_size)
         indv.position = locationsource.position

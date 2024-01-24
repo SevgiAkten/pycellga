@@ -17,9 +17,9 @@ class FloatUniformMutation:
         for i in range(len(m_ch)):
             rnd = random.uniform(0, 1)
             if (rnd < 0.5):
-                m_ch[i] = round(m_ch[i] - rnd, 3)
+                m_ch[i] = round(m_ch[i] - rnd, 5)
             else:
-                m_ch[i] = round(m_ch[i] + rnd, 3)
+                m_ch[i] = round(m_ch[i] + rnd, 5)
 
         mutated_ch_new = list(m_ch)
         mutated = Individual()

@@ -37,7 +37,7 @@ class ByteMutation:
 
         mutatnt_part_byte = bytearray(m_byte_ch)
         mutant_part_float = list(struct.unpack("d", mutatnt_part_byte))
-        m_ch[index] = round(mutant_part_float[0], 3)
+        m_ch[index] = round(mutant_part_float[0], 5)
         mutated = Individual()
 
         mutated.chromosome = m_ch

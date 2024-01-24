@@ -36,13 +36,13 @@ class ByteOnePointCrossover:
             new_chromosome_1_part = p1_seg1 + p2_seg2
             child_part_byte_1 = bytearray(new_chromosome_1_part)
             child_part_float_1 = list(struct.unpack("d", child_part_byte_1))
-            child_ch1.append(round(child_part_float_1[0], 3))
+            child_ch1.append(round(child_part_float_1[0], 5))
 
             # Second child
             new_chromosome_2_part = p1_seg2 + p2_seg1
             child_part_byte_2 = bytearray(new_chromosome_2_part)
             child_part_float_2 = list(struct.unpack("d", child_part_byte_2))
-            child_ch2.append(round(child_part_float_2[0], 3))
+            child_ch2.append(round(child_part_float_2[0], 5))
 
         child_1 = Individual()
         child_1.position = p1.position

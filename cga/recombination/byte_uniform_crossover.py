@@ -31,7 +31,7 @@ class ByteUniformCrossover:
             child_part_byte = bytearray(child_part)
             child_part_float = list(struct.unpack("d", child_part_byte))
 
-            child_ch.append(round(child_part_float[0], 3))
+            child_ch.append(round(child_part_float[0], 5))
 
         indv = Individual(p1.gen_type, p1.ch_size)
         indv.position = locationsource.position

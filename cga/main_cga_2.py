@@ -28,9 +28,25 @@ from problems.single_objective.discrete.permutation.tsp import Tsp
 from problems.single_objective.continuous.ackley import Ackley
 from problems.single_objective.continuous.bohachevsky import Bohachevsky
 from problems.single_objective.continuous.fms import Fms
+from problems.single_objective.continuous.griewank import Griewank
+from problems.single_objective.continuous.holzman import Holzman
 from problems.single_objective.continuous.rastrigin import Rastrigin
 from problems.single_objective.continuous.rosenbrock import Rosenbrock
-from problems.single_objective.continuous.schwefel import Schwefel
+from problems.single_objective.continuous.schaffer  import Schaffer
+from problems.single_objective.continuous.schaffer2  import Schaffer2
+from problems.single_objective.continuous.schaffer2  import Schaffer2
+from problems.single_objective.continuous.matyas import Matyas
+from problems.single_objective.continuous.bentcigar import Bentcigar
+from problems.single_objective.continuous.sumofdifferentpowers import Sumofdifferentpowers
+from problems.single_objective.continuous.sumofdifferentpowers import Sumofdifferentpowers
+from problems.single_objective.continuous.powell import Powell
+from problems.single_objective.continuous.rothellipsoid import Rothellipsoid
+from problems.single_objective.continuous.levy import Levy
+from problems.single_objective.continuous.zettle import Zettle
+from problems.single_objective.continuous.dropwave import Dropwave
+from problems.single_objective.continuous.styblinskitang import StyblinskiTang
+from problems.single_objective.continuous.threehumps import Threehumps
+from problems.single_objective.continuous.zakharov import Zakharov
 from problems.single_objective.continuous.sphere import Sphere
 from problems.single_objective.continuous.pow import Pow
 # -------------------------------------------------------------------------- #
@@ -70,21 +86,21 @@ from mutation.float_uniform_mutation import FloatUniformMutation
 
 def runSimulation():
     result_tuple = optimize(
-        n_cols=15,
-        n_rows=15,
-        n_gen=100,
-        ch_size=5,  # (2, 5, 10, 15, 20)
+        n_cols=10,
+        n_rows=10,
+        n_gen=500,
+        ch_size=25,  # (2, 5, 10, 15, 20)
         gen_type="Real-valued",
-        p_crossover=1,
-        p_mutation=0.7,
+        p_crossover=0.9,
+        p_mutation=0.5,
         known_best=0,
         k_tournament=2,
-        problem=Pow(),
+        problem=StyblinskiTang(),
         selection=TournamentSelection,
-        recombination=FlatCrossover,
-        mutation=FloatUniformMutation
-        # mins=[-5.0 for i in range(5)],
-        # maxs=[15.0 for i in range(5)]
+        recombination=ByteUniformCrossover,
+        mutation=ByteMutationRandom
+        # mins=[-600.0 for i in range(25)],
+        # maxs=[600.0 for i in range(25)]
     )
     # result_tuple[0] = optimizer_result, type is dict
     # result_tuple[1] = parameters, type is dict
