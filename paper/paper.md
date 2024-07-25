@@ -12,10 +12,10 @@ authors:
     orcid: 0000-0002-9402-1982
     affiliation: 2
 affiliations:
-  - name: Department of Enformatics, Istanbul University, Istanbul, Turkey
-   index: 1
+  - name: Department of Informatics, Istanbul University, Istanbul, Turkey
+    index: 1
   - name: Department of Econometrics, Istanbul University, Istanbul, Turkey
-   index: 2
+    index: 2
 
 
 date: 25 Jul 2024
