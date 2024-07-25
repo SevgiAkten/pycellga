@@ -29,6 +29,9 @@ bibliography: paper.bib
 
 [@karakaya2024improved] is the citation example.
 
+There are two citation styles, the first one is @satman2013machine and the second one is [@satman2013machine].
+
+
 
 # State of the field
 
