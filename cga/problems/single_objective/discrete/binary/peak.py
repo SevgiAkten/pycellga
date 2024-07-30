@@ -31,4 +31,4 @@ class Peak(AbstractProblem):
 
         fitness = distance/100.0
 
-        return round(fitness, 4)
+        return round(fitness, 3)

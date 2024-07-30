@@ -1,6 +1,6 @@
 from problems.single_objective.discrete.permutation.tsp import Tsp
+
 import random
-import tsplib95
 
 
 def test_tsp():
@@ -9,15 +9,10 @@ def test_tsp():
 
     random.seed(0)
     assert theproblem.f(
-        list(random.sample(range(1, 53), 52))) == 29495.4656
+        list(random.sample(range(1, 15), 14))) == 6094.6
     random.seed(50)
     assert theproblem.f(
-        list(random.sample(range(1, 53), 52))) == 30518.1551
+        list(random.sample(range(1, 15), 14))) == 6879.0
     random.seed(100)
     assert theproblem.f(
-        list(random.sample(range(1, 53), 52))) == 31545.9145
-
-    # Optimal tour
-    with open("berlin52.opt.tour.txt") as o:
-        best_route = tsplib95.read(o)
-    assert theproblem.f(best_route.tours[0]) == 7544.3659
+        list(random.sample(range(1, 15), 14))) == 8222.0

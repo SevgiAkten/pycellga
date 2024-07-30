@@ -16,11 +16,11 @@ def test_peak():
 
     random.seed(45)
     assert theproblem.f([[random.randint(2) for g in range(100)]
-                        for h in range(100)]) == 0.49
+                        for h in range(100)]) == round(0.49,3)
 
     random.seed(50)
     assert theproblem.f([[random.randint(2) for g in range(100)]
-                         for h in range(100)]) == 0.6
+                         for h in range(100)]) == round(0.6, 3)
     random.seed(100)
     assert theproblem.f([[random.randint(2) for g in range(100)]
-                         for h in range(100)]) == 0.0
+                         for h in range(100)]) == round(0.0, 3)

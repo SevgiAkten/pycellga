@@ -6,6 +6,7 @@ from selection.tournament_selection import *
 from recombination.one_point_crossover import *
 from mutation.bit_flip_mutation import *
 from problems.single_objective.discrete.binary.one_max import OneMax
+import time
 
 
 def optimize(
@@ -29,6 +30,7 @@ def optimize(
     best_objectives = []
     best_ever_solution = []
     avg_objectives = []
+    start_time = time.time()
     vector = [0.5 for p in range(ch_size)]
 
     # Generate Initial Population
@@ -107,8 +109,10 @@ def optimize(
         "probability_of_mutation": p_mutation*100,
         "tournament_selection": k_tournament
     }
+    end_time = time.time()
+    elapsed_time = round((end_time - start_time), 2)  # seconds
 
-    return optimizer_result, parameters, best_objectives, avg_objectives
+    return optimizer_result, parameters, best_objectives, avg_objectives, elapsed_time
 
 
 def compete(p1: Individual, p2: Individual):

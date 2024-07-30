@@ -99,4 +99,4 @@ class Fms(AbstractProblem):
             distance = target[k] - y[k]
             partialfitnesss = partialfitnesss + (distance*distance)
         fitness = partialfitnesss
-        return round(fitness, 2)
+        return round(fitness, 3)

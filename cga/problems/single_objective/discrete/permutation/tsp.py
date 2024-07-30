@@ -4,27 +4,12 @@ from math import sqrt
 import pandas as pd
 from geopy.distance import geodesic
 
-#### berlin52.tsp ########################################
-# EDGE_WEIGHT_TYPE: EUC_2D,   use euclidean_dist function
-# Length of chromosomes = 52
-# Known Best Route = [1, 49, 32, 45, 19, 41, 8, 9, 10, 43, 33, 51, 11, 52, 14, 13, 47, 26, 27, 28, 12, 25, 4, 6, 15, 5, 24, 48, 38, 37, 40, 39, 36, 35, 34, 44, 46, 16, 29, 50, 20, 23, 30, 2, 7, 42, 21, 17, 3, 18, 31, 22]
-# Minumum Fitness Value = 7544.3659 some resources its 7442
-#########################################################
-
 #### burma14.tsp ########################################
 # EDGE_WEIGHT_TYPE: GEO,   use gographical_dist function
 # Length of chromosomes = 14
 # Known Best Route = []
 # Minumum Fitness Value = 3323
 #########################################################
-
-#### ulysses16.tsp ######################################
-# EDGE_WEIGHT_TYPE: GEO,   use gographical_dist function
-# Length of chromosomes = 16
-# Known Best Route = [1, 14, 13, 12, 7, 6, 15, 5, 11, 9, 10, 16, 3, 2, 4, 8]
-# Minumum Fitness Value = 6859
-##########################################################
-
 
 class Tsp(AbstractProblem):
     def f(self, x: list) -> float:
