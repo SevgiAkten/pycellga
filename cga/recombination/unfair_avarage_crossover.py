@@ -4,8 +4,17 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# for real-valued problems
-
+"""
+    The Unfair Average Crossover operator is a genetic algorithm technique designed to create 
+    offspring by combining parent solutions with weighted averaging. Unlike standard averaging 
+    methods, this operator applies different weights to each parent solution, allowing for an 
+    "unfair" distribution of influence in the offspring. The weights are typically determined 
+    based on predefined criteria or dynamically adjusted during the algorithm. This method can 
+    be useful in scenarios where certain parents are more likely to contribute to better solutions, 
+    allowing the offspring to inherit more traits from those more promising parents. Unfair Average 
+    Crossover helps balance exploration and exploitation by tailoring the contribution of each parent 
+    to the genetic recombination process, potentially leading to more effective solution generation.
+"""
 
 class UnfairAvarageCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

@@ -5,8 +5,18 @@ from problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
 
-# for real-valued problems
-
+"""
+    Byte Uniform crossover operator defined in (Satman, 2013). 
+    The Byte Uniform crossover operator is a method used in genetic algorithms 
+    to create new offspring by uniformly combining bytes from two parent solutions. 
+    In this operator, each byte position in the offspring is chosen randomly from 
+    one of the corresponding bytes in the parent solutions with equal probability. 
+    This technique ensures that the genetic material from both parents is evenly 
+    represented in the offspring, promoting genetic diversity and allowing for
+    a thorough exploration of the solution space. Byte Uniform crossover is particularly 
+    useful when working with byte-level data representations, providing a straightforward 
+    yet effective means of recombining parent solutions.
+"""
 
 class ByteUniformCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

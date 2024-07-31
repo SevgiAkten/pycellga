@@ -4,8 +4,14 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# for real-valued problems
-
+"""
+    The Arithmetic crossover operator is used in genetic algorithms 
+    to create new offspring solutions through a linear combination of two parent solutions.
+    A random weight factor (alpha) within the range [0, 1] is chosen, and offspring are generated 
+    as weighted averages of the parent solutions. This method is especially useful for continuous 
+    parameter optimization problems, allowing new solutions to lie within the convex hull defined by the parents, 
+    thus preserving genetic diversity while facilitating smooth interpolation between solutions.
+"""
 
 class ArithmeticCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

@@ -4,8 +4,16 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# for binary coded problems
-
+"""
+    The One-Point crossover operator is a technique used in genetic algorithms to produce 
+    offspring by recombining the genetic material of two parent solutions. A single crossover 
+    point is randomly chosen along the length of the parent genomes. The offspring are then 
+    created by exchanging the subsequences after this point between the two parents. This method 
+    ensures that large blocks of genes from each parent are passed on to the offspring, promoting 
+    genetic inheritance and variation. One-Point crossover is particularly effective in problems 
+    where gene linkage is important, as it preserves contiguous sequences of genes from the 
+    parents, potentially leading to more coherent and high-quality solutions.
+"""
 
 class OnePointCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

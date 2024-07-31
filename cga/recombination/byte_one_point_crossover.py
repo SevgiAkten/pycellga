@@ -5,8 +5,11 @@ from problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
 
-# for real-valued problems
-
+"""
+Byte based one-point cross-over operator defined in (Satman, 2013).
+The operator randomly chooses a cut point and applies the classical cross-over operation
+in the classical genetic algorithms but using the bytes instead of bits.
+"""
 
 class ByteOnePointCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

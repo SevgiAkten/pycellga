@@ -4,8 +4,17 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# for real-valued problems
-
+"""
+    The Linear crossover operator is a method used in genetic algorithms to generate 
+    offspring by creating linear combinations of the parent solutions. Typically, this 
+    involves selecting two or more coefficients that sum to one and using them to 
+    weight the parent solutions, resulting in offspring that are convex combinations of 
+    the parents. This approach allows for smooth interpolation between parent solutions, 
+    maintaining genetic diversity while facilitating the exploration of the solution 
+    space. Linear crossover is particularly useful in continuous optimization problems, 
+    as it can produce offspring that lie within the convex hull defined by the parent 
+    solutions, potentially leading to better and more robust solutions.
+"""
 
 class LinearCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):
@@ -17,9 +26,6 @@ class LinearCrossover:
         child1_ch = [0 for i in range(chsize)]
         child2_ch = [0 for i in range(chsize)]
         child3_ch = [0 for i in range(chsize)]
-        fitness1 = 0.0
-        fitness2 = 0.0
-        fitness3 = 0.0
 
         for i in range(chsize):
             p1_allele = p1.chromosome[i]
