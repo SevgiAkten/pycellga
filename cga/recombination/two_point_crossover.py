@@ -4,8 +4,16 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# for binary coded problems
-
+"""
+    The Two-Point crossover operator is a genetic algorithm technique used to create offspring 
+    by recombining segments from two parent solutions. Two crossover points are randomly chosen 
+    along the length of the parent genomes. The segments between these two points are exchanged 
+    between the parents to form the offspring. This method ensures that the offspring inherit 
+    large contiguous blocks of genes from each parent, preserving the gene order and structure. 
+    Two-Point crossover is effective for maintaining genetic diversity and creating offspring 
+    with a good balance of traits from both parents, which can enhance the exploration of the 
+    solution space and lead to improved optimization results.
+"""
 
 class TwoPointCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):
@@ -34,7 +42,7 @@ class TwoPointCrossover:
         seg_1_aux = list(p2.chromosome)
         seg_2_aux = list(p1.chromosome)
 
-        # Birinci çocuk
+        # First child
         rand_number = np.random.rand()
 
         if rand_number < 0.5:
@@ -49,7 +57,7 @@ class TwoPointCrossover:
 
             new_chromosome_1 = seg_1_aux + P1_seg_2
 
-        # First child
+        
         child_1 = Individual()
         child_1.chromosome = new_chromosome_1
         child_1.ch_size = len(new_chromosome_1)
@@ -59,7 +67,7 @@ class TwoPointCrossover:
         child_1.fitness_value = self.problem.f(child_1.chromosome)
         offsprings.append(child_1)
 
-        # İkinci çocuk
+        # Second child
         rand_number = np.random.rand()
 
         if rand_number < 0.5:
@@ -75,7 +83,7 @@ class TwoPointCrossover:
 
             new_chromosome_2 = seg_2_aux + P2_seg_2
 
-        # Second child
+        
         child_2 = Individual()
         child_2.chromosome = new_chromosome_2
         child_2.ch_size = len(new_chromosome_2)

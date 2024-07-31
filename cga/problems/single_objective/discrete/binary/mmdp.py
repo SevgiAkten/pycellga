@@ -1,8 +1,16 @@
 from problems.abstract_problem import AbstractProblem
 
-# Massively Multimodal Deceptive Problem (MMDP)
 """
-References
+    The Massively Multimodal Deceptive Problem (MMDP) is a benchmark function used in optimization problems, characterized 
+    by its highly complex and deceptive landscape. The MMDP function features a vast number of local optima, creating a 
+    multi-modal surface with numerous misleading peaks and valleys that can mislead optimization algorithms. The function 
+    is designed to test an algorithm's ability to navigate through a highly deceptive and rugged search space, where local 
+    optima can obscure the path to the global optimum. The MMDP evaluates the effectiveness of optimization techniques in 
+    overcoming challenges related to deceptive problems, balancing exploration and exploitation, and achieving convergence 
+    to the global optimum despite the presence of many misleading optima. It is useful for assessing the robustness and 
+    efficiency of algorithms in handling complex, multi-modal problem domains.
+    
+    References
     
     1.Goldberg, D. E., Deb, K., & Horn, J. (1992, April). Massive Multimodality, Deception, and Genetic Algorithms. In PPSN (Vol. 2).
 
@@ -10,7 +18,7 @@ References
 
     3. Giacobini, M., Preuss, M., & Tomassini, M. (2006). Effects of Scale-Free and Small-World Topologies on Binary Coded Self-adaptive CEA. Lecture Notes in Computer Science, 86-98.
 
-    """
+"""
 
 # Length of chromosomes = 240
 # Maximum Fitness Value = 40

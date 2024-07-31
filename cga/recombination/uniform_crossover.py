@@ -4,8 +4,17 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# for binary coded problems
-
+"""
+    The Uniform crossover operator is a genetic algorithm technique used to produce offspring 
+    by randomly combining genes from two parent solutions. Instead of relying on a fixed crossover 
+    point or range, Uniform crossover selects each gene position independently, with an equal 
+    probability of being inherited from either parent. This random selection process ensures 
+    that each gene in the offspring has an equal chance of coming from either parent, promoting 
+    genetic diversity and allowing for a more thorough exploration of the solution space. 
+    Uniform crossover is particularly effective in problems where a balanced mix of traits from 
+    both parents is desired, as it avoids the bias of segment-based crossover methods and provides 
+    a high degree of recombination flexibility.
+"""
 
 class UniformCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

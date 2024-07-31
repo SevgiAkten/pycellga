@@ -4,6 +4,16 @@ from math import sqrt
 import pandas as pd
 from geopy.distance import geodesic
 
+"""
+    The Travelling Salesman Problem (TSP) is a classic benchmark problem in combinatorial optimization. It involves finding 
+    the shortest possible route that visits a set of cities exactly once and returns to the origin city. The TSP is known for 
+    its complex and combinatorial nature, as the number of possible routes grows factorially with the number of cities. The 
+    objective of the TSP is to minimize the total travel distance or cost. This problem is used to evaluate optimization 
+    algorithms' ability to handle large, intricate search spaces, balance exploration and exploitation, and find optimal or 
+    near-optimal solutions. The TSP is widely used in various applications, including logistics, routing, and network design, 
+    and serves as a fundamental test for assessing the performance and efficiency of optimization techniques in solving 
+    combinatorial and real-world problems.
+"""
 #### burma14.tsp ########################################
 # EDGE_WEIGHT_TYPE: GEO,   use gographical_dist function
 # Length of chromosomes = 14

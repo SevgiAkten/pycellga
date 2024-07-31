@@ -1,8 +1,14 @@
 from problems.abstract_problem import AbstractProblem
 
-# Maximum Cut of a Graph – MAXCUT
 """
-References
+    The Maximum Cut (MAXCUT) problem is a benchmark function used in combinatorial optimization, specifically related to 
+    graph theory. The objective of the MAXCUT problem is to find a partition of the vertices of a graph into two subsets 
+    such that the number of edges between the subsets is maximized. The function represents the challenge of optimizing 
+    graph partitioning to achieve the largest possible cut value. The MAXCUT function evaluates an algorithm's ability to 
+    explore different partitions, balance exploration and exploitation, and find solutions that maximize the cut size. It is 
+    valuable for assessing the performance of optimization techniques in handling complex, combinatorial problems and is 
+    widely used in various applications involving network design, clustering, and computational graph theory.
+    References
     Alba, E. and Dorronsoro B., 2008, Cellular genetic algorithms, Operations research/computer science interfaces series, Springer, US, ISBN: 978-0-387-77609-5.
 """
 # Length of chromosomes = 20

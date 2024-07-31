@@ -1,3 +1,12 @@
+
+"""
+    The Compact9 neighborhood type is used in Cellular Genetic Algorithms to define a local 
+    neighborhood of cells. In this configuration, each cell is surrounded by its 8 immediate 
+    neighbors in a grid, plus itself, forming a compact 9-cell neighborhood. This setup allows 
+    each cell to consider the influence of its surrounding cells, including diagonally adjacent ones. 
+    Compact9 is useful for capturing interactions within a small, localized region of the grid, 
+    enabling efficient exploration of local patterns and structures in cellular genetic algorithms.
+"""
 class Compact9:
     def __init__(self, position, n_rows, n_cols):
         self.position = position

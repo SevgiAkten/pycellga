@@ -1,12 +1,19 @@
 from numpy import cos
 from numpy import pi
 from numpy import power as pw
-
 from problems.abstract_problem import AbstractProblem
 
+"""
+    The Bohachevsky function is a benchmark function commonly used to evaluate optimization algorithms 
+    in continuous problem domains. It is characterized by a smooth landscape with a global minimum 
+    and a few local minima. The function is defined with two variables and is known for its ability 
+    to test optimization algorithms' performance in terms of handling both convex and non-convex regions. 
+    The Bohachevsky function is useful for assessing how well an algorithm can navigate through complex 
+    landscapes, balancing exploration and exploitation to find the global optimum efficiently. It helps 
+    evaluate the robustness and accuracy of optimization techniques in continuous domains.
+"""
 # -15 ≤ xi ≤ 15    i = 1,…,n
 # global minumum at f(0,...,0) = 0
-
 
 class Bohachevsky(AbstractProblem):
 

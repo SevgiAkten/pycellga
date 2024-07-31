@@ -3,7 +3,17 @@ from individual import Individual
 import numpy as np
 import random
 
-
+"""
+    The Roulette Wheel Selection operator is a method used in genetic algorithms to select 
+    individuals from a population based on their fitness levels. Each individual is assigned a 
+    probability of being selected proportional to its fitness, which is represented as a segment 
+    on a metaphorical roulette wheel. During selection, individuals are chosen by spinning the wheel, 
+    with higher fitness individuals having a larger segment and thus a higher chance of being selected. 
+    This probabilistic approach allows for both exploitation of high-quality solutions and exploration 
+    of less fit individuals, contributing to the overall diversity and adaptability of the population. 
+    Roulette Wheel Selection is particularly useful for maintaining a balance between selection pressure 
+    and genetic diversity in evolutionary algorithms.
+"""
 class RouletteWheelSelection:
     def __init__(self, pop_list: List[Individual] = {}, c: int = 0):
         self.pop_list = pop_list

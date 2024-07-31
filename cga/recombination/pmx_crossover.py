@@ -2,9 +2,16 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# Partially-mapped crossover (PMX)
-# for permutation problems
-
+"""
+    The Partially Mapped Crossover (PMX) operator is used in genetic algorithms to generate 
+    offspring by partially exchanging segments between two parent solutions. A pair of crossover 
+    points are randomly selected, defining a segment in each parent. The segments between these 
+    points are swapped to form the initial offspring. Then, the remaining genes are mapped 
+    according to the positions of the swapped segments to ensure valid offspring. PMX is 
+    particularly useful in permutation-based problems, such as the traveling salesman problem, 
+    as it preserves the relative order and positions of genes, maintaining the feasibility of 
+    the solutions and promoting effective genetic recombination.
+"""
 
 class PMXCrossover:
     def __init__(self, parents: list, problem: AbstractProblem):

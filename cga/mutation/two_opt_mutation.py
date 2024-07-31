@@ -2,7 +2,15 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
-# for binary and permutation coded problems
+"""
+    The Two-Opt Mutation operator is a technique used in genetic algorithms to improve solutions 
+    by iteratively refining the order of elements within a sequence. During the mutation process, 
+    two segments of the sequence are selected, and their order is reversed to create a new arrangement. 
+    This method helps eliminate crossings and improves the overall structure of the solution by removing 
+    suboptimal paths. Two-Opt Mutation is particularly useful for optimization problems involving routes or 
+    paths, such as the traveling salesman problem, as it enhances solution quality by systematically 
+    improving the sequence and reducing inefficiencies.
+"""
 
 
 class TwoOptMutation:

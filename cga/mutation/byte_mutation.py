@@ -4,8 +4,14 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 import struct
 
-# for real-valued problems
-
+"""
+    The Byte Mutation operator is a genetic algorithm technique used to modify byte-encoded solutions 
+    by altering individual bytes. This operator, based on the original mutation method reported by Satman (2013), 
+    randomly selects a byte and increments or decrements its value by 1. Due to the higher cardinality of 
+    the alphabet in some problem domains, multiple mutation iterations might be required to reach the desired 
+    byte value. This approach introduces small, controlled changes in the byte values, promoting genetic 
+    diversity and enabling finer adjustments to the solutions during the evolutionary process.
+"""
 
 class ByteMutation:
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):

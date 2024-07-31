@@ -4,7 +4,15 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-# for real-valued problems
+"""
+    The Flat crossover operator is used in genetic algorithms to generate offspring by 
+    selecting random values within the range defined by the parent solutions. For each 
+    gene, the offspring gene is chosen randomly from a uniform distribution between the 
+    minimum and maximum values of the corresponding parent genes. This method is 
+    particularly effective for continuous optimization problems, as it allows offspring 
+    to explore the entire range between the parent solutions, promoting genetic 
+    diversity and enabling the discovery of new and potentially better solutions.
+"""
 
 
 class FlatCrossover:

@@ -1,4 +1,5 @@
 *.pyc
+*___pycache__
 *.db
 *.venv
 *.vscode

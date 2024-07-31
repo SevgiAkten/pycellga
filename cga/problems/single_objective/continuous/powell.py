@@ -1,6 +1,14 @@
 from problems.abstract_problem import AbstractProblem
 import numpy as np
 
+"""
+    The Powell function is a benchmark function used in continuous optimization problems, known for its complex 
+    landscape with a combination of smooth and rugged regions. It features a multi-modal surface with several local 
+    minima and a global minimum. The Powell function is designed to test the performance of optimization algorithms 
+    in navigating through diverse search spaces with varying complexities. It evaluates the algorithm's ability to 
+    handle non-convex problems, balance exploration and exploitation, and converge efficiently to the global optimum 
+    despite the presence of multiple local minima.
+"""
 # -4 ≤ xi ≤ 5     i = 1,…,n
 # global minumum at f(0,....,0) = 0
 
