@@ -2,7 +2,17 @@ from typing import List
 from individual import Individual
 import numpy as np
 
-
+"""
+    The Tournament Selection operator is a technique used in genetic algorithms to choose 
+    individuals from a population based on a competitive selection process. In this method, a 
+    subset of individuals is randomly selected from the population to compete in a 'tournament'. 
+    The individual with the highest fitness within this subset is chosen as the winner and is 
+    selected for reproduction. Tournament Selection allows for flexible control over selection 
+    pressure by adjusting the tournament size, which determines how many individuals participate 
+    in each competition. This approach balances exploration and exploitation by giving a chance 
+    to less fit individuals while favoring those with higher fitness, thereby promoting both diversity 
+    and quality in the evolving population.
+"""
 class TournamentSelection:
     def __init__(self, pop_list: List[Individual] = {}, c: int = 0, K: int = 2):
         self.pop_list = pop_list
