@@ -1,3 +1,14 @@
+
+"""
+    The Compact13 neighborhood type is used in Cellular Genetic Algorithms to define a local 
+    neighborhood of cells with a slightly larger range. In this configuration, each cell is surrounded 
+    by its 12 immediate neighbors in a grid (excluding the corners) plus itself, forming a compact 
+    13-cell neighborhood. This setup allows each cell to consider the influence of a broader area 
+    around it, including diagonal and edge-adjacent cells. Compact13 is useful for capturing interactions 
+    over a larger local region compared to Compact9, providing a more extensive view of neighboring cells 
+    and enabling better exploration of local patterns and structures in cellular genetic algorithms.
+"""
+
 class Compact13:
     def __init__(self, position, n_rows, n_cols):
         self.position = position

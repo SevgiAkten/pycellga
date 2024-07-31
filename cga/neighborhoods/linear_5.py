@@ -1,3 +1,13 @@
+
+"""
+    The Linear5 neighborhood type is used in Cellular Genetic Algorithms to define a linear local 
+    neighborhood of cells. In this configuration, each cell is surrounded by its 4 immediate neighbors 
+    in a straight line, forming a linear 5-cell neighborhood. This setup considers cells that are directly 
+    adjacent to the target cell in a one-dimensional arrangement, either horizontally or vertically. 
+    Linear5 is useful for capturing interactions along a specific direction, allowing for efficient 
+    exploration of linear patterns and structures in cellular genetic algorithms. This neighborhood type 
+    helps in focusing on local dependencies and trends along a single axis.
+"""
 class Linear5:
     def __init__(self, position, n_rows, n_cols):
         self.position = position

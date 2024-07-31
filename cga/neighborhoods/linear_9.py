@@ -1,3 +1,15 @@
+
+"""
+    The Linear9 neighborhood type is used in Cellular Genetic Algorithms to define a linear local 
+    neighborhood of cells with a larger range. In this configuration, each cell is surrounded by its 
+    8 immediate neighbors in a straight line, extending in both directions, plus itself, forming a 
+    linear 9-cell neighborhood. This setup considers cells that are directly adjacent to the target cell 
+    in a one-dimensional arrangement, either horizontally or vertically, covering a broader span. 
+    Linear9 is useful for capturing longer-range interactions along a specific direction, allowing for 
+    a more comprehensive exploration of linear patterns and trends in cellular genetic algorithms. 
+    This neighborhood type facilitates the analysis of dependencies and structures along a single axis 
+    with a greater reach.
+"""
 class Linear9:
     def __init__(self, position, n_rows, n_cols):
         self.position = position
