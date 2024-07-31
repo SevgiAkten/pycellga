@@ -1,10 +1,17 @@
-# Mutation for permutation representation. Swaps the place of two genes.
 
 import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
-# for binary and permutation coded problems
+"""
+    The Swap Mutation operator is a genetic algorithm technique used to alter solutions by 
+    exchanging the positions of two elements within a sequence. During the mutation process, 
+    two positions in the sequence are randomly selected, and the elements at these positions are swapped. 
+    This method introduces small but significant changes to the solution, which can help explore new 
+    configurations and maintain genetic diversity. Swap Mutation is particularly effective for problems 
+    involving permutations or ordered sequences, as it preserves the overall structure of the solution while 
+    allowing for variability and improvement in the search for optimal solutions.
+"""
 
 
 class SwapMutation:

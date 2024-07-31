@@ -3,7 +3,16 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
-# for binary coded problems
+"""
+    The Bit Flip Mutation operator is a genetic algorithm technique used to introduce random 
+    changes in binary-encoded solutions by flipping individual bits. During mutation, each bit 
+    in a binary string is independently flipped (i.e., changed from 0 to 1 or from 1 to 0) with 
+    a given probability. This method introduces genetic diversity by randomly altering the genetic 
+    material of the solutions, which helps in exploring new areas of the solution space and 
+    preventing premature convergence to local optima. Bit Flip Mutation is particularly effective 
+    in problems where solutions are represented as binary strings, as it provides a straightforward 
+    mechanism for introducing variability and maintaining diversity within the population.
+"""
 
 
 class BitFlipMutation:

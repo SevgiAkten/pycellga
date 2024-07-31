@@ -2,8 +2,15 @@ import random
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
-# for real-valued problems
-
+"""
+    The Float Uniform Mutation operator is used in genetic algorithms to introduce changes in 
+    floating-point encoded solutions by applying random perturbations. During mutation, each float 
+    value in a solution is altered by a random amount drawn from a uniform distribution within a 
+    specified range. This method ensures that the mutations are evenly distributed across the possible 
+    range of values, allowing for uniform exploration of the solution space. Float Uniform Mutation 
+    helps maintain genetic diversity by introducing controlled variability, which can improve the 
+    search for optimal solutions and prevent premature convergence.
+"""
 
 class FloatUniformMutation:
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):

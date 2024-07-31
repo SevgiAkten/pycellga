@@ -3,7 +3,15 @@ import random as rd
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
-# for binary and permutation coded problems
+"""
+    The Shuffle Mutation operator is used in genetic algorithms to introduce changes in solutions 
+    by randomly permuting elements within a sequence. During the mutation process, the order of 
+    elements in a sequence is randomly shuffled, which can result in a new arrangement of the elements. 
+    This method is particularly useful for problems involving sequences or permutations, as it allows 
+    for a thorough exploration of the solution space by generating diverse permutations. Shuffle Mutation 
+    helps maintain genetic diversity and can prevent premature convergence by providing a mechanism to 
+    explore new configurations and potentially find better solutions.
+"""
 
 
 class ShuffleMutation:

@@ -2,8 +2,15 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
-# for binary and permutation coded problems
-
+"""
+    The Insertion Mutation operator is used in genetic algorithms to modify solutions by randomly 
+    reordering elements within a sequence. During the mutation process, an element is randomly selected 
+    from its current position and inserted into a new, randomly chosen position within the sequence. 
+    This method effectively alters the structure of the solution, which can introduce significant changes 
+    and help explore new areas of the solution space. Insertion Mutation is particularly useful for problems 
+    involving sequences or permutations, as it maintains the relative order of the elements while 
+    promoting genetic diversity and facilitating the discovery of potentially better solutions.
+"""
 
 class InsertionMutation:
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):

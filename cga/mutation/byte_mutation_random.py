@@ -4,7 +4,18 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 import struct
 
-# for real-valued problems
+"""
+    Byte Mutation Random operator defined in (Satman, 2013).
+    The Byte Mutation Random operator is a genetic algorithm technique designed to introduce 
+    variability into byte-encoded solutions by randomly modifying individual bytes. During 
+    mutation, each byte in a byte string is selected with a certain probability, and its value 
+    is randomly changed to a new value within the possible byte range (0-255). This method ensures that 
+    the genetic material of the solutions is altered in a stochastic manner, promoting exploration 
+    of the solution space and reducing the risk of premature convergence. Byte Mutation Random is 
+    especially useful for problems involving byte-level data representation, as it provides a 
+    controlled way to introduce genetic diversity and maintain a balance between exploration and 
+    exploitation in the evolutionary process.
+"""
 
 
 class ByteMutationRandom:
