@@ -1,13 +1,13 @@
-import numpy as np
 from collections.abc import Callable
 import random
 import byte_operators
-from population import *
-from individual import *
+from population import Population
+from individual import Individual
 from selection.tournament_selection import *
 from recombination.one_point_crossover import *
 from mutation.bit_flip_mutation import *
 import time
+from typing import List, Tuple
 
 
 def optimize(
@@ -18,11 +18,53 @@ def optimize(
     gen_type: str,
     known_best: float,
     k_tournament: int,
-    problem: Callable[[list[float]], float],
-    selection,
-    mins: list[float],
-    maxs: list[float]
-) -> tuple:
+    problem: Callable[[List[float]], float],
+    selection: Callable,
+    mins: List[float],
+    maxs: List[float]
+) -> Tuple[dict, dict, List[float], List[float], float]:
+    """
+    Optimize the given problem using a genetic algorithm.
+
+    Parameters
+    ----------
+    n_cols : int
+        Number of columns in the population grid.
+    n_rows : int
+        Number of rows in the population grid.
+    n_gen : int
+        Number of generations to evolve.
+    ch_size : int
+        Size of the chromosome.
+    gen_type : str
+        Type of the genome representation (e.g., 'Binary', 'Permutation', 'Real').
+    known_best : float
+        Known best solution for gap calculation.
+    k_tournament : int
+        Size of the tournament for selection.
+    problem : Callable[[List[float]], float]
+        Function to evaluate the fitness of a solution. Takes a list of floats and returns a float.
+    selection : Callable
+        Function or class used for selecting parents.
+    mins : List[float]
+        List of minimum values for the probability vector generation.
+    maxs : List[float]
+        List of maximum values for the probability vector generation.
+
+    Returns
+    -------
+    Tuple[dict, dict, List[float], List[float], float]
+        optimizer_result : dict
+            Best solution details including chromosome, fitness value, and generation found.
+        parameters : dict
+            Optimization parameters including number of generations, population size, and tournament size.
+        best_objectives : List[float]
+            List of best fitness values found over generations.
+        avg_objectives : List[float]
+            List of average fitness values over generations.
+        elapsed_time : float
+            Time taken to complete the optimization in seconds.
+    """
 
     pop_size = n_cols * n_rows
     best_objectives = []
@@ -52,9 +94,9 @@ def optimize(
     avg_objectives.append(mean)
     best = pop_list_ordered[0]
 
-    # -----------------------------------------------------------------
-    g = 1
-    while g != n_gen + 1:
+    # Evolutionary Algorithm Loop
+    generation = 1
+    while generation != n_gen + 1:
         for c in range(pop_size):
 
             parents = selection(pop_list, c).get_parents()
@@ -77,17 +119,18 @@ def optimize(
             best_ever_solution = [
                 best_byte_ch,
                 best.fitness_value,
-                g,
+                generation,
             ]
 
         mean = sum(map(lambda x: x.fitness_value, pop_list)) / len(pop_list)
         avg_objectives.append(mean)
         best_byte_ch = byte_operators.bits_to_floats(best.chromosome)
 
+        # Print progress (optional)
         # print(
         #     f"{g} - {best_byte_ch} - {best.fitness_value}"
         # )
-        g += 1
+        generation += 1
 
     best_byte_ch = byte_operators.bits_to_floats(sample(vector))
     best_byte_result = problem.f(best_byte_ch)
@@ -123,14 +166,43 @@ def optimize(
     return optimizer_result, parameters, best_objectives, avg_objectives, elapsed_time
 
 
-def compete(p1: Individual, p2: Individual):
+def compete(p1: Individual, p2: Individual) -> Tuple[Individual, Individual]:
+    """
+    Compete between two individuals to determine the better one.
+
+    Parameters
+    ----------
+    p1 : Individual
+        First individual.
+    p2 : Individual
+        Second individual.
+
+    Returns
+    -------
+    Tuple[Individual, Individual]
+        The better individual and the loser.
+    """
     if p1.fitness_value < p2.fitness_value:
         return p1, p2
     else:
         return p2, p1
 
 
-def update_vector(vector, winner: Individual, loser: Individual, pop_size):
+def update_vector(vector: List[float], winner: Individual, loser: Individual, pop_size: int):
+    """
+    Update the probability vector based on the winner and loser individuals.
+
+    Parameters
+    ----------
+    vector : List[float]
+        Probability vector to be updated.
+    winner : Individual
+        The winning individual.
+    loser : Individual
+        The losing individual.
+    pop_size : int
+        Size of the population.
+    """
     for i in range(len(vector)):
         if winner.chromosome[i] != loser.chromosome[i]:
             if winner.chromosome[i] == 1:
@@ -139,7 +211,22 @@ def update_vector(vector, winner: Individual, loser: Individual, pop_size):
                 vector[i] -= round((1.0 / float(pop_size)), 3)
 
 
-def random_vector_between(mins: list, maxs: list) -> list:
+def random_vector_between(mins: List[float], maxs: List[float]) -> List[float]:
+    """
+    Generate a random vector of floats between the given minimum and maximum values.
+
+    Parameters
+    ----------
+    mins : List[float]
+        List of minimum values.
+    maxs : List[float]
+        List of maximum values.
+
+    Returns
+    -------
+    List[float]
+        Randomly generated vector.
+    """
     n = len(mins)
     result = [0.0] * n
 
@@ -149,7 +236,24 @@ def random_vector_between(mins: list, maxs: list) -> list:
     return result
 
 
-def generate_probability_vector(mins: list, maxs: list, ntries: int) -> list:
+def generate_probability_vector(mins: List[float], maxs: List[float], ntries: int) -> List[float]:
+    """
+    Generate a probability vector based on the given minimum and maximum values.
+
+    Parameters
+    ----------
+    mins : List[float]
+        List of minimum values.
+    maxs : List[float]
+        List of maximum values.
+    ntries : int
+        Number of trials for generating the probability vector.
+
+    Returns
+    -------
+    List[float]
+        Probability vector.
+    """
     nbits = len(mins) * 32
     mutrate = 1.0 / ntries
     probvector = [0.0] * nbits
@@ -164,7 +268,20 @@ def generate_probability_vector(mins: list, maxs: list, ntries: int) -> list:
     return probvector
 
 
-def sample(probvector: list[float]) -> list[int]:
+def sample(probvector: List[float]) -> List[int]:
+    """
+    Sample a vector based on the provided probability vector.
+
+    Parameters
+    ----------
+    probvector : List[float]
+        Probability vector for sampling.
+
+    Returns
+    -------
+    List[int]
+        Sampled binary vector.
+    """
     n = len(probvector)
     newvector = [0] * n
 

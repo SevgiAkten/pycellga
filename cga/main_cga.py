@@ -84,7 +84,11 @@ from mutation.float_uniform_mutation import FloatUniformMutation
 # -------------------------------------------------------------------------- #
 
 
-def runSimulation():
+def runSimulation() -> None:
+    """
+    Run the genetic algorithm simulation, record results in the database,
+    and plot the optimization progress.
+    """
     result_tuple = optimize(
         n_cols=10,
         n_rows=10,
@@ -107,6 +111,7 @@ def runSimulation():
     # result_tuple[2] = best_objectives, type is list
     # result_tuple[3] = avg_objectives, type is list
 
+    # Simulation configuration
     method = "mcccga"
     gen_type = "Real-valued"
     test_function = "Ackley"
@@ -123,13 +128,17 @@ def runSimulation():
     p_cross = 0
     p_mut = 0
 
-    # database record
-    tmpdb = "./simulations.db"
-    db = DBUtility(dbpath=tmpdb)
-    db.createtables()
-    db.insertoptresult(method, gen_type, test_function, best_solution, found_at_generation, time,
+    # Database record
+    try:
+        tmpdb = "./simulations.db"
+        db = DBUtility(dbpath=tmpdb)
+        db.createtables()
+        db.insertoptresult(method, gen_type, test_function, best_solution, found_at_generation, time,
                        selection, recombination, mutation, neighborhood, n_cols, n_rows, n_gen, p_cross, p_mut)
-    db.closedb()
+    except Exception as e:
+        print(f"Database error: {e}")
+    finally:
+        db.closedb()
 
     # exucute optimize function print optimizer_result dict keys and values
     print("-------------#### Solution Output ####-------------")
