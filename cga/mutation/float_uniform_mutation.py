@@ -2,35 +2,58 @@ import random
 from individual import *
 from problems.abstract_problem import AbstractProblem
 
-"""
-    The Float Uniform Mutation operator is used in genetic algorithms to introduce changes in 
-    floating-point encoded solutions by applying random perturbations. During mutation, each float 
-    value in a solution is altered by a random amount drawn from a uniform distribution within a 
-    specified range. This method ensures that the mutations are evenly distributed across the possible 
-    range of values, allowing for uniform exploration of the solution space. Float Uniform Mutation 
-    helps maintain genetic diversity by introducing controlled variability, which can improve the 
-    search for optimal solutions and prevent premature convergence.
-"""
-
 class FloatUniformMutation:
+    """
+    FloatUniformMutation performs a uniform mutation on an individual's chromosome in a Genetic Algorithm.
+
+    Parameters
+    ----------
+    mutation_cand : Individual, optional
+        The candidate individual to be mutated (default is None).
+    problem : AbstractProblem, optional
+        The problem instance that provides the fitness function (default is None).
+    """
+
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):
+        """
+        Initialize the FloatUniformMutation object.
+
+        Parameters
+        ----------
+        mutation_cand : Individual, optional
+            The candidate individual to be mutated (default is None).
+        problem : AbstractProblem, optional
+            The problem instance that provides the fitness function (default is None).
+        """
         self.mutation_cand = mutation_cand
         self.problem = problem
 
     def mutate(self) -> Individual:
+        """
+        Perform a uniform mutation on the candidate individual.
 
+        Each gene in the candidate's chromosome is mutated by adding or subtracting a random float uniformly
+        sampled from [0, 1]. The mutation is rounded to 5 decimal places.
+
+        Returns
+        -------
+        Individual
+            A new individual with the mutated chromosome.
+        """
+        # Convert the chromosome to a list to allow mutation
         m_ch = list(self.mutation_cand.chromosome)
 
+        # Mutate each gene in the chromosome
         for i in range(len(m_ch)):
             rnd = random.uniform(0, 1)
-            if (rnd < 0.5):
+            if rnd < 0.5:
                 m_ch[i] = round(m_ch[i] - rnd, 5)
             else:
                 m_ch[i] = round(m_ch[i] + rnd, 5)
 
+        # Create a new Individual with the mutated chromosome
         mutated_ch_new = list(m_ch)
         mutated = Individual()
-
         mutated.chromosome = mutated_ch_new
         mutated.ch_size = len(mutated_ch_new)
         mutated.position = self.mutation_cand.position
