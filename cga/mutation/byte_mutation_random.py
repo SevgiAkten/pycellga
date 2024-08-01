@@ -5,7 +5,8 @@ import struct
 
 class ByteMutationRandom:
     """
-    ByteMutationRandom performs a random byte mutation on an individual's chromosome in a Genetic Algorithm.
+    ByteMutationRandom operator defined in (Satman, 2013). ByteMutationRandom performs 
+    a random byte mutation on an individual's chromosome in a Genetic Algorithm.
 
     Parameters
     ----------

@@ -2,24 +2,42 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 
-"""
-    The Partially Mapped Crossover (PMX) operator is used in genetic algorithms to generate 
-    offspring by partially exchanging segments between two parent solutions. A pair of crossover 
-    points are randomly selected, defining a segment in each parent. The segments between these 
-    points are swapped to form the initial offspring. Then, the remaining genes are mapped 
-    according to the positions of the swapped segments to ensure valid offspring. PMX is 
-    particularly useful in permutation-based problems, such as the traveling salesman problem, 
-    as it preserves the relative order and positions of genes, maintaining the feasibility of 
-    the solutions and promoting effective genetic recombination.
-"""
-
 class PMXCrossover:
+    """
+    PMXCrossover performs Partially Mapped Crossover (PMX) on a pair of parent individuals
+    to produce offspring individuals.
+
+    Parameters
+    ----------
+    parents : list
+        A list containing two parent individuals.
+    problem : AbstractProblem
+        The problem instance that provides the fitness function.
+    """
+
     def __init__(self, parents: list, problem: AbstractProblem):
+        """
+        Initialize the PMXCrossover object.
+
+        Parameters
+        ----------
+        parents : list
+            A list containing two parent individuals.
+        problem : AbstractProblem
+            The problem instance that provides the fitness function.
+        """
         self.parents = parents
         self.problem = problem
 
     def get_recombinations(self) -> List[Individual]:
+        """
+        Perform the PMX crossover on the parent individuals to produce offspring.
 
+        Returns
+        -------
+        List[Individual]
+            A list containing the offspring individuals.
+        """
         offsprings = []
         p1 = self.parents[0]
         p2 = self.parents[1]
@@ -68,7 +86,6 @@ class PMXCrossover:
 
         child_1.chromosome = child_1_ch
         child_1.ch_size = len(child_1_ch)
-
         child_1.position = p1.position
         child_1.neighbors_positions = p1.neighbors_positions
         child_1.fitness_value = self.problem.f(child_1.chromosome)
@@ -103,11 +120,9 @@ class PMXCrossover:
 
         child_2.chromosome = child_2_ch
         child_2.ch_size = len(child_2_ch)
-
         child_2.position = p2.position
         child_2.neighbors_positions = p2.neighbors_positions
         child_2.fitness_value = self.problem.f(child_2.chromosome)
-
         offsprings.append(child_2)
 
         return offsprings

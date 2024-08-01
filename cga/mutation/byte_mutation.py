@@ -5,7 +5,8 @@ import struct
 
 class ByteMutation:
     """
-    ByteMutation performs a byte-wise mutation on an individual's chromosome in a Genetic Algorithm.
+    ByteMutation operator defined in (Satman, 2013). ByteMutation performs a byte-wise mutation 
+    on an individual's chromosome in a Genetic Algorithm.
 
     Parameters
     ----------
