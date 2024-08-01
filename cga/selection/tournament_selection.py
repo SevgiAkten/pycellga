@@ -2,56 +2,72 @@ from typing import List
 from individual import Individual
 import numpy as np
 
-"""
-    The Tournament Selection operator is a technique used in genetic algorithms to choose 
-    individuals from a population based on a competitive selection process. In this method, a 
-    subset of individuals is randomly selected from the population to compete in a 'tournament'. 
-    The individual with the highest fitness within this subset is chosen as the winner and is 
-    selected for reproduction. Tournament Selection allows for flexible control over selection 
-    pressure by adjusting the tournament size, which determines how many individuals participate 
-    in each competition. This approach balances exploration and exploitation by giving a chance 
-    to less fit individuals while favoring those with higher fitness, thereby promoting both diversity 
-    and quality in the evolving population.
-"""
 class TournamentSelection:
-    def __init__(self, pop_list: List[Individual] = {}, c: int = 0, K: int = 2):
+    """
+    TournamentSelection performs a tournament selection on a population of individuals
+    to select parent individuals for crossover.
+
+    Parameters
+    ----------
+    pop_list : list of Individual
+        The population of individuals to select from.
+    c : int
+        The index of the individual to start selection from.
+    K : int
+        The number of individuals to be chosen at random from neighbors.
+    """
+
+    def __init__(self, pop_list: List[Individual] = [], c: int = 0, K: int = 2):
+        """
+        Initialize the TournamentSelection object.
+
+        Parameters
+        ----------
+        pop_list : list of Individual
+            The population of individuals to select from.
+        c : int
+            The index of the individual to start selection from.
+        K : int
+            The number of individuals to be chosen at random from neighbors.
+        """
         self.pop_list = pop_list
         self.c = c
-        self.K = K  # How many people will be chosen at random from neighbors
+        self.K = K
 
     def get_parents(self) -> List[Individual]:
+        """
+        Perform the tournament selection to get parent individuals.
+
+        Returns
+        -------
+        list of Individual
+            A list containing the selected parent individuals.
+        """
         parents = []
         p1 = self.pop_list[self.c - 1]
-
         parents.append(p1)
         neighbors_positions = p1.neighbors_positions
         neighbors = []
 
+        # Find neighbors in the population
         for i in range(len(self.pop_list)):
             if self.pop_list[i].position in neighbors_positions:
                 neighbors.append(self.pop_list[i])
 
         tournament_selection_pool = []
 
+        # Select K individuals randomly from neighbors for the tournament
         while len(tournament_selection_pool) < self.K:
-
-            # ### classical cellular genetic algorithm
             index = np.random.randint(0, len(neighbors))
-
             if neighbors[index] not in tournament_selection_pool:
                 tournament_selection_pool.append(neighbors[index])
 
-            # ### restrict consanguineous marriage
-            # index = np.random.randint(0, len(self.pop_list))
-            # selected = self.pop_list[index]
-
-            # if selected is not p1:
-            #     if selected not in neighbors:
-            #         tournament_selection_pool.append(selected)
-
+        # Sort the tournament selection pool by fitness value in descending order
         tournament_selection_pool_ordered = sorted(
             tournament_selection_pool, key=lambda x: x.fitness_value, reverse=True
         )
+
+        # Select the individual with the highest fitness value as the second parent
         p2 = tournament_selection_pool_ordered[0]
         parents.append(p2)
 
