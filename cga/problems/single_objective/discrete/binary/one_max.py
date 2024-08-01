@@ -1,13 +1,37 @@
 from problems.abstract_problem import AbstractProblem
 
-"""
-    The OneMax function is a benchmark function used in optimization problems, particularly in evolutionary algorithms. 
-    It is characterized by its simple, single-objective landscape, where the goal is to maximize the number of ones in a 
-    binary string. The function features a straightforward and linear surface with a global maximum corresponding to the 
-    string of all ones. The OneMax function serves as a basic test for optimization algorithms, assessing their ability to 
-    perform efficiently on simple, unimodal problems. It evaluates the algorithm's performance in finding the optimal solution 
-    with minimal complexity, making it a valuable test case for basic evolutionary strategies and search techniques.
-"""
 class OneMax(AbstractProblem):
+    """
+    Represents the OneMax problem.
+
+    The OneMax problem is a simple genetic algorithm benchmark problem 
+    where the fitness of a chromosome is the sum of its bits.
+
+    Attributes
+    ----------
+    None
+
+    Methods
+    -------
+    f(x: list) -> float
+        Evaluates the fitness of a given chromosome.
+    """
+
     def f(self, x) -> float:
+        """
+        Evaluates the fitness of a given chromosome for the OneMax problem.
+
+        The fitness function is the sum of all bits in the chromosome.
+
+        Parameters
+        ----------
+        x : list
+            A list representing the chromosome, where each element is a binary 
+            value (0 or 1).
+
+        Returns
+        -------
+        float
+            The fitness value of the chromosome, which is the sum of its bits.
+        """
         return sum(x)

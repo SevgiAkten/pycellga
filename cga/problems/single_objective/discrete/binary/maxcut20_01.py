@@ -1,25 +1,39 @@
 from problems.abstract_problem import AbstractProblem
-
-"""
-    The Maximum Cut (MAXCUT) problem is a benchmark function used in combinatorial optimization, specifically related to 
-    graph theory. The objective of the MAXCUT problem is to find a partition of the vertices of a graph into two subsets 
-    such that the number of edges between the subsets is maximized. The function represents the challenge of optimizing 
-    graph partitioning to achieve the largest possible cut value. The MAXCUT function evaluates an algorithm's ability to 
-    explore different partitions, balance exploration and exploitation, and find solutions that maximize the cut size. It is 
-    valuable for assessing the performance of optimization techniques in handling complex, combinatorial problems and is 
-    widely used in various applications involving network design, clustering, and computational graph theory.
-
-    References
-    Alba, E. and Dorronsoro B., 2008, Cellular genetic algorithms, Operations research/computer science interfaces series, Springer, US, ISBN: 978-0-387-77609-5.
-"""
-# Length of chromosomes = 20
-# Maximum Fitness Value = 10.119812
-# there is a bug that it find sometimes the fitness is bigger than the max, how it can be possible not solved yet
-
-
 class Maxcut20_01(AbstractProblem):
-    def f(self, x: list) -> float:
+    """
+    Maximum Cut (MAXCUT) function implementation for optimization problems.
 
+    The MAXCUT function is used for testing optimization algorithms, particularly those involving maximum cut problems.
+
+    Attributes
+    ----------
+    None
+
+    Methods
+    -------
+    f(x: list) -> float
+        Calculates the MAXCUT function value for a given list of variables.
+
+    Notes
+    -----
+    Length of chromosomes = 20
+    Maximum Fitness Value = 10.119812
+    """
+
+    def f(self, x: list) -> float:
+        """
+        Calculate the MAXCUT function value for a given list of variables.
+
+        Parameters
+        ----------
+        x : list
+            A list of binary variables.
+
+        Returns
+        -------
+        float
+            The MAXCUT function value.
+        """
         problema = [
             [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.359902,
                 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.313702, 0.000000, 0.000000, 0.000000],
@@ -69,7 +83,7 @@ class Maxcut20_01(AbstractProblem):
         for i in range(cols-1):
             j = i
             for j in range(cols):
-                if (x[i] ^ x[j]):
-                    fitness = fitness + problema[i][j]
+                if x[i] ^ x[j]:
+                    fitness += problema[i][j]
 
         return round(fitness, 6)

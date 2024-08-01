@@ -4,26 +4,38 @@ from math import sqrt
 import pandas as pd
 from geopy.distance import geodesic
 
-"""
-    The Travelling Salesman Problem (TSP) is a classic benchmark problem in combinatorial optimization. It involves finding 
-    the shortest possible route that visits a set of cities exactly once and returns to the origin city. The TSP is known for 
-    its complex and combinatorial nature, as the number of possible routes grows factorially with the number of cities. The 
-    objective of the TSP is to minimize the total travel distance or cost. This problem is used to evaluate optimization 
-    algorithms' ability to handle large, intricate search spaces, balance exploration and exploitation, and find optimal or 
-    near-optimal solutions. The TSP is widely used in various applications, including logistics, routing, and network design, 
-    and serves as a fundamental test for assessing the performance and efficiency of optimization techniques in solving 
-    combinatorial and real-world problems.
-"""
-#### burma14.tsp ########################################
-# EDGE_WEIGHT_TYPE: GEO,   use gographical_dist function
-# Length of chromosomes = 14
-# Known Best Route = []
-# Minumum Fitness Value = 3323
-#########################################################
-
 class Tsp(AbstractProblem):
-    def f(self, x: list) -> float:
+    """
+    Represents the Traveling Salesman Problem (TSP).
 
+    This class solves the TSP using geographical distances (GEO) for node coordinates.
+
+    Notes
+    ----------
+    #### burma14.tsp ########################################
+    # EDGE_WEIGHT_TYPE: GEO,   use gographical_dist function
+    # Length of chromosomes = 14
+    # Known Best Route = []
+    # Minumum Fitness Value = 3323
+    #########################################################
+    """
+
+    def f(self, x: list) -> float:
+        """
+        Evaluates the fitness of a given chromosome (route) for the TSP.
+
+        This method calculates the total distance of the given route using geographical distances.
+
+        Parameters
+        ----------
+        x : list
+            A list representing the route (chromosome), where each element is a node index.
+
+        Returns
+        -------
+        float
+            The total distance of the route, rounded to one decimal place.
+        """
         with open("burma14.tsp.txt") as fl:
             problem = tsplib95.read(fl)
 
@@ -63,10 +75,40 @@ class Tsp(AbstractProblem):
         return round(fitness, 1)
 
     def euclidean_dist(self, a: list, b: list) -> float:
+        """
+        Computes the Euclidean distance between two nodes.
+
+        Parameters
+        ----------
+        a : list
+            Coordinates of the first node.
+        b : list
+            Coordinates of the second node.
+
+        Returns
+        -------
+        float
+            The Euclidean distance between the two nodes, rounded to one decimal place.
+        """
         dist = sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
         return round(dist, 1)
 
     def gographical_dist(self, a: list, b: list) -> float:
+        """
+        Computes the geographical distance between two nodes using the geodesic distance.
+
+        Parameters
+        ----------
+        a : list
+            Coordinates of the first node.
+        b : list
+            Coordinates of the second node.
+
+        Returns
+        -------
+        float
+            The geographical distance between the two nodes, rounded to one decimal place.
+        """
         dist = 0.0
         for i in range(len(a)):
             x_city = ([a[0], a[1]])

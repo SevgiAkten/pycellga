@@ -1,28 +1,48 @@
 from problems.abstract_problem import AbstractProblem
-import numpy as np
 from numpy import power as pw
-
-"""
-    The Bent Cigar function is a benchmark function used in continuous optimization problems. It is known 
-    for its distinctive landscape, characterized by a long, narrow, and deep cigar-shaped valley with a 
-    global minimum located at one end of the valley. The function is used to assess optimization algorithms' 
-    performance, particularly their ability to handle problems with elongated and narrow optima. The Bent 
-    Cigar function is designed to test how well algorithms can navigate through a large, flat region with a 
-    steep gradient leading to a narrow optimum. It is useful for evaluating the efficiency of search strategies 
-    and convergence properties in continuous optimization tasks.
-    """
-# -100 ≤ xi ≤ 100     i = 1,…,n
-# global minumum at f(0,...,0) = 0
-
 class Bentcigar(AbstractProblem):
+    """
+    Bentcigar function implementation for optimization problems.
+
+    The Bentcigar function is widely used for testing optimization algorithms.
+    The function is usually evaluated on the hypercube x_i ∈ [-100, 100], for all i = 1, 2, ..., n.
+
+    Attributes
+    ----------
+    None
+
+    Methods
+    -------
+    f(X: list) -> float
+        Calculates the Bentcigar function value for a given list of variables.
+
+    Notes
+    -----
+    -100 ≤ xi ≤ 100 for i = 1,…,n
+    Global minimum at f(0,...,0) = 0
+    """
+
     def f(self, X: list) -> float:
-        a=0.0
-        b=0.0
-        sum=0.0
+        """
+        Calculate the Bentcigar function value for a given list of variables.
+
+        Parameters
+        ----------
+        X : list
+            A list of float variables.
+
+        Returns
+        -------
+        float
+            The Bentcigar function value.
+        """
+        a = 0.0
+        b = 0.0
+        sum = 0.0
         fitness = 0.0
         
-        a = pw(X[0],2)
-        b=pw(10,6)
+        a = pw(X[0], 2)
+        b = pw(10, 6)
         for i in range(2, len(X)):
             sum += pw(X[i], 2)
         
