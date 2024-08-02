@@ -1,4 +1,4 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 class Maxcut20_09(AbstractProblem):
     """
     Maximum Cut (MAXCUT) function implementation for optimization problems.

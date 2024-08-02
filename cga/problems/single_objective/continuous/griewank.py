@@ -1,4 +1,4 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 import math
 
 class Griewank(AbstractProblem):

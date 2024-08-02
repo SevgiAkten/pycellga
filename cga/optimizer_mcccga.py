@@ -1,11 +1,11 @@
 from collections.abc import Callable
 import random
 import byte_operators
-from population import Population
-from individual import Individual
-from selection.tournament_selection import *
-from recombination.one_point_crossover import *
-from mutation.bit_flip_mutation import *
+from cga.population import Population
+from cga.individual import Individual
+from cga.selection.tournament_selection import *
+from cga.recombination.one_point_crossover import *
+from cga.mutation.bit_flip_mutation import *
 import time
 from typing import List, Tuple
 

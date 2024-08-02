@@ -1,5 +1,5 @@
 from numpy import pi, e, cos, sqrt, exp
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 class Ackley(AbstractProblem):
     """
     Ackley function implementation for optimization problems.

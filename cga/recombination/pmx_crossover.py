@@ -1,5 +1,5 @@
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from cga.individual import *
+from cga.problems.abstract_problem import AbstractProblem
 from typing import List
 
 class PMXCrossover:

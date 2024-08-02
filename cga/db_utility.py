@@ -116,7 +116,7 @@ class DBUtility:
             The probability of mutation.
         """
         sql2 = """
-            INSERT INTO ExperimentResults VALUES ('{}','{}','{}',{},{},{},'{}','{}','{}','{}',{},{},{},{})
+            INSERT INTO ExperimentResults VALUES ('{}','{}','{}',{},{},{},'{}','{}','{}','{}',{},{},{},{},{})
         """.format(method, gen_type, test_function, best_solution, found_at_generation, time, selection, recombination, mutation, neighborhood, n_cols, n_rows, n_gen, p_cross, p_mut)
 
         self.getcursor().execute(sql2)

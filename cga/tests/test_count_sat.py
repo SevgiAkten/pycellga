@@ -1,4 +1,4 @@
-from problems.single_objective.discrete.binary.count_sat import CountSat
+from cga.problems.single_objective.discrete.binary.count_sat import CountSat
 
 
 def test_count_sat():

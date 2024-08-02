@@ -1,6 +1,5 @@
 from typing import List
-from individual import Individual
-import numpy as np
+from cga.individual import Individual
 import random
 
 class RouletteWheelSelection:

@@ -1,9 +1,9 @@
 from population import *
 from individual import *
-from selection.tournament_selection import *
-from recombination.one_point_crossover import *
-from mutation.bit_flip_mutation import *
-from problems.single_objective.discrete.binary.one_max import OneMax
+from cga.selection.tournament_selection import *
+from cga.recombination.one_point_crossover import *
+from cga.mutation.bit_flip_mutation import *
+from cga.problems.single_objective.discrete.binary.one_max import OneMax
 import time
 from typing import Callable, List, Tuple
 

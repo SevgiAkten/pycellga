@@ -1,4 +1,4 @@
-from problems.single_objective.continuous.rosenbrock import Rosenbrock
+from cga.problems.single_objective.continuous.rosenbrock import Rosenbrock
 
 
 def test_rosenbrock():

@@ -1,14 +1,14 @@
-from mutation.shuffle_mutation import ShuffleMutation
-from problems.single_objective.discrete.permutation.tsp import Tsp
-from individual import Individual
+from cga.mutation.shuffle_mutation import ShuffleMutation
+from cga.problems.single_objective.discrete.permutation.tsp import Tsp
+from cga.individual import Individual
 import random
 
 
 def test_shuffle_mutation():
-    CHSIZE = 52
+    CHSIZE = 14
 
     ind = Individual("Permutation", CHSIZE)
-    ind.chromosome = list(random.sample(range(1, 53), 52))
+    ind.chromosome = list(random.sample(range(1, 15), 14))
 
     problem = Tsp()
 

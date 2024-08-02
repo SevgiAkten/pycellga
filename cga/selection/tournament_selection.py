@@ -1,5 +1,5 @@
 from typing import List
-from individual import Individual
+from cga.individual import Individual
 import numpy as np
 
 class TournamentSelection:

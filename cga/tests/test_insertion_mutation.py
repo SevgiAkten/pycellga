@@ -1,14 +1,14 @@
-from mutation.insertion_mutation import InsertionMutation
-from problems.single_objective.discrete.permutation.tsp import Tsp
-from individual import Individual
+from cga.mutation.insertion_mutation import InsertionMutation
+from cga.problems.single_objective.discrete.permutation.tsp import Tsp
+from cga.individual import Individual
 import random
 
 
 def test_insertion_mutation():
-    CHSIZE = 52
+    CHSIZE = 14
 
     ind = Individual("Permutation", CHSIZE)
-    ind.chromosome = list(random.sample(range(1, 53), 52))
+    ind.chromosome = list(random.sample(range(1, 15), 14))
 
     problem = Tsp()
 

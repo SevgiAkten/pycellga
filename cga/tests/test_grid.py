@@ -1,4 +1,4 @@
-from grid import Grid
+from cga.grid import Grid
 
 
 def test_grid():

@@ -1,8 +1,9 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 import tsplib95
 from math import sqrt
 import pandas as pd
 from geopy.distance import geodesic
+import os
 
 class Tsp(AbstractProblem):
     """
@@ -36,7 +37,10 @@ class Tsp(AbstractProblem):
         float
             The total distance of the route, rounded to one decimal place.
         """
-        with open("burma14.tsp.txt") as fl:
+   
+
+        file_path = os.path.join(os.path.dirname(__file__), 'burma14.tsp.txt')
+        with open(file_path) as fl:
             problem = tsplib95.read(fl)
 
         nodes = list(problem.node_coords.values())

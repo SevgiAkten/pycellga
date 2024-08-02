@@ -1,7 +1,7 @@
 
-from problems.single_objective.discrete.binary.one_max import OneMax
-from selection.roulette_wheel_selection import RouletteWheelSelection
-from population import Population
+from cga.problems.single_objective.discrete.binary.one_max import OneMax
+from cga.selection.roulette_wheel_selection import RouletteWheelSelection
+from cga.population import Population
 
 
 def test_roulette_wheel_selection():

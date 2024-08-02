@@ -1,4 +1,4 @@
-from problems.single_objective.continuous.schwefel import Schwefel
+from cga.problems.single_objective.continuous.schwefel import Schwefel
 
 
 def test_schwefel():

@@ -1,4 +1,4 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 class Ecc(AbstractProblem):
     """
     Error Correcting Codes Design Problem (ECC) function implementation for optimization problems.

@@ -1,7 +1,7 @@
 
-from problems.single_objective.discrete.binary.one_max import OneMax
-from selection.tournament_selection import TournamentSelection
-from population import Population
+from cga.problems.single_objective.discrete.binary.one_max import OneMax
+from cga.selection.tournament_selection import TournamentSelection
+from cga.population import Population
 
 
 def test_tournament_selection():

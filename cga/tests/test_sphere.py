@@ -1,4 +1,4 @@
-from problems.single_objective.continuous.sphere import Sphere
+from cga.problems.single_objective.continuous.sphere import Sphere
 
 
 def test_sphere():

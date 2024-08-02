@@ -1,5 +1,5 @@
 from numpy import cos, pi
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 class Rastrigin(AbstractProblem):
     """
     Rastrigin function implementation for optimization problems.

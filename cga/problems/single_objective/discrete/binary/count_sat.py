@@ -1,4 +1,4 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 class CountSat(AbstractProblem):
     """
     CountSat function implementation for optimization problems.

@@ -1,4 +1,4 @@
-from problems.single_objective.continuous.rastrigin import Rastrigin
+from cga.problems.single_objective.continuous.rastrigin import Rastrigin
 
 
 def test_rastrigin():

@@ -1,4 +1,4 @@
-from problems.single_objective.continuous.bohachevsky import Bohachevsky
+from cga.problems.single_objective.continuous.bohachevsky import Bohachevsky
 
 
 def test_bohachevsky():

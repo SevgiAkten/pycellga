@@ -1,4 +1,4 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 from numpy import power as pw
 
 class Holzman(AbstractProblem):

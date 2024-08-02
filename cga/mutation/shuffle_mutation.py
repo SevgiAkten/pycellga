@@ -1,7 +1,7 @@
 import numpy as np
 import random as rd
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from cga.individual import *
+from cga.problems.abstract_problem import AbstractProblem
 
 class ShuffleMutation:
     """
