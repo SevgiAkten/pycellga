@@ -1,33 +1,54 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 import numpy as np
-
-"""
-    The Powell function is a benchmark function used in continuous optimization problems, known for its complex 
-    landscape with a combination of smooth and rugged regions. It features a multi-modal surface with several local 
-    minima and a global minimum. The Powell function is designed to test the performance of optimization algorithms 
-    in navigating through diverse search spaces with varying complexities. It evaluates the algorithm's ability to 
-    handle non-convex problems, balance exploration and exploitation, and converge efficiently to the global optimum 
-    despite the presence of multiple local minima.
-"""
-# -4 ≤ xi ≤ 5     i = 1,…,n
-# global minumum at f(0,....,0) = 0
-
-
 class Powell(AbstractProblem):
+    """
+    Powell function implementation for optimization problems.
+
+    The Powell function is widely used for testing optimization algorithms.
+    The function is usually evaluated on the hypercube x_i ∈ [-4, 5], for all i = 1, 2, ..., n.
+
+    Attributes
+    ----------
+    None
+
+    Methods
+    -------
+    f(x: list) -> float
+        Calculates the Powell function value for a given list of variables.
+
+    Notes
+    -----
+    -4 ≤ xi ≤ 5 for i = 1,…,n
+    Global minimum at f(0,....,0) = 0
+    """
+
     def f(self, x: list) -> float:
+        """
+        Calculate the Powell function value for a given list of variables.
+
+        Parameters
+        ----------
+        x : list
+            A list of float variables.
+
+        Returns
+        -------
+        float
+            The Powell function value.
+        """
         fitness = 0.0
         a = 0.0
         b = 0.0
         c = 0.0
         e = 0.0
         
-        d = round(len(x)/4)
+        d = round(len(x) / 4)
 
-        for i in range (1, d):
-            a = np.power((x[4*i-3]+10*x[4*i-2]),2)
-            b = np.power((x[4*i-1]-x[4*i]),2)
-            c = np.power((x[4*i-2]-2*x[4*i-1]),4)
-            e = np.power((x[4*i-3]-x[4*i]),4)
-            fitness +=  a + 5*b + c + 10*e
+        for i in range(1, d):
+            a = np.power((x[4*i - 3] + 10 * x[4*i - 2]), 2)
+            b = np.power((x[4*i - 1] - x[4*i]), 2)
+            c = np.power((x[4*i - 2] - 2 * x[4*i - 1]), 4)
+            e = np.power((x[4*i - 3] - x[4*i]), 4)
+            fitness +=  a + 5 * b + c + 10 * e
 
         return round(fitness, 3)

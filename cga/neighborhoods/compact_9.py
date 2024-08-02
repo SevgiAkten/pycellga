@@ -1,25 +1,54 @@
-
-"""
-    The Compact9 neighborhood type is used in Cellular Genetic Algorithms to define a local 
-    neighborhood of cells. In this configuration, each cell is surrounded by its 8 immediate 
-    neighbors in a grid, plus itself, forming a compact 9-cell neighborhood. This setup allows 
-    each cell to consider the influence of its surrounding cells, including diagonally adjacent ones. 
-    Compact9 is useful for capturing interactions within a small, localized region of the grid, 
-    enabling efficient exploration of local patterns and structures in cellular genetic algorithms.
-"""
 class Compact9:
+    """
+    Compact9 calculates the positions of the 8 neighbors in a 2D grid for a given position,
+    considering wrapping at the grid edges.
+
+    Parameters
+    ----------
+    position : tuple
+        The (x, y) position of the point whose neighbors are to be calculated.
+    n_rows : int
+        The number of rows in the grid.
+    n_cols : int
+        The number of columns in the grid.
+    """
+
     def __init__(self, position, n_rows, n_cols):
+        """
+        Initialize the Compact9 object.
+
+        Parameters
+        ----------
+        position : tuple
+            The (x, y) position of the point whose neighbors are to be calculated.
+        n_rows : int
+            The number of rows in the grid.
+        n_cols : int
+            The number of columns in the grid.
+        """
         self.position = position
         self.n_rows = n_rows
         self.n_cols = n_cols
 
     def calculate_neighbors_positions(self) -> list:
+        """
+        Calculate the positions of the 8 neighbors for the given position in the grid.
+
+        The neighbors are determined by considering wrapping at the grid edges.
+
+        Returns
+        -------
+        list
+            A list of tuples representing the positions of the 8 neighbors.
+        """
         neighbors_positions = []
         point = self.position
         x = point[0]
         y = point[1]
-        dx = [-1, -1, -1, 0, 1, 1, 1, 0]  # Change in x
-        dy = [-1, 0, 1, -1, -1, 0, 1, 1]  # Change in y
+
+        # Change in x and y for the 8 neighbors
+        dx = [-1, -1, -1, 0, 1, 1, 1, 0]
+        dy = [-1, 0, 1, -1, -1, 0, 1, 1]
 
         if x == self.n_rows or y == self.n_rows:
             for i in range(len(dx)):

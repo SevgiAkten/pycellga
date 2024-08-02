@@ -1,4 +1,4 @@
-from problems.single_objective.discrete.binary.one_max import OneMax
+from cga.problems.single_objective.discrete.binary.one_max import OneMax
 
 
 def test_one_max():

@@ -3,18 +3,60 @@ import random as rd
 
 
 class Individual:
-    chromosome = []
-    fitness_value = 0
-    position = (0, 0)
-    neighbors_positions = None
-    neighbors = None
+    """
+    A class to represent an individual in an evolutionary algorithm.
+
+    Attributes
+    ----------
+    chromosome : list
+        The chromosome representing the individual.
+    fitness_value : float
+        The fitness value of the individual.
+    position : tuple
+        The position of the individual, represented as a tuple (x, y).
+    neighbors_positions : list or None
+        The positions of the individual's neighbors.
+    neighbors : list or None
+        The list of neighbors for the individual.
+    gen_type : str
+        The type of genome representation ("Binary", "Permutation", "Real-valued").
+    ch_size : int
+        The size of the chromosome.
+    """
 
     def __init__(self, gen_type="Binary", ch_size=0):
+        """
+        Initialize an Individual with a specific genome type and chromosome size.
+
+        Parameters
+        ----------
+        gen_type : str, optional
+            The type of genome representation. Must be one of "Binary", "Permutation", or "Real-valued". (default is "Binary")
+        ch_size : int
+            The size of the chromosome.
+        """
         self.gen_type = gen_type
         self.ch_size = ch_size
-        # self.chromosome = rd.sample(range(1, 53), self.ch_size)
+        self.chromosome = []
+        self.fitness_value = 0
+        self.position = (0, 0)
+        self.neighbors_positions = None
+        self.neighbors = None
 
     def randomize(self):
+        """
+        Randomly initialize the chromosome based on the genome type.
+
+        Returns
+        -------
+        list
+            The randomly generated chromosome.
+        
+        Raises
+        ------
+        NotImplementedError
+            If the genome type is not implemented.
+        """
         if self.gen_type == "Binary":
             # # CountSat, Fms, Mmdp, OneMax, Ecc, Maxcut20_01, Maxcut20_09, Maxcut100
             self.chromosome = [random.randint(2) for i in range(self.ch_size)]
@@ -100,22 +142,62 @@ class Individual:
         return self.chromosome
 
     def generate_candidate(self, vector: list) -> list:
-        ind = []
-        for p in vector:
-            ind.append(
-                1) if random.rand() < p else ind.append(0)
+        """
+        Generate a candidate chromosome based on the given probability vector.
 
+        Parameters
+        ----------
+        vector : list of float
+            The probability vector used to generate the candidate chromosome.
+
+        Returns
+        -------
+        list
+            The generated candidate chromosome as a list of 0s and 1s.
+        """
+        ind = [1 if random.rand() < p else 0 for p in vector]
         return ind
 
-    def getneighbors_positions(self):
+    def getneighbors_positions(self) -> list:
+        """
+        Get the positions of the individual's neighbors.
+
+        Returns
+        -------
+        list or None
+            The positions of the individual's neighbors.
+        """
         return self.neighbors_positions
 
-    def setneighbors_positions(self, positions):
+    def setneighbors_positions(self, positions: list) -> None:
+        """
+        Set the positions of the individual's neighbors.
+
+        Parameters
+        ----------
+        positions : list
+            The positions to set for the individual's neighbors.
+        """
         self.neighbors_positions = positions
 
-    def getneighbors(self):
+    def getneighbors(self) -> list:
+        """
+        Get the list of neighbors for the individual.
+
+        Returns
+        -------
+        list or None
+            The list of neighbors for the individual.
+        """
         return self.neighbors
 
-    def setneighbors(self, neighbors):
-        #  Copies the argument, not getting the argument itself
+    def setneighbors(self, neighbors: list) -> None:
+        """
+        Set the list of neighbors for the individual.
+
+        Parameters
+        ----------
+        neighbors : list
+            The list of neighbors to set for the individual.
+        """
         self.neighbors = list(neighbors)

@@ -1,28 +1,44 @@
-
 import random
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from cga.individual import *
+from cga.problems.abstract_problem import AbstractProblem
 from typing import List
 
-"""
-    The Unfair Average Crossover operator is a genetic algorithm technique designed to create 
-    offspring by combining parent solutions with weighted averaging. Unlike standard averaging 
-    methods, this operator applies different weights to each parent solution, allowing for an 
-    "unfair" distribution of influence in the offspring. The weights are typically determined 
-    based on predefined criteria or dynamically adjusted during the algorithm. This method can 
-    be useful in scenarios where certain parents are more likely to contribute to better solutions, 
-    allowing the offspring to inherit more traits from those more promising parents. Unfair Average 
-    Crossover helps balance exploration and exploitation by tailoring the contribution of each parent 
-    to the genetic recombination process, potentially leading to more effective solution generation.
-"""
-
 class UnfairAvarageCrossover:
+    """
+    UnfairAvarageCrossover performs an unfair average crossover on a pair of parent individuals
+    to produce offspring individuals.
+
+    Parameters
+    ----------
+    parents : list
+        A list containing two parent individuals.
+    problem : AbstractProblem
+        The problem instance that provides the fitness function.
+    """
+
     def __init__(self, parents: list, problem: AbstractProblem):
+        """
+        Initialize the UnfairAvarageCrossover object.
+
+        Parameters
+        ----------
+        parents : list
+            A list containing two parent individuals.
+        problem : AbstractProblem
+            The problem instance that provides the fitness function.
+        """
         self.parents = parents
         self.problem = problem
 
     def get_recombinations(self) -> List[Individual]:
+        """
+        Perform the unfair average crossover on the parent individuals to produce offspring.
 
+        Returns
+        -------
+        List[Individual]
+            A list containing the offspring individuals.
+        """
         offsprings = []
         p1 = self.parents[0]
         p2 = self.parents[1]
@@ -38,12 +54,12 @@ class UnfairAvarageCrossover:
         j = random.randint(1, chsize)
 
         for i in range(chsize):
-            if (i <= j):
-                child_1_ch[i] = round((1+alpha)*a[i] - alpha*b[i], 5)
-                child_2_ch[i] = round((1-alpha)*a[i] + alpha*b[i], 5)
+            if i <= j:
+                child_1_ch[i] = round((1 + alpha) * a[i] - alpha * b[i], 5)
+                child_2_ch[i] = round((1 - alpha) * a[i] + alpha * b[i], 5)
             else:
-                child_1_ch[i] = round(-alpha*a[i] + (1+alpha)*b[i], 5)
-                child_2_ch[i] = round(alpha*a[i] + (1-alpha)*b[i], 5)
+                child_1_ch[i] = round(-alpha * a[i] + (1 + alpha) * b[i], 5)
+                child_2_ch[i] = round(alpha * a[i] + (1 - alpha) * b[i], 5)
 
         # First child
         child_1 = Individual()

@@ -1,38 +1,66 @@
-
 import random
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from cga.individual import *
+from cga.problems.abstract_problem import AbstractProblem
 from typing import List
 
-"""
-    The Flat crossover operator is used in genetic algorithms to generate offspring by 
-    selecting random values within the range defined by the parent solutions. For each 
-    gene, the offspring gene is chosen randomly from a uniform distribution between the 
-    minimum and maximum values of the corresponding parent genes. This method is 
-    particularly effective for continuous optimization problems, as it allows offspring 
-    to explore the entire range between the parent solutions, promoting genetic 
-    diversity and enabling the discovery of new and potentially better solutions.
-"""
-
-
 class FlatCrossover:
+    """
+    FlatCrossover performs a flat crossover on a pair of parent individuals
+    to produce offspring individuals.
+
+    Parameters
+    ----------
+    parents : list
+        A list containing two parent individuals.
+    problem : AbstractProblem
+        The problem instance that provides the fitness function.
+    """
+
     def __init__(self, parents: list, problem: AbstractProblem):
+        """
+        Initialize the FlatCrossover object.
+
+        Parameters
+        ----------
+        parents : list
+            A list containing two parent individuals.
+        problem : AbstractProblem
+            The problem instance that provides the fitness function.
+        """
         self.parents = parents
         self.problem = problem
 
     def combine(self, p1: Individual, p2: Individual, locationsource: Individual) -> Individual:
+        """
+        Combine two parent individuals using flat crossover to produce a single offspring.
+
+        Parameters
+        ----------
+        p1 : Individual
+            The first parent individual.
+        p2 : Individual
+            The second parent individual.
+        locationsource : Individual
+            The individual from which to copy positional information for the offspring.
+
+        Returns
+        -------
+        Individual
+            The resulting offspring individual.
+        """
         chsize = len(p1.chromosome)
         child = [0 for i in range(chsize)]
         for i in range(chsize):
             p1_allele = p1.chromosome[i]
             p2_allele = p2.chromosome[i]
 
-            if (p1_allele > p2_allele):
+            if p1_allele > p2_allele:
                 c_max = p1_allele
                 c_min = p2_allele
             else:
                 c_max = p2_allele
                 c_min = p1_allele
+
             new_allele = random.uniform(c_min, c_max)
             child[i] = round(new_allele, 5)
 
@@ -44,7 +72,14 @@ class FlatCrossover:
         return indv
 
     def get_recombinations(self) -> List[Individual]:
+        """
+        Perform the flat crossover on the parent individuals to produce offspring.
 
+        Returns
+        -------
+        List[Individual]
+            A list containing the offspring individuals.
+        """
         p1 = self.parents[0]
         p2 = self.parents[1]
 

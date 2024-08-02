@@ -1,32 +1,57 @@
-
 import numpy.random as randomgenerator
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from cga.individual import *
+from cga.problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
 
-"""
-    Byte Uniform crossover operator defined in (Satman, 2013). 
-    The Byte Uniform crossover operator is a method used in genetic algorithms 
-    to create new offspring by uniformly combining bytes from two parent solutions. 
-    In this operator, each byte position in the offspring is chosen randomly from 
-    one of the corresponding bytes in the parent solutions with equal probability. 
-    This technique ensures that the genetic material from both parents is evenly 
-    represented in the offspring, promoting genetic diversity and allowing for
-    a thorough exploration of the solution space. Byte Uniform crossover is particularly 
-    useful when working with byte-level data representations, providing a straightforward 
-    yet effective means of recombining parent solutions.
-"""
-
 class ByteUniformCrossover:
+    """
+    ByteUniformCrossover operator defined in (Satman, 2013). ByteUniformCrossover performs a 
+    uniform crossover at the byte level on a pair of parent individuals to produce offspring individuals.
+
+    Parameters
+    ----------
+    parents : list
+        A list containing two parent individuals.
+    problem : AbstractProblem
+        The problem instance that provides the fitness function.
+    """
+
     def __init__(self, parents: list, problem: AbstractProblem):
+        """
+        Initialize the ByteUniformCrossover object.
+
+        Parameters
+        ----------
+        parents : list
+            A list containing two parent individuals.
+        problem : AbstractProblem
+            The problem instance that provides the fitness function.
+        """
         self.parents = parents
         self.problem = problem
 
     def combine(self, p1: Individual, p2: Individual, locationsource: Individual) -> Individual:
+        """
+        Combine two parent individuals using uniform crossover at the byte level to produce a single offspring.
 
+        Parameters
+        ----------
+        p1 : Individual
+            The first parent individual.
+        p2 : Individual
+            The second parent individual.
+        locationsource : Individual
+            The individual from which to copy positional information for the offspring.
+
+        Returns
+        -------
+        Individual
+            The resulting offspring individual.
+        """
         child_ch = []
         for k in range(len(p1.chromosome)):
+            # Convert the k-th gene of the parents to bytes
             p1_byte_ch = list(struct.pack("d", p1.chromosome[k]))
             p2_byte_ch = list(struct.pack("d", p2.chromosome[k]))
 
@@ -51,7 +76,14 @@ class ByteUniformCrossover:
         return indv
 
     def get_recombinations(self) -> List[Individual]:
+        """
+        Perform the uniform crossover on the parent individuals to produce offspring.
 
+        Returns
+        -------
+        List[Individual]
+            A list containing the offspring individuals.
+        """
         p1 = self.parents[0]
         p2 = self.parents[1]
 

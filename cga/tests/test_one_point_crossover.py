@@ -1,6 +1,6 @@
-from problems.single_objective.discrete.binary.one_max import OneMax
-from recombination.one_point_crossover import OnePointCrossover
-from individual import Individual
+from cga.problems.single_objective.discrete.binary.one_max import OneMax
+from cga.recombination.one_point_crossover import OnePointCrossover
+from cga.individual import Individual
 
 
 def test_one_point_crossover():

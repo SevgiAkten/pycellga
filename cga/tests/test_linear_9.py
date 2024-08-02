@@ -1,4 +1,4 @@
-from neighborhoods.linear_9 import Linear9
+from cga.neighborhoods.linear_9 import Linear9
 
 
 def test_linear_9():

@@ -1,39 +1,64 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 from numpy import random
 
-"""
-    The P-Peak (P-PEAK) Problem is a benchmark function used in optimization, known for its complex and multi-modal landscape. 
-    It is designed to test optimization algorithms' ability to handle problems with a specified number of peaks (P), where each 
-    peak represents a local optimum. The objective is to navigate through a rugged search space with multiple local optima and 
-    identify the global optimum among them. The P-PEAK function evaluates the performance of algorithms in exploring and exploiting 
-    diverse areas of the search space, effectively balancing exploration to discover new peaks and exploitation to refine solutions 
-    around known peaks. It is valuable for assessing the robustness and efficiency of optimization techniques in handling complex, 
-    high-dimensional problem domains with multiple significant features.
-
-    References
-    1. De Jong, K.A., Potter, M.A. & Spears, W.M. (1997). Using problem generators to explore the e®ects of epistasis. In T. Back, editor, Proceedings of the Seventh ICGA, Morgan Kaufmann, 338-345.
-    2. Alba, E., Dorronsoro, B., Giacobini, M., & Tomassini, M. (2004). Decentralized cellular evolutionary algorithms. International Journal of Applied Mathematics and Computer Science, 14(3), 101-117.
-"""
-# Length of chromosomes = 100
-# Maximum Fitness Value = 1.0
-
 class Peak(AbstractProblem):
-    def f(self, x: list) -> float:
+    """
+    Represents the Peak problem.
 
+    The Peak problem evaluates the fitness of a chromosome based on its 
+    distance to a set of target peaks.
+
+    Attributes
+    ----------
+    None
+
+    Methods
+    -------
+    f(x: list) -> float
+        Evaluates the fitness of a given chromosome.
+    
+    Notes
+    -----
+    # Length of chromosomes = 100
+    # Maximum Fitness Value = 1.0
+    """
+
+    def f(self, x: list) -> float:
+        """
+        Evaluates the fitness of a given chromosome for the Peak problem.
+
+        The fitness function calculates the distance between the given 
+        chromosome and a set of randomly generated target peaks.
+
+        Parameters
+        ----------
+        x : list
+            A list representing the chromosome, where each element is a binary 
+            value (0 or 1).
+
+        Returns
+        -------
+        float
+            The fitness value of the chromosome, normalized to a range of 0.0 to 1.0.
+        """
+        
+        # Seed the random number generator for reproducibility
         random.seed(100)
 
         problem_length = len(x)
         number_of_peaks = 100
-        p_target = list()
-        p_target = [[random.randint(2) for g in range(100)]
-                    for h in range(100)]
+        
+        # Generate target peaks
+        p_target = [[random.randint(2) for _ in range(problem_length)] for _ in range(number_of_peaks)]
 
-        for m in range(number_of_peaks):
-            distance = 0
-            for n in range(problem_length):
-                if (p_target[m][n] != x[m][n]):
-                    distance += 1
+        # Calculate the distance to the nearest peak
+        min_distance = float('inf')
+        for peak in p_target:
+            distance = sum(1 for xi, pi in zip(x, peak) if xi != pi)
+            if distance < min_distance:
+                min_distance = distance
 
-        fitness = distance/100.0
+        # Normalize the fitness value
+        fitness = min_distance / problem_length
 
         return round(fitness, 3)

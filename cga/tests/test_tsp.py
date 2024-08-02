@@ -1,7 +1,5 @@
-from problems.single_objective.discrete.permutation.tsp import Tsp
-
+from cga.problems.single_objective.discrete.permutation.tsp import Tsp
 import random
-
 
 def test_tsp():
 

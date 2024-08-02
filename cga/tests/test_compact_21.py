@@ -1,4 +1,4 @@
-from neighborhoods.compact_21 import Compact21
+from cga.neighborhoods.compact_21 import Compact21
 
 
 def test_compact_21():

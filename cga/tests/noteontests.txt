@@ -1,5 +1,9 @@
-Tests can be run by typing
+Tests can be run by typing:
 
-$> pytest *
+$ pytest * or pytest -v
 
-in tests folder. 
+in the tests folder.
+
+It also works from the main path with:
+
+$ pytest -v

@@ -1,24 +1,45 @@
-from problems.abstract_problem import AbstractProblem
+from cga.problems.abstract_problem import AbstractProblem
 import numpy as np
 from numpy import power as pw
 
-"""
-    The Modified Schaffer Function #2 is a benchmark function used in continuous optimization problems. It is an adaptation 
-    of the original Schaffer function, featuring a complex landscape with a global minimum and several local minima. This 
-    modified version alters the function's structure to create a challenging surface with varying degrees of smoothness and 
-    oscillation. The function is designed to test optimization algorithms' effectiveness in exploring and exploiting intricate 
-    search spaces. It evaluates the ability of algorithms to converge to the global optimum despite the presence of numerous 
-    local optima. The Modified Schaffer Function #2 provides a rigorous test of the robustness and efficiency of optimization 
-    techniques in handling multi-dimensional and complex problem domains.
-"""
-# -100 ≤ xi ≤ 100     i = 1,…,n
-# global minumum at f(0,...,0) = 0
-
-# Modified Schaffer function #2
-
 class Schaffer2(AbstractProblem):
+    """
+    Modified Schaffer function #2 implementation for optimization problems.
+
+    The Modified Schaffer function #2 is widely used for testing optimization algorithms.
+    The function is usually evaluated on the hypercube x_i ∈ [-100, 100], for all i = 1, 2, ..., n.
+
+    Attributes
+    ----------
+    None
+
+    Methods
+    -------
+    f(X: list) -> float
+        Calculates the Modified Schaffer function #2 value for a given list of variables.
+
+    Notes
+    -----
+    -100 ≤ xi ≤ 100 for i = 1,…,n
+    Global minimum at f(0,...,0) = 0
+    """
+
     def f(self, X: list) -> float:
+        """
+        Calculate the Modified Schaffer function #2 value for a given list of variables.
+
+        Parameters
+        ----------
+        X : list
+            A list of float variables.
+
+        Returns
+        -------
+        float
+            The Modified Schaffer function #2 value.
+        """
         fitness = 0.0
-        for i in range(len(X)-1):
-            fitness += (0.5 + ((pw(np.sin(pw(X[i],2)-pw(X[i+1],2)), 2) - 0.5) / pw((1 + 0.001*(pw(X[i],2) + pw(X[i+1],2))), 2)))
+        for i in range(len(X) - 1):
+            fitness += (0.5 + ((pw(np.sin(pw(X[i], 2) - pw(X[i + 1], 2)), 2) - 0.5) /
+                               pw((1 + 0.001 * (pw(X[i], 2) + pw(X[i + 1], 2))), 2)))
         return round(fitness, 3)

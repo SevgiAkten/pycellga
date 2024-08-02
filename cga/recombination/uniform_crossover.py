@@ -1,27 +1,53 @@
-
 import numpy.random as randomgenerator
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from cga.individual import *
+from cga.problems.abstract_problem import AbstractProblem
 from typing import List
 
-"""
-    The Uniform crossover operator is a genetic algorithm technique used to produce offspring 
-    by randomly combining genes from two parent solutions. Instead of relying on a fixed crossover 
-    point or range, Uniform crossover selects each gene position independently, with an equal 
-    probability of being inherited from either parent. This random selection process ensures 
-    that each gene in the offspring has an equal chance of coming from either parent, promoting 
-    genetic diversity and allowing for a more thorough exploration of the solution space. 
-    Uniform crossover is particularly effective in problems where a balanced mix of traits from 
-    both parents is desired, as it avoids the bias of segment-based crossover methods and provides 
-    a high degree of recombination flexibility.
-"""
-
 class UniformCrossover:
+    """
+    UniformCrossover performs a uniform crossover on a pair of parent individuals
+    to produce offspring individuals.
+
+    Parameters
+    ----------
+    parents : list
+        A list containing two parent individuals.
+    problem : AbstractProblem
+        The problem instance that provides the fitness function.
+    """
+
     def __init__(self, parents: list, problem: AbstractProblem):
+        """
+        Initialize the UniformCrossover object.
+
+        Parameters
+        ----------
+        parents : list
+            A list containing two parent individuals.
+        problem : AbstractProblem
+            The problem instance that provides the fitness function.
+        """
         self.parents = parents
         self.problem = problem
 
     def combine(self, p1: Individual, p2: Individual, locationsource: Individual) -> Individual:
+        """
+        Combine two parent individuals using uniform crossover to produce a single offspring.
+
+        Parameters
+        ----------
+        p1 : Individual
+            The first parent individual.
+        p2 : Individual
+            The second parent individual.
+        locationsource : Individual
+            The individual from which to copy positional information for the offspring.
+
+        Returns
+        -------
+        Individual
+            The resulting offspring individual.
+        """
         chsize = len(p1.chromosome)
         child = [0 for i in range(chsize)]
         for i in range(chsize):
@@ -38,7 +64,14 @@ class UniformCrossover:
         return indv
 
     def get_recombinations(self) -> List[Individual]:
+        """
+        Perform the uniform crossover on the parent individuals to produce offspring.
 
+        Returns
+        -------
+        List[Individual]
+            A list containing the offspring individuals.
+        """
         p1 = self.parents[0]
         p2 = self.parents[1]
 

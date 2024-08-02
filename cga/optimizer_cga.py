@@ -1,10 +1,11 @@
 import numpy as np
-from population import *
-from selection.tournament_selection import *
-from recombination.one_point_crossover import *
-from mutation.bit_flip_mutation import *
-from problems.single_objective.discrete.binary.one_max import OneMax
+from cga.population import *
+from cga.selection.tournament_selection import *
+from cga.recombination.one_point_crossover import *
+from cga.mutation.bit_flip_mutation import *
+from cga.problems.single_objective.discrete.binary.one_max import OneMax
 import time
+from typing import Callable, List, Tuple
 
 
 def optimize(
@@ -18,10 +19,56 @@ def optimize(
     known_best: float,
     k_tournament: int,
     problem: AbstractProblem,
-    selection,
-    recombination,
-    mutation
-) -> tuple:
+    selection: Callable,
+    recombination: Callable,
+    mutation: Callable
+) -> Tuple[dict, dict, List[float], List[float], float]:
+    """
+    Optimize the given problem using a genetic algorithm.
+
+    Parameters
+    ----------
+    n_cols : int
+        Number of columns in the population grid.
+    n_rows : int
+        Number of rows in the population grid.
+    n_gen : int
+        Number of generations to evolve.
+    ch_size : int
+        Size of the chromosome.
+    gen_type : str
+        Type of the genome representation (e.g., 'Binary', 'Permutation', 'Real').
+    p_crossover : float
+        Probability of crossover (between 0 and 1).
+    p_mutation : float
+        Probability of mutation (between 0 and 1).
+    known_best : float
+        Known best solution for gap calculation.
+    k_tournament : int
+        Size of the tournament for selection.
+    problem : AbstractProblem
+        The problem instance used for fitness evaluation.
+    selection : Callable
+        Function or class used for selecting parents.
+    recombination : Callable
+        Function or class used for recombination (crossover).
+    mutation : Callable
+        Function or class used for mutation.
+
+    Returns
+    -------
+    Tuple[dict, dict, List[float], List[float], float]
+        optimizer_result : dict
+            Best solution details including chromosome, fitness value, and generation found.
+        parameters : dict
+            Optimization parameters including number of generations, population size, crossover, mutation probabilities, and tournament size.
+        best_objectives : List[float]
+            List of best fitness values found over generations.
+        avg_objectives : List[float]
+            List of average fitness values over generations.
+        elapsed_time : float
+            Time taken to complete the optimization in seconds.
+    """
 
     pop_size = n_cols * n_rows
     best_solutions = []
@@ -48,9 +95,9 @@ def optimize(
     mean = sum(map(lambda x: x.fitness_value, pop_list)) / len(pop_list)
     avg_objectives.append(mean)
 
-    # -----------------------------------------------------------------
-    g = 1
-    while g != n_gen + 1:
+    # Evolutionary Algorithm Loop
+    generation = 1
+    while generation != n_gen + 1:
         for c in range(pop_size):
             offsprings = []
             parents = selection(pop_list, c).get_parents()
@@ -77,7 +124,7 @@ def optimize(
                 else:
                     pass
 
-            # # Replacement: Replace if better
+                # Replacement: Replace if better
                 if offsprings[p].fitness_value < parents[p].fitness_value:
                     index = pop_list.index(parents[p])
                     new_p = offsprings[p]
@@ -96,18 +143,19 @@ def optimize(
             best_ever_solution = [
                 pop_list_ordered[0].chromosome,
                 pop_list_ordered[0].fitness_value,
-                g,
+                generation,
             ]
         else:
             pass
 
         mean = sum(map(lambda x: x.fitness_value, pop_list)) / len(pop_list)
         avg_objectives.append(mean)
-
+        
+        # Print progress (optional)
         # print(
         #     f"{g} - {pop_list_ordered[0].chromosome} - {pop_list_ordered[0].fitness_value}"
         # )
-        g += 1
+        generation += 1
     try:
         gap = (best_ever_solution[1]-known_best)*100/known_best
     except ZeroDivisionError:

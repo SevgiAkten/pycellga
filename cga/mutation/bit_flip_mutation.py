@@ -1,36 +1,59 @@
-
 import numpy as np
-from individual import *
-from problems.abstract_problem import AbstractProblem
-
-"""
-    The Bit Flip Mutation operator is a genetic algorithm technique used to introduce random 
-    changes in binary-encoded solutions by flipping individual bits. During mutation, each bit 
-    in a binary string is independently flipped (i.e., changed from 0 to 1 or from 1 to 0) with 
-    a given probability. This method introduces genetic diversity by randomly altering the genetic 
-    material of the solutions, which helps in exploring new areas of the solution space and 
-    preventing premature convergence to local optima. Bit Flip Mutation is particularly effective 
-    in problems where solutions are represented as binary strings, as it provides a straightforward 
-    mechanism for introducing variability and maintaining diversity within the population.
-"""
-
+from cga.individual import *
+from cga.problems.abstract_problem import AbstractProblem
 
 class BitFlipMutation:
+    """
+    BitFlipMutation performs a bit flip mutation on an individual in a Genetic Algorithm.
+
+    Parameters
+    ----------
+    mutation_cand : Individual, optional
+        The candidate individual to be mutated (default is None).
+    problem : AbstractProblem, optional
+        The problem instance that provides the fitness function (default is None).
+    """
+
     def __init__(self, mutation_cand: Individual = None, problem: AbstractProblem = None):
+        """
+        Initialize the BitFlipMutation object.
+
+        Parameters
+        ----------
+        mutation_cand : Individual, optional
+            The candidate individual to be mutated (default is None).
+        problem : AbstractProblem, optional
+            The problem instance that provides the fitness function (default is None).
+        """
         self.mutation_cand = mutation_cand
         self.problem = problem
 
     def mutate(self) -> Individual:
+        """
+        Perform a bit flip mutation on the candidate individual.
 
+        A single bit in the candidate's chromosome is randomly selected and flipped
+        (i.e., a 0 is changed to a 1, or a 1 is changed to a 0).
+
+        Returns
+        -------
+        Individual
+            A new individual with the mutated chromosome.
+        """
+        # Convert the chromosome to a list to allow mutation
         m_ch = list(self.mutation_cand.chromosome)
+        
+        # Randomly select an index in the chromosome
         index = np.random.randint(0, len(m_ch))
+        
+        # Flip the bit at the selected index
         if m_ch[index] == 0:
             m_ch[index] = 1
         else:
             m_ch[index] = 0
 
+        # Create a new Individual with the mutated chromosome
         mutated = Individual()
-
         mutated.chromosome = m_ch
         mutated.ch_size = len(m_ch)
         mutated.position = self.mutation_cand.position

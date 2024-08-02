@@ -1,24 +1,37 @@
-from problems.abstract_problem import AbstractProblem
-
-"""
-    The Maximum Cut (MAXCUT) problem is a benchmark function used in combinatorial optimization, specifically related to 
-    graph theory. The objective of the MAXCUT problem is to find a partition of the vertices of a graph into two subsets 
-    such that the number of edges between the subsets is maximized. The function represents the challenge of optimizing 
-    graph partitioning to achieve the largest possible cut value. The MAXCUT function evaluates an algorithm's ability to 
-    explore different partitions, balance exploration and exploitation, and find solutions that maximize the cut size. It is 
-    valuable for assessing the performance of optimization techniques in handling complex, combinatorial problems and is 
-    widely used in various applications involving network design, clustering, and computational graph theory.
-    
-    References
-    Alba, E. and Dorronsoro B., 2008, Cellular genetic algorithms, Operations research/computer science interfaces series, Springer, US, ISBN: 978-0-387-77609-5.
-"""
-# Length of chromosomes = 100
-# Maximum Fitness Value = 1077.0
-# there is a bug that it find sometimes the fitness is bigger than the max, how it can be possible not solved yet
-
+from cga.problems.abstract_problem import AbstractProblem
 
 class Maxcut100(AbstractProblem):
+    """
+    A class used to represent the Maximum Cut (MAXCUT) function for 100 nodes.
+    
+    Attributes
+    ----------
+    None
+
+    Methods
+    -------
+    f(x: list) -> float
+        Calculates the fitness value of a given chromosome.
+
+    Notes
+    -----
+    Length of chromosomes = 100
+    Maximum Fitness Value = 1077.0
+    """
     def f(self, x: list) -> float:
+        """
+        Calculates the fitness value of a given chromosome for the Maxcut problem.
+
+        Parameters
+        ----------
+        x : list
+            A list representing a chromosome.
+
+        Returns
+        -------
+        float
+            The fitness value of the chromosome.
+        """
 
         problema = [
             [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000,

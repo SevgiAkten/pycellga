@@ -1,10 +1,14 @@
-from problems.single_objective.discrete.binary.one_max import OneMax
-from recombination.two_point_crossover import TwoPointCrossover
-from individual import Individual
-
+import numpy as np
+from cga.problems.single_objective.discrete.binary.one_max import OneMax
+from cga.recombination.two_point_crossover import TwoPointCrossover
+from cga.individual import Individual
 
 def test_two_point_crossover():
+    """
+    Test the TwoPointCrossover class implementation.
 
+    This test verifies the functionality of the two-point crossover on a pair of parent individuals.
+    """
     CHSIZE = 10
 
     indv1 = Individual(gen_type="Binary", ch_size=CHSIZE)
@@ -28,3 +32,6 @@ def test_two_point_crossover():
 
     for i in range(CHSIZE):
         assert child2.chromosome[i] == 1 or child2.chromosome[i] == 0
+
+if __name__ == "__main__":
+    test_two_point_crossover()
