@@ -1,6 +1,7 @@
-from cga.problems.abstract_problem import AbstractProblem
 import numpy as np
 from numpy import power as pw
+from cga.problems.abstract_problem import AbstractProblem
+
 
 class Schaffer2(AbstractProblem):
     """

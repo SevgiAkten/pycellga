@@ -39,5 +39,5 @@ class Holzman(AbstractProblem):
         """
         fitness = 0.0
         for i in range(len(x)):
-            fitness += i * pw(x[i], 4)
+            fitness += (i + 1) * pw(x[i], 4)
         return round(fitness, 3)

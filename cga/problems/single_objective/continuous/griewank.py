@@ -8,10 +8,6 @@ class Griewank(AbstractProblem):
     The Griewank function is widely used for testing optimization algorithms.
     The function is usually evaluated on the hypercube x_i ∈ [-600, 600], for all i = 1, 2, ..., n.
 
-    Attributes
-    ----------
-    None
-
     Methods
     -------
     f(X: list) -> float
@@ -37,12 +33,7 @@ class Griewank(AbstractProblem):
         float
             The Griewank function value.
         """
-        sum = 0
-        for x in X:
-            sum += x * x
-
-        fitness = 1
-        for i in range(len(X)):
-            fitness *= math.cos(X[i] / math.sqrt(i + 1))
-
-        return round((1 + sum / 4000 - fitness), 3)
+        sum_sq = sum(x ** 2 for x in X)
+        prod_cos = math.prod(math.cos(X[i] / math.sqrt(i + 1)) for i in range(len(X)))
+        fitness = 1 + sum_sq / 4000 - prod_cos
+        return round(fitness, 3)

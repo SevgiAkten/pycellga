@@ -39,9 +39,10 @@ class Chichinadze(AbstractProblem):
         """
         x = X[0]
         y = X[1]
-        fitness = (np.power(x, 2) - 12 * x + 11 + 
-                   (10 * np.cos((np.pi * x) / 2)) +
-                   (8 * np.sin(5 * np.pi * x)) - 
-                   (1.0 / np.sqrt(5) * np.exp(-(np.power((y - 0.5), 2)) / 2)))
+        term1 = x**2 - 12 * x + 11
+        term2 = 10 * np.cos(np.pi * x / 2)
+        term3 = 8 * np.sin(5 * np.pi * x)
+        term4 = (1.0 / np.sqrt(5)) * np.exp(-((y - 0.5)**2) / 2)
+        fitness = term1 + term2 + term3 - term4
         
         return round(fitness, 4)

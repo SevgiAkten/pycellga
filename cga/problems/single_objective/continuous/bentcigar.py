@@ -1,5 +1,6 @@
 from cga.problems.abstract_problem import AbstractProblem
 from numpy import power as pw
+
 class Bentcigar(AbstractProblem):
     """
     Bentcigar function implementation for optimization problems.
@@ -36,14 +37,10 @@ class Bentcigar(AbstractProblem):
         float
             The Bentcigar function value.
         """
-        a = 0.0
-        b = 0.0
-        sum = 0.0
-        fitness = 0.0
-        
         a = pw(X[0], 2)
         b = pw(10, 6)
-        for i in range(2, len(X)):
+        sum = 0.0
+        for i in range(1, len(X)):
             sum += pw(X[i], 2)
         
         fitness = a + (b * sum)
