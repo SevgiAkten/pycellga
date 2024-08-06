@@ -4,6 +4,8 @@
 *.venv
 *.vscode
 *.DS_Store
-bin/** */
-lib/** */
-include/** */
+bin/** 
+lib/** 
+include/** 
+share/**
+
