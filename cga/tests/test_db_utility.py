@@ -1,8 +1,26 @@
 from cga.db_utility import DBUtility
 import os
 
-
 def test_db_utility():
+    """
+    Test the DBUtility class implementation.
+
+    This test checks the functionality of the DBUtility class for creating tables,
+    inserting optimization results, and retrieving data from the database. It uses
+    predefined inputs and compares the outputs to the expected values.
+
+    The test performs the following steps:
+    1. Create a temporary database.
+    2. Create tables in the database.
+    3. Insert optimization results into the database.
+    4. Retrieve the inserted data and verify its correctness.
+    5. Clean up by closing the database connection and removing the temporary database.
+
+    Raises
+    ------
+    AssertionError
+        If the retrieved data does not match the expected values.
+    """
 
     tmpdb = "./temporary.db"
     if os.path.exists(tmpdb):

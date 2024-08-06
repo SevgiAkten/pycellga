@@ -9,6 +9,11 @@ def fms_instance():
     Fixture for creating an instance of the Fms class.
 
     This fixture returns an instance of the Fms class to be used in tests.
+
+    Returns
+    -------
+    Fms
+        An instance of the Fms class.
     """
     return Fms()
 
@@ -18,6 +23,25 @@ def test_fms(fms_instance):
 
     This test checks the calculation of the FMS function value for a given list of binary variables.
     It uses a predefined input and compares the output to the expected value.
+
+    Parameters
+    ----------
+    fms_instance : Fms
+        An instance of the Fms class.
+
+    Notes
+    -----
+    The test uses a randomly generated sample input chromosome of length 192 and checks if the function output is a float
+    and non-negative. Additional checks with known values can be added for more thorough testing.
+
+    Assertions
+    ----------
+    - The fitness value should be a float.
+    - The fitness value should be non-negative, as it's a sum of squares of differences.
+
+    Examples
+    --------
+    >>> test_fms(fms_instance)
     """
     # Define a sample input chromosome (binary list)
     sample_chromosome = [random.randint(2) for _ in range(192)]

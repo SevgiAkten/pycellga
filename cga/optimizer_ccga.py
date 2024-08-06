@@ -1,5 +1,5 @@
-from population import *
-from individual import *
+from cga.population import *
+from cga.individual import *
 from cga.selection.tournament_selection import *
 from cga.recombination.one_point_crossover import *
 from cga.mutation.bit_flip_mutation import *

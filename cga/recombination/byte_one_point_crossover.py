@@ -1,5 +1,5 @@
 import numpy as np
-from cga.individual import *
+from cga.individual import Individual
 from cga.problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
@@ -52,26 +52,26 @@ class ByteOnePointCrossover:
             p2_byte_ch = list(struct.pack("d", p2.chromosome[k]))
 
             # Determine crossover point
-            co_point = np.random.randint(len(p1.chromosome))
+            co_point = np.random.randint(1, len(p1_byte_ch))
 
             # Segment the bytes at the crossover point
-            p1_seg1 = list(p1_byte_ch[0:co_point])
-            p1_seg2 = list(p1_byte_ch[co_point:])
+            p1_seg1 = p1_byte_ch[0:co_point]
+            p1_seg2 = p1_byte_ch[co_point:]
 
-            p2_seg1 = list(p2_byte_ch[0:co_point])
-            p2_seg2 = list(p2_byte_ch[co_point:])
+            p2_seg1 = p2_byte_ch[0:co_point]
+            p2_seg2 = p2_byte_ch[co_point:]
 
             # First child
             new_chromosome_1_part = p1_seg1 + p2_seg2
             child_part_byte_1 = bytearray(new_chromosome_1_part)
-            child_part_float_1 = list(struct.unpack("d", child_part_byte_1))
-            child_ch1.append(round(child_part_float_1[0], 5))
+            child_part_float_1 = struct.unpack("d", child_part_byte_1)[0]
+            child_ch1.append(round(child_part_float_1, 5))
 
             # Second child
             new_chromosome_2_part = p1_seg2 + p2_seg1
             child_part_byte_2 = bytearray(new_chromosome_2_part)
-            child_part_float_2 = list(struct.unpack("d", child_part_byte_2))
-            child_ch2.append(round(child_part_float_2[0], 5))
+            child_part_float_2 = struct.unpack("d", child_part_byte_2)[0]
+            child_ch2.append(round(child_part_float_2, 5))
 
         # Create the first child individual
         child_1 = Individual()

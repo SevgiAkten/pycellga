@@ -1,5 +1,6 @@
 from cga.problems.abstract_problem import AbstractProblem
 import numpy as np
+
 class Rothellipsoid(AbstractProblem):
     """
     Rotated Hyper-Ellipsoid function implementation for optimization problems.
@@ -37,9 +38,9 @@ class Rothellipsoid(AbstractProblem):
             The Rotated Hyper-Ellipsoid function value.
         """
         fitness = 0.0
-        d = len(x) + 1
+        n = len(x)
 
-        for i in range(1, d):
-            fitness += (d + 1 - i) * np.power(x[i - 1], 2)
+        for i in range(n):
+            fitness += (i + 2) * np.power(x[i], 2)
 
         return round(fitness, 3)

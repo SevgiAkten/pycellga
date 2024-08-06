@@ -46,3 +46,4 @@ class Levy(AbstractProblem):
                 (pw((x[i + 1] - 1), 2)) * (1 + pw((math.sin(2 * x[i + 1] * math.pi)), 2))
             )
         return round(fitness, 3)
+

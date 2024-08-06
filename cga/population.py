@@ -80,7 +80,7 @@ class Population:
 
             # Initialize chromosome and evaluate fitness for MCCGA
             # ind.chromosome = ind.generate_candidate(self.vector)
-            # ind_byte_ch = byte_operators.bits_to_floats(ind.chromosome)
+            # ind_byte_ch = bits_to_floats(ind.chromosome)
             # ind.fitness_value = self.problem.f(ind_byte_ch)
 
             ind.position = grid[i]

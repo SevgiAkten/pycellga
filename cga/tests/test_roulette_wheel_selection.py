@@ -1,10 +1,25 @@
-
 from cga.problems.single_objective.discrete.binary.one_max import OneMax
 from cga.selection.roulette_wheel_selection import RouletteWheelSelection
 from cga.population import Population
 
-
 def test_roulette_wheel_selection():
+    """
+    Test the RouletteWheelSelection class implementation.
+
+    This test verifies the functionality of the RouletteWheelSelection for selecting parent individuals 
+    from a population. It ensures that the selected parents have valid attributes and different chromosomes 
+    and positions.
+
+    The test performs the following checks:
+    1. Each selected parent has the correct chromosome size and a non-None fitness value.
+    2. Each selected parent has valid types for neighbors_positions and position attributes.
+    3. The selected parents have different chromosomes and positions.
+
+    Raises
+    ------
+    AssertionError
+        If any of the conditions for the parent selection are not met.
+    """
     CH_SIZE = 16
     N_ROWS = 4
     N_COLS = 4
@@ -12,16 +27,22 @@ def test_roulette_wheel_selection():
     problem = OneMax()
     c = 0
 
-    pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE,
-                          problem).initial_population()
+    # Initialize the population
+    pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
 
+    # Perform roulette wheel selection to get parent individuals
     parents = RouletteWheelSelection(pop_list, c).get_parents()
 
+    # Verify the attributes of each selected parent
     for parent in parents:
-        assert parent.ch_size == CH_SIZE
-        assert parent.fitness_value != None
-        assert type(parent.neighbors_positions) == list
-        assert type(parent.position) == tuple
+        assert parent.ch_size == CH_SIZE, "Parent chromosome size does not match expected size."
+        assert parent.fitness_value is not None, "Parent fitness value is None."
+        assert isinstance(parent.neighbors_positions, list), "Parent neighbors_positions is not of type list."
+        assert isinstance(parent.position, tuple), "Parent position is not of type tuple."
 
-    assert parents[0].chromosome != parents[1].chromosome
-    assert parents[0].position != parents[1].position
+    # Check that the selected parents have different chromosomes and positions
+    assert parents[0].chromosome != parents[1].chromosome, "Selected parents have the same chromosome."
+    assert parents[0].position != parents[1].position, "Selected parents have the same position."
+
+if __name__ == "__main__":
+    test_roulette_wheel_selection()

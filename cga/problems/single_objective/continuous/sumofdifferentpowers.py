@@ -1,26 +1,9 @@
-from cga.problems.abstract_problem import AbstractProblem
 import numpy as np
+from cga.problems.abstract_problem import AbstractProblem
 
 class Sumofdifferentpowers(AbstractProblem):
     """
     Sum of Different Powers function implementation for optimization problems.
-
-    The Sum of Different Powers function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-10, 10], for all i = 1, 2, ..., n.
-
-    Attributes
-    ----------
-    None
-
-    Methods
-    -------
-    f(x: list) -> float
-        Calculates the Sum of Different Powers function value for a given list of variables.
-
-    Notes
-    -----
-    -10 ≤ xi ≤ 10 for i = 1,…,n
-    Global minimum at f(0,....,0) = 0
     """
 
     def f(self, x: list) -> float:
@@ -39,8 +22,8 @@ class Sumofdifferentpowers(AbstractProblem):
         """
         fitness = 0.0
 
-        for i in range(1, len(x)):
-            a = np.abs(x[i - 1])
+        for i in range(len(x)):
+            a = np.abs(x[i])
             b = i + 1
             fitness += np.power(a, b)
 

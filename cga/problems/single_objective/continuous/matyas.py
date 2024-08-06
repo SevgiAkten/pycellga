@@ -37,7 +37,11 @@ class Matyas(AbstractProblem):
         float
             The Matyas function value.
         """
+        # Ensure X has at least 2 elements
+        if len(X) < 2:
+            raise ValueError("At least two variables are required for the Matyas function.")
+        
         fitness = 0.0
         for i in range(len(X) - 1):
             fitness += 0.26 * (pw(X[i], 2) + pw(X[i + 1], 2)) - 0.48 * X[i] * X[i + 1]
-        return round(fitness, 3)
+        return round(fitness, 2)
