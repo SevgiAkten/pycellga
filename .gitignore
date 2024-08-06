@@ -4,3 +4,11 @@
 *.venv
 *.vscode
 *.DS_Store
+bin/** 
+lib/** 
+include/** 
+share/**
+lib64/**
+__pycache__/**
+.pytest_cache/**
+
