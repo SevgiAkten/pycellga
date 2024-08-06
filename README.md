@@ -23,6 +23,22 @@ pip install pycellga
 
 Comprehensive documentation is available on the official documentation site.
 
+## Example 
+
+Can we put a small code snipped here, for example finding the global minimum of Ackley function or something more interesting? It would also be nice to see more than one feature of the package with combining different algorithms and cases, e.g. different operators, byte-bit encodings, permutation, binary, or real, etc.
+
+```python
+# The function to be minimized
+def f(x):
+    return (x[0] - 3.14159264)**2 + (x[1] - 2.71828)**2
+
+result = optimizer(f, ....)
+
+# The result is 
+# x[0] = 3.14159265
+# x[1] = 2.71828
+```
+
 ## Contributing
 
 Contributions are welcome! Please read the contributing guidelines first.
