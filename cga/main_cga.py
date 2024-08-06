@@ -156,8 +156,8 @@ def runSimulation() -> None:
     plt.ylabel("Cost", fontsize=16, fontweight="bold"),
     # plt.show()
 
-
-for x in range(100):
+# You can change the number of runs as necessary.
+for x in range(1):
     print("\n")
     print(x+1)
     runSimulation()
