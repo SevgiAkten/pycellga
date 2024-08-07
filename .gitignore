@@ -12,4 +12,5 @@ lib64/**
 __pycache__/**
 .pytest_cache/**
 paper/paper.pdf
+*.csl
 
