@@ -1,6 +1,6 @@
-from problems.single_objective.discrete.binary.one_max import OneMax
 from recombination.one_point_crossover import OnePointCrossover
 from individual import Individual, GeneType
+from problems.single_objective.discrete.binary.one_max import OneMax
 
 def test_one_point_crossover():
     """
@@ -23,8 +23,8 @@ def test_one_point_crossover():
     CHSIZE = 10
 
     # Create two parent individuals with binary chromosomes of the specified size
-    indv1 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE, problem=OneMax())
-    indv2 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE, problem=OneMax())
+    indv1 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE)
+    indv2 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE)
 
     # Randomize the chromosomes of the parents
     indv1.randomize()
@@ -33,8 +33,7 @@ def test_one_point_crossover():
     parents = [indv1, indv2]
 
     # Initialize the OnePointCrossover with the parent individuals and problem
-    theproblem = OneMax()
-    ucx = OnePointCrossover(parents, theproblem)
+    ucx = OnePointCrossover(parents, OneMax())
 
     # Perform the crossover to get two offspring
     child1, child2 = ucx.get_recombinations()

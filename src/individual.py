@@ -38,7 +38,6 @@ class Individual:
     def __init__(self, 
                  gen_type: GeneType = GeneType.BINARY, 
                  ch_size: int = 0,
-                 problem: AbstractProblem = None,
                  mins : list[float] = [],
                  maxs : list[float] = []):
         """
@@ -57,7 +56,6 @@ class Individual:
         """
         self.gen_type = gen_type
         self.ch_size = ch_size
-        self.problem = problem
         self.chromosome = []
         self.fitness_value = 0
         self.position = (0, 0)

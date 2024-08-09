@@ -86,7 +86,7 @@ class Population:
 
         for i in range(pop_size):
             ind = Individual(gen_type = self.gen_type, ch_size = self.ch_size, 
-                             problem = self.problem, mins = self.mins, maxs = self.maxs)
+                             mins = self.mins, maxs = self.maxs)
                 
             # Initialize chromosome and evaluate fitness for cga, syn_cga and alpha_cga
             if self.method_name in ["cga", "sync_cga", "alpha_cga", "ccga"]:
