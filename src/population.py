@@ -26,7 +26,7 @@ class Population:
     n_cols : int
         The number of columns in the grid.
     gen_type : str
-        The type of genome representation ("Binary", "Permutation", "Real-valued").
+        The type of genome representation ("Binary", "Permutation", "Real").
     problem : AbstractProblem
         The problem instance used to evaluate fitness.
     vector : list
@@ -39,7 +39,9 @@ class Population:
                  n_cols: int = 0, 
                  gen_type: str = "", 
                  problem: AbstractProblem = None, 
-                 vector: list = []):
+                 vector: list = [],
+                 mins : list[float] = [],
+                 maxs : list[float] = []):
         """
         Initialize the Population with the specified parameters.
 
@@ -57,6 +59,10 @@ class Population:
             The problem instance used to evaluate fitness (default is None).
         vector : list, optional
             A list used to generate candidates (default is an empty list).
+        mins: list[float]
+            The minimum values for each gene in the chromosome (for real value optimization).
+        maxs: list[float]
+            The maximum values for each gene in the chromosome (for real value optimization).
         """
         self.method_name = method_name
         self.ch_size = ch_size
@@ -65,6 +71,8 @@ class Population:
         self.gen_type = gen_type
         self.problem = problem
         self.vector = vector
+        self.mins = mins
+        self.maxs = maxs
 
     def initial_population(self) -> List[Individual]:
         """
@@ -81,7 +89,8 @@ class Population:
         grid = Grid(self.n_rows, self.n_cols).make_2d_grid()
 
         for i in range(pop_size):
-            ind = Individual(gen_type = self.gen_type, ch_size = self.ch_size, problem = self.problem)
+            ind = Individual(gen_type = self.gen_type, ch_size = self.ch_size, 
+                             problem = self.problem, mins = self.mins, maxs = self.maxs)
                 
             # Initialize chromosome and evaluate fitness for cga, syn_cga and alpha_cga
             if self.method_name in ["cga", "sync_cga", "alpha_cga", "ccga"]:
