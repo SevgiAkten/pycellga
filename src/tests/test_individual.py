@@ -1,7 +1,7 @@
 import pytest
 from numpy import random
 import random as rd
-from individual import Individual 
+from individual import Individual, GeneType 
 from problems.single_objective.discrete.binary.one_max import OneMax
 from problems.single_objective.continuous.ackley import Ackley
 from problems.single_objective.discrete.permutation.tsp import Tsp
@@ -12,14 +12,14 @@ def setup_individual():
     """
     Fixture to provide an instance of the Individual class with different configurations.
     """
-    return Individual(gen_type="Binary", ch_size=10, problem=OneMax())
+    return Individual(gen_type=GeneType.BINARY, ch_size=10, problem=OneMax())
 
 def test_individual_init():
     """
     Test the initialization of the Individual class.
     """
-    ind = Individual(gen_type="Binary", ch_size=10, problem=OneMax())
-    assert ind.gen_type == "Binary"
+    ind = Individual(gen_type=GeneType.BINARY, ch_size=10, problem=OneMax())
+    assert ind.gen_type == GeneType.BINARY
     assert ind.ch_size == 10
     assert ind.chromosome == []
     assert ind.fitness_value == 0
@@ -31,7 +31,7 @@ def test_randomize_binary():
     """
     Test the randomization of the chromosome for a binary genome type.
     """
-    ind = Individual(gen_type="Binary", ch_size=10, problem=OneMax())
+    ind = Individual(gen_type=GeneType.BINARY, ch_size=10, problem=OneMax())
     ind.randomize()
     assert len(ind.chromosome) == 10
     assert all(gene in [0, 1] for gene in ind.chromosome)
@@ -41,7 +41,7 @@ def test_randomize_permutation():
     Test the randomization of the chromosome for a permutation genome type.
     """
     chsize = 14
-    ind = Individual(gen_type="Permutation", ch_size=chsize, problem=Tsp())
+    ind = Individual(gen_type=GeneType.PERMUTATION, ch_size=chsize, problem=Tsp())
     ind.randomize()
     assert len(ind.chromosome) == chsize
     for i in range(1, chsize+1):
@@ -54,7 +54,7 @@ def test_randomize_real_valued():
     Test the randomization of the chromosome for a real-valued genome type.
     """
     chsize = 10
-    ind = Individual(gen_type="Real", ch_size=chsize, problem=Ackley())
+    ind = Individual(gen_type=GeneType.REAL, ch_size=chsize, problem=Ackley())
     ind.randomize()
     assert len(ind.chromosome) == chsize
     assert all(isinstance(gene, float) for gene in ind.chromosome)

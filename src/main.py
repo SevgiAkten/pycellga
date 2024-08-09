@@ -153,7 +153,7 @@ tuple
 #     n_rows = 5,
 #     n_gen = 100,
 #     ch_size = 10,
-#     gen_type = "Binary",
+#     gen_type = GeneType.BINARY,
 #     problem = optimizer.OneMax(),
 #     selection = optimizer.TournamentSelection)
 

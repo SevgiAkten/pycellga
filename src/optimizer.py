@@ -360,7 +360,7 @@ def alpha_cga(
     ch_size : int
         Size of the chromosome.
     gen_type : str
-        Type of genome representation ("Binary", "Permutation", "Real").
+        Type of genome representation (GeneType.BINARY, "Permutation", "Real").
     p_crossover : float
         Probability of crossover, should be between 0 and 1.
     p_mutation : float
@@ -522,7 +522,7 @@ def ccga(
     ch_size : int
         Size of the chromosome.
     gen_type : str
-        Type of genome representation ("Binary", "Permutation", "Real").
+        Type of genome representation (GeneType.BINARY, "Permutation", "Real").
     problem : AbstractProblem
         The problem instance used to evaluate fitness.
     selection : Callable
@@ -840,26 +840,5 @@ def generate_probability_vector(mins: List[float], maxs: List[float], ntries: in
     return probvector
 
 
-def sample(probvector: List[float]) -> List[int]:
-    """
-    Sample a vector based on the provided probability vector.
 
-    Parameters
-    ----------
-    probvector : List[float]
-        Probability vector for sampling.
-
-    Returns
-    -------
-    List[int]
-        Sampled binary vector.
-    """
-    n = len(probvector)
-    newvector = [0] * n
-
-    for i in range(n):
-        if random.random() < probvector[i]:
-            newvector[i] = 1
-
-    return newvector
 

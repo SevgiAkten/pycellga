@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from mutation.bit_flip_mutation import BitFlipMutation
 from problems.single_objective.discrete.binary.one_max import OneMax
-from individual import Individual
+from individual import Individual, GeneType
 
 def test_bit_flip_mutation():
     """
@@ -37,7 +37,7 @@ def test_bit_flip_mutation():
     CHSIZE = 20
 
     # Create an individual with all zeros
-    ind = Individual("Binary", CHSIZE)
+    ind = Individual(GeneType.BINARY, CHSIZE)
     ind.chromosome = [0] * CHSIZE
     ind.ch_size = CHSIZE
 

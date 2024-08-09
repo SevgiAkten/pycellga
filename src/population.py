@@ -26,7 +26,7 @@ class Population:
     n_cols : int
         The number of columns in the grid.
     gen_type : str
-        The type of genome representation ("Binary", "Permutation", "Real").
+        The type of genome representation (GeneType.BINARY, "Permutation", "Real").
     problem : AbstractProblem
         The problem instance used to evaluate fitness.
     vector : list

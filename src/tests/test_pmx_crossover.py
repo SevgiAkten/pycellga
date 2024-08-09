@@ -1,6 +1,6 @@
 from problems.single_objective.discrete.permutation.tsp import Tsp
 from recombination.pmx_crossover import PMXCrossover
-from individual import Individual
+from individual import Individual, GeneType
 import random
 
 def test_pmx_crossover():
@@ -22,8 +22,8 @@ def test_pmx_crossover():
     CHSIZE = 14
 
     # Create two parent individuals with permutation chromosomes of the specified size
-    indv1 = Individual(gen_type="Permutation", ch_size=CHSIZE)
-    indv2 = Individual(gen_type="Permutation", ch_size=CHSIZE)
+    indv1 = Individual(gen_type=GeneType.PERMUTATION, ch_size=CHSIZE)
+    indv2 = Individual(gen_type=GeneType.PERMUTATION, ch_size=CHSIZE)
 
     # Randomly initialize the chromosomes of the parents with unique permutations
     p1 = list(random.sample(range(1, CHSIZE + 1), CHSIZE))

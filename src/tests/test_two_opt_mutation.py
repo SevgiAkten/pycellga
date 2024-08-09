@@ -1,6 +1,6 @@
 from mutation.two_opt_mutation import TwoOptMutation
 from problems.single_objective.discrete.permutation.tsp import Tsp
-from individual import Individual
+from individual import Individual, GeneType
 import random
 
 def test_two_opt_mutation():
@@ -32,7 +32,7 @@ def test_two_opt_mutation():
     CHSIZE = 14
 
     # Create an individual with a random permutation of integers from 1 to CHSIZE
-    ind = Individual("Permutation", CHSIZE)
+    ind = Individual(GeneType.PERMUTATION, CHSIZE)
     ind.chromosome = list(random.sample(range(1, CHSIZE + 1), CHSIZE))
 
     # Initialize the TSP problem
