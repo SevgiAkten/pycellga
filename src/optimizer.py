@@ -110,7 +110,7 @@ def cga(
     best_objectives = []
     best_ever_solution = []
     avg_objectives = []
-    method_name = "cga"
+    method_name = OptimizationMethod.CGA
 
     # Generate Initial Population
     pop_list = Population(method_name, ch_size, n_rows, n_cols,
@@ -250,7 +250,7 @@ def sync_cga(
     best_objectives = []
     best_ever_solution = []
     avg_objectives = []
-    method_name = "sync_cga"
+    method_name = OptimizationMethod.SYNCGA
 
 
     # Generate Initial Population
@@ -395,7 +395,7 @@ def alpha_cga(
     best_objectives = []
     best_ever_solution = []
     avg_objectives = []
-    method_name = "alpha_cga"
+    method_name = OptimizationMethod.ALPHA_CGA
 
 
     # Generate Initial Population
@@ -547,7 +547,7 @@ def ccga(
     best_ever_solution = []
     avg_objectives = []
     vector = [0.5 for _ in range(ch_size)]
-    method_name = "ccga"
+    method_name = OptimizationMethod.CCGA
 
 
     # Generate Initial Population
@@ -657,7 +657,7 @@ def mcccga(
     best_objectives = []
     best_ever_solution = []
     avg_objectives = []
-    method_name = "mcccga"
+    method_name = OptimizationMethod.MCCCGA
 
     # Generate initial probability vector
     vector = generate_probability_vector(mins, maxs, pop_size)

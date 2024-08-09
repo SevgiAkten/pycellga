@@ -1,6 +1,6 @@
 from problems.single_objective.discrete.binary.one_max import OneMax
 from selection.roulette_wheel_selection import RouletteWheelSelection
-from population import Population
+from population import Population, OptimizationMethod
 from individual import GeneType
 
 def test_roulette_wheel_selection():
@@ -29,7 +29,7 @@ def test_roulette_wheel_selection():
     c = 0
 
     # Initialize the population
-    pop_list = Population("cga", CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
+    pop_list = Population(OptimizationMethod.CGA, CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
 
     # Perform roulette wheel selection to get parent individuals
     parents = RouletteWheelSelection(pop_list, c).get_parents()

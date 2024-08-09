@@ -2,11 +2,18 @@ from typing import List
 from individual import *
 from grid import *
 from neighborhoods.linear_9 import Linear9
-
 from byte_operators import *
-
 from problems.abstract_problem import AbstractProblem
+from enum import Enum 
 
+
+# "cga", "sync_cga", "alpha_cga", "ccga", "mcccga"
+class OptimizationMethod(Enum):
+    CGA = 1
+    SYNCGA = 2
+    ALPHA_CGA = 3
+    CCGA = 4
+    MCCCGA = 5
 
 
 class Population:
@@ -15,6 +22,8 @@ class Population:
 
     Attributes
     ----------
+    method_name : OptimizationMethod
+        The name of the optimization method. Must be one of OptimizationMethod.CGA, OptimizationMethod.SYNCGA, OptimizationMethod.ALPHA_CGA, OptimizationMethod.CCGA, or OptimizationMethod.MCCCGA.
     ch_size : int
         The size of the chromosome.
     n_rows : int
@@ -29,7 +38,7 @@ class Population:
         A list used to generate candidates for the population (relevant for MCCCGA).
     """
     def __init__(self, 
-                 method_name: str = "", 
+                 method_name: OptimizationMethod = OptimizationMethod.CGA, 
                  ch_size: int = 0, 
                  n_rows: int = 0, 
                  n_cols: int = 0, 
@@ -43,6 +52,9 @@ class Population:
 
         Parameters
         ----------
+        method_name : OptimizationMethod.
+            The name of the optimization method. Must be one of OptimizationMethod.CGA, OptimizationMethod.SYNCGA, OptimizationMethod.ALPHA_CGA, OptimizationMethod.CCGA, or OptimizationMethod.MCCCGA.
+            Default is OptimizationMethod.CGA.
         ch_size : int, optional
             The size of the chromosome (default is 0).
         n_rows : int, optional
@@ -89,12 +101,12 @@ class Population:
                              mins = self.mins, maxs = self.maxs)
                 
             # Initialize chromosome and evaluate fitness for cga, syn_cga and alpha_cga
-            if self.method_name in ["cga", "sync_cga", "alpha_cga", "ccga"]:
+            if self.method_name in [OptimizationMethod.CGA, OptimizationMethod.SYNCGA, OptimizationMethod.ALPHA_CGA, OptimizationMethod.CCGA]:
                 ind.chromosome = ind.randomize()
                 ind.fitness_value = self.problem.f(ind.chromosome)
 
             # Initialize chromosome and evaluate fitness for cga and mcccga
-            elif self.method_name in ["mcccga"]:
+            elif self.method_name in [OptimizationMethod.MCCCGA]:
                 ind.chromosome = ind.generate_candidate(self.vector)
                 ind_byte_ch = bits_to_floats(ind.chromosome)
                 ind.fitness_value = self.problem.f(ind_byte_ch)

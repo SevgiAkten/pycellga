@@ -1,6 +1,6 @@
 from problems.single_objective.discrete.binary.one_max import OneMax
 from selection.tournament_selection import TournamentSelection
-from population import Population
+from population import Population, OptimizationMethod
 from individual import GeneType
 
 def test_tournament_selection():
@@ -34,7 +34,7 @@ def test_tournament_selection():
     c = 0
 
     # Initialize the population
-    pop_list = Population("cga",CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
+    pop_list = Population(OptimizationMethod.CGA,CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
 
     # Perform tournament selection to get parent individuals
     parents = TournamentSelection(pop_list, c, K_TOURNAMENT).get_parents()

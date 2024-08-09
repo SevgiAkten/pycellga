@@ -5,7 +5,7 @@ from neighborhoods.linear_9 import Linear9
 from byte_operators import bits_to_floats
 from problems.abstract_problem import AbstractProblem
 from typing import List
-from population import Population
+from population import Population, OptimizationMethod
 
 
 class MockProblem(AbstractProblem):
@@ -34,7 +34,7 @@ def setup_population():
     """
     mock_problem = MockProblem()
     return Population(
-        method_name="cga",
+        method_name=OptimizationMethod.CGA,
         ch_size=10,
         n_rows=3,
         n_cols=3,
