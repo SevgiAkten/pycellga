@@ -85,22 +85,6 @@ class Individual:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome
 
-    def generate_candidate(self, vector: list) -> list:
-        """
-        Generate a candidate chromosome based on the given probability vector.
-
-        Parameters
-        ----------
-        vector : list of float
-            The probability vector used to generate the candidate chromosome.
-
-        Returns
-        -------
-        list
-            The generated candidate chromosome as a list of 0s and 1s.
-        """
-        ind = [1 if random.rand() < p else 0 for p in vector]
-        return ind
 
     def getneighbors_positions(self) -> list:
         """

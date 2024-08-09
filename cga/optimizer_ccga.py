@@ -219,9 +219,5 @@ def generate_candidate(vector: List[float]) -> List[int]:
     List[int]
         Generated chromosome based on the vector probabilities.
     """
-    ind = []
-    for p in vector:
-        ind.append(
-            1) if random.rand() < p else ind.append(0)
-
+    ind = [1 if random.rand() < p else 0 for p in vector]
     return ind

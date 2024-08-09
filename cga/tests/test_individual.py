@@ -65,15 +65,6 @@ def test_illegal_genome_type():
         # Passes the test if an exception is raised
         assert True
 
-def test_generate_candidate():
-    """
-    Test the generation of a candidate chromosome based on a given probability vector.
-    """
-    ind = Individual(gen_type="Binary", ch_size=10)
-    vector = [0.5] * 10
-    candidate = ind.generate_candidate(vector)
-    assert len(candidate) == 10
-    assert all(gene in [0, 1] for gene in candidate)
 
 def test_get_set_neighbors_positions():
     """
