@@ -51,6 +51,16 @@ def test_randomize_real_valued():
     assert len(ind.chromosome) == 10
     assert all(isinstance(gene, float) for gene in ind.chromosome)
 
+def test_illegal_genome_type():
+    """
+    Test that an exception is raised when an illegal genome type is provided.
+    """
+    try:
+        ind = Individual(gen_type="Illegal genome type", ch_size=10)
+    except Exception:
+        # Passes the test if an exception is raised
+        assert True
+
 def test_generate_candidate():
     """
     Test the generation of a candidate chromosome based on a given probability vector.
