@@ -1,7 +1,15 @@
+from enum import Enum 
 from numpy import random
 import numpy as np
 import random as rd
 from problems.abstract_problem import AbstractProblem
+
+
+
+class GeneType(Enum):
+    BINARY = 1
+    PERMUTATION = 2
+    REAL = 3
 
 
 
@@ -21,14 +29,14 @@ class Individual:
         The positions of the individual's neighbors.
     neighbors : list or None
         The list of neighbors for the individual.
-    gen_type : str
-        The type of genome representation ("Binary", "Permutation", "Real").
+    gen_type : GeneType
+        The enum type of genome representation (GeneType.BINARY, GeneType.PERMUTATION, GeneType.REAL).
     ch_size : int
         The size of the chromosome.
     """
 
     def __init__(self, 
-                 gen_type: str = "", 
+                 gen_type: GeneType = GeneType.BINARY, 
                  ch_size: int = 0,
                  problem: AbstractProblem = None,
                  mins : list[float] = [],
@@ -39,7 +47,7 @@ class Individual:
         Parameters
         ----------
         gen_type : str, optional
-            The type of genome representation. Must be one of "Binary", "Permutation", or "Real". (default is "Binary")
+            The type of genome representation. Must be one of GeneType.BINARY, "Permutation", or "Real". (default is GeneType.BINARY)
         ch_size : int
             The size of the chromosome.
         mins: list[float]
@@ -73,18 +81,17 @@ class Individual:
         NotImplementedError
             If the genome type is not implemented.
         """
-        problem_name = self.problem.__class__.__name__
 
-        if self.gen_type == "Binary":
+        if self.gen_type == GeneType.BINARY:
             self.chromosome = [random.randint(2) for i in range(self.ch_size)]
             
-        elif self.gen_type == "Permutation":
+        elif self.gen_type == GeneType.PERMUTATION:
             # Generate a random permutation of the numbers 1 to ch_size.
             # by default random.permutation emits numbers from 0 to ch_size-1
             # so we add 1 to each number to get the desired range.
             self.chromosome = list(np.random.permutation(self.ch_size) + 1)
 
-        elif self.gen_type == "Real":
+        elif self.gen_type == GeneType.REAL:
             if len(self.mins) > 0:
                 assert len(self.mins) == len(self.maxs) == self.ch_size
                 self.chromosome = [rd.uniform(self.mins[i], self.maxs[i]) for i in range(self.ch_size)]
@@ -95,7 +102,8 @@ class Individual:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome
 
-    def generate_candidate(self, vector: list) -> list:
+
+    def generate_candidate(self, probvector: list) -> list:
         """
         Generate a candidate chromosome based on the given probability vector.
 
@@ -109,7 +117,7 @@ class Individual:
         list
             The generated candidate chromosome as a list of 0s and 1s.
         """
-        ind = [1 if random.rand() < p else 0 for p in vector]
+        ind = [1 if random.rand() < p else 0 for p in probvector]
         return ind
 
     def getneighbors_positions(self) -> list:

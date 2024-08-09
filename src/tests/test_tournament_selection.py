@@ -1,6 +1,7 @@
 from problems.single_objective.discrete.binary.one_max import OneMax
 from selection.tournament_selection import TournamentSelection
 from population import Population
+from individual import GeneType
 
 def test_tournament_selection():
     """
@@ -27,7 +28,7 @@ def test_tournament_selection():
     CH_SIZE = 16
     N_ROWS = 4
     N_COLS = 4
-    GEN_TYPE = "Binary"
+    GEN_TYPE = GeneType.BINARY
     problem = OneMax()
     K_TOURNAMENT = 2
     c = 0

@@ -1,6 +1,6 @@
 import pytest
 import random
-from individual import Individual
+from individual import Individual, GeneType
 from problems.abstract_problem import AbstractProblem
 from mutation.float_uniform_mutation import FloatUniformMutation  # Replace with the actual path if different
 
@@ -34,7 +34,7 @@ def setup_individual():
     Individual
         An individual instance with a predefined chromosome and size.
     """
-    ind = Individual("Real", 5)
+    ind = Individual(GeneType.REAL, 5)
     ind.chromosome = [1.0, 2.0, 3.0, 4.0, 5.0]
     ind.ch_size = 5
     return ind

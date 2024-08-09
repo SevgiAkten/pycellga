@@ -1,9 +1,9 @@
 import pytest
 import numpy as np
-from individual import Individual
+from individual import Individual, GeneType
 from problems.abstract_problem import AbstractProblem
 from recombination.byte_one_point_crossover import ByteOnePointCrossover  # Replace with the actual path if different
-import struct
+
 
 class MockProblem(AbstractProblem):
     """
@@ -35,8 +35,8 @@ def setup_parents():
     list
         A list containing two parent individuals with predefined chromosomes and size.
     """
-    ind1 = Individual("Real", 5)
-    ind2 = Individual("Real", 5)
+    ind1 = Individual(GeneType.REAL, 5)
+    ind2 = Individual(GeneType.REAL, 5)
     ind1.chromosome = [1.15, 2.45, 3.03, 4.76, 5.34]
     ind2.chromosome = [5.36, 4.98, 3.23, 2.45, 1.67]
     ind1.ch_size = 5

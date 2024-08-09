@@ -1,6 +1,6 @@
 import pytest
 import random
-from individual import Individual
+from individual import Individual, GeneType
 from problems.abstract_problem import AbstractProblem
 from recombination.flat_crossover import FlatCrossover  # Replace with the actual path if different
 
@@ -34,8 +34,8 @@ def setup_parents():
     list
         A list containing two parent individuals with predefined chromosomes and size.
     """
-    ind1 = Individual("Real", 5)
-    ind2 = Individual("Real", 5)
+    ind1 = Individual(GeneType.REAL, 5)
+    ind2 = Individual(GeneType.REAL, 5)
     ind1.chromosome = [1.0, 2.0, 3.0, 4.0, 5.0]
     ind2.chromosome = [5.0, 4.0, 3.0, 2.0, 1.0]
     ind1.ch_size = 5
