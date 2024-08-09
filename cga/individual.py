@@ -1,5 +1,6 @@
 from numpy import random
 import random as rd
+import numpy as np
 
 
 class Individual:
@@ -45,14 +46,13 @@ class Individual:
         self.neighbors_positions = None
         self.neighbors = None
 
-    def randomize(self):
+    def randomize(self, mins = [], maxs = []):
         """
         Randomly initialize the chromosome based on the genome type.
 
         Returns
         -------
-        list
-            The randomly generated chromosome.
+        Function mutates the original chromosome of the individual and returns it.
         
         Raises
         ------
@@ -63,102 +63,28 @@ class Individual:
             # # CountSat, Fms, Mmdp, OneMax, Ecc, Maxcut20_01, Maxcut20_09, Maxcut100
             self.chromosome = [random.randint(2) for i in range(self.ch_size)]
 
-            # Peak
-            # self.chromosome = [[random.randint(2) for g in range(self.ch_size)] for h in range(self.ch_size)]
-
+            
         elif self.gen_type == "Permutation":
-            # # Tsp
-            self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
+            # The random.permutation permutes from 0 to n - 1, however
+            # the library requires permutations 1 to n by design. That's why
+            # we add 1 to all values.
+            self.chromosome = list(np.random.permutation(self.ch_size) + 1)
+
         elif self.gen_type == "Real":
-            # # Ackley
-            # self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]
-
-            # # Bohachevsky
-            # self.chromosome = [random.randint(-15.0, 16.0)for i in range(self.ch_size)]
-
-            # # Fms
-            # self.chromosome = [round(rd.uniform(-6.4, 6.35), 3) for i in range(self.ch_size)]
-
-            # # Griewank
-            # self.chromosome = [round(rd.uniform(-600, 600), 3) for i in range(self.ch_size)]
+            # when the genome type is Real, the chrosomes should be initialized 
+            # by using given range of values, possibly using arguments.
+            # If arguments are not passed, the range is assumed to be [-1, 1].
+            if len(mins) == 0:
+                self.chromosome = [rd.uniform(-1, 1) for i in range(self.ch_size)]
+            else:
+                assert len(mins) == len(maxs) == self.ch_size
+                self.chromosome = [rd.uniform(mins[i], maxs[i]) for i in range(self.ch_size)]
             
-            # # Holzman
-            # self.chromosome = [round(rd.uniform(-10, 10), 3) for i in range(self.ch_size)]
-
-            # # Rastrigin
-            # self.chromosome = [round(rd.uniform(-5.12, 5.13), 2) for i in range(self.ch_size)]
-
-            # # Rosenbrock
-            # self.chromosome = [random.randint(-5.0, 11.0) for i in range(self.ch_size)]
-
-            # # Schaffer and Schaffer2
-            # self.chromosome = [round(rd.uniform(-100, 100), 3) for i in range(self.ch_size)]
-
-            # # Matyas
-            # self.chromosome = [round(rd.uniform(-10, 10), 3) for i in range(self.ch_size)]
-
-            # # Bentcigar
-            # self.chromosome = [round(rd.uniform(-100, 100), 3) for i in range(self.ch_size)]
-
-            # # Sumofdifferentpowers
-            # self.chromosome = [round(rd.uniform(-10.0, 10.0), 3) for i in range(self.ch_size)]
-            
-            # # Powell
-            # self.chromosome = [round(rd.uniform(-4.0, 5.0), 3) for i in range(self.ch_size)]
-
-            # # Rothellipsoid
-            # self.chromosome = [round(rd.uniform(-100, 100), 3) for i in range(self.ch_size)]
-
-            # # Chichinadze
-            # self.chromosome = [round(rd.uniform(-30, 30), 5) for i in range(self.ch_size)]
-
-            # # Levy
-            # self.chromosome = [round(rd.uniform(-10.0, 10.0), 2) for i in range(self.ch_size)]
-
-            # # Zettle
-            # self.chromosome = [round(rd.uniform(-5.0, 5.0), 4) for i in range(self.ch_size)]
-
-            # # Dropwave
-            # self.chromosome = [round(rd.uniform(-5.12, 5.12), 3) for i in range(self.ch_size)]
-
-            # # StyblinskiTang
-            self.chromosome = [round(rd.uniform(-5.0, 5.0), 6) for i in range(self.ch_size)]
-            
-            # # Threehumps
-            # self.chromosome = [round(rd.uniform(-5.0, 5.0), 3) for i in range(self.ch_size)]
-
-            # # Zakharov
-            # self.chromosome = [round(rd.uniform(-5.0, 10.0), 3) for i in range(self.ch_size)]
-
-            # # Schwefel
-            # self.chromosome = [round(rd.uniform(-500.0, 500.0), 3) for i in range(self.ch_size)]
-
-            # # Sphere
-            # self.chromosome = [round(rd.uniform(-5.12, 5.12), 3) for i in range(self.ch_size)]
-
-            # # Pow
-            # self.chromosome = [round(rd.uniform(-5.0, 15.0), 2) for i in range(self.ch_size)]
 
         else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
         return self.chromosome
 
-    def generate_candidate(self, vector: list) -> list:
-        """
-        Generate a candidate chromosome based on the given probability vector.
-
-        Parameters
-        ----------
-        vector : list of float
-            The probability vector used to generate the candidate chromosome.
-
-        Returns
-        -------
-        list
-            The generated candidate chromosome as a list of 0s and 1s.
-        """
-        ind = [1 if random.rand() < p else 0 for p in vector]
-        return ind
 
     def getneighbors_positions(self) -> list:
         """
