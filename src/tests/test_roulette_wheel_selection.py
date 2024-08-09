@@ -28,7 +28,7 @@ def test_roulette_wheel_selection():
     c = 0
 
     # Initialize the population
-    pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
+    pop_list = Population("cga", CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
 
     # Perform roulette wheel selection to get parent individuals
     parents = RouletteWheelSelection(pop_list, c).get_parents()

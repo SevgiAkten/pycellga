@@ -33,7 +33,7 @@ def test_tournament_selection():
     c = 0
 
     # Initialize the population
-    pop_list = Population(CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
+    pop_list = Population("cga",CH_SIZE, N_ROWS, N_COLS, GEN_TYPE, problem).initial_population()
 
     # Perform tournament selection to get parent individuals
     parents = TournamentSelection(pop_list, c, K_TOURNAMENT).get_parents()

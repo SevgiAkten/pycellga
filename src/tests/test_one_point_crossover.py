@@ -23,8 +23,8 @@ def test_one_point_crossover():
     CHSIZE = 10
 
     # Create two parent individuals with binary chromosomes of the specified size
-    indv1 = Individual(gen_type="Binary", ch_size=CHSIZE)
-    indv2 = Individual(gen_type="Binary", ch_size=CHSIZE)
+    indv1 = Individual(gen_type="Binary", ch_size=CHSIZE, problem=OneMax())
+    indv2 = Individual(gen_type="Binary", ch_size=CHSIZE, problem=OneMax())
 
     # Randomize the chromosomes of the parents
     indv1.randomize()
