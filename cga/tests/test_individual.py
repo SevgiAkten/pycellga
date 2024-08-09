@@ -36,19 +36,23 @@ def test_randomize_permutation():
     """
     Test the randomization of the chromosome for a permutation genome type.
     """
-    ind = Individual(gen_type="Permutation", ch_size=10)
+    chsize = 10
+    ind = Individual(gen_type="Permutation", ch_size=chsize)
     ind.randomize()
-    assert len(ind.chromosome) == 10
-    assert set(ind.chromosome).issubset(set(range(1, 15)))
+    assert len(ind.chromosome) == chsize
+    for i in range(1, chsize+1):
+        assert i in ind.chromosome
+
     assert len(set(ind.chromosome)) == len(ind.chromosome)
 
 def test_randomize_real_valued():
     """
     Test the randomization of the chromosome for a real-valued genome type.
     """
-    ind = Individual(gen_type="Real", ch_size=10)
+    chsize = 10
+    ind = Individual(gen_type="Real", ch_size=chsize)
     ind.randomize()
-    assert len(ind.chromosome) == 10
+    assert len(ind.chromosome) == chsize
     assert all(isinstance(gene, float) for gene in ind.chromosome)
 
 def test_illegal_genome_type():

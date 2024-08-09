@@ -1,5 +1,6 @@
 from numpy import random
 import random as rd
+import numpy as np
 
 
 class Individual:
@@ -68,7 +69,8 @@ class Individual:
 
         elif self.gen_type == "Permutation":
             # # Tsp
-            self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
+            # self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
+            self.chromosome = list(np.random.permutation(self.ch_size) + 1)
         elif self.gen_type == "Real":
             # # Ackley
             # self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]
