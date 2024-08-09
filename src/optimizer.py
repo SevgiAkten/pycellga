@@ -1,44 +1,3 @@
-
-# --------------------------------- problems -------------------------------- #
-# Binary
-from problems.single_objective.discrete.binary.count_sat import CountSat
-# from problems.single_objective.discrete.binary.fms import Fms
-from problems.single_objective.discrete.binary.mmdp import Mmdp
-from problems.single_objective.discrete.binary.one_max import OneMax
-from problems.single_objective.discrete.binary.peak import Peak
-from problems.single_objective.discrete.binary.ecc import Ecc
-from problems.single_objective.discrete.binary.maxcut20_01 import Maxcut20_01
-from problems.single_objective.discrete.binary.maxcut20_09 import Maxcut20_09
-from problems.single_objective.discrete.binary.maxcut100 import Maxcut100
-# Permutation
-from problems.single_objective.discrete.permutation.tsp import Tsp
-# Real-valued
-from problems.single_objective.continuous.ackley import Ackley
-from problems.single_objective.continuous.bohachevsky import Bohachevsky
-from problems.single_objective.continuous.fms import Fms
-from problems.single_objective.continuous.griewank import Griewank
-from problems.single_objective.continuous.holzman import Holzman
-from problems.single_objective.continuous.rastrigin import Rastrigin
-from problems.single_objective.continuous.rosenbrock import Rosenbrock
-from problems.single_objective.continuous.schaffer  import Schaffer
-from problems.single_objective.continuous.schaffer2  import Schaffer2
-from problems.single_objective.continuous.schaffer2  import Schaffer2
-from problems.single_objective.continuous.matyas import Matyas
-from problems.single_objective.continuous.bentcigar import Bentcigar
-from problems.single_objective.continuous.sumofdifferentpowers import Sumofdifferentpowers
-from problems.single_objective.continuous.sumofdifferentpowers import Sumofdifferentpowers
-from problems.single_objective.continuous.powell import Powell
-from problems.single_objective.continuous.rothellipsoid import Rothellipsoid
-from problems.single_objective.continuous.levy import Levy
-from problems.single_objective.continuous.zettle import Zettle
-from problems.single_objective.continuous.dropwave import Dropwave
-from problems.single_objective.continuous.styblinskitang import StyblinskiTang
-from problems.single_objective.continuous.threehumps import Threehumps
-from problems.single_objective.continuous.zakharov import Zakharov
-from problems.single_objective.continuous.sphere import Sphere
-from problems.single_objective.continuous.pow import Pow
-# -------------------------------------------------------------------------- #
-
 # ------------------------------ selection --------------------------------- #
 from selection.roulette_wheel_selection import RouletteWheelSelection
 from selection.tournament_selection import TournamentSelection
@@ -98,7 +57,9 @@ def cga(
     problem: AbstractProblem,
     selection: Callable,
     recombination: Callable,
-    mutation: Callable
+    mutation: Callable,
+    mins : list[float] = [],
+    maxs : list[float] = []
 ) -> List:
     """
     Optimize the given problem using a genetic algorithm.
@@ -131,6 +92,10 @@ def cga(
         Function or class used for recombination (crossover).
     mutation : Callable
         Function or class used for mutation.
+    mins : list[float]
+        List of minimum values for each gene in the chromosome (for real value optimization).
+    maxs : list[float]
+        List of maximum values for each gene in the chromosome (for real value optimization).
 
     Returns
     -------
@@ -149,7 +114,7 @@ def cga(
 
     # Generate Initial Population
     pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem).initial_population()
+                          gen_type, problem, mins=mins, maxs=maxs).initial_population()
 
     pop_list_ordered = sorted(
         pop_list, key=lambda x: x.fitness_value)
@@ -236,7 +201,9 @@ def sync_cga(
     problem: Callable[[List[float]], float],
     selection: Callable,
     recombination: Callable,
-    mutation: Callable
+    mutation: Callable,
+    mins: List[float] = [],
+    maxs: List[float] = []
 ) -> List:
     """
     Optimize the given problem using a synchronous cellular genetic algorithm (Sync-CGA).
@@ -265,7 +232,11 @@ def sync_cga(
         Function or class used for recombination (crossover).
     mutation : Callable
         Function or class used for mutation.
-
+    mins : List[float]
+        List of minimum values for each gene in the chromosome (for real value optimization).
+    maxs : List[float]
+        List of maximum values for each gene in the chromosome (for real value optimization
+        
     Returns
     -------
     List
@@ -284,7 +255,7 @@ def sync_cga(
 
     # Generate Initial Population
     pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem).initial_population()
+                          gen_type, problem, mins = mins, maxs=maxs).initial_population()
 
     # Sort population by fitness value
     pop_list_ordered = sorted(
@@ -371,7 +342,9 @@ def alpha_cga(
     problem: AbstractProblem,
     selection: Callable,
     recombination: Callable,
-    mutation: Callable
+    mutation: Callable,
+    mins: List[float] = [],
+    maxs: List[float] = []
 ) -> List:
     """
     Optimize a problem using an evolutionary algorithm with an alpha-male exchange mechanism.
@@ -387,7 +360,7 @@ def alpha_cga(
     ch_size : int
         Size of the chromosome.
     gen_type : str
-        Type of genome representation ("Binary", "Permutation", "Real-valued").
+        Type of genome representation ("Binary", "Permutation", "Real").
     p_crossover : float
         Probability of crossover, should be between 0 and 1.
     p_mutation : float
@@ -404,6 +377,10 @@ def alpha_cga(
         Function used for recombination (crossover) in the evolutionary algorithm.
     mutation : Callable
         Function used for mutation in the evolutionary algorithm.
+    mins : List[float]
+        List of minimum values for each gene in the chromosome (for real value optimization).
+    maxs : List[float]
+        List of maximum values for each gene in the chromosome (for real value optimization).
 
     Returns
     -------
@@ -423,7 +400,7 @@ def alpha_cga(
 
     # Generate Initial Population
     pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem).initial_population()
+                          gen_type, problem, mins=mins, maxs=maxs).initial_population()
     
     # Sort population by fitness value
     pop_list_ordered = sorted(
@@ -528,9 +505,11 @@ def ccga(
     gen_type: str,
     problem: AbstractProblem,
     selection: Callable,
+    mins: List[float] = [],
+    maxs: List[float] = []
 ) -> List:
     """
-    Perform optimization using a coevolutionary genetic algorithm (CCGA).
+    Perform optimization using a (CCGA).
 
     Parameters
     ----------
@@ -543,11 +522,16 @@ def ccga(
     ch_size : int
         Size of the chromosome.
     gen_type : str
-        Type of genome representation ("Binary", "Permutation", "Real-valued").
+        Type of genome representation ("Binary", "Permutation", "Real").
     problem : AbstractProblem
         The problem instance used to evaluate fitness.
     selection : Callable
         Function used for selection in the evolutionary algorithm.
+    mins : List[float]
+        List of minimum values for each gene in the chromosome (for real value optimization).
+    maxs : List[float]
+        List of maximum values for each gene in the chromosome (for real value optimization
+
 
     Returns
     -------
@@ -568,7 +552,7 @@ def ccga(
 
     # Generate Initial Population
     pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem, vector).initial_population()
+                          gen_type, problem, vector,mins=mins, maxs=maxs).initial_population()
 
     # Sort population by fitness value
     pop_list_ordered = sorted(
@@ -625,6 +609,7 @@ def ccga(
 
     return best_ever_solution
 
+
 def mcccga(
     n_cols: int,
     n_rows: int,
@@ -633,11 +618,11 @@ def mcccga(
     gen_type: str,
     problem: Callable[[List[float]], float],
     selection: Callable,
-    min_value: float,
-    max_value: float
+    mins: list[float],
+    maxs: list[float]
 ) -> List:
     """
-    Optimize the given problem using a multi-population coevolutionary genetic algorithm (MCCGA).
+    Optimize the given problem using a multi-population machine-coded compact genetic algorithm (MCCGA).
 
     Parameters
     ----------
@@ -673,9 +658,6 @@ def mcccga(
     best_ever_solution = []
     avg_objectives = []
     method_name = "mcccga"
-    mins = [min_value for i in range(ch_size)] # chromosome number of min values in the list
-    maxs = [max_value for i in range(ch_size)] # chromosome number of max values in the list
-
 
     # Generate initial probability vector
     vector = generate_probability_vector(mins, maxs, pop_size)

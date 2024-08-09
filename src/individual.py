@@ -1,4 +1,5 @@
 from numpy import random
+import numpy as np
 import random as rd
 from problems.abstract_problem import AbstractProblem
 
@@ -21,7 +22,7 @@ class Individual:
     neighbors : list or None
         The list of neighbors for the individual.
     gen_type : str
-        The type of genome representation ("Binary", "Permutation", "Real-valued").
+        The type of genome representation ("Binary", "Permutation", "Real").
     ch_size : int
         The size of the chromosome.
     """
@@ -29,16 +30,22 @@ class Individual:
     def __init__(self, 
                  gen_type: str = "", 
                  ch_size: int = 0,
-                 problem: AbstractProblem = None):
+                 problem: AbstractProblem = None,
+                 mins : list[float] = [],
+                 maxs : list[float] = []):
         """
         Initialize an Individual with a specific genome type and chromosome size.
 
         Parameters
         ----------
         gen_type : str, optional
-            The type of genome representation. Must be one of "Binary", "Permutation", or "Real-valued". (default is "Binary")
+            The type of genome representation. Must be one of "Binary", "Permutation", or "Real". (default is "Binary")
         ch_size : int
             The size of the chromosome.
+        mins: list[float]
+            The minimum values for each gene in the chromosome.
+        maxs: list[float]
+            The maximum values for each gene in the chromosome.
         """
         self.gen_type = gen_type
         self.ch_size = ch_size
@@ -48,6 +55,8 @@ class Individual:
         self.position = (0, 0)
         self.neighbors_positions = None
         self.neighbors = None
+        self.mins = mins
+        self.maxs = maxs
 
 
     def randomize(self):
@@ -67,93 +76,20 @@ class Individual:
         problem_name = self.problem.__class__.__name__
 
         if self.gen_type == "Binary":
-
-            # CountSat, Fms, Mmdp, OneMax, Ecc, Maxcut20_01, Maxcut20_09, Maxcut100
-            if problem_name in ["CountSat", "Fms", "Mmdp", "OneMax", "Ecc", "Maxcut20_01", "Maxcut20_09", "Maxcut100"]:
-                self.chromosome = [random.randint(2) for i in range(self.ch_size)]
-            # Peak
-            elif problem_name == "Peak":
-                self.chromosome = [[random.randint(2) for g in range(self.ch_size)] for h in range(self.ch_size)]
-
-        elif self.gen_type == "Permutation":
-
-            # Tsp
-            if problem_name == "Tsp":
-                self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
-
-        elif self.gen_type == "Real-valued":
-
-            # Ackley
-            if problem_name == "Ackley":
-                self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]
-
-            # Bohachevsky
-            elif problem_name == "Bohachevsky":
-                self.chromosome = [random.randint(-15.0, 16.0)for i in range(self.ch_size)]
-
-            # Fms
-            elif problem_name == "Fms":
-                self.chromosome = [round(rd.uniform(-6.4, 6.35), 3) for i in range(self.ch_size)]
-
-            # Griewank
-            elif problem_name == "Griewank":               
-                self.chromosome = [round(rd.uniform(-600, 600), 3) for i in range(self.ch_size)]
-
-            # Rastrigin
-            elif problem_name == "Rastrigin":                               
-                self.chromosome = [round(rd.uniform(-5.12, 5.13), 2) for i in range(self.ch_size)]
-
-            # Rosenbrock
-            elif problem_name == "Rosenbrock":                                              
-                self.chromosome = [random.randint(-5.0, 11.0) for i in range(self.ch_size)]
-
-            # Schaffer and Schaffer2, Bentcigar, Rothellipsoid
-            elif problem_name in ["Schaffer", "Schaffer2", "Bentcigar", "Rothellipsoid"]:
-                self.chromosome = [round(rd.uniform(-100, 100), 3) for i in range(self.ch_size)]
-
-            # Matyas, Sumofdifferentpowers
-            elif problem_name in ["Matyas", "Sumofdifferentpowers", "Holzman"]:                                            
-                self.chromosome = [round(rd.uniform(-10.0, 10.0), 3) for i in range(self.ch_size)]
-
-            # Powell
-            elif problem_name == "Powell":                                              
-                self.chromosome = [round(rd.uniform(-4.0, 5.0), 3) for i in range(self.ch_size)]
-
-            # Chichinadze
-            elif problem_name == "Chichinadze":                                              
-                self.chromosome = [round(rd.uniform(-30, 30), 5) for i in range(self.ch_size)]
-
-            # Levy
-            elif problem_name == "Levy":                                              
-                self.chromosome = [round(rd.uniform(-10.0, 10.0), 2) for i in range(self.ch_size)]
-
-            # Zettle
-            elif problem_name == "Zettle":                                              
-                self.chromosome = [round(rd.uniform(-5.0, 5.0), 4) for i in range(self.ch_size)]
-
-            # Dropwave, Sphere
-            elif problem_name in ["Dropwave", "Sphere"]:                                            
-                self.chromosome = [round(rd.uniform(-5.12, 5.12), 3) for i in range(self.ch_size)]
-
-            # # StyblinskiTang
-            elif problem_name == "StyblinskiTang":                                             
-                self.chromosome = [round(rd.uniform(-5.0, 5.0), 6) for i in range(self.ch_size)]
+            self.chromosome = [random.randint(2) for i in range(self.ch_size)]
             
-            # # Threehumps
-            elif problem_name == "Threehumps":                                             
-                self.chromosome = [round(rd.uniform(-5.0, 5.0), 3) for i in range(self.ch_size)]
+        elif self.gen_type == "Permutation":
+            # Generate a random permutation of the numbers 1 to ch_size.
+            # by default random.permutation emits numbers from 0 to ch_size-1
+            # so we add 1 to each number to get the desired range.
+            self.chromosome = list(np.random.permutation(self.ch_size) + 1)
 
-            # # Zakharov
-            elif problem_name == "Zakharov":                                             
-                self.chromosome = [round(rd.uniform(-5.0, 10.0), 3) for i in range(self.ch_size)]
-
-            # # Schwefel
-            elif problem_name == "Schwefel":                                             
-                self.chromosome = [round(rd.uniform(-500.0, 500.0), 3) for i in range(self.ch_size)]
-
-            # # Pow
-            elif problem_name == "Pow":                                                            
-                self.chromosome = [round(rd.uniform(-5.0, 15.0), 2) for i in range(self.ch_size)]
+        elif self.gen_type == "Real":
+            if len(self.mins) > 0:
+                assert len(self.mins) == len(self.maxs) == self.ch_size
+                self.chromosome = [rd.uniform(self.mins[i], self.maxs[i]) for i in range(self.ch_size)]
+            else:
+                self.chromosome = [rd.uniform(-1.0, 0.1) for i in range(self.ch_size)]
 
         else:
             raise NotImplementedError(self.gen_type + " not implemented yet.")
