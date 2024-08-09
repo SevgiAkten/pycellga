@@ -1,12 +1,8 @@
 from typing import List
 from individual import *
 from grid import *
-from neighborhoods.linear_5 import Linear5
 from neighborhoods.linear_9 import Linear9
-from neighborhoods.compact_9 import Compact9
-from neighborhoods.compact_13 import Compact13
-from neighborhoods.compact_21 import Compact21
-from neighborhoods.compact_25 import Compact25
+
 from byte_operators import *
 
 from problems.abstract_problem import AbstractProblem
@@ -90,7 +86,7 @@ class Population:
 
         for i in range(pop_size):
             ind = Individual(gen_type = self.gen_type, ch_size = self.ch_size, 
-                             problem = self.problem, mins = self.mins, maxs = self.maxs)
+                             mins = self.mins, maxs = self.maxs)
                 
             # Initialize chromosome and evaluate fitness for cga, syn_cga and alpha_cga
             if self.method_name in ["cga", "sync_cga", "alpha_cga", "ccga"]:

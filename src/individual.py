@@ -38,7 +38,6 @@ class Individual:
     def __init__(self, 
                  gen_type: GeneType = GeneType.BINARY, 
                  ch_size: int = 0,
-                 problem: AbstractProblem = None,
                  mins : list[float] = [],
                  maxs : list[float] = []):
         """
@@ -47,7 +46,7 @@ class Individual:
         Parameters
         ----------
         gen_type : str, optional
-            The type of genome representation. Must be one of GeneType.BINARY, "Permutation", or "Real". (default is GeneType.BINARY)
+            The type of genome representation. Must be one of GeneType.BINARY, GeneType.PERMUTATION, or GeneType.REAL. (default is GeneType.BINARY)
         ch_size : int
             The size of the chromosome.
         mins: list[float]
@@ -57,7 +56,6 @@ class Individual:
         """
         self.gen_type = gen_type
         self.ch_size = ch_size
-        self.problem = problem
         self.chromosome = []
         self.fitness_value = 0
         self.position = (0, 0)

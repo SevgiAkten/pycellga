@@ -359,8 +359,8 @@ def alpha_cga(
         Number of generations to run the optimization.
     ch_size : int
         Size of the chromosome.
-    gen_type : str
-        Type of genome representation (GeneType.BINARY, "Permutation", "Real").
+    gen_type : GeneType
+        Type of genome representation (GeneType.BINARY, GeneType.PERMUTATION, or GeneType.REAL).
     p_crossover : float
         Probability of crossover, should be between 0 and 1.
     p_mutation : float
@@ -521,8 +521,8 @@ def ccga(
         Number of generations to run the optimization.
     ch_size : int
         Size of the chromosome.
-    gen_type : str
-        Type of genome representation (GeneType.BINARY, "Permutation", "Real").
+    gen_type : GeneType
+        Type of genome representation (GeneType.BINARY, Genetype.PERMUTATION, GeneType.REAL).
     problem : AbstractProblem
         The problem instance used to evaluate fitness.
     selection : Callable

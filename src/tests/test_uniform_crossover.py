@@ -21,8 +21,8 @@ def test_uniform_crossover():
     CHSIZE = 10
 
     # Create two parent individuals with binary chromosomes of the specified size
-    indv1 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE, problem=OneMax())
-    indv2 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE, problem=OneMax())
+    indv1 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE)
+    indv2 = Individual(gen_type=GeneType.BINARY, ch_size=CHSIZE)
 
     # Randomly initialize the chromosomes of the parents
     indv1.randomize()
