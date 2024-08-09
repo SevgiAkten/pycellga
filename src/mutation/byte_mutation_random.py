@@ -2,8 +2,9 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 import struct
+from mutation.mutation_operator import MutationOperator
 
-class ByteMutationRandom:
+class ByteMutationRandom(MutationOperator):
     """
     ByteMutationRandom operator defined in (Satman, 2013). ByteMutationRandom performs 
     a random byte mutation on an individual's chromosome in a Genetic Algorithm.

@@ -1,8 +1,9 @@
 import random
 from individual import *
 from problems.abstract_problem import AbstractProblem
+from mutation.mutation_operator import MutationOperator
 
-class FloatUniformMutation:
+class FloatUniformMutation(MutationOperator):
     """
     FloatUniformMutation performs a uniform mutation on an individual's chromosome in a Genetic Algorithm.
 

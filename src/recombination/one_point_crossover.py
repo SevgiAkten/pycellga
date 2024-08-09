@@ -2,8 +2,10 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
+from recombination.recombination_operator import RecombinationOperator
 
-class OnePointCrossover:
+
+class OnePointCrossover(RecombinationOperator):
     """
     OnePointCrossover performs a one-point crossover on a pair of parent individuals
     to produce offspring individuals.

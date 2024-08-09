@@ -2,8 +2,9 @@ import numpy.random as randomgenerator
 from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
+from recombination.recombination_operator import RecombinationOperator
 
-class UniformCrossover:
+class UniformCrossover(RecombinationOperator):
     """
     UniformCrossover performs a uniform crossover on a pair of parent individuals
     to produce offspring individuals.

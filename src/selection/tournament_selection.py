@@ -1,8 +1,10 @@
 from typing import List
 from individual import Individual
+from selection.selection_operator import SelectionOperator
 import numpy as np
 
-class TournamentSelection:
+
+class TournamentSelection(SelectionOperator):
     """
     TournamentSelection performs a tournament selection on a population of individuals
     to select parent individuals for crossover.

@@ -2,8 +2,9 @@ import random
 from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
+from recombination.recombination_operator import RecombinationOperator
 
-class UnfairAvarageCrossover:
+class UnfairAvarageCrossover(RecombinationOperator):
     """
     UnfairAvarageCrossover performs an unfair average crossover on a pair of parent individuals
     to produce offspring individuals.
