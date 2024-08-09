@@ -47,7 +47,7 @@ class Individual:
         Parameters
         ----------
         gen_type : str, optional
-            The type of genome representation. Must be one of GeneType.BINARY, "Permutation", or "Real". (default is GeneType.BINARY)
+            The type of genome representation. Must be one of GeneType.BINARY, GeneType.PERMUTATION, or GeneType.REAL. (default is GeneType.BINARY)
         ch_size : int
             The size of the chromosome.
         mins: list[float]
