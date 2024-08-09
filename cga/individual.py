@@ -31,10 +31,12 @@ class Individual:
         Parameters
         ----------
         gen_type : str, optional
-            The type of genome representation. Must be one of "Binary", "Permutation", or "Real-valued". (default is "Binary")
+            The type of genome representation. Must be one of "Binary", "Permutation", or "Real". (default is "Binary")
         ch_size : int
             The size of the chromosome.
         """
+        if not gen_type in ["Binary", "Permutation", "Real"]:
+            raise ValueError("Invalid genome type. Must be one of 'Binary', 'Permutation', or 'Real'.")
         self.gen_type = gen_type
         self.ch_size = ch_size
         self.chromosome = []
@@ -67,7 +69,7 @@ class Individual:
         elif self.gen_type == "Permutation":
             # # Tsp
             self.chromosome = list(rd.sample(range(1, 15), self.ch_size))
-        elif self.gen_type == "Real-valued":
+        elif self.gen_type == "Real":
             # # Ackley
             # self.chromosome = [round(rd.uniform(-32.768, 32.768), 3) for i in range(self.ch_size)]
 
