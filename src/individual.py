@@ -56,6 +56,15 @@ class Individual:
             The minimum values for each gene in the chromosome.
         maxs: list[float]
             The maximum values for each gene in the chromosome.
+
+        Description:
+        ------------
+        The Individual class represents an individual in an evolutionary algorithm.
+        If the genome type is BINARY, the chromosome is a list of 0s and 1s.
+        If the genome type is PERMUTATION, the chromosome is a list of integers representing a permutation.
+        In both the binary and permutation cases, ch_size is enought to represent the chromosome.
+        If the genome type is REAL, the chromosome is a list of real numbers.
+        In this case, the mins and maxs lists are used to define the range of each gene in the chromosome.
         """
         self.gen_type = gen_type
         self.ch_size = ch_size
