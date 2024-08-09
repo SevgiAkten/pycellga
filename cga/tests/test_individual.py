@@ -46,7 +46,7 @@ def test_randomize_real_valued():
     """
     Test the randomization of the chromosome for a real-valued genome type.
     """
-    ind = Individual(gen_type="Real-valued", ch_size=10)
+    ind = Individual(gen_type="Real", ch_size=10)
     ind.randomize()
     assert len(ind.chromosome) == 10
     assert all(isinstance(gene, float) for gene in ind.chromosome)
