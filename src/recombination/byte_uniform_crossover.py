@@ -3,8 +3,9 @@ from individual import *
 from problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
+from recombination.recombination_operator import RecombinationOperator
 
-class ByteUniformCrossover:
+class ByteUniformCrossover(RecombinationOperator):
     """
     ByteUniformCrossover operator defined in (Satman, 2013). ByteUniformCrossover performs a 
     uniform crossover at the byte level on a pair of parent individuals to produce offspring individuals.

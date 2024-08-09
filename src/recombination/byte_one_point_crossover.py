@@ -3,8 +3,9 @@ from individual import Individual
 from problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
+from recombination.recombination_operator import RecombinationOperator
 
-class ByteOnePointCrossover:
+class ByteOnePointCrossover(RecombinationOperator):
     """
     ByteOnePointCrossover operator defined in (Satman, 2013). ByteOnePointCrossover performs a 
     one-point crossover at the byte level on a pair of parent individuals to produce offspring individuals.

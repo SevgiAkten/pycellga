@@ -2,8 +2,9 @@ import numpy as np
 from individual import Individual
 from problems.abstract_problem import AbstractProblem
 from typing import List
+from recombination.recombination_operator import RecombinationOperator
 
-class TwoPointCrossover:
+class TwoPointCrossover(RecombinationOperator):
     """
     TwoPointCrossover performs a two-point crossover on a pair of parent individuals
     to produce offspring individuals.

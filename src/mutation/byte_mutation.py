@@ -2,8 +2,9 @@ import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
 import struct
+from mutation.mutation_operator import MutationOperator
 
-class ByteMutation:
+class ByteMutation(MutationOperator):
     """
     ByteMutation operator defined in (Satman, 2013). ByteMutation performs a byte-wise mutation 
     on an individual's chromosome in a Genetic Algorithm.

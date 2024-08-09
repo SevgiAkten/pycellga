@@ -1,6 +1,7 @@
 # ------------------------------ selection --------------------------------- #
 from selection.roulette_wheel_selection import RouletteWheelSelection
 from selection.tournament_selection import TournamentSelection
+from selection.selection_operator import SelectionOperator
 # -------------------------------------------------------------------------- #
 
 # ------------------------------ recombination ----------------------------- #
@@ -16,7 +17,7 @@ from recombination.arithmetic_crossover import ArithmeticCrossover
 from recombination.blxalpha_crossover import BlxalphaCrossover
 from recombination.linear_crossover import LinearCrossover
 from recombination.unfair_avarage_crossover import UnfairAvarageCrossover
-
+from recombination.recombination_operator import RecombinationOperator
 # -------------------------------------------------------------------------- #
 
 # -------------------------------- mutation -------------------------------- #
@@ -28,6 +29,7 @@ from mutation.shuffle_mutation import ShuffleMutation
 from mutation.swap_mutation import SwapMutation
 from mutation.two_opt_mutation import TwoOptMutation
 from mutation.float_uniform_mutation import FloatUniformMutation
+from mutation.mutation_operator import MutationOperator
 # -------------------------------------------------------------------------- #
 
 
@@ -55,9 +57,9 @@ def cga(
     p_crossover: float,
     p_mutation: float,
     problem: AbstractProblem,
-    selection: Callable,
-    recombination: Callable,
-    mutation: Callable,
+    selection: SelectionOperator,
+    recombination: RecombinationOperator,
+    mutation: MutationOperator,
     mins : list[float] = [],
     maxs : list[float] = []
 ) -> List:
@@ -199,9 +201,9 @@ def sync_cga(
     p_crossover: float,
     p_mutation: float,
     problem: Callable[[List[float]], float],
-    selection: Callable,
-    recombination: Callable,
-    mutation: Callable,
+    selection: SelectionOperator,
+    recombination: RecombinationOperator,
+    mutation: MutationOperator,
     mins: List[float] = [],
     maxs: List[float] = []
 ) -> List:
@@ -340,9 +342,9 @@ def alpha_cga(
     p_crossover: float,
     p_mutation: float,
     problem: AbstractProblem,
-    selection: Callable,
-    recombination: Callable,
-    mutation: Callable,
+    selection: SelectionOperator,
+    recombination: RecombinationOperator,
+    mutation: MutationOperator,
     mins: List[float] = [],
     maxs: List[float] = []
 ) -> List:
@@ -504,7 +506,7 @@ def ccga(
     ch_size: int,
     gen_type: str,
     problem: AbstractProblem,
-    selection: Callable,
+    selection: SelectionOperator,
     mins: List[float] = [],
     maxs: List[float] = []
 ) -> List:
@@ -617,7 +619,7 @@ def mcccga(
     ch_size: int,
     gen_type: str,
     problem: Callable[[List[float]], float],
-    selection: Callable,
+    selection: SelectionOperator,
     mins: list[float],
     maxs: list[float]
 ) -> List:

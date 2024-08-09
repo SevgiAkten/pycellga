@@ -1,8 +1,9 @@
 import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
+from mutation.mutation_operator import MutationOperator
 
-class SwapMutation:
+class SwapMutation(MutationOperator):
     """
     SwapMutation performs a swap mutation on an individual's chromosome in a Genetic Algorithm.
 

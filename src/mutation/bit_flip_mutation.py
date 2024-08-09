@@ -1,8 +1,9 @@
 import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
+from mutation.mutation_operator import MutationOperator
 
-class BitFlipMutation:
+class BitFlipMutation(MutationOperator):
     """
     BitFlipMutation performs a bit flip mutation on an individual in a Genetic Algorithm.
 

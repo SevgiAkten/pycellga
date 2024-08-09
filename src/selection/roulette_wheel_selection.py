@@ -1,8 +1,9 @@
 from typing import List
 from individual import Individual
+from selection.selection_operator import SelectionOperator
 import random
 
-class RouletteWheelSelection:
+class RouletteWheelSelection(SelectionOperator):
     """
     RouletteWheelSelection performs a roulette wheel selection on a population of individuals
     to select parent individuals for crossover.

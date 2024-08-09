@@ -1,8 +1,9 @@
 import numpy as np
 from individual import *
 from problems.abstract_problem import AbstractProblem
+from mutation.mutation_operator import MutationOperator
 
-class InsertionMutation:
+class InsertionMutation(MutationOperator):
     """
     InsertionMutation performs an insertion mutation on an individual's chromosome in a Genetic Algorithm.
 
