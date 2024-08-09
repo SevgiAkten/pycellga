@@ -88,11 +88,11 @@ def cga(
         Size of the tournament for selection.
     problem : AbstractProblem
         The problem instance used for fitness evaluation.
-    selection : Callable
+    selection : SelectionOperator
         Function or class used for selecting parents.
-    recombination : Callable
+    recombination : RecombinationOperator
         Function or class used for recombination (crossover).
-    mutation : Callable
+    mutation : MutationOperator
         Function or class used for mutation.
     mins : list[float]
         List of minimum values for each gene in the chromosome (for real value optimization).
@@ -228,11 +228,11 @@ def sync_cga(
         Probability of mutation in offspring.
     problem : Callable[[List[float]], float]
         Function to evaluate the fitness of a solution. Takes a list of floats and returns a float.
-    selection : Callable
+    selection : SelectionOperator
         Function or class used for selecting parents.
-    recombination : Callable
+    recombination : RecombinationOperator
         Function or class used for recombination (crossover).
-    mutation : Callable
+    mutation : MutationOperator
         Function or class used for mutation.
     mins : List[float]
         List of minimum values for each gene in the chromosome (for real value optimization).
@@ -373,11 +373,11 @@ def alpha_cga(
         Tournament size for selection.
     problem : AbstractProblem
         The problem instance used to evaluate fitness.
-    selection : Callable
+    selection : SelectionOperator
         Function used for selection in the evolutionary algorithm.
-    recombination : Callable
+    recombination : RecombinationOperator
         Function used for recombination (crossover) in the evolutionary algorithm.
-    mutation : Callable
+    mutation : MutationOperator
         Function used for mutation in the evolutionary algorithm.
     mins : List[float]
         List of minimum values for each gene in the chromosome (for real value optimization).
@@ -527,7 +527,7 @@ def ccga(
         Type of genome representation (GeneType.BINARY, Genetype.PERMUTATION, GeneType.REAL).
     problem : AbstractProblem
         The problem instance used to evaluate fitness.
-    selection : Callable
+    selection : SelectionOperator
         Function used for selection in the evolutionary algorithm.
     mins : List[float]
         List of minimum values for each gene in the chromosome (for real value optimization).

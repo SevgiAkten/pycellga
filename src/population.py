@@ -7,8 +7,12 @@ from problems.abstract_problem import AbstractProblem
 from enum import Enum 
 
 
-# "cga", "sync_cga", "alpha_cga", "ccga", "mcccga"
 class OptimizationMethod(Enum):
+    """
+    OptimizationMethod is an enumeration class that represents the optimization methods used in an evolutionary algorithm.
+    The five optimization methods are CGA, SYNCGA, ALPHA_CGA, CCGA, and MCCCGA.
+    "cga", "sync_cga", "alpha_cga", "ccga", "mcccga"
+    """
     CGA = 1
     SYNCGA = 2
     ALPHA_CGA = 3
