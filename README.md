@@ -27,12 +27,34 @@ Comprehensive documentation is available on the official documentation site.
 
 ## Usage Examples
 
-In this section, we'll explain what each method in the optimizer does and provide examples of how to use them. The package includes various ready-to-use crossover and mutation operators, along with Real-valued, Binary, and Permutation functions that you can run directly —examples are available in the `main.py` file. Please configure the `gen_type` attribute as `Real-valued`, `Binary`, or `Permutation` according to the type of problem you want to solve.
+In this section, we'll explain what each method in the optimizer does and provide examples of how to use them. The package includes various ready-to-use crossover and mutation operators, along with Real-valued, Binary, and Permutation functions that you can run directly. Examples for other methods are available in the `example` folder, while the example for cga is provided below.
 
-### 1. **cga (Cellular Genetic Algorithm)**
+### **cga (Cellular Genetic Algorithm)**
 
-**cga** is a type of genetic algorithm where the population is structured as a grid (or other topologies) and each individual interacts only with its neighbors. This structure helps maintain diversity in the population and can prevent premature convergence. To convert it from classcical cga into a specialized algorithm, ICGA (Improved CGA) with machine-coded representation for real-valued problems, you should use byte operators.The formulation for encoding and decoding numbers was created by an algorithm specified in the IEEE 754 – IEEE Standards for Floating-Point Arithmetic. This approach yields better results for continuous functions.
+**cga** is a type of genetic algorithm where the population is structured as a grid (or other topologies), and each individual interacts only with its neighbors. This structure helps maintain diversity in the population and can prevent premature convergence. To specialize the CGA for real-valued optimization problems, ICGA (Improved CGA) with machine-coded representation can be used, applying byte operators. The encoding and decoding of numbers follow the IEEE 754 standard for floating-point arithmetic, yielding better results for continuous functions.
 
+## Example Problem
+
+Suppose we have a problem that we want to minimize using a Cellular Genetic Algorithm (CGA). The problem is defined as a simple sum of squares function, where the goal is to find a chromosome (vector) that minimizes the function.
+
+The sum of squares function computes the sum of the squares of each element in the chromosome. This function reaches its global minimum when all elements of the chromosome are equal to 0. The corresponding function value at this point is 0.
+
+### ExampleProblem Class
+
+Here’s how we can define this problem in Python using the `ExampleProblem` class:
+
+```python
+from numpy import power as pw
+
+class ExampleProblem:
+    
+    def __init__(self):
+        pass
+    
+    def f(self, x):
+        
+        return sum(pw(xi, 2) for xi in x)
+```
 **Usage:**
 
 ```python
@@ -41,130 +63,21 @@ result = optimizer.cga(
     n_rows = 5,
     n_gen = 100,
     ch_size = 5,
-    gen_type = "Real-valued",
+    gen_type = GeneType.REAL,
     p_crossover = 0.9,
     p_mutation = 0.2,
-    problem = optimizer.Ackley(),
+    problem = ExampleProblem(),  # Replace with a real problem instance as needed
     selection = optimizer.TournamentSelection,
     recombination = optimizer.ByteOnePointCrossover,
-    mutation = optimizer.ByteMutationRandom
+    mutation = optimizer.ByteMutationRandom,
+    mins = [-32.768] * 5,  # Minimum values for each gene
+    maxs = [32.768] * 5    # Maximum values for each gene
 )
 print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
 
 # The result is 
 # Best solution: 0.0 
 # Best solution chromosome: [0.0, 0.0, 0.0, 0.0, 0.0]
-
-# Note that the result could be different because the algorithm includes randomness.
-```
-
-### 2. **sync_cga (Synchronous Cellular Genetic Algorithm)**
-
-In the **sync_cga** all individuals (cells) are updated simultaneously in each iteration (generation). This means that the algorithm evaluates the fitness of all individuals, selects parents, and applies genetic operators (crossover and mutation) in parallel, updating the entire population at once before moving to the next generation.
-
-**Usage:**
-
-```python
-result = optimizer.sync_cga(
-    n_cols = 5,
-    n_rows = 5,
-    n_gen = 100,
-    ch_size = 5,
-    gen_type = "Real-valued",
-    p_crossover = 0.9,
-    p_mutation = 0.2,
-    problem = optimizer.Ackley(),
-    selection = optimizer.TournamentSelection,
-    recombination = optimizer.BlxalphaCrossover,
-    mutation = optimizer.FloatUniformMutation
-)
-print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
-
-# The result is 
-# Best solution: 0.0 
-# Best solution chromosome: [0.0001, 0.00012, 0.00022, 5e-05, -5e-05]
-
-# Note that the result could be different because the algorithm includes randomness.
-```
-
-### 3. **alpha_cga (Alpha Male Cellular Genetic Algorithm)**
-
-**alpha_cga** is an extension of the Cellular Genetic Algorithm that involves dividing the population into social groups, where each group consists of females selecting the same alpha male. Within each group, one individual is labeled as the alpha male, and the rest are productive females. 
-
-**Usage:**
-
-```python
-result = optimizer.alpha_cga(
-    n_cols = 5,
-    n_rows = 5,
-    n_gen = 100,
-    ch_size = 10,
-    gen_type = "Real-valued",
-    p_crossover = 0.9,
-    p_mutation = 0.2,
-    problem = optimizer.Ackley(),
-    selection = optimizer.TournamentSelection,
-    recombination = optimizer.BlxalphaCrossover,
-    mutation = optimizer.FloatUniformMutation
-)
-print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
-
-# The result is 
-# Best solution: 0.0 
-# Best solution chromosome: [0.0, 0.0, 0.0, 8e-05, -6e-05, 0.00015, 0.0, -0.00014, -0.0, 0.0]
-
-# Note that the result could be different because the algorithm includes randomness.
-```
-
-### 4. **ccga (Compact Cellular Genetic Algorithm)**
-
-**ccga** combines the principles of Cellular Genetic Algorithms with those of Compact Genetic Algorithms. This approach leverages the structured population model of Cellular GAs and the memory efficiency of Compact GAs.
-
-**Usage:**
-
-```python
-result = optimizer.ccga(
-    n_cols = 5,
-    n_rows = 5,
-    n_gen = 100,
-    ch_size = 10,
-    gen_type = "Binary",
-    problem = optimizer.OneMax(),
-    selection = optimizer.TournamentSelection
-)
-
-print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
-
-# The result is 
-# Best solution: 8 
-# Best solution chromosome: [0, 1, 0, 1, 1, 1, 1, 1, 1, 1]
-
-# Note that the result could be different because the algorithm includes randomness.
-```
-
-### 5. **mcccga (Machine-Coded Compact Cellular Genetic Algorithm)**
-
-**mcccga** is the adaptation of the machine-coded compact GA for real-valued optimization problems has been applied to a cellular structure. Real-valued variables are converted into a binary format using the IEEE-754 standard. Encoding and decoding processes are performed bidirectionally using the same standard when necessary. Also the initial vector is generated within a narrowed range according to the variable's definition domain.
-
-**Usage:**
-
-```python
-result = optimizer.mcccga(
-    n_cols = 5,
-    n_rows = 5,
-    n_gen = 100,
-    ch_size = 5,
-    gen_type = "Real-valued",
-    problem = optimizer.Ackley(),
-    selection = optimizer.TournamentSelection,
-    min_value = -32.768,
-    max_value = 32.768
-)
-print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
-
-# The result is 
-# Best solution: 11.334 
-# Best solution chromosome: [2.201, 18.259, -11.774, 0.0, 20.0]
 
 # Note that the result could be different because the algorithm includes randomness.
 ```
