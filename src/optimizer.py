@@ -841,6 +841,28 @@ def generate_probability_vector(mins: List[float], maxs: List[float], ntries: in
 
     return probvector
 
+def sample(probvector: List[float]) -> List[int]:
+    """
+    Sample a vector based on the provided probability vector.
+
+    Parameters
+    ----------
+    probvector : List[float]
+        Probability vector for sampling.
+
+    Returns
+    -------
+    List[int]
+        Sampled binary vector.
+    """
+    n = len(probvector)
+    newvector = [0] * n
+
+    for i in range(n):
+        if random.random() < probvector[i]:
+            newvector[i] = 1
+
+    return newvector
 
 
 
