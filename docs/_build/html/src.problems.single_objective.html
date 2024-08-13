@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.problems.single_objective package &mdash; PYCELLGA Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src.problems.single_objective.continuous package" href="src.problems.single_objective.continuous.html" />
+    <link rel="prev" title="src.problems package" href="src.problems.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PYCELLGA Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pycellga</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="src.example.html">src.example package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html">src.mutation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html">src.neighborhoods package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="src.problems.html">src.problems package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html">src.recombination package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html">src.selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html">src.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src.byte_operators">src.byte_operators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src.grid">src.grid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src-individual-module">src.individual module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src-optimizer-module">src.optimizer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src-population-module">src.population module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PYCELLGA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pycellga</a></li>
+          <li class="breadcrumb-item"><a href="src.html">src package</a></li>
+          <li class="breadcrumb-item"><a href="src.problems.html">src.problems package</a></li>
+      <li class="breadcrumb-item active">src.problems.single_objective package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/src.problems.single_objective.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="src-problems-single-objective-package">
+<h1>src.problems.single_objective package<a class="headerlink" href="#src-problems-single-objective-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src.problems.single_objective.continuous.html">src.problems.single_objective.continuous package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.ackley">src.problems.single_objective.continuous.ackley module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.ackley.Ackley"><code class="docutils literal notranslate"><span class="pre">Ackley</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.ackley.Ackley.None"><code class="docutils literal notranslate"><span class="pre">Ackley.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.ackley.Ackley.f"><code class="docutils literal notranslate"><span class="pre">Ackley.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.ackley.Ackley.__dict__"><code class="docutils literal notranslate"><span class="pre">Ackley.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.ackley.Ackley.__module__"><code class="docutils literal notranslate"><span class="pre">Ackley.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.ackley.Ackley.__weakref__"><code class="docutils literal notranslate"><span class="pre">Ackley.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id0"><code class="docutils literal notranslate"><span class="pre">Ackley.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.bentcigar">src.problems.single_objective.continuous.bentcigar module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bentcigar.Bentcigar"><code class="docutils literal notranslate"><span class="pre">Bentcigar</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bentcigar.Bentcigar.None"><code class="docutils literal notranslate"><span class="pre">Bentcigar.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bentcigar.Bentcigar.f"><code class="docutils literal notranslate"><span class="pre">Bentcigar.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bentcigar.Bentcigar.__annotations__"><code class="docutils literal notranslate"><span class="pre">Bentcigar.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bentcigar.Bentcigar.__dict__"><code class="docutils literal notranslate"><span class="pre">Bentcigar.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bentcigar.Bentcigar.__module__"><code class="docutils literal notranslate"><span class="pre">Bentcigar.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bentcigar.Bentcigar.__weakref__"><code class="docutils literal notranslate"><span class="pre">Bentcigar.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id1"><code class="docutils literal notranslate"><span class="pre">Bentcigar.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.bohachevsky">src.problems.single_objective.continuous.bohachevsky module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bohachevsky.Bohachevsky"><code class="docutils literal notranslate"><span class="pre">Bohachevsky</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bohachevsky.Bohachevsky.None"><code class="docutils literal notranslate"><span class="pre">Bohachevsky.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bohachevsky.Bohachevsky.f"><code class="docutils literal notranslate"><span class="pre">Bohachevsky.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bohachevsky.Bohachevsky.__annotations__"><code class="docutils literal notranslate"><span class="pre">Bohachevsky.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bohachevsky.Bohachevsky.__dict__"><code class="docutils literal notranslate"><span class="pre">Bohachevsky.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bohachevsky.Bohachevsky.__module__"><code class="docutils literal notranslate"><span class="pre">Bohachevsky.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.bohachevsky.Bohachevsky.__weakref__"><code class="docutils literal notranslate"><span class="pre">Bohachevsky.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id2"><code class="docutils literal notranslate"><span class="pre">Bohachevsky.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.chichinadze">src.problems.single_objective.continuous.chichinadze module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.chichinadze.Chichinadze"><code class="docutils literal notranslate"><span class="pre">Chichinadze</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.chichinadze.Chichinadze.None"><code class="docutils literal notranslate"><span class="pre">Chichinadze.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.chichinadze.Chichinadze.f"><code class="docutils literal notranslate"><span class="pre">Chichinadze.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.chichinadze.Chichinadze.__annotations__"><code class="docutils literal notranslate"><span class="pre">Chichinadze.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.chichinadze.Chichinadze.__dict__"><code class="docutils literal notranslate"><span class="pre">Chichinadze.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.chichinadze.Chichinadze.__module__"><code class="docutils literal notranslate"><span class="pre">Chichinadze.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.chichinadze.Chichinadze.__weakref__"><code class="docutils literal notranslate"><span class="pre">Chichinadze.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id3"><code class="docutils literal notranslate"><span class="pre">Chichinadze.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.dropwave">src.problems.single_objective.continuous.dropwave module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.dropwave.Dropwave"><code class="docutils literal notranslate"><span class="pre">Dropwave</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.dropwave.Dropwave.f"><code class="docutils literal notranslate"><span class="pre">Dropwave.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.dropwave.Dropwave.__annotations__"><code class="docutils literal notranslate"><span class="pre">Dropwave.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.dropwave.Dropwave.__dict__"><code class="docutils literal notranslate"><span class="pre">Dropwave.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.dropwave.Dropwave.__module__"><code class="docutils literal notranslate"><span class="pre">Dropwave.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.dropwave.Dropwave.__weakref__"><code class="docutils literal notranslate"><span class="pre">Dropwave.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id4"><code class="docutils literal notranslate"><span class="pre">Dropwave.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.fms">src.problems.single_objective.continuous.fms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.fms.Fms"><code class="docutils literal notranslate"><span class="pre">Fms</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.fms.Fms.None"><code class="docutils literal notranslate"><span class="pre">Fms.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.fms.Fms.f"><code class="docutils literal notranslate"><span class="pre">Fms.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.fms.Fms.__annotations__"><code class="docutils literal notranslate"><span class="pre">Fms.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.fms.Fms.__dict__"><code class="docutils literal notranslate"><span class="pre">Fms.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.fms.Fms.__module__"><code class="docutils literal notranslate"><span class="pre">Fms.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.fms.Fms.__weakref__"><code class="docutils literal notranslate"><span class="pre">Fms.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id5"><code class="docutils literal notranslate"><span class="pre">Fms.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.griewank">src.problems.single_objective.continuous.griewank module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.griewank.Griewank"><code class="docutils literal notranslate"><span class="pre">Griewank</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.griewank.Griewank.f"><code class="docutils literal notranslate"><span class="pre">Griewank.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.griewank.Griewank.__annotations__"><code class="docutils literal notranslate"><span class="pre">Griewank.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.griewank.Griewank.__dict__"><code class="docutils literal notranslate"><span class="pre">Griewank.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.griewank.Griewank.__module__"><code class="docutils literal notranslate"><span class="pre">Griewank.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.griewank.Griewank.__weakref__"><code class="docutils literal notranslate"><span class="pre">Griewank.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id6"><code class="docutils literal notranslate"><span class="pre">Griewank.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.holzman">src.problems.single_objective.continuous.holzman module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.holzman.Holzman"><code class="docutils literal notranslate"><span class="pre">Holzman</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.holzman.Holzman.None"><code class="docutils literal notranslate"><span class="pre">Holzman.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.holzman.Holzman.f"><code class="docutils literal notranslate"><span class="pre">Holzman.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.holzman.Holzman.__annotations__"><code class="docutils literal notranslate"><span class="pre">Holzman.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.holzman.Holzman.__dict__"><code class="docutils literal notranslate"><span class="pre">Holzman.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.holzman.Holzman.__module__"><code class="docutils literal notranslate"><span class="pre">Holzman.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.holzman.Holzman.__weakref__"><code class="docutils literal notranslate"><span class="pre">Holzman.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id7"><code class="docutils literal notranslate"><span class="pre">Holzman.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.levy">src.problems.single_objective.continuous.levy module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.levy.Levy"><code class="docutils literal notranslate"><span class="pre">Levy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.levy.Levy.None"><code class="docutils literal notranslate"><span class="pre">Levy.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.levy.Levy.f"><code class="docutils literal notranslate"><span class="pre">Levy.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.levy.Levy.__annotations__"><code class="docutils literal notranslate"><span class="pre">Levy.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.levy.Levy.__dict__"><code class="docutils literal notranslate"><span class="pre">Levy.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.levy.Levy.__module__"><code class="docutils literal notranslate"><span class="pre">Levy.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.levy.Levy.__weakref__"><code class="docutils literal notranslate"><span class="pre">Levy.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id8"><code class="docutils literal notranslate"><span class="pre">Levy.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.matyas">src.problems.single_objective.continuous.matyas module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.matyas.Matyas"><code class="docutils literal notranslate"><span class="pre">Matyas</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.matyas.Matyas.None"><code class="docutils literal notranslate"><span class="pre">Matyas.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.matyas.Matyas.f"><code class="docutils literal notranslate"><span class="pre">Matyas.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.matyas.Matyas.__annotations__"><code class="docutils literal notranslate"><span class="pre">Matyas.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.matyas.Matyas.__dict__"><code class="docutils literal notranslate"><span class="pre">Matyas.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.matyas.Matyas.__module__"><code class="docutils literal notranslate"><span class="pre">Matyas.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.matyas.Matyas.__weakref__"><code class="docutils literal notranslate"><span class="pre">Matyas.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id9"><code class="docutils literal notranslate"><span class="pre">Matyas.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.pow">src.problems.single_objective.continuous.pow module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.pow.Pow"><code class="docutils literal notranslate"><span class="pre">Pow</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.pow.Pow.None"><code class="docutils literal notranslate"><span class="pre">Pow.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.pow.Pow.f"><code class="docutils literal notranslate"><span class="pre">Pow.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.pow.Pow.__annotations__"><code class="docutils literal notranslate"><span class="pre">Pow.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.pow.Pow.__dict__"><code class="docutils literal notranslate"><span class="pre">Pow.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.pow.Pow.__module__"><code class="docutils literal notranslate"><span class="pre">Pow.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.pow.Pow.__weakref__"><code class="docutils literal notranslate"><span class="pre">Pow.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id10"><code class="docutils literal notranslate"><span class="pre">Pow.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.powell">src.problems.single_objective.continuous.powell module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.powell.Powell"><code class="docutils literal notranslate"><span class="pre">Powell</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.powell.Powell.None"><code class="docutils literal notranslate"><span class="pre">Powell.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.powell.Powell.f"><code class="docutils literal notranslate"><span class="pre">Powell.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.powell.Powell.__annotations__"><code class="docutils literal notranslate"><span class="pre">Powell.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.powell.Powell.__dict__"><code class="docutils literal notranslate"><span class="pre">Powell.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.powell.Powell.__module__"><code class="docutils literal notranslate"><span class="pre">Powell.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.powell.Powell.__weakref__"><code class="docutils literal notranslate"><span class="pre">Powell.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id11"><code class="docutils literal notranslate"><span class="pre">Powell.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.rastrigin">src.problems.single_objective.continuous.rastrigin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rastrigin.Rastrigin"><code class="docutils literal notranslate"><span class="pre">Rastrigin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rastrigin.Rastrigin.None"><code class="docutils literal notranslate"><span class="pre">Rastrigin.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rastrigin.Rastrigin.f"><code class="docutils literal notranslate"><span class="pre">Rastrigin.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rastrigin.Rastrigin.__annotations__"><code class="docutils literal notranslate"><span class="pre">Rastrigin.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rastrigin.Rastrigin.__dict__"><code class="docutils literal notranslate"><span class="pre">Rastrigin.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rastrigin.Rastrigin.__module__"><code class="docutils literal notranslate"><span class="pre">Rastrigin.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rastrigin.Rastrigin.__weakref__"><code class="docutils literal notranslate"><span class="pre">Rastrigin.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id12"><code class="docutils literal notranslate"><span class="pre">Rastrigin.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.rosenbrock">src.problems.single_objective.continuous.rosenbrock module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rosenbrock.Rosenbrock"><code class="docutils literal notranslate"><span class="pre">Rosenbrock</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rosenbrock.Rosenbrock.None"><code class="docutils literal notranslate"><span class="pre">Rosenbrock.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rosenbrock.Rosenbrock.f"><code class="docutils literal notranslate"><span class="pre">Rosenbrock.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rosenbrock.Rosenbrock.__annotations__"><code class="docutils literal notranslate"><span class="pre">Rosenbrock.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rosenbrock.Rosenbrock.__dict__"><code class="docutils literal notranslate"><span class="pre">Rosenbrock.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rosenbrock.Rosenbrock.__module__"><code class="docutils literal notranslate"><span class="pre">Rosenbrock.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rosenbrock.Rosenbrock.__weakref__"><code class="docutils literal notranslate"><span class="pre">Rosenbrock.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id13"><code class="docutils literal notranslate"><span class="pre">Rosenbrock.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.rothellipsoid">src.problems.single_objective.continuous.rothellipsoid module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rothellipsoid.Rothellipsoid"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rothellipsoid.Rothellipsoid.None"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rothellipsoid.Rothellipsoid.f"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rothellipsoid.Rothellipsoid.__annotations__"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rothellipsoid.Rothellipsoid.__dict__"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rothellipsoid.Rothellipsoid.__module__"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.rothellipsoid.Rothellipsoid.__weakref__"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id14"><code class="docutils literal notranslate"><span class="pre">Rothellipsoid.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.schaffer">src.problems.single_objective.continuous.schaffer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer.Schaffer"><code class="docutils literal notranslate"><span class="pre">Schaffer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer.Schaffer.f"><code class="docutils literal notranslate"><span class="pre">Schaffer.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer.Schaffer.__annotations__"><code class="docutils literal notranslate"><span class="pre">Schaffer.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer.Schaffer.__dict__"><code class="docutils literal notranslate"><span class="pre">Schaffer.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer.Schaffer.__module__"><code class="docutils literal notranslate"><span class="pre">Schaffer.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer.Schaffer.__weakref__"><code class="docutils literal notranslate"><span class="pre">Schaffer.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id15"><code class="docutils literal notranslate"><span class="pre">Schaffer.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.schaffer2">src.problems.single_objective.continuous.schaffer2 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer2.Schaffer2"><code class="docutils literal notranslate"><span class="pre">Schaffer2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer2.Schaffer2.None"><code class="docutils literal notranslate"><span class="pre">Schaffer2.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer2.Schaffer2.f"><code class="docutils literal notranslate"><span class="pre">Schaffer2.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer2.Schaffer2.__annotations__"><code class="docutils literal notranslate"><span class="pre">Schaffer2.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer2.Schaffer2.__dict__"><code class="docutils literal notranslate"><span class="pre">Schaffer2.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer2.Schaffer2.__module__"><code class="docutils literal notranslate"><span class="pre">Schaffer2.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schaffer2.Schaffer2.__weakref__"><code class="docutils literal notranslate"><span class="pre">Schaffer2.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id16"><code class="docutils literal notranslate"><span class="pre">Schaffer2.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.schwefel">src.problems.single_objective.continuous.schwefel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schwefel.Schwefel"><code class="docutils literal notranslate"><span class="pre">Schwefel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schwefel.Schwefel.None"><code class="docutils literal notranslate"><span class="pre">Schwefel.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schwefel.Schwefel.f"><code class="docutils literal notranslate"><span class="pre">Schwefel.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schwefel.Schwefel.__annotations__"><code class="docutils literal notranslate"><span class="pre">Schwefel.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schwefel.Schwefel.__dict__"><code class="docutils literal notranslate"><span class="pre">Schwefel.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schwefel.Schwefel.__module__"><code class="docutils literal notranslate"><span class="pre">Schwefel.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.schwefel.Schwefel.__weakref__"><code class="docutils literal notranslate"><span class="pre">Schwefel.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id17"><code class="docutils literal notranslate"><span class="pre">Schwefel.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.sphere">src.problems.single_objective.continuous.sphere module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sphere.Sphere"><code class="docutils literal notranslate"><span class="pre">Sphere</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sphere.Sphere.None"><code class="docutils literal notranslate"><span class="pre">Sphere.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sphere.Sphere.f"><code class="docutils literal notranslate"><span class="pre">Sphere.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sphere.Sphere.__annotations__"><code class="docutils literal notranslate"><span class="pre">Sphere.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sphere.Sphere.__dict__"><code class="docutils literal notranslate"><span class="pre">Sphere.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sphere.Sphere.__module__"><code class="docutils literal notranslate"><span class="pre">Sphere.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sphere.Sphere.__weakref__"><code class="docutils literal notranslate"><span class="pre">Sphere.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id18"><code class="docutils literal notranslate"><span class="pre">Sphere.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.styblinskitang">src.problems.single_objective.continuous.styblinskitang module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.styblinskitang.StyblinskiTang"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.styblinskitang.StyblinskiTang.None"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.styblinskitang.StyblinskiTang.f"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.styblinskitang.StyblinskiTang.__annotations__"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.styblinskitang.StyblinskiTang.__dict__"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.styblinskitang.StyblinskiTang.__module__"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.styblinskitang.StyblinskiTang.__weakref__"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id19"><code class="docutils literal notranslate"><span class="pre">StyblinskiTang.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.sumofdifferentpowers">src.problems.single_objective.continuous.sumofdifferentpowers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sumofdifferentpowers.Sumofdifferentpowers"><code class="docutils literal notranslate"><span class="pre">Sumofdifferentpowers</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sumofdifferentpowers.Sumofdifferentpowers.__annotations__"><code class="docutils literal notranslate"><span class="pre">Sumofdifferentpowers.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sumofdifferentpowers.Sumofdifferentpowers.__dict__"><code class="docutils literal notranslate"><span class="pre">Sumofdifferentpowers.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sumofdifferentpowers.Sumofdifferentpowers.__module__"><code class="docutils literal notranslate"><span class="pre">Sumofdifferentpowers.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sumofdifferentpowers.Sumofdifferentpowers.__weakref__"><code class="docutils literal notranslate"><span class="pre">Sumofdifferentpowers.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.sumofdifferentpowers.Sumofdifferentpowers.f"><code class="docutils literal notranslate"><span class="pre">Sumofdifferentpowers.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.threehumps">src.problems.single_objective.continuous.threehumps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.threehumps.Threehumps"><code class="docutils literal notranslate"><span class="pre">Threehumps</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.threehumps.Threehumps.None"><code class="docutils literal notranslate"><span class="pre">Threehumps.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.threehumps.Threehumps.f"><code class="docutils literal notranslate"><span class="pre">Threehumps.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.threehumps.Threehumps.__annotations__"><code class="docutils literal notranslate"><span class="pre">Threehumps.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.threehumps.Threehumps.__dict__"><code class="docutils literal notranslate"><span class="pre">Threehumps.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.threehumps.Threehumps.__module__"><code class="docutils literal notranslate"><span class="pre">Threehumps.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.threehumps.Threehumps.__weakref__"><code class="docutils literal notranslate"><span class="pre">Threehumps.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id20"><code class="docutils literal notranslate"><span class="pre">Threehumps.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.zakharov">src.problems.single_objective.continuous.zakharov module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zakharov.Zakharov"><code class="docutils literal notranslate"><span class="pre">Zakharov</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zakharov.Zakharov.None"><code class="docutils literal notranslate"><span class="pre">Zakharov.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zakharov.Zakharov.f"><code class="docutils literal notranslate"><span class="pre">Zakharov.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zakharov.Zakharov.__annotations__"><code class="docutils literal notranslate"><span class="pre">Zakharov.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zakharov.Zakharov.__dict__"><code class="docutils literal notranslate"><span class="pre">Zakharov.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zakharov.Zakharov.__module__"><code class="docutils literal notranslate"><span class="pre">Zakharov.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zakharov.Zakharov.__weakref__"><code class="docutils literal notranslate"><span class="pre">Zakharov.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id21"><code class="docutils literal notranslate"><span class="pre">Zakharov.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous.zettle">src.problems.single_objective.continuous.zettle module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zettle.Zettle"><code class="docutils literal notranslate"><span class="pre">Zettle</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zettle.Zettle.None"><code class="docutils literal notranslate"><span class="pre">Zettle.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zettle.Zettle.f"><code class="docutils literal notranslate"><span class="pre">Zettle.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zettle.Zettle.__annotations__"><code class="docutils literal notranslate"><span class="pre">Zettle.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zettle.Zettle.__dict__"><code class="docutils literal notranslate"><span class="pre">Zettle.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zettle.Zettle.__module__"><code class="docutils literal notranslate"><span class="pre">Zettle.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#src.problems.single_objective.continuous.zettle.Zettle.__weakref__"><code class="docutils literal notranslate"><span class="pre">Zettle.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.continuous.html#id22"><code class="docutils literal notranslate"><span class="pre">Zettle.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.continuous.html#module-src.problems.single_objective.continuous">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.problems.single_objective.discrete.html">src.problems.single_objective.discrete package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.discrete.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html">src.problems.single_objective.discrete.binary package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.count_sat">src.problems.single_objective.discrete.binary.count_sat module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.ecc">src.problems.single_objective.discrete.binary.ecc module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.fms">src.problems.single_objective.discrete.binary.fms module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.maxcut100">src.problems.single_objective.discrete.binary.maxcut100 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.maxcut20_01">src.problems.single_objective.discrete.binary.maxcut20_01 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.maxcut20_09">src.problems.single_objective.discrete.binary.maxcut20_09 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.mmdp">src.problems.single_objective.discrete.binary.mmdp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.one_max">src.problems.single_objective.discrete.binary.one_max module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary.peak">src.problems.single_objective.discrete.binary.peak module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.binary.html#module-src.problems.single_objective.discrete.binary">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.discrete.permutation.html">src.problems.single_objective.discrete.permutation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.permutation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.permutation.html#module-src.problems.single_objective.discrete.permutation.tsp">src.problems.single_objective.discrete.permutation.tsp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.discrete.permutation.html#module-src.problems.single_objective.discrete.permutation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.single_objective.discrete.html#module-src.problems.single_objective.discrete">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-src.problems.single_objective">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.problems.single_objective" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.problems.html" class="btn btn-neutral float-left" title="src.problems package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.problems.single_objective.continuous.html" class="btn btn-neutral float-right" title="src.problems.single_objective.continuous package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

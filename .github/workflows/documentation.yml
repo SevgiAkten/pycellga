@@ -1,16 +1,16 @@
-name: Generate Documentation
+name: Build and Deploy Docs
 
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Set up Python
@@ -20,17 +20,16 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt 
 
-    - name: Generate HTML Documentation
+    - name: Build Docs
       run: |
-        cd src
-        mkdir -p docs
-        python3 -m pydoc -w optimizer
-        mv optimizer.html docs/index.html
+        cd docs/
+        make html
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./src/docs
+        publish_dir: docs/_build/html

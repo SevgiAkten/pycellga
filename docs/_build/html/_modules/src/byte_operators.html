@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.byte_operators &mdash; PYCELLGA Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            PYCELLGA Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pycellga</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PYCELLGA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">src.byte_operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for src.byte_operators</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+
+<div class="viewcode-block" id="float_to_bits">
+<a class="viewcode-back" href="../../src.html#src.byte_operators.float_to_bits">[docs]</a>
+<span class="k">def</span> <span class="nf">float_to_bits</span><span class="p">(</span><span class="n">float_number</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a float to its bit representation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float_number : float</span>
+<span class="sd">        The float number to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of int</span>
+<span class="sd">        A list of 32 integers (0 or 1) representing the bit pattern of the float.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">c_float</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_float</span><span class="p">(</span><span class="n">float_number</span><span class="p">)</span>
+    <span class="n">cu</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint32</span><span class="o">.</span><span class="n">from_address</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">addressof</span><span class="p">(</span><span class="n">c_float</span><span class="p">))</span>
+    <span class="n">bit_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">cu</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">bit_list</span></div>
+
+
+<div class="viewcode-block" id="bits_to_float">
+<a class="viewcode-back" href="../../src.html#src.byte_operators.bits_to_float">[docs]</a>
+<span class="k">def</span> <span class="nf">bits_to_float</span><span class="p">(</span><span class="n">bit_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a bit representation to its float value.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bit_list : list of int</span>
+<span class="sd">        A list of 32 integers (0 or 1) representing the bit pattern of the float.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The float value represented by the bit pattern.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">u_value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">):</span>
+        <span class="n">u_value</span> <span class="o">=</span> <span class="n">u_value</span> <span class="o">+</span> <span class="n">bit_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">cu</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">(</span><span class="n">u_value</span><span class="p">)</span>
+    <span class="n">c_float</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_float</span><span class="o">.</span><span class="n">from_address</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">addressof</span><span class="p">(</span><span class="n">cu</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">c_float</span><span class="o">.</span><span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="floats_to_bits">
+<a class="viewcode-back" href="../../src.html#src.byte_operators.floats_to_bits">[docs]</a>
+<span class="k">def</span> <span class="nf">floats_to_bits</span><span class="p">(</span><span class="n">float_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a list of floats to their combined bit representation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float_list : list of float</span>
+<span class="sd">        The list of float numbers to be converted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of int</span>
+<span class="sd">        A list of integers (0 or 1) representing the combined bit patterns of the floats.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bit_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
+        <span class="n">bit_list</span> <span class="o">=</span> <span class="n">bit_list</span> <span class="o">+</span> <span class="n">float_to_bits</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bit_list</span></div>
+
+
+<div class="viewcode-block" id="bits_to_floats">
+<a class="viewcode-back" href="../../src.html#src.byte_operators.bits_to_floats">[docs]</a>
+<span class="k">def</span> <span class="nf">bits_to_floats</span><span class="p">(</span><span class="n">bit_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a combined bit representation back to a list of floats.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bit_list : list of int</span>
+<span class="sd">        A list of integers (0 or 1) representing the combined bit patterns of the floats.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of float</span>
+<span class="sd">        The list of float values represented by the bit pattern.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bit_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bit_list</span><span class="p">)</span>
+    <span class="n">float_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bit_size</span> <span class="o">/</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="n">float_vector</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">float_size</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">findex</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">32</span> <span class="o">&lt;=</span> <span class="n">bit_size</span><span class="p">:</span>
+        <span class="n">part</span> <span class="o">=</span> <span class="n">bit_list</span><span class="p">[</span><span class="n">index</span><span class="p">:(</span><span class="n">index</span><span class="o">+</span><span class="mi">32</span><span class="p">)]</span>
+        <span class="n">float_vector</span><span class="p">[</span><span class="n">findex</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">bits_to_float</span><span class="p">(</span><span class="n">part</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">32</span>
+        <span class="n">findex</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">float_vector</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

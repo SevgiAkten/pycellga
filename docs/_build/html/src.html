@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src package &mdash; PYCELLGA Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src.example package" href="src.example.html" />
+    <link rel="prev" title="pycellga" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PYCELLGA Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pycellga</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">src package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html">src.example package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html">src.mutation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html">src.neighborhoods package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.html">src.problems package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html">src.recombination package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html">src.selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html">src.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.byte_operators">src.byte_operators module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.byte_operators.bits_to_float"><code class="docutils literal notranslate"><span class="pre">bits_to_float()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.byte_operators.bits_to_floats"><code class="docutils literal notranslate"><span class="pre">bits_to_floats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.byte_operators.float_to_bits"><code class="docutils literal notranslate"><span class="pre">float_to_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.byte_operators.floats_to_bits"><code class="docutils literal notranslate"><span class="pre">floats_to_bits()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.grid">src.grid module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.grid.Grid"><code class="docutils literal notranslate"><span class="pre">Grid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src-individual-module">src.individual module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src-optimizer-module">src.optimizer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src-population-module">src.population module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PYCELLGA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pycellga</a></li>
+      <li class="breadcrumb-item active">src package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/src.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="src-package">
+<h1>src package<a class="headerlink" href="#src-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src.example.html">src.example package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.example.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.example.html#module-src.example.example_alpha_cga">src.example.example_alpha_cga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_alpha_cga.ExampleProblem"><code class="docutils literal notranslate"><span class="pre">ExampleProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_alpha_cga.ExampleProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_alpha_cga.ExampleProblem.__init__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_alpha_cga.ExampleProblem.__module__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_alpha_cga.ExampleProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_alpha_cga.ExampleProblem.f"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_alpha_cga.run_alpha_cga_example"><code class="docutils literal notranslate"><span class="pre">run_alpha_cga_example()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.example.html#module-src.example.example_ccga">src.example.example_ccga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_ccga.ExampleProblem"><code class="docutils literal notranslate"><span class="pre">ExampleProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_ccga.ExampleProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_ccga.ExampleProblem.__init__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_ccga.ExampleProblem.__module__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_ccga.ExampleProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_ccga.ExampleProblem.f"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_ccga.run_ccga_example"><code class="docutils literal notranslate"><span class="pre">run_ccga_example()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.example.html#module-src.example.example_cga">src.example.example_cga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_cga.ExampleProblem"><code class="docutils literal notranslate"><span class="pre">ExampleProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_cga.ExampleProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_cga.ExampleProblem.__init__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_cga.ExampleProblem.__module__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_cga.ExampleProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_cga.ExampleProblem.f"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_cga.run_cga_example"><code class="docutils literal notranslate"><span class="pre">run_cga_example()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.example.html#module-src.example.example_mcccga">src.example.example_mcccga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_mcccga.RealProblem"><code class="docutils literal notranslate"><span class="pre">RealProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_mcccga.RealProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_mcccga.RealProblem.__init__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_mcccga.RealProblem.__module__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_mcccga.RealProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_mcccga.RealProblem.f"><code class="docutils literal notranslate"><span class="pre">RealProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_mcccga.run_mcccga_example"><code class="docutils literal notranslate"><span class="pre">run_mcccga_example()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.example.html#module-src.example.example_sync_cga">src.example.example_sync_cga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_sync_cga.ExampleProblem"><code class="docutils literal notranslate"><span class="pre">ExampleProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_sync_cga.ExampleProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_sync_cga.ExampleProblem.__init__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_sync_cga.ExampleProblem.__module__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_sync_cga.ExampleProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.example.html#src.example.example_sync_cga.ExampleProblem.f"><code class="docutils literal notranslate"><span class="pre">ExampleProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.example.html#src.example.example_sync_cga.run_sync_cga_example"><code class="docutils literal notranslate"><span class="pre">run_sync_cga_example()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.example.html#module-src.example">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.mutation.html">src.mutation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.bit_flip_mutation">src.mutation.bit_flip_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.bit_flip_mutation.BitFlipMutation"><code class="docutils literal notranslate"><span class="pre">BitFlipMutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.bit_flip_mutation.BitFlipMutation.__dict__"><code class="docutils literal notranslate"><span class="pre">BitFlipMutation.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.bit_flip_mutation.BitFlipMutation.__init__"><code class="docutils literal notranslate"><span class="pre">BitFlipMutation.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.bit_flip_mutation.BitFlipMutation.__module__"><code class="docutils literal notranslate"><span class="pre">BitFlipMutation.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.bit_flip_mutation.BitFlipMutation.__weakref__"><code class="docutils literal notranslate"><span class="pre">BitFlipMutation.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.bit_flip_mutation.BitFlipMutation.mutate"><code class="docutils literal notranslate"><span class="pre">BitFlipMutation.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.byte_mutation">src.mutation.byte_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation.ByteMutation"><code class="docutils literal notranslate"><span class="pre">ByteMutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation.ByteMutation.__annotations__"><code class="docutils literal notranslate"><span class="pre">ByteMutation.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation.ByteMutation.__dict__"><code class="docutils literal notranslate"><span class="pre">ByteMutation.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation.ByteMutation.__init__"><code class="docutils literal notranslate"><span class="pre">ByteMutation.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation.ByteMutation.__module__"><code class="docutils literal notranslate"><span class="pre">ByteMutation.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation.ByteMutation.__weakref__"><code class="docutils literal notranslate"><span class="pre">ByteMutation.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation.ByteMutation.mutate"><code class="docutils literal notranslate"><span class="pre">ByteMutation.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.byte_mutation_random">src.mutation.byte_mutation_random module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation_random.ByteMutationRandom"><code class="docutils literal notranslate"><span class="pre">ByteMutationRandom</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation_random.ByteMutationRandom.__annotations__"><code class="docutils literal notranslate"><span class="pre">ByteMutationRandom.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation_random.ByteMutationRandom.__dict__"><code class="docutils literal notranslate"><span class="pre">ByteMutationRandom.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation_random.ByteMutationRandom.__init__"><code class="docutils literal notranslate"><span class="pre">ByteMutationRandom.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation_random.ByteMutationRandom.__module__"><code class="docutils literal notranslate"><span class="pre">ByteMutationRandom.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation_random.ByteMutationRandom.__weakref__"><code class="docutils literal notranslate"><span class="pre">ByteMutationRandom.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.byte_mutation_random.ByteMutationRandom.mutate"><code class="docutils literal notranslate"><span class="pre">ByteMutationRandom.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.float_uniform_mutation">src.mutation.float_uniform_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.float_uniform_mutation.FloatUniformMutation"><code class="docutils literal notranslate"><span class="pre">FloatUniformMutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.float_uniform_mutation.FloatUniformMutation.__annotations__"><code class="docutils literal notranslate"><span class="pre">FloatUniformMutation.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.float_uniform_mutation.FloatUniformMutation.__dict__"><code class="docutils literal notranslate"><span class="pre">FloatUniformMutation.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.float_uniform_mutation.FloatUniformMutation.__init__"><code class="docutils literal notranslate"><span class="pre">FloatUniformMutation.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.float_uniform_mutation.FloatUniformMutation.__module__"><code class="docutils literal notranslate"><span class="pre">FloatUniformMutation.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.float_uniform_mutation.FloatUniformMutation.__weakref__"><code class="docutils literal notranslate"><span class="pre">FloatUniformMutation.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.float_uniform_mutation.FloatUniformMutation.mutate"><code class="docutils literal notranslate"><span class="pre">FloatUniformMutation.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.insertion_mutation">src.mutation.insertion_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.insertion_mutation.InsertionMutation"><code class="docutils literal notranslate"><span class="pre">InsertionMutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.insertion_mutation.InsertionMutation.__annotations__"><code class="docutils literal notranslate"><span class="pre">InsertionMutation.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.insertion_mutation.InsertionMutation.__dict__"><code class="docutils literal notranslate"><span class="pre">InsertionMutation.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.insertion_mutation.InsertionMutation.__init__"><code class="docutils literal notranslate"><span class="pre">InsertionMutation.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.insertion_mutation.InsertionMutation.__module__"><code class="docutils literal notranslate"><span class="pre">InsertionMutation.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.insertion_mutation.InsertionMutation.__weakref__"><code class="docutils literal notranslate"><span class="pre">InsertionMutation.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.insertion_mutation.InsertionMutation.mutate"><code class="docutils literal notranslate"><span class="pre">InsertionMutation.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.mutation_operator">src.mutation.mutation_operator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.mutation_operator.MutationOperator"><code class="docutils literal notranslate"><span class="pre">MutationOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.mutation_operator.MutationOperator.__dict__"><code class="docutils literal notranslate"><span class="pre">MutationOperator.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.mutation_operator.MutationOperator.__module__"><code class="docutils literal notranslate"><span class="pre">MutationOperator.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.mutation_operator.MutationOperator.__weakref__"><code class="docutils literal notranslate"><span class="pre">MutationOperator.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.mutation_operator.MutationOperator.mutate"><code class="docutils literal notranslate"><span class="pre">MutationOperator.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.shuffle_mutation">src.mutation.shuffle_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.shuffle_mutation.ShuffleMutation"><code class="docutils literal notranslate"><span class="pre">ShuffleMutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.shuffle_mutation.ShuffleMutation.__annotations__"><code class="docutils literal notranslate"><span class="pre">ShuffleMutation.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.shuffle_mutation.ShuffleMutation.__dict__"><code class="docutils literal notranslate"><span class="pre">ShuffleMutation.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.shuffle_mutation.ShuffleMutation.__init__"><code class="docutils literal notranslate"><span class="pre">ShuffleMutation.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.shuffle_mutation.ShuffleMutation.__module__"><code class="docutils literal notranslate"><span class="pre">ShuffleMutation.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.shuffle_mutation.ShuffleMutation.__weakref__"><code class="docutils literal notranslate"><span class="pre">ShuffleMutation.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.shuffle_mutation.ShuffleMutation.mutate"><code class="docutils literal notranslate"><span class="pre">ShuffleMutation.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.swap_mutation">src.mutation.swap_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.swap_mutation.SwapMutation"><code class="docutils literal notranslate"><span class="pre">SwapMutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.swap_mutation.SwapMutation.__annotations__"><code class="docutils literal notranslate"><span class="pre">SwapMutation.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.swap_mutation.SwapMutation.__dict__"><code class="docutils literal notranslate"><span class="pre">SwapMutation.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.swap_mutation.SwapMutation.__init__"><code class="docutils literal notranslate"><span class="pre">SwapMutation.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.swap_mutation.SwapMutation.__module__"><code class="docutils literal notranslate"><span class="pre">SwapMutation.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.swap_mutation.SwapMutation.__weakref__"><code class="docutils literal notranslate"><span class="pre">SwapMutation.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.swap_mutation.SwapMutation.mutate"><code class="docutils literal notranslate"><span class="pre">SwapMutation.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation.two_opt_mutation">src.mutation.two_opt_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.mutation.html#src.mutation.two_opt_mutation.TwoOptMutation"><code class="docutils literal notranslate"><span class="pre">TwoOptMutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.two_opt_mutation.TwoOptMutation.__annotations__"><code class="docutils literal notranslate"><span class="pre">TwoOptMutation.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.two_opt_mutation.TwoOptMutation.__dict__"><code class="docutils literal notranslate"><span class="pre">TwoOptMutation.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.two_opt_mutation.TwoOptMutation.__init__"><code class="docutils literal notranslate"><span class="pre">TwoOptMutation.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.two_opt_mutation.TwoOptMutation.__module__"><code class="docutils literal notranslate"><span class="pre">TwoOptMutation.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.two_opt_mutation.TwoOptMutation.__weakref__"><code class="docutils literal notranslate"><span class="pre">TwoOptMutation.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.mutation.html#src.mutation.two_opt_mutation.TwoOptMutation.mutate"><code class="docutils literal notranslate"><span class="pre">TwoOptMutation.mutate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.mutation.html#module-src.mutation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.neighborhoods.html">src.neighborhoods package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#module-src.neighborhoods.compact_13">src.neighborhoods.compact_13 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_13.Compact13"><code class="docutils literal notranslate"><span class="pre">Compact13</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_13.Compact13.__dict__"><code class="docutils literal notranslate"><span class="pre">Compact13.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_13.Compact13.__init__"><code class="docutils literal notranslate"><span class="pre">Compact13.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_13.Compact13.__module__"><code class="docutils literal notranslate"><span class="pre">Compact13.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_13.Compact13.__weakref__"><code class="docutils literal notranslate"><span class="pre">Compact13.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_13.Compact13.calculate_neighbors_positions"><code class="docutils literal notranslate"><span class="pre">Compact13.calculate_neighbors_positions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#module-src.neighborhoods.compact_21">src.neighborhoods.compact_21 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_21.Compact21"><code class="docutils literal notranslate"><span class="pre">Compact21</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_21.Compact21.__dict__"><code class="docutils literal notranslate"><span class="pre">Compact21.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_21.Compact21.__init__"><code class="docutils literal notranslate"><span class="pre">Compact21.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_21.Compact21.__module__"><code class="docutils literal notranslate"><span class="pre">Compact21.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_21.Compact21.__weakref__"><code class="docutils literal notranslate"><span class="pre">Compact21.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_21.Compact21.calculate_neighbors_positions"><code class="docutils literal notranslate"><span class="pre">Compact21.calculate_neighbors_positions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#module-src.neighborhoods.compact_25">src.neighborhoods.compact_25 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_25.Compact25"><code class="docutils literal notranslate"><span class="pre">Compact25</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_25.Compact25.__dict__"><code class="docutils literal notranslate"><span class="pre">Compact25.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_25.Compact25.__init__"><code class="docutils literal notranslate"><span class="pre">Compact25.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_25.Compact25.__module__"><code class="docutils literal notranslate"><span class="pre">Compact25.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_25.Compact25.__weakref__"><code class="docutils literal notranslate"><span class="pre">Compact25.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_25.Compact25.calculate_neighbors_positions"><code class="docutils literal notranslate"><span class="pre">Compact25.calculate_neighbors_positions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#module-src.neighborhoods.compact_9">src.neighborhoods.compact_9 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_9.Compact9"><code class="docutils literal notranslate"><span class="pre">Compact9</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_9.Compact9.__dict__"><code class="docutils literal notranslate"><span class="pre">Compact9.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_9.Compact9.__init__"><code class="docutils literal notranslate"><span class="pre">Compact9.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_9.Compact9.__module__"><code class="docutils literal notranslate"><span class="pre">Compact9.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_9.Compact9.__weakref__"><code class="docutils literal notranslate"><span class="pre">Compact9.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.compact_9.Compact9.calculate_neighbors_positions"><code class="docutils literal notranslate"><span class="pre">Compact9.calculate_neighbors_positions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#module-src.neighborhoods.linear_5">src.neighborhoods.linear_5 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_5.Linear5"><code class="docutils literal notranslate"><span class="pre">Linear5</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_5.Linear5.__dict__"><code class="docutils literal notranslate"><span class="pre">Linear5.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_5.Linear5.__init__"><code class="docutils literal notranslate"><span class="pre">Linear5.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_5.Linear5.__module__"><code class="docutils literal notranslate"><span class="pre">Linear5.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_5.Linear5.__weakref__"><code class="docutils literal notranslate"><span class="pre">Linear5.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_5.Linear5.calculate_neighbors_positions"><code class="docutils literal notranslate"><span class="pre">Linear5.calculate_neighbors_positions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#module-src.neighborhoods.linear_9">src.neighborhoods.linear_9 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_9.Linear9"><code class="docutils literal notranslate"><span class="pre">Linear9</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_9.Linear9.__dict__"><code class="docutils literal notranslate"><span class="pre">Linear9.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_9.Linear9.__init__"><code class="docutils literal notranslate"><span class="pre">Linear9.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_9.Linear9.__module__"><code class="docutils literal notranslate"><span class="pre">Linear9.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_9.Linear9.__weakref__"><code class="docutils literal notranslate"><span class="pre">Linear9.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.neighborhoods.html#src.neighborhoods.linear_9.Linear9.calculate_neighbors_positions"><code class="docutils literal notranslate"><span class="pre">Linear9.calculate_neighbors_positions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.neighborhoods.html#module-src.neighborhoods">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.problems.html">src.problems package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.single_objective.html">src.problems.single_objective package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.single_objective.html#module-src.problems.single_objective">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.html#module-src.problems.abstract_problem">src.problems.abstract_problem module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.problems.html#src.problems.abstract_problem.AbstractProblem"><code class="docutils literal notranslate"><span class="pre">AbstractProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.html#src.problems.abstract_problem.AbstractProblem.f"><code class="docutils literal notranslate"><span class="pre">AbstractProblem.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.html#src.problems.abstract_problem.AbstractProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">AbstractProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.html#src.problems.abstract_problem.AbstractProblem.__module__"><code class="docutils literal notranslate"><span class="pre">AbstractProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.html#src.problems.abstract_problem.AbstractProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">AbstractProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.problems.html#id0"><code class="docutils literal notranslate"><span class="pre">AbstractProblem.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.problems.html#module-src.problems">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.recombination.html">src.recombination package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.arithmetic_crossover">src.recombination.arithmetic_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.arithmetic_crossover.ArithmeticCrossover"><code class="docutils literal notranslate"><span class="pre">ArithmeticCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.arithmetic_crossover.ArithmeticCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">ArithmeticCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.arithmetic_crossover.ArithmeticCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">ArithmeticCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.arithmetic_crossover.ArithmeticCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">ArithmeticCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.arithmetic_crossover.ArithmeticCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">ArithmeticCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.arithmetic_crossover.ArithmeticCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">ArithmeticCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.blxalpha_crossover">src.recombination.blxalpha_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover.combine"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover.combine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.blxalpha_crossover.BlxalphaCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">BlxalphaCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.byte_one_point_crossover">src.recombination.byte_one_point_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.byte_one_point_crossover.ByteOnePointCrossover"><code class="docutils literal notranslate"><span class="pre">ByteOnePointCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_one_point_crossover.ByteOnePointCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">ByteOnePointCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_one_point_crossover.ByteOnePointCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">ByteOnePointCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_one_point_crossover.ByteOnePointCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">ByteOnePointCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_one_point_crossover.ByteOnePointCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">ByteOnePointCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_one_point_crossover.ByteOnePointCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">ByteOnePointCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_one_point_crossover.ByteOnePointCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">ByteOnePointCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.byte_uniform_crossover">src.recombination.byte_uniform_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover.combine"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover.combine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.byte_uniform_crossover.ByteUniformCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">ByteUniformCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.flat_crossover">src.recombination.flat_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover"><code class="docutils literal notranslate"><span class="pre">FlatCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">FlatCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">FlatCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">FlatCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">FlatCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">FlatCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover.combine"><code class="docutils literal notranslate"><span class="pre">FlatCrossover.combine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.flat_crossover.FlatCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">FlatCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.linear_crossover">src.recombination.linear_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover"><code class="docutils literal notranslate"><span class="pre">LinearCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">LinearCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">LinearCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">LinearCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">LinearCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">LinearCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover.combine"><code class="docutils literal notranslate"><span class="pre">LinearCrossover.combine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.linear_crossover.LinearCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">LinearCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.one_point_crossover">src.recombination.one_point_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.one_point_crossover.OnePointCrossover"><code class="docutils literal notranslate"><span class="pre">OnePointCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.one_point_crossover.OnePointCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">OnePointCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.one_point_crossover.OnePointCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">OnePointCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.one_point_crossover.OnePointCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">OnePointCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.one_point_crossover.OnePointCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">OnePointCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.one_point_crossover.OnePointCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">OnePointCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.one_point_crossover.OnePointCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">OnePointCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.pmx_crossover">src.recombination.pmx_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.pmx_crossover.PMXCrossover"><code class="docutils literal notranslate"><span class="pre">PMXCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.pmx_crossover.PMXCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">PMXCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.pmx_crossover.PMXCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">PMXCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.pmx_crossover.PMXCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">PMXCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.pmx_crossover.PMXCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">PMXCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.pmx_crossover.PMXCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">PMXCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.pmx_crossover.PMXCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">PMXCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.recombination_operator">src.recombination.recombination_operator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.recombination_operator.RecombinationOperator"><code class="docutils literal notranslate"><span class="pre">RecombinationOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.recombination_operator.RecombinationOperator.__dict__"><code class="docutils literal notranslate"><span class="pre">RecombinationOperator.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.recombination_operator.RecombinationOperator.__module__"><code class="docutils literal notranslate"><span class="pre">RecombinationOperator.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.recombination_operator.RecombinationOperator.__weakref__"><code class="docutils literal notranslate"><span class="pre">RecombinationOperator.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.recombination_operator.RecombinationOperator.get_recombinations"><code class="docutils literal notranslate"><span class="pre">RecombinationOperator.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.two_point_crossover">src.recombination.two_point_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.two_point_crossover.TwoPointCrossover"><code class="docutils literal notranslate"><span class="pre">TwoPointCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.two_point_crossover.TwoPointCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">TwoPointCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.two_point_crossover.TwoPointCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">TwoPointCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.two_point_crossover.TwoPointCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">TwoPointCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.two_point_crossover.TwoPointCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">TwoPointCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.two_point_crossover.TwoPointCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">TwoPointCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.two_point_crossover.TwoPointCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">TwoPointCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.unfair_avarage_crossover">src.recombination.unfair_avarage_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.unfair_avarage_crossover.UnfairAvarageCrossover"><code class="docutils literal notranslate"><span class="pre">UnfairAvarageCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">UnfairAvarageCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">UnfairAvarageCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">UnfairAvarageCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">UnfairAvarageCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">UnfairAvarageCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">UnfairAvarageCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination.uniform_crossover">src.recombination.uniform_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover"><code class="docutils literal notranslate"><span class="pre">UniformCrossover</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover.__annotations__"><code class="docutils literal notranslate"><span class="pre">UniformCrossover.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover.__dict__"><code class="docutils literal notranslate"><span class="pre">UniformCrossover.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover.__init__"><code class="docutils literal notranslate"><span class="pre">UniformCrossover.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover.__module__"><code class="docutils literal notranslate"><span class="pre">UniformCrossover.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover.__weakref__"><code class="docutils literal notranslate"><span class="pre">UniformCrossover.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover.combine"><code class="docutils literal notranslate"><span class="pre">UniformCrossover.combine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.recombination.html#src.recombination.uniform_crossover.UniformCrossover.get_recombinations"><code class="docutils literal notranslate"><span class="pre">UniformCrossover.get_recombinations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.recombination.html#module-src.recombination">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.selection.html">src.selection package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.selection.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.selection.html#module-src.selection.roulette_wheel_selection">src.selection.roulette_wheel_selection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.selection.html#src.selection.roulette_wheel_selection.RouletteWheelSelection"><code class="docutils literal notranslate"><span class="pre">RouletteWheelSelection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.roulette_wheel_selection.RouletteWheelSelection.__dict__"><code class="docutils literal notranslate"><span class="pre">RouletteWheelSelection.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.roulette_wheel_selection.RouletteWheelSelection.__init__"><code class="docutils literal notranslate"><span class="pre">RouletteWheelSelection.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.roulette_wheel_selection.RouletteWheelSelection.__module__"><code class="docutils literal notranslate"><span class="pre">RouletteWheelSelection.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.roulette_wheel_selection.RouletteWheelSelection.__weakref__"><code class="docutils literal notranslate"><span class="pre">RouletteWheelSelection.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.roulette_wheel_selection.RouletteWheelSelection.get_parents"><code class="docutils literal notranslate"><span class="pre">RouletteWheelSelection.get_parents()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.selection.html#module-src.selection.selection_operator">src.selection.selection_operator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.selection.html#src.selection.selection_operator.SelectionOperator"><code class="docutils literal notranslate"><span class="pre">SelectionOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.selection_operator.SelectionOperator.__dict__"><code class="docutils literal notranslate"><span class="pre">SelectionOperator.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.selection_operator.SelectionOperator.__module__"><code class="docutils literal notranslate"><span class="pre">SelectionOperator.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.selection_operator.SelectionOperator.__weakref__"><code class="docutils literal notranslate"><span class="pre">SelectionOperator.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.selection_operator.SelectionOperator.get_parents"><code class="docutils literal notranslate"><span class="pre">SelectionOperator.get_parents()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.selection.html#module-src.selection.tournament_selection">src.selection.tournament_selection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.selection.html#src.selection.tournament_selection.TournamentSelection"><code class="docutils literal notranslate"><span class="pre">TournamentSelection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.tournament_selection.TournamentSelection.__annotations__"><code class="docutils literal notranslate"><span class="pre">TournamentSelection.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.tournament_selection.TournamentSelection.__dict__"><code class="docutils literal notranslate"><span class="pre">TournamentSelection.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.tournament_selection.TournamentSelection.__init__"><code class="docutils literal notranslate"><span class="pre">TournamentSelection.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.tournament_selection.TournamentSelection.__module__"><code class="docutils literal notranslate"><span class="pre">TournamentSelection.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.tournament_selection.TournamentSelection.__weakref__"><code class="docutils literal notranslate"><span class="pre">TournamentSelection.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.selection.html#src.selection.tournament_selection.TournamentSelection.get_parents"><code class="docutils literal notranslate"><span class="pre">TournamentSelection.get_parents()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.selection.html#module-src.selection">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.tests.html">src.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.conftest">src.tests.conftest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_ackley">src.tests.test_ackley module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_ackley.test_ackley"><code class="docutils literal notranslate"><span class="pre">test_ackley()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_arithmetic_crossover">src.tests.test_arithmetic_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.setup_parents"><code class="docutils literal notranslate"><span class="pre">setup_parents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_arithmetic_crossover.test_arithmetic_crossover"><code class="docutils literal notranslate"><span class="pre">test_arithmetic_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_bentcigar_function">src.tests.test_bentcigar_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_bentcigar_function.setup_bentcigar"><code class="docutils literal notranslate"><span class="pre">setup_bentcigar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_bentcigar_function.test_bentcigar_function"><code class="docutils literal notranslate"><span class="pre">test_bentcigar_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_bit_flip_mutation">src.tests.test_bit_flip_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_bit_flip_mutation.test_bit_flip_mutation"><code class="docutils literal notranslate"><span class="pre">test_bit_flip_mutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_blxalpha_crossover">src.tests.test_blxalpha_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.setup_parents"><code class="docutils literal notranslate"><span class="pre">setup_parents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_blxalpha_crossover.test_blxalpha_crossover"><code class="docutils literal notranslate"><span class="pre">test_blxalpha_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_bohachevsky">src.tests.test_bohachevsky module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_bohachevsky.test_bohachevsky"><code class="docutils literal notranslate"><span class="pre">test_bohachevsky()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_byte_mutation">src.tests.test_byte_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.setup_individual"><code class="docutils literal notranslate"><span class="pre">setup_individual()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation.test_byte_mutation"><code class="docutils literal notranslate"><span class="pre">test_byte_mutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_byte_mutation_random">src.tests.test_byte_mutation_random module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.setup_individual"><code class="docutils literal notranslate"><span class="pre">setup_individual()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_mutation_random.test_byte_mutation_random"><code class="docutils literal notranslate"><span class="pre">test_byte_mutation_random()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_byte_one_point_crossover">src.tests.test_byte_one_point_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.setup_parents"><code class="docutils literal notranslate"><span class="pre">setup_parents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_one_point_crossover.test_byte_one_point_crossover"><code class="docutils literal notranslate"><span class="pre">test_byte_one_point_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_byte_operators">src.tests.test_byte_operators module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_operators.test_bits_to_float"><code class="docutils literal notranslate"><span class="pre">test_bits_to_float()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_operators.test_bits_to_floats"><code class="docutils literal notranslate"><span class="pre">test_bits_to_floats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_operators.test_float_to_bits"><code class="docutils literal notranslate"><span class="pre">test_float_to_bits()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_operators.test_floats_to_bits"><code class="docutils literal notranslate"><span class="pre">test_floats_to_bits()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_byte_uniform_crossover">src.tests.test_byte_uniform_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.setup_parents"><code class="docutils literal notranslate"><span class="pre">setup_parents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_byte_uniform_crossover.test_byte_uniform_crossover"><code class="docutils literal notranslate"><span class="pre">test_byte_uniform_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_chichinadze_function">src.tests.test_chichinadze_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_chichinadze_function.setup_chichinadze"><code class="docutils literal notranslate"><span class="pre">setup_chichinadze()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_chichinadze_function.test_chichinadze_function"><code class="docutils literal notranslate"><span class="pre">test_chichinadze_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_compact_13">src.tests.test_compact_13 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_compact_13.test_compact_13"><code class="docutils literal notranslate"><span class="pre">test_compact_13()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_compact_21">src.tests.test_compact_21 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_compact_21.test_compact_21"><code class="docutils literal notranslate"><span class="pre">test_compact_21()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_compact_25">src.tests.test_compact_25 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_compact_25.test_compact_25"><code class="docutils literal notranslate"><span class="pre">test_compact_25()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_compact_9">src.tests.test_compact_9 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_compact_9.test_compact_9"><code class="docutils literal notranslate"><span class="pre">test_compact_9()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_count_sat">src.tests.test_count_sat module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_count_sat.test_count_sat"><code class="docutils literal notranslate"><span class="pre">test_count_sat()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_dropwave_function">src.tests.test_dropwave_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_dropwave_function.setup_dropwave"><code class="docutils literal notranslate"><span class="pre">setup_dropwave()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_dropwave_function.test_dropwave_function"><code class="docutils literal notranslate"><span class="pre">test_dropwave_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_ecc">src.tests.test_ecc module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_ecc.ecc_instance"><code class="docutils literal notranslate"><span class="pre">ecc_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_ecc.test_ecc"><code class="docutils literal notranslate"><span class="pre">test_ecc()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_flat_crossover">src.tests.test_flat_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.setup_parents"><code class="docutils literal notranslate"><span class="pre">setup_parents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_flat_crossover.test_flat_crossover"><code class="docutils literal notranslate"><span class="pre">test_flat_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_float_uniform_mutation">src.tests.test_float_uniform_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.setup_individual"><code class="docutils literal notranslate"><span class="pre">setup_individual()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_float_uniform_mutation.test_float_uniform_mutation"><code class="docutils literal notranslate"><span class="pre">test_float_uniform_mutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_fms">src.tests.test_fms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_fms.fms_instance"><code class="docutils literal notranslate"><span class="pre">fms_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_fms.test_fms"><code class="docutils literal notranslate"><span class="pre">test_fms()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_grid">src.tests.test_grid module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_grid.test_grid"><code class="docutils literal notranslate"><span class="pre">test_grid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_griewank_function">src.tests.test_griewank_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_griewank_function.setup_griewank"><code class="docutils literal notranslate"><span class="pre">setup_griewank()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_griewank_function.test_griewank_function"><code class="docutils literal notranslate"><span class="pre">test_griewank_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_holzman_function">src.tests.test_holzman_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_holzman_function.setup_holzman"><code class="docutils literal notranslate"><span class="pre">setup_holzman()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_holzman_function.test_holzman_function"><code class="docutils literal notranslate"><span class="pre">test_holzman_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_individual">src.tests.test_individual module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.setup_individual"><code class="docutils literal notranslate"><span class="pre">setup_individual()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.test_get_set_neighbors"><code class="docutils literal notranslate"><span class="pre">test_get_set_neighbors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.test_get_set_neighbors_positions"><code class="docutils literal notranslate"><span class="pre">test_get_set_neighbors_positions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.test_illegal_genome_type"><code class="docutils literal notranslate"><span class="pre">test_illegal_genome_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.test_individual_init"><code class="docutils literal notranslate"><span class="pre">test_individual_init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.test_randomize_binary"><code class="docutils literal notranslate"><span class="pre">test_randomize_binary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.test_randomize_permutation"><code class="docutils literal notranslate"><span class="pre">test_randomize_permutation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_individual.test_randomize_real_valued"><code class="docutils literal notranslate"><span class="pre">test_randomize_real_valued()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_insertion_mutation">src.tests.test_insertion_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_insertion_mutation.test_insertion_mutation"><code class="docutils literal notranslate"><span class="pre">test_insertion_mutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_levy_function">src.tests.test_levy_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_levy_function.setup_levy"><code class="docutils literal notranslate"><span class="pre">setup_levy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_levy_function.test_levy_function"><code class="docutils literal notranslate"><span class="pre">test_levy_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_linear_5">src.tests.test_linear_5 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_linear_5.test_linear_5"><code class="docutils literal notranslate"><span class="pre">test_linear_5()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_linear_9">src.tests.test_linear_9 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_linear_9.test_linear_9"><code class="docutils literal notranslate"><span class="pre">test_linear_9()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_linear_crossover">src.tests.test_linear_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.setup_parents"><code class="docutils literal notranslate"><span class="pre">setup_parents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_linear_crossover.test_linear_crossover"><code class="docutils literal notranslate"><span class="pre">test_linear_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_matyas_function">src.tests.test_matyas_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_matyas_function.setup_matyas"><code class="docutils literal notranslate"><span class="pre">setup_matyas()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_matyas_function.test_matyas_function"><code class="docutils literal notranslate"><span class="pre">test_matyas_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_maxcut100">src.tests.test_maxcut100 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_maxcut100.maxcut_instance"><code class="docutils literal notranslate"><span class="pre">maxcut_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_maxcut100.test_maxcut100"><code class="docutils literal notranslate"><span class="pre">test_maxcut100()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_maxcut20_01">src.tests.test_maxcut20_01 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_maxcut20_01.maxcut_instance"><code class="docutils literal notranslate"><span class="pre">maxcut_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_maxcut20_01.test_maxcut20_01"><code class="docutils literal notranslate"><span class="pre">test_maxcut20_01()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_maxcut20_09">src.tests.test_maxcut20_09 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_maxcut20_09.maxcut_instance"><code class="docutils literal notranslate"><span class="pre">maxcut_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_maxcut20_09.test_maxcut20_09"><code class="docutils literal notranslate"><span class="pre">test_maxcut20_09()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_mmdp">src.tests.test_mmdp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_mmdp.mmdp_instance"><code class="docutils literal notranslate"><span class="pre">mmdp_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_mmdp.test_mmdp_function"><code class="docutils literal notranslate"><span class="pre">test_mmdp_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_one_max">src.tests.test_one_max module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_one_max.test_one_max"><code class="docutils literal notranslate"><span class="pre">test_one_max()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_one_point_crossover">src.tests.test_one_point_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_one_point_crossover.test_one_point_crossover"><code class="docutils literal notranslate"><span class="pre">test_one_point_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_optimizer_alpha_cga">src.tests.test_optimizer_alpha_cga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.BinaryProblem"><code class="docutils literal notranslate"><span class="pre">BinaryProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.BinaryProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.BinaryProblem.__init__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.BinaryProblem.__module__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.BinaryProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.BinaryProblem.f"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.PermutationProblem"><code class="docutils literal notranslate"><span class="pre">PermutationProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.PermutationProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.PermutationProblem.__init__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.PermutationProblem.__module__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.PermutationProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.PermutationProblem.f"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.PermutationProblem.test_optimizer_alpha_cga_permutation"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.test_optimizer_alpha_cga_permutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.RealProblem"><code class="docutils literal notranslate"><span class="pre">RealProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.RealProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.RealProblem.__init__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.RealProblem.__module__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.RealProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.RealProblem.f"><code class="docutils literal notranslate"><span class="pre">RealProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.test_optimizer_alpha_cga_binary"><code class="docutils literal notranslate"><span class="pre">test_optimizer_alpha_cga_binary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.test_optimizer_alpha_cga_no_variation"><code class="docutils literal notranslate"><span class="pre">test_optimizer_alpha_cga_no_variation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_alpha_cga.test_optimizer_alpha_cga_real"><code class="docutils literal notranslate"><span class="pre">test_optimizer_alpha_cga_real()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_optimizer_ccga">src.tests.test_optimizer_ccga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_ccga.BinaryProblem"><code class="docutils literal notranslate"><span class="pre">BinaryProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_ccga.BinaryProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_ccga.BinaryProblem.__init__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_ccga.BinaryProblem.__module__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_ccga.BinaryProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_ccga.BinaryProblem.f"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_ccga.test_optimizer_ccga_binary"><code class="docutils literal notranslate"><span class="pre">test_optimizer_ccga_binary()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_optimizer_cga">src.tests.test_optimizer_cga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.BinaryProblem"><code class="docutils literal notranslate"><span class="pre">BinaryProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.BinaryProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.BinaryProblem.__init__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.BinaryProblem.__module__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.BinaryProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.BinaryProblem.f"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.PermutationProblem"><code class="docutils literal notranslate"><span class="pre">PermutationProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.PermutationProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.PermutationProblem.__init__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.PermutationProblem.__module__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.PermutationProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.PermutationProblem.f"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.PermutationProblem.test_optimizer_cga_permutation"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.test_optimizer_cga_permutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.RealProblem"><code class="docutils literal notranslate"><span class="pre">RealProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.RealProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.RealProblem.__init__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.RealProblem.__module__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.RealProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.RealProblem.f"><code class="docutils literal notranslate"><span class="pre">RealProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.test_optimizer_cga_binary"><code class="docutils literal notranslate"><span class="pre">test_optimizer_cga_binary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.test_optimizer_cga_no_variation"><code class="docutils literal notranslate"><span class="pre">test_optimizer_cga_no_variation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_cga.test_optimizer_cga_real"><code class="docutils literal notranslate"><span class="pre">test_optimizer_cga_real()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_optimizer_mccga">src.tests.test_optimizer_mccga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_mccga.RealProblem"><code class="docutils literal notranslate"><span class="pre">RealProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_mccga.RealProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_mccga.RealProblem.__init__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_mccga.RealProblem.__module__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_mccga.RealProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_mccga.RealProblem.f"><code class="docutils literal notranslate"><span class="pre">RealProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_mccga.test_optimizer_mcccga_binary"><code class="docutils literal notranslate"><span class="pre">test_optimizer_mcccga_binary()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_optimizer_sync_cga">src.tests.test_optimizer_sync_cga module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.BinaryProblem"><code class="docutils literal notranslate"><span class="pre">BinaryProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.BinaryProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.BinaryProblem.__init__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.BinaryProblem.__module__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.BinaryProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.BinaryProblem.f"><code class="docutils literal notranslate"><span class="pre">BinaryProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.PermutationProblem"><code class="docutils literal notranslate"><span class="pre">PermutationProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.PermutationProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.PermutationProblem.__init__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.PermutationProblem.__module__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.PermutationProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.PermutationProblem.f"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.PermutationProblem.test_optimizer_sync_cga_permutation"><code class="docutils literal notranslate"><span class="pre">PermutationProblem.test_optimizer_sync_cga_permutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.RealProblem"><code class="docutils literal notranslate"><span class="pre">RealProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.RealProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.RealProblem.__init__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.RealProblem.__module__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.RealProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">RealProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.RealProblem.f"><code class="docutils literal notranslate"><span class="pre">RealProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.test_optimizer_sync_cga_binary"><code class="docutils literal notranslate"><span class="pre">test_optimizer_sync_cga_binary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.test_optimizer_sync_cga_no_variation"><code class="docutils literal notranslate"><span class="pre">test_optimizer_sync_cga_no_variation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_optimizer_sync_cga.test_optimizer_sync_cga_real"><code class="docutils literal notranslate"><span class="pre">test_optimizer_sync_cga_real()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_peak">src.tests.test_peak module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_peak.peak_instance"><code class="docutils literal notranslate"><span class="pre">peak_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_peak.test_peak"><code class="docutils literal notranslate"><span class="pre">test_peak()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_pmx_crossover">src.tests.test_pmx_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_pmx_crossover.test_pmx_crossover"><code class="docutils literal notranslate"><span class="pre">test_pmx_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_population">src.tests.test_population module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_population.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_population.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_population.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_population.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_population.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_population.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#id0"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_population.setup_population"><code class="docutils literal notranslate"><span class="pre">setup_population()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_population.test_fitness_evaluation"><code class="docutils literal notranslate"><span class="pre">test_fitness_evaluation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_population.test_initial_population_size"><code class="docutils literal notranslate"><span class="pre">test_initial_population_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_population.test_neighborhood_assignment"><code class="docutils literal notranslate"><span class="pre">test_neighborhood_assignment()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_pow_function">src.tests.test_pow_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_pow_function.Pow"><code class="docutils literal notranslate"><span class="pre">Pow</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_pow_function.Pow.None"><code class="docutils literal notranslate"><span class="pre">Pow.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_pow_function.Pow.f"><code class="docutils literal notranslate"><span class="pre">Pow.f()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_pow_function.Pow.__annotations__"><code class="docutils literal notranslate"><span class="pre">Pow.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_pow_function.Pow.__dict__"><code class="docutils literal notranslate"><span class="pre">Pow.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_pow_function.Pow.__module__"><code class="docutils literal notranslate"><span class="pre">Pow.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_pow_function.Pow.__weakref__"><code class="docutils literal notranslate"><span class="pre">Pow.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#id1"><code class="docutils literal notranslate"><span class="pre">Pow.f()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_powell_function">src.tests.test_powell_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_powell_function.setup_powell"><code class="docutils literal notranslate"><span class="pre">setup_powell()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_powell_function.test_powell_function"><code class="docutils literal notranslate"><span class="pre">test_powell_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_rastrigin">src.tests.test_rastrigin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_rastrigin.test_rastrigin"><code class="docutils literal notranslate"><span class="pre">test_rastrigin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_rosenbrock">src.tests.test_rosenbrock module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_rosenbrock.test_rosenbrock"><code class="docutils literal notranslate"><span class="pre">test_rosenbrock()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_rothellipsoid_function">src.tests.test_rothellipsoid_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_rothellipsoid_function.setup_rothellipsoid"><code class="docutils literal notranslate"><span class="pre">setup_rothellipsoid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_rothellipsoid_function.test_rothellipsoid_function"><code class="docutils literal notranslate"><span class="pre">test_rothellipsoid_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_roulette_wheel_selection">src.tests.test_roulette_wheel_selection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_roulette_wheel_selection.test_roulette_wheel_selection"><code class="docutils literal notranslate"><span class="pre">test_roulette_wheel_selection()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_schaffer2_function">src.tests.test_schaffer2_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_schaffer2_function.setup_schaffer2"><code class="docutils literal notranslate"><span class="pre">setup_schaffer2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_schaffer2_function.test_schaffer2_function"><code class="docutils literal notranslate"><span class="pre">test_schaffer2_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_schaffer_function">src.tests.test_schaffer_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_schaffer_function.setup_schaffer"><code class="docutils literal notranslate"><span class="pre">setup_schaffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_schaffer_function.test_schaffer_function"><code class="docutils literal notranslate"><span class="pre">test_schaffer_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_schwefel">src.tests.test_schwefel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_schwefel.test_schwefel"><code class="docutils literal notranslate"><span class="pre">test_schwefel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_shuffle_mutation">src.tests.test_shuffle_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_shuffle_mutation.test_shuffle_mutation"><code class="docutils literal notranslate"><span class="pre">test_shuffle_mutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_sphere">src.tests.test_sphere module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_sphere.test_sphere"><code class="docutils literal notranslate"><span class="pre">test_sphere()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_styblinskitang_function">src.tests.test_styblinskitang_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_styblinskitang_function.setup_styblinski_tang"><code class="docutils literal notranslate"><span class="pre">setup_styblinski_tang()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_styblinskitang_function.test_styblinskitang_function"><code class="docutils literal notranslate"><span class="pre">test_styblinskitang_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_sumofdifferentpowers_function">src.tests.test_sumofdifferentpowers_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_sumofdifferentpowers_function.setup_sumofdifferentpowers"><code class="docutils literal notranslate"><span class="pre">setup_sumofdifferentpowers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_sumofdifferentpowers_function.test_sumofdifferentpowers_function"><code class="docutils literal notranslate"><span class="pre">test_sumofdifferentpowers_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_swap_mutation">src.tests.test_swap_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_swap_mutation.test_swap_mutation"><code class="docutils literal notranslate"><span class="pre">test_swap_mutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_threehumps_function">src.tests.test_threehumps_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_threehumps_function.setup_threehumps"><code class="docutils literal notranslate"><span class="pre">setup_threehumps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_threehumps_function.test_threehumps_function"><code class="docutils literal notranslate"><span class="pre">test_threehumps_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_tournament_selection">src.tests.test_tournament_selection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_tournament_selection.test_tournament_selection"><code class="docutils literal notranslate"><span class="pre">test_tournament_selection()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_tsp">src.tests.test_tsp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_tsp.test_tsp"><code class="docutils literal notranslate"><span class="pre">test_tsp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_two_opt_mutation">src.tests.test_two_opt_mutation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_two_opt_mutation.test_two_opt_mutation"><code class="docutils literal notranslate"><span class="pre">test_two_opt_mutation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_two_point_crossover">src.tests.test_two_point_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_two_point_crossover.test_two_point_crossover"><code class="docutils literal notranslate"><span class="pre">test_two_point_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_unfair_average_crossover">src.tests.test_unfair_average_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.MockProblem"><code class="docutils literal notranslate"><span class="pre">MockProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.MockProblem.__annotations__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__annotations__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.MockProblem.__dict__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__dict__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.MockProblem.__module__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__module__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.MockProblem.__weakref__"><code class="docutils literal notranslate"><span class="pre">MockProblem.__weakref__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.MockProblem.f"><code class="docutils literal notranslate"><span class="pre">MockProblem.f()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.setup_parents"><code class="docutils literal notranslate"><span class="pre">setup_parents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.setup_problem"><code class="docutils literal notranslate"><span class="pre">setup_problem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_unfair_average_crossover.test_unfair_average_crossover"><code class="docutils literal notranslate"><span class="pre">test_unfair_average_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_uniform_crossover">src.tests.test_uniform_crossover module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_uniform_crossover.test_uniform_crossover"><code class="docutils literal notranslate"><span class="pre">test_uniform_crossover()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_zakharov_function">src.tests.test_zakharov_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_zakharov_function.test_zakharov_function"><code class="docutils literal notranslate"><span class="pre">test_zakharov_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests.test_zettle_function">src.tests.test_zettle_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_zettle_function.setup_zettle"><code class="docutils literal notranslate"><span class="pre">setup_zettle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tests.html#src.tests.test_zettle_function.test_zettle_function"><code class="docutils literal notranslate"><span class="pre">test_zettle_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tests.html#module-src.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-src.byte_operators">
+<span id="src-byte-operators-module"></span><h2>src.byte_operators module<a class="headerlink" href="#module-src.byte_operators" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.byte_operators.bits_to_float">
+<span class="sig-prename descclassname"><span class="pre">src.byte_operators.</span></span><span class="sig-name descname"><span class="pre">bits_to_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/src/byte_operators.html#bits_to_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.byte_operators.bits_to_float" title="Link to this definition"></a></dt>
+<dd><p>Convert a bit representation to its float value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bit_list</strong> (<em>list</em><em> of </em><em>int</em>) – A list of 32 integers (0 or 1) representing the bit pattern of the float.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The float value represented by the bit pattern.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.byte_operators.bits_to_floats">
+<span class="sig-prename descclassname"><span class="pre">src.byte_operators.</span></span><span class="sig-name descname"><span class="pre">bits_to_floats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/byte_operators.html#bits_to_floats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.byte_operators.bits_to_floats" title="Link to this definition"></a></dt>
+<dd><p>Convert a combined bit representation back to a list of floats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bit_list</strong> (<em>list</em><em> of </em><em>int</em>) – A list of integers (0 or 1) representing the combined bit patterns of the floats.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of float values represented by the bit pattern.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.byte_operators.float_to_bits">
+<span class="sig-prename descclassname"><span class="pre">src.byte_operators.</span></span><span class="sig-name descname"><span class="pre">float_to_bits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">float_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/byte_operators.html#float_to_bits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.byte_operators.float_to_bits" title="Link to this definition"></a></dt>
+<dd><p>Convert a float to its bit representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>float_number</strong> (<em>float</em>) – The float number to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of 32 integers (0 or 1) representing the bit pattern of the float.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.byte_operators.floats_to_bits">
+<span class="sig-prename descclassname"><span class="pre">src.byte_operators.</span></span><span class="sig-name descname"><span class="pre">floats_to_bits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">float_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/byte_operators.html#floats_to_bits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.byte_operators.floats_to_bits" title="Link to this definition"></a></dt>
+<dd><p>Convert a list of floats to their combined bit representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>float_list</strong> (<em>list</em><em> of </em><em>float</em>) – The list of float numbers to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of integers (0 or 1) representing the combined bit patterns of the floats.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-src.grid">
+<span id="src-grid-module"></span><h2>src.grid module<a class="headerlink" href="#module-src.grid" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.grid.Grid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.grid.</span></span><span class="sig-name descname"><span class="pre">Grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/grid.html#Grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.grid.Grid" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent a 2D grid.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.grid.Grid.n_rows">
+<span class="sig-name descname"><span class="pre">n_rows</span></span><a class="headerlink" href="#src.grid.Grid.n_rows" title="Link to this definition"></a></dt>
+<dd><p>Number of rows in the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.grid.Grid.n_cols">
+<span class="sig-name descname"><span class="pre">n_cols</span></span><a class="headerlink" href="#src.grid.Grid.n_cols" title="Link to this definition"></a></dt>
+<dd><p>Number of columns in the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.grid.Grid.__dict__">
+<span class="sig-name descname"><span class="pre">__dict__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">mappingproxy({'__module__':</span> <span class="pre">'src.grid',</span> <span class="pre">'__doc__':</span> <span class="pre">'\n</span>&#160;&#160;&#160; <span class="pre">A</span> <span class="pre">class</span> <span class="pre">to</span> <span class="pre">represent</span> <span class="pre">a</span> <span class="pre">2D</span> <span class="pre">grid.\n\n</span>&#160;&#160;&#160; <span class="pre">Attributes\n</span>&#160;&#160;&#160; <span class="pre">----------\n</span>&#160;&#160;&#160; <span class="pre">n_rows</span> <span class="pre">:</span> <span class="pre">int\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Number</span> <span class="pre">of</span> <span class="pre">rows</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">grid.\n</span>&#160;&#160;&#160; <span class="pre">n_cols</span> <span class="pre">:</span> <span class="pre">int\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Number</span> <span class="pre">of</span> <span class="pre">columns</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">grid.\n</span>&#160;&#160;&#160; <span class="pre">',</span> <span class="pre">'__init__':</span> <span class="pre">&lt;function</span> <span class="pre">Grid.__init__&gt;,</span> <span class="pre">'make_2d_grid':</span> <span class="pre">&lt;function</span> <span class="pre">Grid.make_2d_grid&gt;,</span> <span class="pre">'__dict__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__dict__'</span> <span class="pre">of</span> <span class="pre">'Grid'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__weakref__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__weakref__'</span> <span class="pre">of</span> <span class="pre">'Grid'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__annotations__':</span> <span class="pre">{}})</span></em><a class="headerlink" href="#src.grid.Grid.__dict__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.grid.Grid.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/grid.html#Grid.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.grid.Grid.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the Grid with the number of rows and columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_rows</strong> (<em>int</em>) – Number of rows in the grid.</p></li>
+<li><p><strong>n_cols</strong> (<em>int</em>) – Number of columns in the grid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.grid.Grid.__module__">
+<span class="sig-name descname"><span class="pre">__module__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'src.grid'</span></em><a class="headerlink" href="#src.grid.Grid.__module__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.grid.Grid.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#src.grid.Grid.__weakref__" title="Link to this definition"></a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.grid.Grid.make_2d_grid">
+<span class="sig-name descname"><span class="pre">make_2d_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/src/grid.html#Grid.make_2d_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.grid.Grid.make_2d_grid" title="Link to this definition"></a></dt>
+<dd><p>Create a 2D grid where each cell is represented by a tuple (row, column).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of tuples where each tuple represents a grid cell.
+Each tuple is of the form (row, column), with rows and columns starting from 1.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="src-individual-module">
+<h2>src.individual module<a class="headerlink" href="#src-individual-module" title="Link to this heading"></a></h2>
+</section>
+<section id="src-optimizer-module">
+<h2>src.optimizer module<a class="headerlink" href="#src-optimizer-module" title="Link to this heading"></a></h2>
+</section>
+<section id="src-population-module">
+<h2>src.population module<a class="headerlink" href="#src-population-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-src">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="pycellga" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.example.html" class="btn btn-neutral float-right" title="src.example package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
