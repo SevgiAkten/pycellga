@@ -95,3 +95,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Developed by Sevgi Akten Karakaya and Mehmet Hakan Satman.
 Inspired by traditional genetic algorithms and cellular automata principles with machine coded operators.
 For more information, please visit the project repository.
+
+## Citation
+Please cite our work using the citation info
+
+Karakaya, Sevgi Akten, and Mehmet Hakan Satman. "An Improved Cellular Genetic Algorithm with Machine-Coded Operators for Real-Valued Optimisation Problems." Journal of Engineering Research and Applied Science 13.1 (2024): 2500-2514.
