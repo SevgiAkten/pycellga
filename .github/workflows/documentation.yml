@@ -20,6 +20,7 @@ jobs:
 
     - name: Generate HTML Documentation
       run: |
+        cd src
         mkdir -p docs
         python3 -m pydoc -w optimizer
         mv optimizer.html docs/index.html
