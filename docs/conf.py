@@ -33,10 +33,19 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 autodoc_default_options = {
-    'members': True,        
-    'undoc-members': True,  
-    'private-members': True, 
-    'special-members': True, 
-    'inherited-members': True, 
-    'show-inheritance': True
+    'members': True,
+    'undoc-members': True,
+    'private-members': False,
+    'special-members': '__init__',  # Only include __init__, exclude others like __dict__
+    'exclude-members': '__dict__,__weakref__,__module__,__annotations__'
 }
+
+def skip(app, what, name, obj, would_skip, options):
+    # Skip all special members except __init__
+    if name in ('__dict__', '__weakref__', '__module__', '__annotations__'):
+        return True
+    return would_skip
+
+def setup(app):
+    app.connect('autodoc-skip-member', skip)
+
