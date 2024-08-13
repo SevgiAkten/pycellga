@@ -18,15 +18,15 @@ jobs:
       with:
         python-version: '3.x'
 
-    # - name: Install dependencies
-    #   run: |
-    #     pip install pydoc
-
     - name: Generate HTML Documentation
       run: |
+        export PATH="$PATH:/usr/local/bin/python3"
         mkdir -p docs
-        pydoc -w optimizer
-        mv optimizer.html docs/index.html
+        for file in $(find . -name "*.py"); do
+            module=$(basename "$file" .py)
+            python3 -m pydoc -w "$module"
+            mv "$module.html" docs/
+        done
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
