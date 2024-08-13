@@ -1,3 +1,6 @@
+# ------ Optimizer for cga, sync_ga, alpha_cga, ccga and mcccga methods ------ #
+
+
 # ------------------------------ selection --------------------------------- #
 from selection.roulette_wheel_selection import RouletteWheelSelection
 from selection.tournament_selection import TournamentSelection
