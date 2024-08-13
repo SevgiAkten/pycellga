@@ -1,7 +1,6 @@
 from problems.abstract_problem import AbstractProblem
 import tsplib95
 from math import sqrt
-import pandas as pd
 from geopy.distance import geodesic
 import os
 
@@ -61,8 +60,13 @@ class Tsp(AbstractProblem):
         node_name = []
         for i in range(1, 15):
             node_name.append(i)
-
-        Dist = pd.DataFrame(temp, columns=node_name, index=node_name)
+            
+        Dist = {}
+        # Creating the dictionary of dictionaries
+        for i, row_name in enumerate(node_name):
+            Dist[row_name] = {}
+            for j, col_name in enumerate(node_name):
+                Dist[row_name][col_name] = temp[i][j]
 
         # objective
         fitness = 0.0
