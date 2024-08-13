@@ -1,0 +1,19 @@
+pycellga.src.problems.single\_objective.discrete package
+========================================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pycellga.src.problems.single_objective.discrete.binary
+   pycellga.src.problems.single_objective.discrete.permutation
+
+Module contents
+---------------
+
+.. automodule:: pycellga.src.problems.single_objective.discrete
+   :members:
+   :undoc-members:
+   :show-inheritance:

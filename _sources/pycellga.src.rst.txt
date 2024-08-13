@@ -1,0 +1,67 @@
+pycellga.src package
+====================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pycellga.src.example
+   pycellga.src.mutation
+   pycellga.src.neighborhoods
+   pycellga.src.problems
+   pycellga.src.recombination
+   pycellga.src.selection
+   pycellga.src.tests
+
+Submodules
+----------
+
+pycellga.src.byte\_operators module
+-----------------------------------
+
+.. automodule:: pycellga.src.byte_operators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.grid module
+------------------------
+
+.. automodule:: pycellga.src.grid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.individual module
+------------------------------
+
+.. automodule:: pycellga.src.individual
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.optimizer module
+-----------------------------
+
+.. automodule:: pycellga.src.optimizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.population module
+------------------------------
+
+.. automodule:: pycellga.src.population
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pycellga.src
+   :members:
+   :undoc-members:
+   :show-inheritance:

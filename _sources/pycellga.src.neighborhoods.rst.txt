@@ -1,0 +1,61 @@
+pycellga.src.neighborhoods package
+==================================
+
+Submodules
+----------
+
+pycellga.src.neighborhoods.compact\_13 module
+---------------------------------------------
+
+.. automodule:: pycellga.src.neighborhoods.compact_13
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.neighborhoods.compact\_21 module
+---------------------------------------------
+
+.. automodule:: pycellga.src.neighborhoods.compact_21
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.neighborhoods.compact\_25 module
+---------------------------------------------
+
+.. automodule:: pycellga.src.neighborhoods.compact_25
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.neighborhoods.compact\_9 module
+--------------------------------------------
+
+.. automodule:: pycellga.src.neighborhoods.compact_9
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.neighborhoods.linear\_5 module
+-------------------------------------------
+
+.. automodule:: pycellga.src.neighborhoods.linear_5
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pycellga.src.neighborhoods.linear\_9 module
+-------------------------------------------
+
+.. automodule:: pycellga.src.neighborhoods.linear_9
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pycellga.src.neighborhoods
+   :members:
+   :undoc-members:
+   :show-inheritance:

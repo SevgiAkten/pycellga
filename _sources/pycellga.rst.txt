@@ -1,0 +1,18 @@
+pycellga package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pycellga.src
+
+Module contents
+---------------
+
+.. automodule:: pycellga
+   :members:
+   :undoc-members:
+   :show-inheritance:
