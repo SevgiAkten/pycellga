@@ -18,9 +18,9 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        pip install pydoc
+    # - name: Install dependencies
+    #   run: |
+    #     pip install pydoc
 
     - name: Generate HTML Documentation
       run: |
