@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module optimizer</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">optimizer</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/pycellga/pycellga/src/optimizer.py">/home/runner/work/pycellga/pycellga/src/optimizer.py</a></td></tr></table>
+    <p><span class="code">#&nbsp;------&nbsp;Optimizer&nbsp;for&nbsp;cga,&nbsp;sync_ga,&nbsp;alpha_cga,&nbsp;ccga&nbsp;and&nbsp;mcccga&nbsp;methods&nbsp;------&nbsp;#</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="byte_operators.html">byte_operators</a><br>
+<a href="ctypes.html">ctypes</a><br>
+</td><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+<a href="numpy.random.html">numpy.random</a><br>
+</td><td class="multicolumn"><a href="random.html">random</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-alpha_cga"><strong>alpha_cga</strong></a>(n_cols: int, n_rows: int, n_gen: int, ch_size: int, gen_type: str, p_crossover: float, p_mutation: float, problem: problems.abstract_problem.AbstractProblem, selection: selection.selection_operator.SelectionOperator, recombination: recombination.recombination_operator.RecombinationOperator, mutation: mutation.mutation_operator.MutationOperator, mins: List[float] = [], maxs: List[float] = []) -&gt; List</dt><dd><span class="code">Optimize&nbsp;a&nbsp;problem&nbsp;using&nbsp;an&nbsp;evolutionary&nbsp;algorithm&nbsp;with&nbsp;an&nbsp;alpha-male&nbsp;exchange&nbsp;mechanism.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+n_cols&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;columns&nbsp;in&nbsp;the&nbsp;grid&nbsp;for&nbsp;the&nbsp;population.<br>
+n_rows&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;rows&nbsp;in&nbsp;the&nbsp;grid&nbsp;for&nbsp;the&nbsp;population.<br>
+n_gen&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;generations&nbsp;to&nbsp;run&nbsp;the&nbsp;optimization.<br>
+ch_size&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;of&nbsp;the&nbsp;chromosome.<br>
+gen_type&nbsp;:&nbsp;GeneType<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;of&nbsp;genome&nbsp;representation&nbsp;(GeneType.BINARY,&nbsp;GeneType.PERMUTATION,&nbsp;or&nbsp;GeneType.REAL).<br>
+p_crossover&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;of&nbsp;crossover,&nbsp;should&nbsp;be&nbsp;between&nbsp;0&nbsp;and&nbsp;1.<br>
+p_mutation&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;of&nbsp;mutation,&nbsp;should&nbsp;be&nbsp;between&nbsp;0&nbsp;and&nbsp;1.<br>
+known_best&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Known&nbsp;best&nbsp;solution&nbsp;value&nbsp;for&nbsp;gap&nbsp;calculation.<br>
+k_tournament&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Tournament&nbsp;size&nbsp;for&nbsp;selection.<br>
+problem&nbsp;:&nbsp;AbstractProblem<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;problem&nbsp;instance&nbsp;used&nbsp;to&nbsp;evaluate&nbsp;fitness.<br>
+selection&nbsp;:&nbsp;SelectionOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;used&nbsp;for&nbsp;selection&nbsp;in&nbsp;the&nbsp;evolutionary&nbsp;algorithm.<br>
+recombination&nbsp;:&nbsp;RecombinationOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;used&nbsp;for&nbsp;recombination&nbsp;(crossover)&nbsp;in&nbsp;the&nbsp;evolutionary&nbsp;algorithm.<br>
+mutation&nbsp;:&nbsp;MutationOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;used&nbsp;for&nbsp;mutation&nbsp;in&nbsp;the&nbsp;evolutionary&nbsp;algorithm.<br>
+mins&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;minimum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization).<br>
+maxs&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;maximum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization).<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;containing&nbsp;the&nbsp;best&nbsp;solution&nbsp;found&nbsp;during&nbsp;the&nbsp;optimization&nbsp;process,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;the&nbsp;first&nbsp;element&nbsp;is&nbsp;the&nbsp;chromosome,&nbsp;the&nbsp;second&nbsp;is&nbsp;the&nbsp;fitness&nbsp;value,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;third&nbsp;is&nbsp;the&nbsp;generation&nbsp;at&nbsp;which&nbsp;it&nbsp;was&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-ccga"><strong>ccga</strong></a>(n_cols: int, n_rows: int, n_gen: int, ch_size: int, gen_type: str, problem: problems.abstract_problem.AbstractProblem, selection: selection.selection_operator.SelectionOperator, mins: List[float] = [], maxs: List[float] = []) -&gt; List</dt><dd><span class="code">Perform&nbsp;optimization&nbsp;using&nbsp;a&nbsp;(CCGA).<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+n_cols&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;columns&nbsp;in&nbsp;the&nbsp;grid&nbsp;for&nbsp;the&nbsp;population.<br>
+n_rows&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;rows&nbsp;in&nbsp;the&nbsp;grid&nbsp;for&nbsp;the&nbsp;population.<br>
+n_gen&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;generations&nbsp;to&nbsp;run&nbsp;the&nbsp;optimization.<br>
+ch_size&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;of&nbsp;the&nbsp;chromosome.<br>
+gen_type&nbsp;:&nbsp;GeneType<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;of&nbsp;genome&nbsp;representation&nbsp;(GeneType.BINARY,&nbsp;Genetype.PERMUTATION,&nbsp;GeneType.REAL).<br>
+problem&nbsp;:&nbsp;AbstractProblem<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;problem&nbsp;instance&nbsp;used&nbsp;to&nbsp;evaluate&nbsp;fitness.<br>
+selection&nbsp;:&nbsp;SelectionOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;used&nbsp;for&nbsp;selection&nbsp;in&nbsp;the&nbsp;evolutionary&nbsp;algorithm.<br>
+mins&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;minimum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization).<br>
+maxs&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;maximum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization<br>
+&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;containing&nbsp;the&nbsp;best&nbsp;solution&nbsp;found&nbsp;during&nbsp;the&nbsp;optimization&nbsp;process,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;the&nbsp;first&nbsp;element&nbsp;is&nbsp;the&nbsp;chromosome,&nbsp;the&nbsp;second&nbsp;is&nbsp;the&nbsp;fitness&nbsp;value,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;third&nbsp;is&nbsp;the&nbsp;generation&nbsp;at&nbsp;which&nbsp;it&nbsp;was&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-cga"><strong>cga</strong></a>(n_cols: int, n_rows: int, n_gen: int, ch_size: int, gen_type: str, p_crossover: float, p_mutation: float, problem: problems.abstract_problem.AbstractProblem, selection: selection.selection_operator.SelectionOperator, recombination: recombination.recombination_operator.RecombinationOperator, mutation: mutation.mutation_operator.MutationOperator, mins: list[float] = [], maxs: list[float] = []) -&gt; List</dt><dd><span class="code">Optimize&nbsp;the&nbsp;given&nbsp;problem&nbsp;using&nbsp;a&nbsp;genetic&nbsp;algorithm.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+n_cols&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;columns&nbsp;in&nbsp;the&nbsp;population&nbsp;grid.<br>
+n_rows&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;rows&nbsp;in&nbsp;the&nbsp;population&nbsp;grid.<br>
+n_gen&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;generations&nbsp;to&nbsp;evolve.<br>
+ch_size&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;of&nbsp;the&nbsp;chromosome.<br>
+gen_type&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;of&nbsp;the&nbsp;genome&nbsp;representation&nbsp;(e.g.,&nbsp;'Binary',&nbsp;'Permutation',&nbsp;'Real').<br>
+p_crossover&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;of&nbsp;crossover&nbsp;(between&nbsp;0&nbsp;and&nbsp;1).<br>
+p_mutation&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;of&nbsp;mutation&nbsp;(between&nbsp;0&nbsp;and&nbsp;1).<br>
+known_best&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Known&nbsp;best&nbsp;solution&nbsp;for&nbsp;gap&nbsp;calculation.<br>
+k_tournament&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;of&nbsp;the&nbsp;tournament&nbsp;for&nbsp;selection.<br>
+problem&nbsp;:&nbsp;AbstractProblem<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;problem&nbsp;instance&nbsp;used&nbsp;for&nbsp;fitness&nbsp;evaluation.<br>
+selection&nbsp;:&nbsp;SelectionOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;or&nbsp;class&nbsp;used&nbsp;for&nbsp;selecting&nbsp;parents.<br>
+recombination&nbsp;:&nbsp;RecombinationOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;or&nbsp;class&nbsp;used&nbsp;for&nbsp;recombination&nbsp;(crossover).<br>
+mutation&nbsp;:&nbsp;MutationOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;or&nbsp;class&nbsp;used&nbsp;for&nbsp;mutation.<br>
+mins&nbsp;:&nbsp;list[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;minimum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization).<br>
+maxs&nbsp;:&nbsp;list[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;maximum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization).<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;containing&nbsp;the&nbsp;best&nbsp;solution&nbsp;found&nbsp;during&nbsp;the&nbsp;optimization&nbsp;process,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;the&nbsp;first&nbsp;element&nbsp;is&nbsp;the&nbsp;chromosome,&nbsp;the&nbsp;second&nbsp;is&nbsp;the&nbsp;fitness&nbsp;value,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;third&nbsp;is&nbsp;the&nbsp;generation&nbsp;at&nbsp;which&nbsp;it&nbsp;was&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-compete"><strong>compete</strong></a>(p1: individual.Individual, p2: individual.Individual) -&gt; Tuple[individual.Individual, individual.Individual]</dt><dd><span class="code">Compete&nbsp;between&nbsp;two&nbsp;individuals&nbsp;to&nbsp;determine&nbsp;the&nbsp;better&nbsp;one.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+p1&nbsp;:&nbsp;Individual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;First&nbsp;individual.<br>
+p2&nbsp;:&nbsp;Individual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Second&nbsp;individual.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+Tuple[Individual,&nbsp;Individual]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;better&nbsp;individual&nbsp;and&nbsp;the&nbsp;loser.</span></dd></dl>
+ <dl><dt><a name="-generate_probability_vector"><strong>generate_probability_vector</strong></a>(mins: List[float], maxs: List[float], ntries: int) -&gt; List[float]</dt><dd><span class="code">Generate&nbsp;a&nbsp;probability&nbsp;vector&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;values.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+mins&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;minimum&nbsp;values.<br>
+maxs&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;maximum&nbsp;values.<br>
+ntries&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;trials&nbsp;for&nbsp;generating&nbsp;the&nbsp;probability&nbsp;vector.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;vector.</span></dd></dl>
+ <dl><dt><a name="-mcccga"><strong>mcccga</strong></a>(n_cols: int, n_rows: int, n_gen: int, ch_size: int, gen_type: str, problem: collections.abc.Callable[[typing.List[float]], float], selection: selection.selection_operator.SelectionOperator, mins: list[float], maxs: list[float]) -&gt; List</dt><dd><span class="code">Optimize&nbsp;the&nbsp;given&nbsp;problem&nbsp;using&nbsp;a&nbsp;multi-population&nbsp;machine-coded&nbsp;compact&nbsp;genetic&nbsp;algorithm&nbsp;(MCCGA).<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+n_cols&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;columns&nbsp;in&nbsp;the&nbsp;population&nbsp;grid.<br>
+n_rows&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;rows&nbsp;in&nbsp;the&nbsp;population&nbsp;grid.<br>
+n_gen&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;generations&nbsp;to&nbsp;evolve.<br>
+ch_size&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;of&nbsp;the&nbsp;chromosome.<br>
+gen_type&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;of&nbsp;the&nbsp;genome&nbsp;representation&nbsp;(e.g.,&nbsp;'Binary',&nbsp;'Permutation',&nbsp;'Real').<br>
+problem&nbsp;:&nbsp;Callable[[List[float]],&nbsp;float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;to&nbsp;evaluate&nbsp;the&nbsp;fitness&nbsp;of&nbsp;a&nbsp;solution.&nbsp;Takes&nbsp;a&nbsp;list&nbsp;of&nbsp;floats&nbsp;and&nbsp;returns&nbsp;a&nbsp;float.<br>
+selection&nbsp;:&nbsp;Callable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;or&nbsp;class&nbsp;used&nbsp;for&nbsp;selecting&nbsp;parents.<br>
+mins&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;minimum&nbsp;values&nbsp;for&nbsp;the&nbsp;probability&nbsp;vector&nbsp;generation.<br>
+maxs&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;maximum&nbsp;values&nbsp;for&nbsp;the&nbsp;probability&nbsp;vector&nbsp;generation.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;containing&nbsp;the&nbsp;best&nbsp;solution&nbsp;found&nbsp;during&nbsp;the&nbsp;optimization&nbsp;process,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;the&nbsp;first&nbsp;element&nbsp;is&nbsp;the&nbsp;chromosome,&nbsp;the&nbsp;second&nbsp;is&nbsp;the&nbsp;fitness&nbsp;value,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;third&nbsp;is&nbsp;the&nbsp;generation&nbsp;at&nbsp;which&nbsp;it&nbsp;was&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-random_vector_between"><strong>random_vector_between</strong></a>(mins: List[float], maxs: List[float]) -&gt; List[float]</dt><dd><span class="code">Generate&nbsp;a&nbsp;random&nbsp;vector&nbsp;of&nbsp;floats&nbsp;between&nbsp;the&nbsp;given&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;values.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+mins&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;minimum&nbsp;values.<br>
+maxs&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;maximum&nbsp;values.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Randomly&nbsp;generated&nbsp;vector.</span></dd></dl>
+ <dl><dt><a name="-sample"><strong>sample</strong></a>(probvector: List[float]) -&gt; List[int]</dt><dd><span class="code">Sample&nbsp;a&nbsp;vector&nbsp;based&nbsp;on&nbsp;the&nbsp;provided&nbsp;probability&nbsp;vector.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+probvector&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;vector&nbsp;for&nbsp;sampling.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[int]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sampled&nbsp;binary&nbsp;vector.</span></dd></dl>
+ <dl><dt><a name="-sync_cga"><strong>sync_cga</strong></a>(n_cols: int, n_rows: int, n_gen: int, ch_size: int, gen_type: str, p_crossover: float, p_mutation: float, problem: collections.abc.Callable[[typing.List[float]], float], selection: selection.selection_operator.SelectionOperator, recombination: recombination.recombination_operator.RecombinationOperator, mutation: mutation.mutation_operator.MutationOperator, mins: List[float] = [], maxs: List[float] = []) -&gt; List</dt><dd><span class="code">Optimize&nbsp;the&nbsp;given&nbsp;problem&nbsp;using&nbsp;a&nbsp;synchronous&nbsp;cellular&nbsp;genetic&nbsp;algorithm&nbsp;(Sync-CGA).<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+n_cols&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;columns&nbsp;in&nbsp;the&nbsp;population&nbsp;grid.<br>
+n_rows&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;rows&nbsp;in&nbsp;the&nbsp;population&nbsp;grid.<br>
+n_gen&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;generations&nbsp;to&nbsp;evolve.<br>
+ch_size&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;of&nbsp;the&nbsp;chromosome.<br>
+gen_type&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;of&nbsp;the&nbsp;genome&nbsp;representation&nbsp;(e.g.,&nbsp;'Binary',&nbsp;'Permutation',&nbsp;'Real').<br>
+p_crossover&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;of&nbsp;crossover&nbsp;between&nbsp;parents.<br>
+p_mutation&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;of&nbsp;mutation&nbsp;in&nbsp;offspring.<br>
+problem&nbsp;:&nbsp;Callable[[List[float]],&nbsp;float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;to&nbsp;evaluate&nbsp;the&nbsp;fitness&nbsp;of&nbsp;a&nbsp;solution.&nbsp;Takes&nbsp;a&nbsp;list&nbsp;of&nbsp;floats&nbsp;and&nbsp;returns&nbsp;a&nbsp;float.<br>
+selection&nbsp;:&nbsp;SelectionOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;or&nbsp;class&nbsp;used&nbsp;for&nbsp;selecting&nbsp;parents.<br>
+recombination&nbsp;:&nbsp;RecombinationOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;or&nbsp;class&nbsp;used&nbsp;for&nbsp;recombination&nbsp;(crossover).<br>
+mutation&nbsp;:&nbsp;MutationOperator<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;or&nbsp;class&nbsp;used&nbsp;for&nbsp;mutation.<br>
+mins&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;minimum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization).<br>
+maxs&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;maximum&nbsp;values&nbsp;for&nbsp;each&nbsp;gene&nbsp;in&nbsp;the&nbsp;chromosome&nbsp;(for&nbsp;real&nbsp;value&nbsp;optimization<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns<br>
+-------<br>
+List<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;containing&nbsp;the&nbsp;best&nbsp;solution&nbsp;found&nbsp;during&nbsp;the&nbsp;optimization&nbsp;process,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;the&nbsp;first&nbsp;element&nbsp;is&nbsp;the&nbsp;chromosome,&nbsp;the&nbsp;second&nbsp;is&nbsp;the&nbsp;fitness&nbsp;value,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;third&nbsp;is&nbsp;the&nbsp;generation&nbsp;at&nbsp;which&nbsp;it&nbsp;was&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-update_vector"><strong>update_vector</strong></a>(vector: List[float], winner: individual.Individual, loser: individual.Individual, pop_size: int)</dt><dd><span class="code">Update&nbsp;the&nbsp;probability&nbsp;vector&nbsp;based&nbsp;on&nbsp;the&nbsp;winner&nbsp;and&nbsp;loser&nbsp;individuals.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+vector&nbsp;:&nbsp;List[float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Probability&nbsp;vector&nbsp;to&nbsp;be&nbsp;updated.<br>
+winner&nbsp;:&nbsp;Individual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;winning&nbsp;individual.<br>
+loser&nbsp;:&nbsp;Individual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;losing&nbsp;individual.<br>
+pop_size&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;of&nbsp;the&nbsp;population.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>List</strong> = typing.List<br>
+<strong>Tuple</strong> = typing.Tuple</td></tr></table>
+</body></html>
