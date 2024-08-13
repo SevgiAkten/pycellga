@@ -3,13 +3,15 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import optimizer
+import numpy as np
 from individual import GeneType
 
-class ExampleProblem:
+class RealProblem:
     """
     Example problem class to be minimized.
 
-    This class implements a simple binary optimization problem, where the goal is to maximize the number of 1s.
+    This class implements a simple sum of squares function with a global minimum value of 0,
+    achieved when all elements of the chromosome are equal to 0.
     """
     
     def __init__(self):
@@ -19,19 +21,19 @@ class ExampleProblem:
         """
         Compute the objective function value.
 
-        This method implements a simple sum of binary values.
+        This method implements the sum of squares function.
 
         Parameters
         ----------
         x : list or numpy.ndarray
-            The input chromosome represented as a list or array of binary values (0s and 1s).
+            The input chromosome represented as a list or array of real values.
 
         Returns
         -------
-        int
+        float
             The computed value of the function given the input x.
         """
-        return sum(x)
+        return sum(np.power(xi, 2) for xi in x)
 
 def run_mcccga_example():
     """
@@ -39,8 +41,8 @@ def run_mcccga_example():
     using the optimizer module.
 
     The mcccga is configured with a 5x5 grid, 100 generations, and a chromosome size of 10.
-    The problem being solved is an instance of the ExampleProblem class,
-    with binary genes, constrained by specified mins and maxs.
+    The problem being solved is an instance of the RealProblem class,
+    with real genes, constrained by specified mins and maxs.
 
     Returns
     -------
@@ -48,18 +50,18 @@ def run_mcccga_example():
         A tuple containing the best solution chromosome and its corresponding value.
     """
     # Create an instance of the problem
-    problem_instance = ExampleProblem()
+    problem_instance = RealProblem()
 
     result = optimizer.mcccga(
         n_cols=5,
         n_rows=5,
-        n_gen=100,
-        ch_size=10,
-        gen_type=GeneType.BINARY,
-        problem=problem_instance,  # Pass the ExampleProblem instance
+        n_gen=500,
+        ch_size=5,
+        gen_type=GeneType.REAL,
+        problem=problem_instance,  # Pass the RealProblem instance
         selection=optimizer.TournamentSelection,
-        mins=[0] * 10,  # Minimum values for each gene (binary)
-        maxs=[1] * 10   # Maximum values for each gene (binary)
+        mins=[-3.768] * 5,
+        maxs=[3.768] * 5
     )
 
     # Print the results
