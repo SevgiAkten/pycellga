@@ -20,13 +20,9 @@ jobs:
 
     - name: Generate HTML Documentation
       run: |
-        export PATH="$PATH:/usr/local/bin/python3"
         mkdir -p docs
-        for file in $(find . -name "*.py"); do
-            module=$(basename "$file" .py)
-            python3 -m pydoc -w "$module"
-            mv "$module.html" docs/
-        done
+        python3 -m pydoc -w optimizer
+        mv optimizer.html docs/index.html
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
