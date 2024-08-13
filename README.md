@@ -1,6 +1,13 @@
+[![Doc](https://img.shields.io/badge/docs-dev-blue.svg)](https://sevgiakten.github.io/pycellga/)
+[![License](https://img.shields.io/github/license/SevgiAkten/pycellga)](https://github.com/SevgiAkten/pycellga/blob/main/LICENSE)
+![Repo Size](https://img.shields.io/github/repo-size/SevgiAkten/pycellga)
+![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)
+![GitHub Contributors](https://img.shields.io/github/contributors/SevgiAkten/pycellga)
+
+
 # pycellga: A Python Package for Improved Cellular Genetic Algorithms
 
-`pycellga` is a Python package that implements cellular genetic algorithms (CGAs) for optimizing complex problems. CGAs combine the principles of cellular automata and traditional genetic algorithms, utilizing a spatially structured population organized in a grid-like topology. This structure allows each individual to interact only with its neighboring individuals, promoting diversity and maintaining a balance between exploration and exploitation during the optimization process. `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, Machine Coded Compact CGA and Improved CGA with Machine Coded Operaors for real-valued optimization problems.
+`pycellga` is a Python package that implements cellular genetic algorithms (CGAs) for optimizing complex problems. VCGAs combine the principles of cellular automata and traditional genetic algorithms, utilizing a spatially structured population organized in a grid-like topology. This structure allows each individual to interact only with its neighboring individuals, promoting diversity and maintaining a balance between exploration and exploitation during the optimization process. `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, Machine Coded Compact CGA and Improved CGA with Machine Coded Operaors for real-valued optimization problems.
 
 ## Features
 
@@ -23,7 +30,12 @@ pip install pycellga
 
 ## Documentation
 
-Comprehensive documentation is available on the official documentation site.
+## Documentation
+
+For full documentation, visit [here](https://sevgiakten.github.io/pycellga/) or click the badge below:
+
+[![Doc](https://img.shields.io/badge/docs-dev-blue.svg)](https://sevgiakten.github.io/pycellga/)
+
 
 ## Usage Examples
 
