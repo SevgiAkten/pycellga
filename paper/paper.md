@@ -73,6 +73,7 @@ Here’s how we can define this problem in Python using the `ExampleProblem` cla
 
 ```python
 from numpy import power as pw
+import pycellga 
 
 class ExampleProblem:
     
@@ -86,18 +87,18 @@ class ExampleProblem:
 **Usage:**
 
 ```python
-result = optimizer.cga(
+result = pycellga.optimizer.cga(
     n_cols = 5,
     n_rows = 5,
     n_gen = 100,
     ch_size = 5,
-    gen_type = GeneType.REAL,
+    gen_type = pycellga.optimizer.GeneType.REAL,
     p_crossover = 0.9,
     p_mutation = 0.2,
     problem = ExampleProblem(),  # Replace with a real problem instance as needed
-    selection = optimizer.TournamentSelection,
-    recombination = optimizer.ByteOnePointCrossover,
-    mutation = optimizer.ByteMutationRandom,
+    selection = pycellga.optimizer.TournamentSelection,
+    recombination = pycellga.optimizer.ByteOnePointCrossover,
+    mutation = pycellga.optimizer.ByteMutationRandom,
     mins = [-32.768] * 5,  # Minimum values for each gene
     maxs = [32.768] * 5    # Maximum values for each gene
 )
