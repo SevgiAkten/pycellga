@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='pycellga',  
-    version='0.1.1',  
+    version='0.1.2',  
     description='A Python Package for Improved Cellular Genetic Algorithms',  
     author='SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN',  
     author_email='sevgiakten@gmail.com, mhsatman@gmail.com',  
