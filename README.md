@@ -30,8 +30,6 @@ pip install pycellga
 
 ## Documentation
 
-## Documentation
-
 For full documentation, visit [here](https://sevgiakten.github.io/pycellga/) or click the badge below:
 
 [![Doc](https://img.shields.io/badge/docs-dev-blue.svg)](https://sevgiakten.github.io/pycellga/)
