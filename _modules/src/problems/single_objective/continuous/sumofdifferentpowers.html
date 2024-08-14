@@ -72,6 +72,7 @@
              
   <h1>Source code for src.problems.single_objective.continuous.sumofdifferentpowers</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">power</span> <span class="k">as</span> <span class="n">pw</span>
 <span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
 
 <div class="viewcode-block" id="Sumofdifferentpowers">
@@ -102,7 +103,7 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
             <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
             <span class="n">b</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">fitness</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+            <span class="n">fitness</span> <span class="o">+=</span> <span class="n">pw</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 </div>
