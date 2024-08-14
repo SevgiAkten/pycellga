@@ -93,6 +93,12 @@ print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
 # Note that the result could be different because the algorithm includes randomness.
 ```
 
+We have provided a basic example above. If you're interested in exploring more examples, you have two options:
+
+- [Click here to see the other examples](https://github.com/SevgiAkten/pycellga/tree/main/pycellga/example) available directly in the repository.
+- [Please click here to see the documentation](https://sevgiakten.github.io/pycellga/pycellga.example.html#pycellga-example-package) for more detailed examples and explanations.
+
+
 ## Contributing
 
 Contributions are welcome! Please read the contributing guidelines first.
