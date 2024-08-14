@@ -15,3 +15,8 @@ paper/paper.pdf
 *.csl
 docs/_build/**
 docs/html/**
+
+# build output directories
+/build/
+/dist/
+/*.egg-info/
