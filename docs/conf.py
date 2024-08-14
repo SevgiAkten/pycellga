@@ -12,9 +12,9 @@ import sys
 sys.path.insert(0, os.path.abspath(".."))
 
 project = 'PYCELLGA Documentation'
-copyright = '2024, SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN'
-author = 'SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN'
-release = '1.0.0'
+copyright = '2024, Sevgi Akten Karakaya, Mehmet Hakan Satman'
+author = 'Sevgi Akten Karakaya, Mehmet Hakan Satman'
+release = '1.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
