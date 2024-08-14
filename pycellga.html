@@ -70,9 +70,29 @@
 <li class="toctree-l4"><a class="reference internal" href="#pycellga.grid.Grid"><code class="docutils literal notranslate"><span class="pre">Grid</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pycellga-individual-module">pycellga.individual module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pycellga-optimizer-module">pycellga.optimizer module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pycellga-population-module">pycellga.population module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pycellga.individual">pycellga.individual module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.individual.GeneType"><code class="docutils literal notranslate"><span class="pre">GeneType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.individual.Individual"><code class="docutils literal notranslate"><span class="pre">Individual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pycellga.optimizer">pycellga.optimizer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.alpha_cga"><code class="docutils literal notranslate"><span class="pre">alpha_cga()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.ccga"><code class="docutils literal notranslate"><span class="pre">ccga()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.cga"><code class="docutils literal notranslate"><span class="pre">cga()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.compete"><code class="docutils literal notranslate"><span class="pre">compete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.generate_probability_vector"><code class="docutils literal notranslate"><span class="pre">generate_probability_vector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.mcccga"><code class="docutils literal notranslate"><span class="pre">mcccga()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.random_vector_between"><code class="docutils literal notranslate"><span class="pre">random_vector_between()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.sync_cga"><code class="docutils literal notranslate"><span class="pre">sync_cga()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.optimizer.update_vector"><code class="docutils literal notranslate"><span class="pre">update_vector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pycellga.population">pycellga.population module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.population.OptimizationMethod"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycellga.population.Population"><code class="docutils literal notranslate"><span class="pre">Population</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycellga">Module contents</a></li>
 </ul>
 </li>
@@ -1033,14 +1053,643 @@ Each tuple is of the form (row, column), with rows and columns starting from 1.<
 </dd></dl>
 
 </section>
-<section id="pycellga-individual-module">
-<h2>pycellga.individual module<a class="headerlink" href="#pycellga-individual-module" title="Link to this heading"></a></h2>
+<section id="module-pycellga.individual">
+<span id="pycellga-individual-module"></span><h2>pycellga.individual module<a class="headerlink" href="#module-pycellga.individual" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.individual.GeneType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.individual.</span></span><span class="sig-name descname"><span class="pre">GeneType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/individual.html#GeneType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.GeneType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>GeneType is an enumeration class that represents the type of genome representation for an individual in an evolutionary algorithm.
+The three types of genome representation are BINARY, PERMUTATION, and REAL.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.GeneType.BINARY">
+<span class="sig-name descname"><span class="pre">BINARY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pycellga.individual.GeneType.BINARY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.GeneType.PERMUTATION">
+<span class="sig-name descname"><span class="pre">PERMUTATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pycellga.individual.GeneType.PERMUTATION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.GeneType.REAL">
+<span class="sig-name descname"><span class="pre">REAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#pycellga.individual.GeneType.REAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.individual.Individual">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.individual.</span></span><span class="sig-name descname"><span class="pre">Individual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.individual.GeneType" title="pycellga.individual.GeneType"><span class="pre">GeneType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">GeneType.BINARY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/individual.html#Individual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent an individual in an evolutionary algorithm.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.chromosome">
+<span class="sig-name descname"><span class="pre">chromosome</span></span><a class="headerlink" href="#pycellga.individual.Individual.chromosome" title="Link to this definition"></a></dt>
+<dd><p>The chromosome representing the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.fitness_value">
+<span class="sig-name descname"><span class="pre">fitness_value</span></span><a class="headerlink" href="#pycellga.individual.Individual.fitness_value" title="Link to this definition"></a></dt>
+<dd><p>The fitness value of the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.position">
+<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#pycellga.individual.Individual.position" title="Link to this definition"></a></dt>
+<dd><p>The position of the individual, represented as a tuple (x, y).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.neighbors_positions">
+<span class="sig-name descname"><span class="pre">neighbors_positions</span></span><a class="headerlink" href="#pycellga.individual.Individual.neighbors_positions" title="Link to this definition"></a></dt>
+<dd><p>The positions of the individual’s neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.neighbors">
+<span class="sig-name descname"><span class="pre">neighbors</span></span><a class="headerlink" href="#pycellga.individual.Individual.neighbors" title="Link to this definition"></a></dt>
+<dd><p>The list of neighbors for the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.gen_type">
+<span class="sig-name descname"><span class="pre">gen_type</span></span><a class="headerlink" href="#pycellga.individual.Individual.gen_type" title="Link to this definition"></a></dt>
+<dd><p>The enum type of genome representation (GeneType.BINARY, GeneType.PERMUTATION, GeneType.REAL).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pycellga.individual.GeneType" title="pycellga.individual.GeneType">GeneType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.ch_size">
+<span class="sig-name descname"><span class="pre">ch_size</span></span><a class="headerlink" href="#pycellga.individual.Individual.ch_size" title="Link to this definition"></a></dt>
+<dd><p>The size of the chromosome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.individual.GeneType" title="pycellga.individual.GeneType"><span class="pre">GeneType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">GeneType.BINARY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/individual.html#Individual.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize an Individual with a specific genome type and chromosome size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gen_type</strong> (<em>str</em><em>, </em><em>optional</em>) – The type of genome representation. Must be one of GeneType.BINARY, GeneType.PERMUTATION, or GeneType.REAL. (default is GeneType.BINARY)</p></li>
+<li><p><strong>ch_size</strong> (<em>int</em>) – The size of the chromosome.</p></li>
+<li><p><strong>mins</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – The minimum values for each gene in the chromosome.</p></li>
+<li><p><strong>maxs</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – The maximum values for each gene in the chromosome.</p></li>
+<li><p><strong>Description</strong></p></li>
+<li><p><strong>------------</strong></p></li>
+<li><p><strong>algorithm.</strong> (<em>The Individual class represents an individual in an evolutionary</em>)</p></li>
+<li><p><strong>BINARY</strong> (<em>If the genome type is</em>)</p></li>
+<li><p><strong>1s.</strong> (<em>the chromosome is a list</em><em> of </em><em>0s and</em>)</p></li>
+<li><p><strong>PERMUTATION</strong> (<em>If the genome type is</em>)</p></li>
+<li><p><strong>permutation.</strong> (<em>the chromosome is a list</em><em> of </em><em>integers representing a</em>)</p></li>
+<li><p><strong>cases</strong> (<em>In both the binary and permutation</em>)</p></li>
+<li><p><strong>chromosome.</strong> (<em>the mins and maxs lists are used to define the range</em><em> of </em><em>each gene in the</em>)</p></li>
+<li><p><strong>REAL</strong> (<em>If the genome type is</em>)</p></li>
+<li><p><strong>numbers.</strong> (<em>the chromosome is a list</em><em> of </em><em>real</em>)</p></li>
+<li><p><strong>case</strong> (<em>In this</em>)</p></li>
+<li><p><strong>chromosome.</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.generate_candidate">
+<span class="sig-name descname"><span class="pre">generate_candidate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probvector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/pycellga/individual.html#Individual.generate_candidate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual.generate_candidate" title="Link to this definition"></a></dt>
+<dd><p>Generate a candidate chromosome based on the given probability vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vector</strong> (<em>list</em><em> of </em><em>float</em>) – The probability vector used to generate the candidate chromosome.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated candidate chromosome as a list of 0s and 1s.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.getneighbors">
+<span class="sig-name descname"><span class="pre">getneighbors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/pycellga/individual.html#Individual.getneighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual.getneighbors" title="Link to this definition"></a></dt>
+<dd><p>Get the list of neighbors for the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of neighbors for the individual.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.getneighbors_positions">
+<span class="sig-name descname"><span class="pre">getneighbors_positions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/pycellga/individual.html#Individual.getneighbors_positions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual.getneighbors_positions" title="Link to this definition"></a></dt>
+<dd><p>Get the positions of the individual’s neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The positions of the individual’s neighbors.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.randomize">
+<span class="sig-name descname"><span class="pre">randomize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/individual.html#Individual.randomize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual.randomize" title="Link to this definition"></a></dt>
+<dd><p>Randomly initialize the chromosome based on the genome type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The randomly generated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – If the genome type is not implemented.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.setneighbors">
+<span class="sig-name descname"><span class="pre">setneighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley.None" title="pycellga.problems.single_objective.continuous.ackley.Ackley.None"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/pycellga/individual.html#Individual.setneighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual.setneighbors" title="Link to this definition"></a></dt>
+<dd><p>Set the list of neighbors for the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>neighbors</strong> (<em>list</em>) – The list of neighbors to set for the individual.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.individual.Individual.setneighbors_positions">
+<span class="sig-name descname"><span class="pre">setneighbors_positions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley.None" title="pycellga.problems.single_objective.continuous.ackley.Ackley.None"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/pycellga/individual.html#Individual.setneighbors_positions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.individual.Individual.setneighbors_positions" title="Link to this definition"></a></dt>
+<dd><p>Set the positions of the individual’s neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>positions</strong> (<em>list</em>) – The positions to set for the individual’s neighbors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pycellga-optimizer-module">
-<h2>pycellga.optimizer module<a class="headerlink" href="#pycellga-optimizer-module" title="Link to this heading"></a></h2>
+<section id="module-pycellga.optimizer">
+<span id="pycellga-optimizer-module"></span><h2>pycellga.optimizer module<a class="headerlink" href="#module-pycellga.optimizer" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.alpha_cga">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">alpha_cga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_crossover</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_mutation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><span class="pre">SelectionOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator" title="pycellga.recombination.recombination_operator.RecombinationOperator"><span class="pre">RecombinationOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><span class="pre">MutationOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#alpha_cga"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.alpha_cga" title="Link to this definition"></a></dt>
+<dd><p>Optimize a problem using an evolutionary algorithm with an alpha-male exchange mechanism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_cols</strong> (<em>int</em>) – Number of columns in the grid for the population.</p></li>
+<li><p><strong>n_rows</strong> (<em>int</em>) – Number of rows in the grid for the population.</p></li>
+<li><p><strong>n_gen</strong> (<em>int</em>) – Number of generations to run the optimization.</p></li>
+<li><p><strong>ch_size</strong> (<em>int</em>) – Size of the chromosome.</p></li>
+<li><p><strong>gen_type</strong> (<a class="reference internal" href="#pycellga.individual.GeneType" title="pycellga.individual.GeneType"><em>GeneType</em></a>) – Type of genome representation (GeneType.BINARY, GeneType.PERMUTATION, or GeneType.REAL).</p></li>
+<li><p><strong>p_crossover</strong> (<em>float</em>) – Probability of crossover, should be between 0 and 1.</p></li>
+<li><p><strong>p_mutation</strong> (<em>float</em>) – Probability of mutation, should be between 0 and 1.</p></li>
+<li><p><strong>known_best</strong> (<em>float</em>) – Known best solution value for gap calculation.</p></li>
+<li><p><strong>k_tournament</strong> (<em>int</em>) – Tournament size for selection.</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a>) – The problem instance used to evaluate fitness.</p></li>
+<li><p><strong>selection</strong> (<a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><em>SelectionOperator</em></a>) – Function used for selection in the evolutionary algorithm.</p></li>
+<li><p><strong>recombination</strong> (<a class="reference internal" href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator" title="pycellga.recombination.recombination_operator.RecombinationOperator"><em>RecombinationOperator</em></a>) – Function used for recombination (crossover) in the evolutionary algorithm.</p></li>
+<li><p><strong>mutation</strong> (<a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><em>MutationOperator</em></a>) – Function used for mutation in the evolutionary algorithm.</p></li>
+<li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for each gene in the chromosome (for real value optimization).</p></li>
+<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the best solution found during the optimization process,
+where the first element is the chromosome, the second is the fitness value,
+and the third is the generation at which it was found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.ccga">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">ccga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><span class="pre">SelectionOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#ccga"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.ccga" title="Link to this definition"></a></dt>
+<dd><p>Perform optimization using a (CCGA).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_cols</strong> (<em>int</em>) – Number of columns in the grid for the population.</p></li>
+<li><p><strong>n_rows</strong> (<em>int</em>) – Number of rows in the grid for the population.</p></li>
+<li><p><strong>n_gen</strong> (<em>int</em>) – Number of generations to run the optimization.</p></li>
+<li><p><strong>ch_size</strong> (<em>int</em>) – Size of the chromosome.</p></li>
+<li><p><strong>gen_type</strong> (<a class="reference internal" href="#pycellga.individual.GeneType" title="pycellga.individual.GeneType"><em>GeneType</em></a>) – Type of genome representation (GeneType.BINARY, Genetype.PERMUTATION, GeneType.REAL).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a>) – The problem instance used to evaluate fitness.</p></li>
+<li><p><strong>selection</strong> (<a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><em>SelectionOperator</em></a>) – Function used for selection in the evolutionary algorithm.</p></li>
+<li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for each gene in the chromosome (for real value optimization).</p></li>
+<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the best solution found during the optimization process,
+where the first element is the chromosome, the second is the fitness value,
+and the third is the generation at which it was found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.cga">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">cga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_crossover</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_mutation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><span class="pre">SelectionOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator" title="pycellga.recombination.recombination_operator.RecombinationOperator"><span class="pre">RecombinationOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><span class="pre">MutationOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#cga"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.cga" title="Link to this definition"></a></dt>
+<dd><p>Optimize the given problem using a genetic algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_cols</strong> (<em>int</em>) – Number of columns in the population grid.</p></li>
+<li><p><strong>n_rows</strong> (<em>int</em>) – Number of rows in the population grid.</p></li>
+<li><p><strong>n_gen</strong> (<em>int</em>) – Number of generations to evolve.</p></li>
+<li><p><strong>ch_size</strong> (<em>int</em>) – Size of the chromosome.</p></li>
+<li><p><strong>gen_type</strong> (<em>str</em>) – Type of the genome representation (e.g., ‘Binary’, ‘Permutation’, ‘Real’).</p></li>
+<li><p><strong>p_crossover</strong> (<em>float</em>) – Probability of crossover (between 0 and 1).</p></li>
+<li><p><strong>p_mutation</strong> (<em>float</em>) – Probability of mutation (between 0 and 1).</p></li>
+<li><p><strong>known_best</strong> (<em>float</em>) – Known best solution for gap calculation.</p></li>
+<li><p><strong>k_tournament</strong> (<em>int</em>) – Size of the tournament for selection.</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a>) – The problem instance used for fitness evaluation.</p></li>
+<li><p><strong>selection</strong> (<a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><em>SelectionOperator</em></a>) – Function or class used for selecting parents.</p></li>
+<li><p><strong>recombination</strong> (<a class="reference internal" href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator" title="pycellga.recombination.recombination_operator.RecombinationOperator"><em>RecombinationOperator</em></a>) – Function or class used for recombination (crossover).</p></li>
+<li><p><strong>mutation</strong> (<a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><em>MutationOperator</em></a>) – Function or class used for mutation.</p></li>
+<li><p><strong>mins</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for each gene in the chromosome (for real value optimization).</p></li>
+<li><p><strong>maxs</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the best solution found during the optimization process,
+where the first element is the chromosome, the second is the fitness value,
+and the third is the generation at which it was found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.compete">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">compete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#compete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.compete" title="Link to this definition"></a></dt>
+<dd><p>Compete between two individuals to determine the better one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> (<a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – First individual.</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – Second individual.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The better individual and the loser.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[<a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>, <a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.generate_probability_vector">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">generate_probability_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#generate_probability_vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.generate_probability_vector" title="Link to this definition"></a></dt>
+<dd><p>Generate a probability vector based on the given minimum and maximum values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values.</p></li>
+<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values.</p></li>
+<li><p><strong>ntries</strong> (<em>int</em>) – Number of trials for generating the probability vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Probability vector.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.mcccga">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">mcccga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><span class="pre">SelectionOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#mcccga"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.mcccga" title="Link to this definition"></a></dt>
+<dd><p>Optimize the given problem using a multi-population machine-coded compact genetic algorithm (MCCGA).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_cols</strong> (<em>int</em>) – Number of columns in the population grid.</p></li>
+<li><p><strong>n_rows</strong> (<em>int</em>) – Number of rows in the population grid.</p></li>
+<li><p><strong>n_gen</strong> (<em>int</em>) – Number of generations to evolve.</p></li>
+<li><p><strong>ch_size</strong> (<em>int</em>) – Size of the chromosome.</p></li>
+<li><p><strong>gen_type</strong> (<em>str</em>) – Type of the genome representation (e.g., ‘Binary’, ‘Permutation’, ‘Real’).</p></li>
+<li><p><strong>problem</strong> (<em>Callable</em><em>[</em><em>[</em><em>List</em><em>[</em><em>float</em><em>]</em><em>]</em><em>, </em><em>float</em><em>]</em>) – Function to evaluate the fitness of a solution. Takes a list of floats and returns a float.</p></li>
+<li><p><strong>selection</strong> (<em>Callable</em>) – Function or class used for selecting parents.</p></li>
+<li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for the probability vector generation.</p></li>
+<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for the probability vector generation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the best solution found during the optimization process,
+where the first element is the chromosome, the second is the fitness value,
+and the third is the generation at which it was found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.random_vector_between">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">random_vector_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#random_vector_between"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.random_vector_between" title="Link to this definition"></a></dt>
+<dd><p>Generate a random vector of floats between the given minimum and maximum values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values.</p></li>
+<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Randomly generated vector.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.sample">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probvector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.sample" title="Link to this definition"></a></dt>
+<dd><p>Sample a vector based on the provided probability vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>probvector</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – Probability vector for sampling.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sampled binary vector.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.sync_cga">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">sync_cga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_gen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_crossover</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_mutation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><span class="pre">SelectionOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">recombination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator" title="pycellga.recombination.recombination_operator.RecombinationOperator"><span class="pre">RecombinationOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><span class="pre">MutationOperator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="reference internal" href="_modules/pycellga/optimizer.html#sync_cga"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.sync_cga" title="Link to this definition"></a></dt>
+<dd><p>Optimize the given problem using a synchronous cellular genetic algorithm (Sync-CGA).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_cols</strong> (<em>int</em>) – Number of columns in the population grid.</p></li>
+<li><p><strong>n_rows</strong> (<em>int</em>) – Number of rows in the population grid.</p></li>
+<li><p><strong>n_gen</strong> (<em>int</em>) – Number of generations to evolve.</p></li>
+<li><p><strong>ch_size</strong> (<em>int</em>) – Size of the chromosome.</p></li>
+<li><p><strong>gen_type</strong> (<em>str</em>) – Type of the genome representation (e.g., ‘Binary’, ‘Permutation’, ‘Real’).</p></li>
+<li><p><strong>p_crossover</strong> (<em>float</em>) – Probability of crossover between parents.</p></li>
+<li><p><strong>p_mutation</strong> (<em>float</em>) – Probability of mutation in offspring.</p></li>
+<li><p><strong>problem</strong> (<em>Callable</em><em>[</em><em>[</em><em>List</em><em>[</em><em>float</em><em>]</em><em>]</em><em>, </em><em>float</em><em>]</em>) – Function to evaluate the fitness of a solution. Takes a list of floats and returns a float.</p></li>
+<li><p><strong>selection</strong> (<a class="reference internal" href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator" title="pycellga.selection.selection_operator.SelectionOperator"><em>SelectionOperator</em></a>) – Function or class used for selecting parents.</p></li>
+<li><p><strong>recombination</strong> (<a class="reference internal" href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator" title="pycellga.recombination.recombination_operator.RecombinationOperator"><em>RecombinationOperator</em></a>) – Function or class used for recombination (crossover).</p></li>
+<li><p><strong>mutation</strong> (<a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><em>MutationOperator</em></a>) – Function or class used for mutation.</p></li>
+<li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for each gene in the chromosome (for real value optimization).</p></li>
+<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the best solution found during the optimization process,
+where the first element is the chromosome, the second is the fitness value,
+and the third is the generation at which it was found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycellga.optimizer.update_vector">
+<span class="sig-prename descclassname"><span class="pre">pycellga.optimizer.</span></span><span class="sig-name descname"><span class="pre">update_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">loser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pop_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/optimizer.html#update_vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.optimizer.update_vector" title="Link to this definition"></a></dt>
+<dd><p>Update the probability vector based on the winner and loser individuals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – Probability vector to be updated.</p></li>
+<li><p><strong>winner</strong> (<a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The winning individual.</p></li>
+<li><p><strong>loser</strong> (<a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The losing individual.</p></li>
+<li><p><strong>pop_size</strong> (<em>int</em>) – Size of the population.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="pycellga-population-module">
-<h2>pycellga.population module<a class="headerlink" href="#pycellga-population-module" title="Link to this heading"></a></h2>
+<section id="module-pycellga.population">
+<span id="pycellga-population-module"></span><h2>pycellga.population module<a class="headerlink" href="#module-pycellga.population" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.population.OptimizationMethod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.population.</span></span><span class="sig-name descname"><span class="pre">OptimizationMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/population.html#OptimizationMethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.population.OptimizationMethod" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>OptimizationMethod is an enumeration class that represents the optimization methods used in an evolutionary algorithm.
+The five optimization methods are CGA, SYNCGA, ALPHA_CGA, CCGA, and MCCCGA.
+“cga”, “sync_cga”, “alpha_cga”, “ccga”, “mcccga”</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.OptimizationMethod.ALPHA_CGA">
+<span class="sig-name descname"><span class="pre">ALPHA_CGA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#pycellga.population.OptimizationMethod.ALPHA_CGA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.OptimizationMethod.CCGA">
+<span class="sig-name descname"><span class="pre">CCGA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#pycellga.population.OptimizationMethod.CCGA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.OptimizationMethod.CGA">
+<span class="sig-name descname"><span class="pre">CGA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pycellga.population.OptimizationMethod.CGA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.OptimizationMethod.MCCCGA">
+<span class="sig-name descname"><span class="pre">MCCCGA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#pycellga.population.OptimizationMethod.MCCCGA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.OptimizationMethod.SYNCGA">
+<span class="sig-name descname"><span class="pre">SYNCGA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#pycellga.population.OptimizationMethod.SYNCGA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.population.Population">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.population.</span></span><span class="sig-name descname"><span class="pre">Population</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.population.OptimizationMethod" title="pycellga.population.OptimizationMethod"><span class="pre">OptimizationMethod</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">OptimizationMethod.CGA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/population.html#Population"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.population.Population" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent a population in an evolutionary algorithm.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.Population.method_name">
+<span class="sig-name descname"><span class="pre">method_name</span></span><a class="headerlink" href="#pycellga.population.Population.method_name" title="Link to this definition"></a></dt>
+<dd><p>The name of the optimization method. Must be one of OptimizationMethod.CGA, OptimizationMethod.SYNCGA, OptimizationMethod.ALPHA_CGA, OptimizationMethod.CCGA, or OptimizationMethod.MCCCGA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pycellga.population.OptimizationMethod" title="pycellga.population.OptimizationMethod">OptimizationMethod</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.Population.ch_size">
+<span class="sig-name descname"><span class="pre">ch_size</span></span><a class="headerlink" href="#pycellga.population.Population.ch_size" title="Link to this definition"></a></dt>
+<dd><p>The size of the chromosome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.Population.n_rows">
+<span class="sig-name descname"><span class="pre">n_rows</span></span><a class="headerlink" href="#pycellga.population.Population.n_rows" title="Link to this definition"></a></dt>
+<dd><p>The number of rows in the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.Population.n_cols">
+<span class="sig-name descname"><span class="pre">n_cols</span></span><a class="headerlink" href="#pycellga.population.Population.n_cols" title="Link to this definition"></a></dt>
+<dd><p>The number of columns in the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.Population.gen_type">
+<span class="sig-name descname"><span class="pre">gen_type</span></span><a class="headerlink" href="#pycellga.population.Population.gen_type" title="Link to this definition"></a></dt>
+<dd><p>The type of genome representation (GeneType.BINARY, Genetype.PERMUTATION, GeneType.REAL).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.Population.problem">
+<span class="sig-name descname"><span class="pre">problem</span></span><a class="headerlink" href="#pycellga.population.Population.problem" title="Link to this definition"></a></dt>
+<dd><p>The problem instance used to evaluate fitness.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem">AbstractProblem</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.population.Population.vector">
+<span class="sig-name descname"><span class="pre">vector</span></span><a class="headerlink" href="#pycellga.population.Population.vector" title="Link to this definition"></a></dt>
+<dd><p>A list used to generate candidates for the population (relevant for MCCCGA).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.population.Population.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pycellga.population.OptimizationMethod" title="pycellga.population.OptimizationMethod"><span class="pre">OptimizationMethod</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">OptimizationMethod.CGA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/population.html#Population.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.population.Population.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the Population with the specified parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method_name</strong> (<em>OptimizationMethod.</em>) – The name of the optimization method. Must be one of OptimizationMethod.CGA, OptimizationMethod.SYNCGA, OptimizationMethod.ALPHA_CGA, OptimizationMethod.CCGA, or OptimizationMethod.MCCCGA.
+Default is OptimizationMethod.CGA.</p></li>
+<li><p><strong>ch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The size of the chromosome (default is 0).</p></li>
+<li><p><strong>n_rows</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of rows in the grid (default is 0).</p></li>
+<li><p><strong>n_cols</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of columns in the grid (default is 0).</p></li>
+<li><p><strong>gen_type</strong> (<em>str</em><em>, </em><em>optional</em>) – The type of genome representation (default is an empty string).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance used to evaluate fitness (default is None).</p></li>
+<li><p><strong>vector</strong> (<em>list</em><em>, </em><em>optional</em>) – A list used to generate candidates (default is an empty list).</p></li>
+<li><p><strong>mins</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – The minimum values for each gene in the chromosome (for real value optimization).</p></li>
+<li><p><strong>maxs</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – The maximum values for each gene in the chromosome (for real value optimization).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.population.Population.initial_population">
+<span class="sig-name descname"><span class="pre">initial_population</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/population.html#Population.initial_population"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.population.Population.initial_population" title="Link to this definition"></a></dt>
+<dd><p>Generate the initial population of individuals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of initialized <cite>Individual</cite> objects with their respective chromosomes, fitness values, positions, and neighbors.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-pycellga">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pycellga" title="Link to this heading"></a></h2>

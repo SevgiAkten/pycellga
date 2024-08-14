@@ -92,6 +92,7 @@
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  | <a href="#Z"><strong>Z</strong></a>
  
 </div>
@@ -110,6 +111,8 @@
         <li><a href="pycellga.example.html#pycellga.example.example_sync_cga.ExampleProblem.__init__">(pycellga.example.example_sync_cga.ExampleProblem method)</a>
 </li>
         <li><a href="pycellga.html#pycellga.grid.Grid.__init__">(pycellga.grid.Grid method)</a>
+</li>
+        <li><a href="pycellga.html#pycellga.individual.Individual.__init__">(pycellga.individual.Individual method)</a>
 </li>
         <li><a href="pycellga.mutation.html#pycellga.mutation.bit_flip_mutation.BitFlipMutation.__init__">(pycellga.mutation.bit_flip_mutation.BitFlipMutation method)</a>
 </li>
@@ -138,6 +141,8 @@
         <li><a href="pycellga.neighborhoods.html#pycellga.neighborhoods.linear_5.Linear5.__init__">(pycellga.neighborhoods.linear_5.Linear5 method)</a>
 </li>
         <li><a href="pycellga.neighborhoods.html#pycellga.neighborhoods.linear_9.Linear9.__init__">(pycellga.neighborhoods.linear_9.Linear9 method)</a>
+</li>
+        <li><a href="pycellga.html#pycellga.population.Population.__init__">(pycellga.population.Population method)</a>
 </li>
         <li><a href="pycellga.recombination.html#pycellga.recombination.arithmetic_crossover.ArithmeticCrossover.__init__">(pycellga.recombination.arithmetic_crossover.ArithmeticCrossover method)</a>
 </li>
@@ -196,9 +201,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem">AbstractProblem (class in pycellga.problems.abstract_problem)</a>
 </li>
+      <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley">Ackley (class in pycellga.problems.single_objective.continuous.ackley)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley">Ackley (class in pycellga.problems.single_objective.continuous.ackley)</a>
+      <li><a href="pycellga.html#pycellga.population.OptimizationMethod.ALPHA_CGA">ALPHA_CGA (pycellga.population.OptimizationMethod attribute)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.alpha_cga">alpha_cga() (in module pycellga.optimizer)</a>
 </li>
       <li><a href="pycellga.recombination.html#pycellga.recombination.arithmetic_crossover.ArithmeticCrossover">ArithmeticCrossover (class in pycellga.recombination.arithmetic_crossover)</a>
 </li>
@@ -209,6 +218,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.bentcigar.Bentcigar">Bentcigar (class in pycellga.problems.single_objective.continuous.bentcigar)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.GeneType.BINARY">BINARY (pycellga.individual.GeneType attribute)</a>
 </li>
       <li><a href="pycellga.tests.html#pycellga.tests.test_optimizer_alpha_cga.BinaryProblem">BinaryProblem (class in pycellga.tests.test_optimizer_alpha_cga)</a>
 
@@ -222,10 +233,10 @@
       </ul></li>
       <li><a href="pycellga.mutation.html#pycellga.mutation.bit_flip_mutation.BitFlipMutation">BitFlipMutation (class in pycellga.mutation.bit_flip_mutation)</a>
 </li>
-      <li><a href="pycellga.html#pycellga.byte_operators.bits_to_float">bits_to_float() (in module pycellga.byte_operators)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.byte_operators.bits_to_float">bits_to_float() (in module pycellga.byte_operators)</a>
+</li>
       <li><a href="pycellga.html#pycellga.byte_operators.bits_to_floats">bits_to_floats() (in module pycellga.byte_operators)</a>
 </li>
       <li><a href="pycellga.recombination.html#pycellga.recombination.blxalpha_crossover.BlxalphaCrossover">BlxalphaCrossover (class in pycellga.recombination.blxalpha_crossover)</a>
@@ -260,7 +271,25 @@
         <li><a href="pycellga.neighborhoods.html#pycellga.neighborhoods.linear_9.Linear9.calculate_neighbors_positions">(pycellga.neighborhoods.linear_9.Linear9 method)</a>
 </li>
       </ul></li>
+      <li><a href="pycellga.html#pycellga.population.OptimizationMethod.CCGA">CCGA (pycellga.population.OptimizationMethod attribute)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.ccga">ccga() (in module pycellga.optimizer)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.population.OptimizationMethod.CGA">CGA (pycellga.population.OptimizationMethod attribute)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.cga">cga() (in module pycellga.optimizer)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.ch_size">ch_size (pycellga.individual.Individual attribute)</a>
+
+      <ul>
+        <li><a href="pycellga.html#pycellga.population.Population.ch_size">(pycellga.population.Population attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.chichinadze.Chichinadze">Chichinadze (class in pycellga.problems.single_objective.continuous.chichinadze)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.chromosome">chromosome (pycellga.individual.Individual attribute)</a>
 </li>
       <li><a href="pycellga.recombination.html#pycellga.recombination.blxalpha_crossover.BlxalphaCrossover.combine">combine() (pycellga.recombination.blxalpha_crossover.BlxalphaCrossover method)</a>
 
@@ -274,8 +303,6 @@
         <li><a href="pycellga.recombination.html#pycellga.recombination.uniform_crossover.UniformCrossover.combine">(pycellga.recombination.uniform_crossover.UniformCrossover method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycellga.neighborhoods.html#pycellga.neighborhoods.compact_13.Compact13">Compact13 (class in pycellga.neighborhoods.compact_13)</a>
 </li>
       <li><a href="pycellga.neighborhoods.html#pycellga.neighborhoods.compact_21.Compact21">Compact21 (class in pycellga.neighborhoods.compact_21)</a>
@@ -283,6 +310,8 @@
       <li><a href="pycellga.neighborhoods.html#pycellga.neighborhoods.compact_25.Compact25">Compact25 (class in pycellga.neighborhoods.compact_25)</a>
 </li>
       <li><a href="pycellga.neighborhoods.html#pycellga.neighborhoods.compact_9.Compact9">Compact9 (class in pycellga.neighborhoods.compact_9)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.compete">compete() (in module pycellga.optimizer)</a>
 </li>
       <li><a href="pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.count_sat.CountSat">CountSat (class in pycellga.problems.single_objective.discrete.binary.count_sat)</a>
 </li>
@@ -454,6 +483,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.individual.Individual.fitness_value">fitness_value (pycellga.individual.Individual attribute)</a>
+</li>
       <li><a href="pycellga.recombination.html#pycellga.recombination.flat_crossover.FlatCrossover">FlatCrossover (class in pycellga.recombination.flat_crossover)</a>
 </li>
       <li><a href="pycellga.html#pycellga.byte_operators.float_to_bits">float_to_bits() (in module pycellga.byte_operators)</a>
@@ -476,6 +507,18 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.individual.Individual.gen_type">gen_type (pycellga.individual.Individual attribute)</a>
+
+      <ul>
+        <li><a href="pycellga.html#pycellga.population.Population.gen_type">(pycellga.population.Population attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.generate_candidate">generate_candidate() (pycellga.individual.Individual method)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.generate_probability_vector">generate_probability_vector() (in module pycellga.optimizer)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.GeneType">GeneType (class in pycellga.individual)</a>
+</li>
       <li><a href="pycellga.selection.html#pycellga.selection.roulette_wheel_selection.RouletteWheelSelection.get_parents">get_parents() (pycellga.selection.roulette_wheel_selection.RouletteWheelSelection method)</a>
 
       <ul>
@@ -512,6 +555,10 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.individual.Individual.getneighbors">getneighbors() (pycellga.individual.Individual method)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.getneighbors_positions">getneighbors_positions() (pycellga.individual.Individual method)</a>
+</li>
       <li><a href="pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.gographical_dist">gographical_dist() (pycellga.problems.single_objective.discrete.permutation.tsp.Tsp method)</a>
 </li>
       <li><a href="pycellga.html#pycellga.grid.Grid">Grid (class in pycellga.grid)</a>
@@ -532,6 +579,12 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.individual.Individual">Individual (class in pycellga.individual)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.population.Population.initial_population">initial_population() (pycellga.population.Population method)</a>
+</li>
       <li><a href="pycellga.mutation.html#pycellga.mutation.insertion_mutation.InsertionMutation">InsertionMutation (class in pycellga.mutation.insertion_mutation)</a>
 </li>
   </ul></td>
@@ -574,6 +627,12 @@
         <li><a href="pycellga.tests.html#pycellga.tests.test_maxcut20_09.maxcut_instance">(in module pycellga.tests.test_maxcut20_09)</a>
 </li>
       </ul></li>
+      <li><a href="pycellga.html#pycellga.population.OptimizationMethod.MCCCGA">MCCCGA (pycellga.population.OptimizationMethod attribute)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.mcccga">mcccga() (in module pycellga.optimizer)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.population.Population.method_name">method_name (pycellga.population.Population attribute)</a>
+</li>
       <li><a href="pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.mmdp.Mmdp">Mmdp (class in pycellga.problems.single_objective.discrete.binary.mmdp)</a>
 </li>
       <li><a href="pycellga.tests.html#pycellga.tests.test_mmdp.mmdp_instance">mmdp_instance() (in module pycellga.tests.test_mmdp)</a>
@@ -624,6 +683,8 @@
 </li>
         <li><a href="pycellga.html#module-pycellga.grid">pycellga.grid</a>
 </li>
+        <li><a href="pycellga.html#module-pycellga.individual">pycellga.individual</a>
+</li>
         <li><a href="pycellga.mutation.html#module-pycellga.mutation">pycellga.mutation</a>
 </li>
         <li><a href="pycellga.mutation.html#module-pycellga.mutation.bit_flip_mutation">pycellga.mutation.bit_flip_mutation</a>
@@ -657,6 +718,10 @@
         <li><a href="pycellga.neighborhoods.html#module-pycellga.neighborhoods.linear_5">pycellga.neighborhoods.linear_5</a>
 </li>
         <li><a href="pycellga.neighborhoods.html#module-pycellga.neighborhoods.linear_9">pycellga.neighborhoods.linear_9</a>
+</li>
+        <li><a href="pycellga.html#module-pycellga.optimizer">pycellga.optimizer</a>
+</li>
+        <li><a href="pycellga.html#module-pycellga.population">pycellga.population</a>
 </li>
         <li><a href="pycellga.problems.html#module-pycellga.problems">pycellga.problems</a>
 </li>
@@ -948,8 +1013,20 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycellga.html#pycellga.grid.Grid.n_cols">n_cols (pycellga.grid.Grid attribute)</a>
+
+      <ul>
+        <li><a href="pycellga.html#pycellga.population.Population.n_cols">(pycellga.population.Population attribute)</a>
 </li>
+      </ul></li>
       <li><a href="pycellga.html#pycellga.grid.Grid.n_rows">n_rows (pycellga.grid.Grid attribute)</a>
+
+      <ul>
+        <li><a href="pycellga.html#pycellga.population.Population.n_rows">(pycellga.population.Population attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.neighbors">neighbors (pycellga.individual.Individual attribute)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.neighbors_positions">neighbors_positions (pycellga.individual.Individual attribute)</a>
 </li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley.None">None (pycellga.problems.single_objective.continuous.ackley.Ackley attribute)</a>
 
@@ -1025,6 +1102,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycellga.recombination.html#pycellga.recombination.one_point_crossover.OnePointCrossover">OnePointCrossover (class in pycellga.recombination.one_point_crossover)</a>
 </li>
+      <li><a href="pycellga.html#pycellga.population.OptimizationMethod">OptimizationMethod (class in pycellga.population)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1034,6 +1113,8 @@
       <li><a href="pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.peak.Peak">Peak (class in pycellga.problems.single_objective.discrete.binary.peak)</a>
 </li>
       <li><a href="pycellga.tests.html#pycellga.tests.test_peak.peak_instance">peak_instance() (in module pycellga.tests.test_peak)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.GeneType.PERMUTATION">PERMUTATION (pycellga.individual.GeneType attribute)</a>
 </li>
       <li><a href="pycellga.tests.html#pycellga.tests.test_optimizer_alpha_cga.PermutationProblem">PermutationProblem (class in pycellga.tests.test_optimizer_alpha_cga)</a>
 
@@ -1045,6 +1126,10 @@
       </ul></li>
       <li><a href="pycellga.recombination.html#pycellga.recombination.pmx_crossover.PMXCrossover">PMXCrossover (class in pycellga.recombination.pmx_crossover)</a>
 </li>
+      <li><a href="pycellga.html#pycellga.population.Population">Population (class in pycellga.population)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.position">position (pycellga.individual.Individual attribute)</a>
+</li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.pow.Pow">Pow (class in pycellga.problems.single_objective.continuous.pow)</a>
 
       <ul>
@@ -1052,6 +1137,8 @@
 </li>
       </ul></li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.powell.Powell">Powell (class in pycellga.problems.single_objective.continuous.powell)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.population.Population.problem">problem (pycellga.population.Population attribute)</a>
 </li>
       <li>
     pycellga
@@ -1114,6 +1201,13 @@
 
       <ul>
         <li><a href="pycellga.html#module-pycellga.grid">module</a>
+</li>
+      </ul></li>
+      <li>
+    pycellga.individual
+
+      <ul>
+        <li><a href="pycellga.html#module-pycellga.individual">module</a>
 </li>
       </ul></li>
       <li>
@@ -1233,6 +1327,20 @@
 
       <ul>
         <li><a href="pycellga.neighborhoods.html#module-pycellga.neighborhoods.linear_9">module</a>
+</li>
+      </ul></li>
+      <li>
+    pycellga.optimizer
+
+      <ul>
+        <li><a href="pycellga.html#module-pycellga.optimizer">module</a>
+</li>
+      </ul></li>
+      <li>
+    pycellga.population
+
+      <ul>
+        <li><a href="pycellga.html#module-pycellga.population">module</a>
 </li>
       </ul></li>
       <li>
@@ -1564,6 +1672,8 @@
         <li><a href="pycellga.recombination.html#module-pycellga.recombination.flat_crossover">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pycellga.recombination.linear_crossover
 
@@ -1578,8 +1688,6 @@
         <li><a href="pycellga.recombination.html#module-pycellga.recombination.one_point_crossover">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pycellga.recombination.pmx_crossover
 
@@ -2146,7 +2254,13 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.optimizer.random_vector_between">random_vector_between() (in module pycellga.optimizer)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.randomize">randomize() (pycellga.individual.Individual method)</a>
+</li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.rastrigin.Rastrigin">Rastrigin (class in pycellga.problems.single_objective.continuous.rastrigin)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.GeneType.REAL">REAL (pycellga.individual.GeneType attribute)</a>
 </li>
       <li><a href="pycellga.example.html#pycellga.example.example_mcccga.RealProblem">RealProblem (class in pycellga.example.example_mcccga)</a>
 
@@ -2160,10 +2274,10 @@
         <li><a href="pycellga.tests.html#pycellga.tests.test_optimizer_sync_cga.RealProblem">(class in pycellga.tests.test_optimizer_sync_cga)</a>
 </li>
       </ul></li>
-      <li><a href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator">RecombinationOperator (class in pycellga.recombination.recombination_operator)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator">RecombinationOperator (class in pycellga.recombination.recombination_operator)</a>
+</li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.rosenbrock.Rosenbrock">Rosenbrock (class in pycellga.problems.single_objective.continuous.rosenbrock)</a>
 </li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.rothellipsoid.Rothellipsoid">Rothellipsoid (class in pycellga.problems.single_objective.continuous.rothellipsoid)</a>
@@ -2186,6 +2300,8 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.optimizer.sample">sample() (in module pycellga.optimizer)</a>
+</li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.schaffer.Schaffer">Schaffer (class in pycellga.problems.single_objective.continuous.schaffer)</a>
 </li>
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.schaffer2.Schaffer2">Schaffer2 (class in pycellga.problems.single_objective.continuous.schaffer2)</a>
@@ -2193,6 +2309,10 @@
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.schwefel.Schwefel">Schwefel (class in pycellga.problems.single_objective.continuous.schwefel)</a>
 </li>
       <li><a href="pycellga.selection.html#pycellga.selection.selection_operator.SelectionOperator">SelectionOperator (class in pycellga.selection.selection_operator)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.setneighbors">setneighbors() (pycellga.individual.Individual method)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.individual.Individual.setneighbors_positions">setneighbors_positions() (pycellga.individual.Individual method)</a>
 </li>
       <li><a href="pycellga.tests.html#pycellga.tests.test_bentcigar_function.setup_bentcigar">setup_bentcigar() (in module pycellga.tests.test_bentcigar_function)</a>
 </li>
@@ -2234,10 +2354,10 @@
         <li><a href="pycellga.tests.html#pycellga.tests.test_unfair_average_crossover.setup_parents">(in module pycellga.tests.test_unfair_average_crossover)</a>
 </li>
       </ul></li>
-      <li><a href="pycellga.tests.html#pycellga.tests.test_population.setup_population">setup_population() (in module pycellga.tests.test_population)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.tests.html#pycellga.tests.test_population.setup_population">setup_population() (in module pycellga.tests.test_population)</a>
+</li>
       <li><a href="pycellga.tests.html#pycellga.tests.test_powell_function.setup_powell">setup_powell() (in module pycellga.tests.test_powell_function)</a>
 </li>
       <li><a href="pycellga.tests.html#pycellga.tests.test_arithmetic_crossover.setup_problem">setup_problem() (in module pycellga.tests.test_arithmetic_crossover)</a>
@@ -2285,6 +2405,10 @@
       <li><a href="pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.sumofdifferentpowers.Sumofdifferentpowers">Sumofdifferentpowers (class in pycellga.problems.single_objective.continuous.sumofdifferentpowers)</a>
 </li>
       <li><a href="pycellga.mutation.html#pycellga.mutation.swap_mutation.SwapMutation">SwapMutation (class in pycellga.mutation.swap_mutation)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.sync_cga">sync_cga() (in module pycellga.optimizer)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.population.OptimizationMethod.SYNCGA">SYNCGA (pycellga.population.OptimizationMethod attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -2491,6 +2615,16 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycellga.recombination.html#pycellga.recombination.uniform_crossover.UniformCrossover">UniformCrossover (class in pycellga.recombination.uniform_crossover)</a>
+</li>
+      <li><a href="pycellga.html#pycellga.optimizer.update_vector">update_vector() (in module pycellga.optimizer)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycellga.html#pycellga.population.Population.vector">vector (pycellga.population.Population attribute)</a>
 </li>
   </ul></td>
 </tr></table>

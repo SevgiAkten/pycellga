@@ -61,9 +61,9 @@
 <li class="toctree-l3"><a class="reference internal" href="pycellga.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga.byte_operators">pycellga.byte_operators module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga.grid">pycellga.grid module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pycellga.html#pycellga-individual-module">pycellga.individual module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pycellga.html#pycellga-optimizer-module">pycellga.optimizer module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pycellga.html#pycellga-population-module">pycellga.population module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga.individual">pycellga.individual module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga.optimizer">pycellga.optimizer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga.population">pycellga.population module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga">Module contents</a></li>
 </ul>
 </li>
@@ -134,14 +134,14 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.arithmetic_crossover.ArithmeticCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/arithmetic_crossover.html#ArithmeticCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.arithmetic_crossover.ArithmeticCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/arithmetic_crossover.html#ArithmeticCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.arithmetic_crossover.ArithmeticCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the arithmetic crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -181,35 +181,35 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.blxalpha_crossover.BlxalphaCrossover.combine">
-<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/recombination/blxalpha_crossover.html#BlxalphaCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.blxalpha_crossover.BlxalphaCrossover.combine" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></span><a class="reference internal" href="_modules/pycellga/recombination/blxalpha_crossover.html#BlxalphaCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.blxalpha_crossover.BlxalphaCrossover.combine" title="Link to this definition"></a></dt>
 <dd><p>Combine two parent individuals using BLX-alpha crossover to produce a single offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p1</strong> (<em>Individual</em>) – The first parent individual.</p></li>
-<li><p><strong>p2</strong> (<em>Individual</em>) – The second parent individual.</p></li>
-<li><p><strong>locationsource</strong> (<em>Individual</em>) – The individual from which to copy positional information for the offspring.</p></li>
+<li><p><strong>p1</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The first parent individual.</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The second parent individual.</p></li>
+<li><p><strong>locationsource</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The individual from which to copy positional information for the offspring.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The resulting offspring individual.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Individual</p>
+<dd class="field-odd"><p><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.blxalpha_crossover.BlxalphaCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/blxalpha_crossover.html#BlxalphaCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.blxalpha_crossover.BlxalphaCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/blxalpha_crossover.html#BlxalphaCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.blxalpha_crossover.BlxalphaCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the BLX-alpha crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -249,14 +249,14 @@ one-point crossover at the byte level on a pair of parent individuals to produce
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.byte_one_point_crossover.ByteOnePointCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/byte_one_point_crossover.html#ByteOnePointCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.byte_one_point_crossover.ByteOnePointCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/byte_one_point_crossover.html#ByteOnePointCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.byte_one_point_crossover.ByteOnePointCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the one-point crossover on the parent individuals at the byte level to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -296,35 +296,35 @@ uniform crossover at the byte level on a pair of parent individuals to produce o
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.byte_uniform_crossover.ByteUniformCrossover.combine">
-<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/recombination/byte_uniform_crossover.html#ByteUniformCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.byte_uniform_crossover.ByteUniformCrossover.combine" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></span><a class="reference internal" href="_modules/pycellga/recombination/byte_uniform_crossover.html#ByteUniformCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.byte_uniform_crossover.ByteUniformCrossover.combine" title="Link to this definition"></a></dt>
 <dd><p>Combine two parent individuals using uniform crossover at the byte level to produce a single offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p1</strong> (<em>Individual</em>) – The first parent individual.</p></li>
-<li><p><strong>p2</strong> (<em>Individual</em>) – The second parent individual.</p></li>
-<li><p><strong>locationsource</strong> (<em>Individual</em>) – The individual from which to copy positional information for the offspring.</p></li>
+<li><p><strong>p1</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The first parent individual.</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The second parent individual.</p></li>
+<li><p><strong>locationsource</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The individual from which to copy positional information for the offspring.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The resulting offspring individual.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Individual</p>
+<dd class="field-odd"><p><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.byte_uniform_crossover.ByteUniformCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/byte_uniform_crossover.html#ByteUniformCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.byte_uniform_crossover.ByteUniformCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/byte_uniform_crossover.html#ByteUniformCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.byte_uniform_crossover.ByteUniformCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the uniform crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -364,35 +364,35 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.flat_crossover.FlatCrossover.combine">
-<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/recombination/flat_crossover.html#FlatCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.flat_crossover.FlatCrossover.combine" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></span><a class="reference internal" href="_modules/pycellga/recombination/flat_crossover.html#FlatCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.flat_crossover.FlatCrossover.combine" title="Link to this definition"></a></dt>
 <dd><p>Combine two parent individuals using flat crossover to produce a single offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p1</strong> (<em>Individual</em>) – The first parent individual.</p></li>
-<li><p><strong>p2</strong> (<em>Individual</em>) – The second parent individual.</p></li>
-<li><p><strong>locationsource</strong> (<em>Individual</em>) – The individual from which to copy positional information for the offspring.</p></li>
+<li><p><strong>p1</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The first parent individual.</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The second parent individual.</p></li>
+<li><p><strong>locationsource</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The individual from which to copy positional information for the offspring.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The resulting offspring individual.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Individual</p>
+<dd class="field-odd"><p><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.flat_crossover.FlatCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/flat_crossover.html#FlatCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.flat_crossover.FlatCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/flat_crossover.html#FlatCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.flat_crossover.FlatCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the flat crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -432,35 +432,35 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.linear_crossover.LinearCrossover.combine">
-<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/recombination/linear_crossover.html#LinearCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.linear_crossover.LinearCrossover.combine" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></span><a class="reference internal" href="_modules/pycellga/recombination/linear_crossover.html#LinearCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.linear_crossover.LinearCrossover.combine" title="Link to this definition"></a></dt>
 <dd><p>Combine two parent individuals using linear crossover to produce a single offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p1</strong> (<em>Individual</em>) – The first parent individual.</p></li>
-<li><p><strong>p2</strong> (<em>Individual</em>) – The second parent individual.</p></li>
-<li><p><strong>locationsource</strong> (<em>Individual</em>) – The individual from which to copy positional information for the offspring.</p></li>
+<li><p><strong>p1</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The first parent individual.</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The second parent individual.</p></li>
+<li><p><strong>locationsource</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The individual from which to copy positional information for the offspring.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The resulting offspring individual.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Individual</p>
+<dd class="field-odd"><p><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.linear_crossover.LinearCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/linear_crossover.html#LinearCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.linear_crossover.LinearCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/linear_crossover.html#LinearCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.linear_crossover.LinearCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the linear crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -500,14 +500,14 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.one_point_crossover.OnePointCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/one_point_crossover.html#OnePointCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.one_point_crossover.OnePointCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/one_point_crossover.html#OnePointCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.one_point_crossover.OnePointCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the one-point crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -547,14 +547,14 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.pmx_crossover.PMXCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/pmx_crossover.html#PMXCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.pmx_crossover.PMXCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/pmx_crossover.html#PMXCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.pmx_crossover.PMXCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the PMX crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -608,14 +608,14 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.two_point_crossover.TwoPointCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/two_point_crossover.html#TwoPointCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.two_point_crossover.TwoPointCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/two_point_crossover.html#TwoPointCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.two_point_crossover.TwoPointCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the two-point crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -655,14 +655,14 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/unfair_avarage_crossover.html#UnfairAvarageCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/unfair_avarage_crossover.html#UnfairAvarageCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.unfair_avarage_crossover.UnfairAvarageCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the unfair average crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -702,35 +702,35 @@ to produce offspring individuals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.uniform_crossover.UniformCrossover.combine">
-<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/recombination/uniform_crossover.html#UniformCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.uniform_crossover.UniformCrossover.combine" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">locationsource</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a></span></span><a class="reference internal" href="_modules/pycellga/recombination/uniform_crossover.html#UniformCrossover.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.uniform_crossover.UniformCrossover.combine" title="Link to this definition"></a></dt>
 <dd><p>Combine two parent individuals using uniform crossover to produce a single offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>p1</strong> (<em>Individual</em>) – The first parent individual.</p></li>
-<li><p><strong>p2</strong> (<em>Individual</em>) – The second parent individual.</p></li>
-<li><p><strong>locationsource</strong> (<em>Individual</em>) – The individual from which to copy positional information for the offspring.</p></li>
+<li><p><strong>p1</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The first parent individual.</p></li>
+<li><p><strong>p2</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The second parent individual.</p></li>
+<li><p><strong>locationsource</strong> (<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><em>Individual</em></a>) – The individual from which to copy positional information for the offspring.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The resulting offspring individual.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Individual</p>
+<dd class="field-odd"><p><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.recombination.uniform_crossover.UniformCrossover.get_recombinations">
-<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Individual</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/uniform_crossover.html#UniformCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.uniform_crossover.UniformCrossover.get_recombinations" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_recombinations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual"><span class="pre">Individual</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pycellga/recombination/uniform_crossover.html#UniformCrossover.get_recombinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.recombination.uniform_crossover.UniformCrossover.get_recombinations" title="Link to this definition"></a></dt>
 <dd><p>Perform the uniform crossover on the parent individuals to produce offspring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list containing the offspring individuals.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Individual]</p>
+<dd class="field-even"><p>List[<a class="reference internal" href="pycellga.html#pycellga.individual.Individual" title="pycellga.individual.Individual">Individual</a>]</p>
 </dd>
 </dl>
 </dd></dl>
