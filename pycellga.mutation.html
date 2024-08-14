@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pycellga.mutation package &mdash; PYCELLGA Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pycellga.neighborhoods package" href="pycellga.neighborhoods.html" />
+    <link rel="prev" title="pycellga.example package" href="pycellga.example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PYCELLGA Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pycellga</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pycellga.html">pycellga package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pycellga.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pycellga.example.html">pycellga.example package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pycellga.mutation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycellga.neighborhoods.html">pycellga.neighborhoods package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycellga.problems.html">pycellga.problems package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycellga.recombination.html">pycellga.recombination package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycellga.selection.html">pycellga.selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycellga.tests.html">pycellga.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga.byte_operators">pycellga.byte_operators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga.grid">pycellga.grid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#pycellga-individual-module">pycellga.individual module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#pycellga-optimizer-module">pycellga.optimizer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#pycellga-population-module">pycellga.population module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycellga.html#module-pycellga">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PYCELLGA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pycellga</a></li>
+          <li class="breadcrumb-item"><a href="pycellga.html">pycellga package</a></li>
+      <li class="breadcrumb-item active">pycellga.mutation package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pycellga.mutation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pycellga-mutation-package">
+<h1>pycellga.mutation package<a class="headerlink" href="#pycellga-mutation-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pycellga.mutation.bit_flip_mutation">
+<span id="pycellga-mutation-bit-flip-mutation-module"></span><h2>pycellga.mutation.bit_flip_mutation module<a class="headerlink" href="#module-pycellga.mutation.bit_flip_mutation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.bit_flip_mutation.BitFlipMutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.bit_flip_mutation.</span></span><span class="sig-name descname"><span class="pre">BitFlipMutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/bit_flip_mutation.html#BitFlipMutation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.bit_flip_mutation.BitFlipMutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>BitFlipMutation performs a bit flip mutation on an individual in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.bit_flip_mutation.BitFlipMutation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/bit_flip_mutation.html#BitFlipMutation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.bit_flip_mutation.BitFlipMutation.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the BitFlipMutation object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.bit_flip_mutation.BitFlipMutation.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/bit_flip_mutation.html#BitFlipMutation.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.bit_flip_mutation.BitFlipMutation.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform a bit flip mutation on the candidate individual.</p>
+<p>A single bit in the candidate’s chromosome is randomly selected and flipped
+(i.e., a 0 is changed to a 1, or a 1 is changed to a 0).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.byte_mutation">
+<span id="pycellga-mutation-byte-mutation-module"></span><h2>pycellga.mutation.byte_mutation module<a class="headerlink" href="#module-pycellga.mutation.byte_mutation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.byte_mutation.ByteMutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.byte_mutation.</span></span><span class="sig-name descname"><span class="pre">ByteMutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/byte_mutation.html#ByteMutation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.byte_mutation.ByteMutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>ByteMutation operator defined in (Satman, 2013). ByteMutation performs a byte-wise mutation
+on an individual’s chromosome in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.byte_mutation.ByteMutation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/byte_mutation.html#ByteMutation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.byte_mutation.ByteMutation.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the ByteMutation object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.byte_mutation.ByteMutation.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/byte_mutation.html#ByteMutation.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.byte_mutation.ByteMutation.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform a byte-wise mutation on the candidate individual.</p>
+<p>A single byte in one of the candidate’s chromosome’s floating-point numbers is randomly selected
+and either incremented or decremented by 1, wrapping around if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.byte_mutation_random">
+<span id="pycellga-mutation-byte-mutation-random-module"></span><h2>pycellga.mutation.byte_mutation_random module<a class="headerlink" href="#module-pycellga.mutation.byte_mutation_random" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.byte_mutation_random.ByteMutationRandom">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.byte_mutation_random.</span></span><span class="sig-name descname"><span class="pre">ByteMutationRandom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/byte_mutation_random.html#ByteMutationRandom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.byte_mutation_random.ByteMutationRandom" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>ByteMutationRandom operator defined in (Satman, 2013). ByteMutationRandom performs
+a random byte mutation on an individual’s chromosome in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.byte_mutation_random.ByteMutationRandom.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/byte_mutation_random.html#ByteMutationRandom.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.byte_mutation_random.ByteMutationRandom.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the ByteMutationRandom object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.byte_mutation_random.ByteMutationRandom.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/byte_mutation_random.html#ByteMutationRandom.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.byte_mutation_random.ByteMutationRandom.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform a random byte mutation on the candidate individual.</p>
+<p>A single byte in one of the candidate’s chromosome’s floating-point numbers is randomly selected
+and mutated to a random value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.float_uniform_mutation">
+<span id="pycellga-mutation-float-uniform-mutation-module"></span><h2>pycellga.mutation.float_uniform_mutation module<a class="headerlink" href="#module-pycellga.mutation.float_uniform_mutation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.float_uniform_mutation.FloatUniformMutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.float_uniform_mutation.</span></span><span class="sig-name descname"><span class="pre">FloatUniformMutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/float_uniform_mutation.html#FloatUniformMutation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.float_uniform_mutation.FloatUniformMutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>FloatUniformMutation performs a uniform mutation on an individual’s chromosome in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.float_uniform_mutation.FloatUniformMutation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/float_uniform_mutation.html#FloatUniformMutation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.float_uniform_mutation.FloatUniformMutation.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the FloatUniformMutation object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.float_uniform_mutation.FloatUniformMutation.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/float_uniform_mutation.html#FloatUniformMutation.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.float_uniform_mutation.FloatUniformMutation.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform a uniform mutation on the candidate individual.</p>
+<p>Each gene in the candidate’s chromosome is mutated by adding or subtracting a random float uniformly
+sampled from [0, 1]. The mutation is rounded to 5 decimal places.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.insertion_mutation">
+<span id="pycellga-mutation-insertion-mutation-module"></span><h2>pycellga.mutation.insertion_mutation module<a class="headerlink" href="#module-pycellga.mutation.insertion_mutation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.insertion_mutation.InsertionMutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.insertion_mutation.</span></span><span class="sig-name descname"><span class="pre">InsertionMutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/insertion_mutation.html#InsertionMutation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.insertion_mutation.InsertionMutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>InsertionMutation performs an insertion mutation on an individual’s chromosome in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.insertion_mutation.InsertionMutation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/insertion_mutation.html#InsertionMutation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.insertion_mutation.InsertionMutation.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the InsertionMutation object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.insertion_mutation.InsertionMutation.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/insertion_mutation.html#InsertionMutation.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.insertion_mutation.InsertionMutation.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform an insertion mutation on the candidate individual.</p>
+<p>A gene in the candidate’s chromosome is randomly selected and moved to a new position in the chromosome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.mutation_operator">
+<span id="pycellga-mutation-mutation-operator-module"></span><h2>pycellga.mutation.mutation_operator module<a class="headerlink" href="#module-pycellga.mutation.mutation_operator" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.mutation_operator.MutationOperator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.mutation_operator.</span></span><span class="sig-name descname"><span class="pre">MutationOperator</span></span><a class="reference internal" href="_modules/pycellga/mutation/mutation_operator.html#MutationOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.mutation_operator.MutationOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.mutation_operator.MutationOperator.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/mutation_operator.html#MutationOperator.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.mutation_operator.MutationOperator.mutate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.shuffle_mutation">
+<span id="pycellga-mutation-shuffle-mutation-module"></span><h2>pycellga.mutation.shuffle_mutation module<a class="headerlink" href="#module-pycellga.mutation.shuffle_mutation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.shuffle_mutation.ShuffleMutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.shuffle_mutation.</span></span><span class="sig-name descname"><span class="pre">ShuffleMutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/shuffle_mutation.html#ShuffleMutation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.shuffle_mutation.ShuffleMutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>ShuffleMutation performs a shuffle mutation on an individual’s chromosome in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.shuffle_mutation.ShuffleMutation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/shuffle_mutation.html#ShuffleMutation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.shuffle_mutation.ShuffleMutation.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the ShuffleMutation object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.shuffle_mutation.ShuffleMutation.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/shuffle_mutation.html#ShuffleMutation.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.shuffle_mutation.ShuffleMutation.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform a shuffle mutation on the candidate individual.</p>
+<p>A subsequence of genes in the candidate’s chromosome is randomly selected and shuffled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.swap_mutation">
+<span id="pycellga-mutation-swap-mutation-module"></span><h2>pycellga.mutation.swap_mutation module<a class="headerlink" href="#module-pycellga.mutation.swap_mutation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.swap_mutation.SwapMutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.swap_mutation.</span></span><span class="sig-name descname"><span class="pre">SwapMutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/swap_mutation.html#SwapMutation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.swap_mutation.SwapMutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>SwapMutation performs a swap mutation on an individual’s chromosome in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.swap_mutation.SwapMutation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/swap_mutation.html#SwapMutation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.swap_mutation.SwapMutation.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the SwapMutation object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.swap_mutation.SwapMutation.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/swap_mutation.html#SwapMutation.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.swap_mutation.SwapMutation.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform a swap mutation on the candidate individual.</p>
+<p>Two genes in the candidate’s chromosome are randomly selected and swapped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation.two_opt_mutation">
+<span id="pycellga-mutation-two-opt-mutation-module"></span><h2>pycellga.mutation.two_opt_mutation module<a class="headerlink" href="#module-pycellga.mutation.two_opt_mutation" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycellga.mutation.two_opt_mutation.TwoOptMutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pycellga.mutation.two_opt_mutation.</span></span><span class="sig-name descname"><span class="pre">TwoOptMutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/two_opt_mutation.html#TwoOptMutation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.two_opt_mutation.TwoOptMutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutationOperator</span></code></p>
+<p>TwoOptMutation performs a 2-opt mutation on an individual’s chromosome in a Genetic Algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.two_opt_mutation.TwoOptMutation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutation_cand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Individual</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><span class="pre">AbstractProblem</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/mutation/two_opt_mutation.html#TwoOptMutation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.two_opt_mutation.TwoOptMutation.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the TwoOptMutation object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutation_cand</strong> (<em>Individual</em><em>, </em><em>optional</em>) – The candidate individual to be mutated (default is None).</p></li>
+<li><p><strong>problem</strong> (<a class="reference internal" href="pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem" title="pycellga.problems.abstract_problem.AbstractProblem"><em>AbstractProblem</em></a><em>, </em><em>optional</em>) – The problem instance that provides the fitness function (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.mutation.two_opt_mutation.TwoOptMutation.mutate">
+<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Individual</span></span></span><a class="reference internal" href="_modules/pycellga/mutation/two_opt_mutation.html#TwoOptMutation.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.mutation.two_opt_mutation.TwoOptMutation.mutate" title="Link to this definition"></a></dt>
+<dd><p>Perform a 2-opt mutation on the candidate individual.</p>
+<p>A segment of the candidate’s chromosome is randomly selected and reversed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new individual with the mutated chromosome.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pycellga.mutation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pycellga.mutation" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pycellga.example.html" class="btn btn-neutral float-left" title="pycellga.example package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pycellga.neighborhoods.html" class="btn btn-neutral float-right" title="pycellga.neighborhoods package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
