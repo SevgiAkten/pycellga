@@ -7,7 +7,7 @@
 
 # pycellga: A Python Package for Improved Cellular Genetic Algorithms
 
-`pycellga` is a Python package that implements cellular genetic algorithms (CGAs) for optimizing complex problems. VCGAs combine the principles of cellular automata and traditional genetic algorithms, utilizing a spatially structured population organized in a grid-like topology. This structure allows each individual to interact only with its neighboring individuals, promoting diversity and maintaining a balance between exploration and exploitation during the optimization process. `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, Machine Coded Compact CGA and Improved CGA with Machine Coded Operaors for real-valued optimization problems.
+`pycellga` is a Python package that implements cellular genetic algorithms (CGAs) for optimizing complex problems. CGAs combine the principles of cellular automata and traditional genetic algorithms, utilizing a spatially structured population organized in a grid-like topology. This structure allows each individual to interact only with its neighboring individuals, promoting diversity and maintaining a balance between exploration and exploitation during the optimization process. `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, Machine Coded Compact CGA and Improved CGA with Machine Coded Operaors for real-valued optimization problems. The `pycellga` package is designed to handle a wide range of optimization problems, including binary, real-valued, and permutation-based challenges, making it a versatile tool for diverse applications in evolutionary computation.
 
 ## Features
 
@@ -37,7 +37,7 @@ For full documentation, visit [here](https://sevgiakten.github.io/pycellga/) or 
 
 ## Usage Examples
 
-In this section, we'll explain what each method in the optimizer does and provide examples of how to use them. The package includes various ready-to-use crossover and mutation operators, along with Real-valued, Binary, and Permutation functions that you can run directly. Examples for other methods are available in the `example` folder, while the example for cga is provided below.
+In this section, we'll explain cga method in the optimizer and provide an example of how to use it. The package includes various ready-to-use crossover and mutation operators, along with real-valued, binary, and permutation functions that you can run directly. Examples for other methods are available in the `example` folder, while an example for cga is provided below.
 
 ### **cga (Cellular Genetic Algorithm)**
 
