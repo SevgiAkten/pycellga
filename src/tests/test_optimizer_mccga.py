@@ -1,6 +1,6 @@
 import pytest
 from optimizer import mcccga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
-import numpy as np
+import mpmath as mp
 from typing import List
 
 class RealProblem:
@@ -30,7 +30,7 @@ class RealProblem:
         float
             The computed value of the function given the input x.
         """
-        return sum(np.power(xi, 2) for xi in x)
+        return sum(mp.power(xi, 2) for xi in x)
 
 def test_optimizer_mcccga_binary():
     """Test mcccga on a binary OneMax problem."""

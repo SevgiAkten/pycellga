@@ -1,6 +1,6 @@
 from numpy import cos
 from numpy import pi
-from numpy import power as pw
+from mpmath import power as pw
 from problems.abstract_problem import AbstractProblem
 
 class Bohachevsky(AbstractProblem):

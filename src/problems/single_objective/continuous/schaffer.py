@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import power as pw
+from mpmath import power as pw
 from problems.abstract_problem import AbstractProblem
 
 

@@ -1,5 +1,6 @@
 from problems.abstract_problem import AbstractProblem
-import numpy as np
+from mpmath import power as pw
+
 
 class Powell(AbstractProblem):
     """
@@ -42,10 +43,10 @@ class Powell(AbstractProblem):
         d = n // 4
         
         for i in range(d):
-            a = np.power(x[4*i] + 10 * x[4*i + 1], 2)
-            b = np.power(x[4*i + 2] - x[4*i + 3], 2)
-            c = np.power(x[4*i + 1] - 2 * x[4*i + 2], 4)
-            e = np.power(x[4*i] - x[4*i + 3], 4)
+            a = pw(x[4*i] + 10 * x[4*i + 1], 2)
+            b = pw(x[4*i + 2] - x[4*i + 3], 2)
+            c = pw(x[4*i + 1] - 2 * x[4*i + 2], 4)
+            e = pw(x[4*i] - x[4*i + 3], 4)
             fitness += a + 5 * b + c + 10 * e
 
         return round(fitness, 1)

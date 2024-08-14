@@ -1,6 +1,5 @@
 import pytest
 from optimizer import ccga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
-import numpy as np
 from typing import List
 
 class BinaryProblem:

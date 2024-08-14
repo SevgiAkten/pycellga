@@ -1,5 +1,5 @@
 from problems.abstract_problem import AbstractProblem
-import numpy as np
+from mpmath import power as pw
 
 class Rothellipsoid(AbstractProblem):
     """
@@ -41,6 +41,6 @@ class Rothellipsoid(AbstractProblem):
         n = len(x)
 
         for i in range(n):
-            fitness += (i + 2) * np.power(x[i], 2)
+            fitness += (i + 2) * pw(x[i], 2)
 
         return round(fitness, 3)

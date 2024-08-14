@@ -1,4 +1,5 @@
 import numpy as np
+from mpmath import power as pw
 from problems.abstract_problem import AbstractProblem
 
 class Sumofdifferentpowers(AbstractProblem):
@@ -25,6 +26,6 @@ class Sumofdifferentpowers(AbstractProblem):
         for i in range(len(x)):
             a = np.abs(x[i])
             b = i + 1
-            fitness += np.power(a, b)
+            fitness += pw(a, b)
 
         return round(fitness, 3)

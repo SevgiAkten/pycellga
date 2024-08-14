@@ -1,6 +1,6 @@
 import pytest
 from optimizer import alpha_cga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
-import numpy as np
+import mpmath as mp
 from typing import List
 
 class RealProblem:
@@ -30,7 +30,7 @@ class RealProblem:
         float
             The computed value of the function given the input x.
         """
-        return sum(np.power(xi, 2) for xi in x)
+        return sum(mp.power(xi, 2) for xi in x)
 
 def test_optimizer_alpha_cga_real():
     """Test alpha_cga on a real-valued sum of squares problem."""
