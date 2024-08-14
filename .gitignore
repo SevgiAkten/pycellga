@@ -13,4 +13,5 @@ __pycache__/**
 .pytest_cache/**
 paper/paper.pdf
 *.csl
-
+docs/_build/**
+docs/html/**
