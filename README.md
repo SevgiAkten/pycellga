@@ -54,7 +54,7 @@ The sum of squares function computes the sum of the squares of each element in t
 Here’s how we can define this problem in Python using the `ExampleProblem` class:
 
 ```python
-from numpy import power as pw
+from mpmath import power as pw
 import pycellga 
 
 class ExampleProblem:
