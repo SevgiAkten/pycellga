@@ -5,9 +5,9 @@ with open('requirements.txt') as f:
 
 setup(
     name='pycellga',  
-    version='0.1.2',  
+    version='0.1.8',  
     description='A Python Package for Improved Cellular Genetic Algorithms',  
-    author='SEVGİ AKTEN KARAKAYA, MEHMET HAKAN SATMAN',  
+    author='Sevgi Akten Karakaya, Mehmet Hakan Satman',  
     author_email='sevgiakten@gmail.com, mhsatman@gmail.com',  
     packages=find_packages(),  
     install_requires=required, 
