@@ -122,8 +122,6 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Callable</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <div class="viewcode-block" id="cga">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.optimizer.cga">[docs]</a>
@@ -140,7 +138,8 @@
     <span class="n">recombination</span><span class="p">:</span> <span class="n">RecombinationOperator</span><span class="p">,</span>
     <span class="n">mutation</span><span class="p">:</span> <span class="n">MutationOperator</span><span class="p">,</span>
     <span class="n">mins</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-    <span class="n">maxs</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">maxs</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">seed_par</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Optimize the given problem using a genetic algorithm.</span>
@@ -185,6 +184,10 @@
 <span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
 <span class="sd">        and the third is the generation at which it was found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">seed_par</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_par</span><span class="p">)</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_par</span><span class="p">)</span>
 
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_solutions</span> <span class="o">=</span> <span class="p">[]</span>
@@ -287,7 +290,8 @@
     <span class="n">recombination</span><span class="p">:</span> <span class="n">RecombinationOperator</span><span class="p">,</span>
     <span class="n">mutation</span><span class="p">:</span> <span class="n">MutationOperator</span><span class="p">,</span>
     <span class="n">mins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-    <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">seed_par</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Optimize the given problem using a synchronous cellular genetic algorithm (Sync-CGA).</span>
@@ -328,6 +332,10 @@
 <span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
 <span class="sd">        and the third is the generation at which it was found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">seed_par</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_par</span><span class="p">)</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_par</span><span class="p">)</span>
 
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_solutions</span> <span class="o">=</span> <span class="p">[]</span>
@@ -431,7 +439,8 @@
     <span class="n">recombination</span><span class="p">:</span> <span class="n">RecombinationOperator</span><span class="p">,</span>
     <span class="n">mutation</span><span class="p">:</span> <span class="n">MutationOperator</span><span class="p">,</span>
     <span class="n">mins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-    <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">seed_par</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Optimize a problem using an evolutionary algorithm with an alpha-male exchange mechanism.</span>
@@ -476,6 +485,10 @@
 <span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
 <span class="sd">        and the third is the generation at which it was found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">seed_par</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_par</span><span class="p">)</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_par</span><span class="p">)</span>
 
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_solutions</span> <span class="o">=</span> <span class="p">[]</span>
