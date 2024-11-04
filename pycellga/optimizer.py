@@ -49,8 +49,6 @@ from problems.single_objective.discrete.binary.one_max import *
 from typing import Callable, List, Tuple
 from collections.abc import Callable
 
-np.random.seed(100)
-random.seed(100)
 
 def cga(
     n_cols: int,
@@ -65,7 +63,8 @@ def cga(
     recombination: RecombinationOperator,
     mutation: MutationOperator,
     mins : list[float] = [],
-    maxs : list[float] = []
+    maxs : list[float] = [],
+    seed_par: int = None
 ) -> List:
     """
     Optimize the given problem using a genetic algorithm.
@@ -110,6 +109,10 @@ def cga(
         where the first element is the chromosome, the second is the fitness value, 
         and the third is the generation at which it was found.
     """
+
+    if seed_par is not None:
+        np.random.seed(seed_par)
+        random.seed(seed_par)
 
     pop_size = n_cols * n_rows
     best_solutions = []
@@ -209,7 +212,8 @@ def sync_cga(
     recombination: RecombinationOperator,
     mutation: MutationOperator,
     mins: List[float] = [],
-    maxs: List[float] = []
+    maxs: List[float] = [],
+    seed_par: int = None
 ) -> List:
     """
     Optimize the given problem using a synchronous cellular genetic algorithm (Sync-CGA).
@@ -250,6 +254,10 @@ def sync_cga(
         where the first element is the chromosome, the second is the fitness value, 
         and the third is the generation at which it was found.
     """
+
+    if seed_par is not None:
+        np.random.seed(seed_par)
+        random.seed(seed_par)
 
     pop_size = n_cols * n_rows
     best_solutions = []
@@ -350,7 +358,8 @@ def alpha_cga(
     recombination: RecombinationOperator,
     mutation: MutationOperator,
     mins: List[float] = [],
-    maxs: List[float] = []
+    maxs: List[float] = [],
+    seed_par: int = None
 ) -> List:
     """
     Optimize a problem using an evolutionary algorithm with an alpha-male exchange mechanism.
@@ -395,6 +404,10 @@ def alpha_cga(
         where the first element is the chromosome, the second is the fitness value, 
         and the third is the generation at which it was found.
     """
+
+    if seed_par is not None:
+        np.random.seed(seed_par)
+        random.seed(seed_par)
 
     pop_size = n_cols * n_rows
     best_solutions = []

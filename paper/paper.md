@@ -106,7 +106,8 @@ result = pycellga.optimizer.cga(
     recombination = pycellga.optimizer.ByteOnePointCrossover,
     mutation = pycellga.optimizer.ByteMutationRandom,
     mins = [-32.768] * 5,  # Minimum values for each gene
-    maxs = [32.768] * 5    # Maximum values for each gene
+    maxs = [32.768] * 5,    # Maximum values for each gene
+    seed_par = 100 # Ensures the random number generation is repeatable
 )
 print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
 
