@@ -90,7 +90,6 @@ print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
 # Best solution: 0.0 
 # Best solution chromosome: [0.0, 0.0, 0.0, 0.0, 0.0]
 
-# Note that the result could be different because the algorithm includes randomness.
 ```
 
 We have provided a basic example above. If you're interested in exploring more examples, you have two options:

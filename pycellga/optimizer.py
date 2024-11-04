@@ -49,7 +49,8 @@ from problems.single_objective.discrete.binary.one_max import *
 from typing import Callable, List, Tuple
 from collections.abc import Callable
 
-
+np.random.seed(100)
+random.seed(100)
 
 def cga(
     n_cols: int,
