@@ -13,7 +13,6 @@ Subpackages
    pycellga.problems
    pycellga.recombination
    pycellga.selection
-   pycellga.tests
 
 Submodules
 ----------
