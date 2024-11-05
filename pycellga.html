@@ -1300,6 +1300,7 @@ The three types of genome representation are BINARY, PERMUTATION, and REAL.</p>
 <li><p><strong>mutation</strong> (<a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><em>MutationOperator</em></a>) – Function used for mutation in the evolutionary algorithm.</p></li>
 <li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for each gene in the chromosome (for real value optimization).</p></li>
 <li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization).</p></li>
+<li><p><strong>seed_par</strong> (<em>int</em>) – Ensures the random number generation is repeatable.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1364,6 +1365,7 @@ and the third is the generation at which it was found.</p>
 <li><p><strong>mutation</strong> (<a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><em>MutationOperator</em></a>) – Function or class used for mutation.</p></li>
 <li><p><strong>mins</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for each gene in the chromosome (for real value optimization).</p></li>
 <li><p><strong>maxs</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization).</p></li>
+<li><p><strong>seed_par</strong> (<em>int</em>) – Ensures the random number generation is repeatable.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1503,7 +1505,8 @@ and the third is the generation at which it was found.</p>
 <li><p><strong>recombination</strong> (<a class="reference internal" href="pycellga.recombination.html#pycellga.recombination.recombination_operator.RecombinationOperator" title="pycellga.recombination.recombination_operator.RecombinationOperator"><em>RecombinationOperator</em></a>) – Function or class used for recombination (crossover).</p></li>
 <li><p><strong>mutation</strong> (<a class="reference internal" href="pycellga.mutation.html#pycellga.mutation.mutation_operator.MutationOperator" title="pycellga.mutation.mutation_operator.MutationOperator"><em>MutationOperator</em></a>) – Function or class used for mutation.</p></li>
 <li><p><strong>mins</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of minimum values for each gene in the chromosome (for real value optimization).</p></li>
-<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization</p></li>
+<li><p><strong>maxs</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of maximum values for each gene in the chromosome (for real value optimization.</p></li>
+<li><p><strong>seed_par</strong> (<em>int</em>) – Ensures the random number generation is repeatable.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
