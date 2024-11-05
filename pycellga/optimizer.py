@@ -101,6 +101,8 @@ def cga(
         List of minimum values for each gene in the chromosome (for real value optimization).
     maxs : list[float]
         List of maximum values for each gene in the chromosome (for real value optimization).
+    seed_par : int
+        Ensures the random number generation is repeatable.
 
     Returns
     -------
@@ -245,7 +247,9 @@ def sync_cga(
     mins : List[float]
         List of minimum values for each gene in the chromosome (for real value optimization).
     maxs : List[float]
-        List of maximum values for each gene in the chromosome (for real value optimization
+        List of maximum values for each gene in the chromosome (for real value optimization.
+    seed_par : int
+        Ensures the random number generation is repeatable.
         
     Returns
     -------
@@ -396,6 +400,8 @@ def alpha_cga(
         List of minimum values for each gene in the chromosome (for real value optimization).
     maxs : List[float]
         List of maximum values for each gene in the chromosome (for real value optimization).
+    seed_par : int
+        Ensures the random number generation is repeatable.
 
     Returns
     -------

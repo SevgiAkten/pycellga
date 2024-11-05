@@ -63,7 +63,8 @@ def run_cga_example():
         recombination=optimizer.ByteOnePointCrossover,
         mutation=optimizer.ByteMutationRandom,
         mins=[-32.768] * 5,  # Minimum values for each gene
-        maxs=[32.768] * 5    # Maximum values for each gene
+        maxs=[32.768] * 5,    # Maximum values for each gene
+        seed_par=100
     )
 
     # Print the results
