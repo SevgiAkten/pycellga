@@ -11,6 +11,7 @@ PYCELLGA Documentation
 `pycellga` is a Python package that implements cellular genetic algorithms (CGAs) for optimizing 
 complex problems. CGAs combine the principles of cellular automata and traditional genetic algorithms, 
 utilizing a spatially structured population organized in a grid-like topology. 
+
 This structure allows each individual to interact only with its neighboring individuals, 
 promoting diversity and maintaining a balance between exploration and exploitation during the optimization process. 
 `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, 
@@ -18,7 +19,7 @@ Machine Coded Compact CGA and Improved CGA with Machine Coded Operators for real
 
 .. toctree::
    :maxdepth: 1
-   :caption: Table of Contents:
+   :caption: Table of Contents :
 
    installation
    pycellga
