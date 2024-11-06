@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>setup module &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
+  <title>Contributing &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -20,7 +20,9 @@
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Citing" href="citing.html" />
+    <link rel="prev" title="Usage Examples" href="usage_examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,7 +45,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-pypi">Installing from PyPI</a></li>
@@ -291,12 +293,12 @@
 <li class="toctree-l2"><a class="reference internal" href="usage_examples.html#usage">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#ways-to-contribute">Ways to Contribute</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#development-setup">Development Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#coding-standards">Coding Standards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#running-tests">Running Tests</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ways-to-contribute">Ways to Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-setup">Development Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-standards">Coding Standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">Running Tests</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="citing.html">Citing</a></li>
@@ -316,9 +318,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">setup module</li>
+      <li class="breadcrumb-item active">Contributing</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/setup.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -326,14 +328,111 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="setup-module">
-<h1>setup module<a class="headerlink" href="#setup-module" title="Link to this heading"></a></h1>
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
+<p>We’re thrilled that you’re considering contributing to <cite>pycellga</cite>! Community contributions drive innovation and help us improve the software. Whether it’s reporting bugs, suggesting enhancements, or submitting pull requests, your support is invaluable.</p>
+<section id="ways-to-contribute">
+<h2>Ways to Contribute<a class="headerlink" href="#ways-to-contribute" title="Link to this heading"></a></h2>
+<p>Here are some ways you can make meaningful contributions to <cite>pycellga</cite>:</p>
+<ul class="simple">
+<li><p><strong>Report Bugs</strong>: If you encounter an issue, create a detailed bug report in our <a class="reference external" href="https://github.com/SevgiAkten/pycellga/issues">issue tracker</a>.</p></li>
+<li><p><strong>Suggest Features</strong>: Have ideas for new features or enhancements? Submit a feature request to help guide our roadmap.</p></li>
+<li><p><strong>Fix Bugs or Implement Features</strong>: Browse open issues, pick one, and submit a pull request with your solution.</p></li>
+<li><p><strong>Improve Documentation</strong>: Documentation is key to helping users understand the software. Fix typos, clarify steps, or add examples to make it even better.</p></li>
+</ul>
+</section>
+<section id="development-setup">
+<h2>Development Setup<a class="headerlink" href="#development-setup" title="Link to this heading"></a></h2>
+<p>To begin contributing code, set up your development environment as follows:</p>
+<p><strong>Step 1: Fork the Repository</strong></p>
+<p>Create your own copy of <cite>pycellga</cite> by forking the repository:</p>
+<ol class="arabic simple">
+<li><p>Visit the  <a class="reference external" href="https://github.com/SevgiAkten/pycellga">repository</a>.</p></li>
+<li><p>Click the “Fork” button in the upper-right corner.</p></li>
+<li><p>Select your GitHub account to create the fork.</p></li>
+</ol>
+<p>For a step-by-step guide on forking, visit GitHub’s <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Fork a Repo</a> page.</p>
+<p><strong>Step 2: Clone Your Fork</strong></p>
+<p>Clone your forked repository to your local machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/username/pycellga.git
+<span class="nb">cd</span><span class="w"> </span>pycellga
+</pre></div>
+</div>
+<p><strong>Step 3: Install Dependencies</strong></p>
+<p>Install the required dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p><strong>Step 4: Create a New Branch</strong></p>
+<p>Create a branch for your changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature-or-bugfix-name
+</pre></div>
+</div>
+<p>Use descriptive names for branches, such as <cite>add-new-feature</cite> or <cite>fix-bug</cite>.</p>
+</section>
+<section id="pull-request-guidelines">
+<h2>Pull Request Guidelines<a class="headerlink" href="#pull-request-guidelines" title="Link to this heading"></a></h2>
+<p>When you’re ready to submit your changes, follow these guidelines to ensure a smooth review process:</p>
+<ol class="arabic">
+<li><p><strong>Write Clear Commit Messages</strong>: Each commit message should be clear and descriptive.</p></li>
+<li><p><strong>Run Tests</strong>: Verify that all tests pass. Tests can be run from the <cite>tests</cite> folder or main directory:</p>
+<ul>
+<li><p>From the <cite>tests</cite> folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>tests
+pytest<span class="w"> </span>*<span class="w">         </span><span class="c1"># or</span>
+pytest<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+<li><p>From the main project directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Submit a Pull Request</strong>: Push your branch to GitHub, navigate to the main repository, and open a pull request.</p></li>
+<li><p><strong>Respond to Reviews</strong>: Be responsive to feedback during the review process, and make any requested changes to ensure your contribution is merged smoothly.</p></li>
+</ol>
+</section>
+<section id="coding-standards">
+<h2>Coding Standards<a class="headerlink" href="#coding-standards" title="Link to this heading"></a></h2>
+<p>To maintain a consistent and readable codebase, please adhere to the following guidelines:</p>
+<ul class="simple">
+<li><p><strong>PEP 8</strong>: Follow PEP 8 coding style standards for Python code.</p></li>
+<li><p><strong>Type Annotations</strong>: Include type hints for function arguments and return values.</p></li>
+<li><p><strong>Docstrings</strong>: Provide clear docstrings for functions and classes. We recommend using the Google docstring style.</p></li>
+</ul>
+</section>
+<section id="running-tests">
+<h2>Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h2>
+<p>Before submitting a pull request, ensure that all tests pass. Tests can be run in the <cite>tests</cite> folder or from the main directory as follows:</p>
+<ol class="arabic">
+<li><p><strong>From the `tests` folder</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>tests
+pytest<span class="w"> </span>*<span class="w">         </span><span class="c1"># or</span>
+pytest<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+<li><p><strong>From the main project directory</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If you add new functionality, consider adding tests to cover your changes.</p>
+<p>Thank you for considering a contribution to <cite>pycellga</cite>. We’re excited to see what you’ll bring to the project!</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage_examples.html" class="btn btn-neutral float-left" title="Usage Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="citing.html" class="btn btn-neutral float-right" title="Citing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

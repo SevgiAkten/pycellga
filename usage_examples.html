@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>setup module &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
+  <title>Usage Examples &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -20,7 +20,9 @@
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Example Implementations in pycellga" href="pycellga.example.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,7 +45,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-pypi">Installing from PyPI</a></li>
@@ -284,11 +286,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="usage_examples.html">Usage Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#cga-cellular-genetic-algorithm">cga (Cellular Genetic Algorithm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#example-problem">Example Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#exampleproblem-class">ExampleProblem Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#usage">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cga-cellular-genetic-algorithm">cga (Cellular Genetic Algorithm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-problem">Example Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exampleproblem-class">ExampleProblem Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
@@ -316,9 +318,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">setup module</li>
+      <li class="breadcrumb-item active">Usage Examples</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/setup.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/usage_examples.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -326,14 +328,73 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="setup-module">
-<h1>setup module<a class="headerlink" href="#setup-module" title="Link to this heading"></a></h1>
+  <section id="usage-examples">
+<h1>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h1>
+<p>In this section, we’ll explain the <cite>cga</cite> method in the optimizer and provide an example of how to use it. The package includes various ready-to-use crossover and mutation operators, along with real-valued, binary, and permutation functions that you can run directly. Examples for other methods are available in the <cite>example</cite> folder, while an example for <cite>cga</cite> is provided below.</p>
+<section id="cga-cellular-genetic-algorithm">
+<h2>cga (Cellular Genetic Algorithm)<a class="headerlink" href="#cga-cellular-genetic-algorithm" title="Link to this heading"></a></h2>
+<p><strong>cga</strong> is a type of genetic algorithm where the population is structured as a grid (or other topologies), and each individual interacts only with its neighbors. This structure helps maintain diversity in the population and can prevent premature convergence. To specialize the CGA for real-valued optimization problems, ICGA (Improved CGA) with machine-coded representation can be used, applying byte operators. The encoding and decoding of numbers follow the IEEE 754 standard for floating-point arithmetic, yielding better results for continuous functions.</p>
+</section>
+<section id="example-problem">
+<h2>Example Problem<a class="headerlink" href="#example-problem" title="Link to this heading"></a></h2>
+<p>Suppose we have a problem that we want to minimize using a Cellular Genetic Algorithm (CGA). The problem is defined as a simple sum of squares function, where the goal is to find a chromosome (vector) that minimizes the function.</p>
+<p>The sum of squares function computes the sum of the squares of each element in the chromosome. This function reaches its global minimum when all elements of the chromosome are equal to 0. The corresponding function value at this point is 0.</p>
+</section>
+<section id="exampleproblem-class">
+<h2>ExampleProblem Class<a class="headerlink" href="#exampleproblem-class" title="Link to this heading"></a></h2>
+<p>Here’s how we can define this problem in Python using the <cite>ExampleProblem</cite> class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">power</span> <span class="k">as</span> <span class="n">pw</span>
+<span class="kn">import</span> <span class="nn">pycellga</span>
+
+<span class="k">class</span> <span class="nc">ExampleProblem</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pw</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
+    <span class="n">n_cols</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">ch_size</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">gen_type</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">REAL</span><span class="p">,</span>
+    <span class="n">p_crossover</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">p_mutation</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">problem</span> <span class="o">=</span> <span class="n">ExampleProblem</span><span class="p">(),</span>  <span class="c1"># Replace with a real problem instance as needed</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+    <span class="n">recombination</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">ByteOnePointCrossover</span><span class="p">,</span>
+    <span class="n">mutation</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">ByteMutationRandom</span><span class="p">,</span>
+    <span class="n">mins</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1"># Minimum values for each gene</span>
+    <span class="n">maxs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>    <span class="c1"># Maximum values for each gene</span>
+    <span class="n">seed_par</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># Ensures the random number generation is repeatable</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># The result is</span>
+<span class="c1"># Best solution: 0.0</span>
+<span class="c1"># Best solution chromosome: [0.0, 0.0, 0.0, 0.0, 0.0]</span>
+</pre></div>
+</div>
+<p>We have provided a basic example above. If you’re interested in exploring more examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/SevgiAkten/pycellga/tree/main/pycellga/example">Click here to see the other examples</a> available directly in the repository.</p></li>
+</ul>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pycellga.example.html" class="btn btn-neutral float-left" title="Example Implementations in pycellga" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

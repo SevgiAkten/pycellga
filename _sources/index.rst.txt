@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PYCELLGA Documentation 
+PYCELLGA Documentation
 ====================================
 
 `pycellga`: A Python Package for Improved Cellular Genetic Algorithms
@@ -14,11 +14,14 @@ utilizing a spatially structured population organized in a grid-like topology.
 This structure allows each individual to interact only with its neighboring individuals, 
 promoting diversity and maintaining a balance between exploration and exploitation during the optimization process. 
 `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, 
-Machine Coded Compact CGA and Improved CGA with Machine Coded Operaors for real-valued optimization problems.
+Machine Coded Compact CGA and Improved CGA with Machine Coded Operators for real-valued optimization problems.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: Table of Contents:
 
-   modules
-
+   installation
+   pycellga
+   usage_examples
+   contributing
+   citing
