@@ -1,205 +1,225 @@
-pycellga.problems.single\_objective.continuous package
-======================================================
+Continuous Optimization Problems
+============================================
 
-Submodules
-----------
+The `pycellga.problems.single_objective.continuous` package offers a range of continuous, single-objective benchmark functions. These functions are commonly used to evaluate the performance of optimization algorithms in terms of convergence accuracy, robustness, and computation speed. Below is a list of available benchmark functions in this package, each addressing unique aspects of optimization.
 
-pycellga.problems.single\_objective.continuous.ackley module
-------------------------------------------------------------
+
+**Ackley Function**
+--------------
+A multimodal function known for its large number of local minima. Used to evaluate an algorithm's ability to escape local optima.
 
 .. automodule:: pycellga.problems.single_objective.continuous.ackley
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.bentcigar module
----------------------------------------------------------------
+**Bent Cigar Function**
+--------------
+A unimodal function that is rotationally invariant, used to test convergence speed and robustness.
 
 .. automodule:: pycellga.problems.single_objective.continuous.bentcigar
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.bohachevsky module
------------------------------------------------------------------
+**Bohachevsky Function**
+--------------
+Characterized by its simple structure with some local minima, making it ideal for testing fine-tuning capabilities.
 
 .. automodule:: pycellga.problems.single_objective.continuous.bohachevsky
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.chichinadze module
------------------------------------------------------------------
+**Chichinadze Function**
+--------------
+A complex landscape with both smooth and steep regions, suitable for testing algorithms on challenging landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.chichinadze
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.dropwave module
---------------------------------------------------------------
+**Drop Wave Function**
+--------------
+A multimodal function often used to evaluate the balance between exploration and exploitation.
 
 .. automodule:: pycellga.problems.single_objective.continuous.dropwave
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.fms module
----------------------------------------------------------
+**Frequency Modulation Sound Function (FMS)**
+--------------
+A complex, multimodal function commonly used to test the robustness of optimization algorithms.
 
 .. automodule:: pycellga.problems.single_objective.continuous.fms
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.griewank module
---------------------------------------------------------------
+**Griewank Function**
+--------------
+A continuous, nonlinear function with numerous local minima, commonly used to test an algorithm's global search capability.
 
 .. automodule:: pycellga.problems.single_objective.continuous.griewank
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.holzman module
--------------------------------------------------------------
+**Holzman Function**
+--------------
+An experimental function that provides various levels of difficulty for different optimization approaches.
 
 .. automodule:: pycellga.problems.single_objective.continuous.holzman
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.levy module
-----------------------------------------------------------
+**Levy Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.levy
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.matyas module
-------------------------------------------------------------
+**Matyas Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.matyas
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.pow module
----------------------------------------------------------
+**Pow Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.pow
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.powell module
-------------------------------------------------------------
+
+**Powell Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.powell
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.rastrigin module
----------------------------------------------------------------
+**Rastrigin Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.rastrigin
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.rosenbrock module
-----------------------------------------------------------------
+
+**Rosenbrock Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.rosenbrock
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.rothellipsoid module
--------------------------------------------------------------------
+**Rothellipsoid Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.rothellipsoid
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.schaffer module
---------------------------------------------------------------
+
+**Schaffer Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.schaffer
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.schaffer2 module
----------------------------------------------------------------
+**Schaffer2 Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.schaffer2
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.schwefel module
---------------------------------------------------------------
+**Schwefel Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.schwefel
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.sphere module
-------------------------------------------------------------
+**Sphere Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.sphere
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.styblinskitang module
---------------------------------------------------------------------
+**Styblinskitang Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.styblinskitang
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.sumofdifferentpowers module
---------------------------------------------------------------------------
+**Sumofdifferentpowers Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.sumofdifferentpowers
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.threehumps module
-----------------------------------------------------------------
+**Threehumps Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.threehumps
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.zakharov module
---------------------------------------------------------------
+**Zakharov Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.zakharov
    :members:
    :undoc-members:
    :show-inheritance:
 
-pycellga.problems.single\_objective.continuous.zettle module
-------------------------------------------------------------
+**Zettle Function**
+--------------
+This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.zettle
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: pycellga.problems.single_objective.continuous
-   :members:
-   :undoc-members:
-   :show-inheritance:

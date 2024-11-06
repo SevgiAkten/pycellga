@@ -114,6 +114,24 @@ Inspired by traditional genetic algorithms and cellular automata principles with
 For more information, please visit the project repository.
 
 ## Citation
-Please cite our work using the citation info
 
-Karakaya, Sevgi Akten, and Mehmet Hakan Satman. "An Improved Cellular Genetic Algorithm with Machine-Coded Operators for Real-Valued Optimisation Problems." Journal of Engineering Research and Applied Science 13.1 (2024): 2500-2514.
+If you use `pycellga` in your research, please cite it as follows:
+
+**APA Format**
+
+Karakaya, S. A., & Satman, M. H. (2024). An Improved Cellular Genetic Algorithm with Machine-Coded Operators for Real-Valued Optimisation Problems. *Journal of Engineering Research and Applied Science, 13*(1), 2500-2514.
+
+**BibTeX Format**
+
+For LaTeX users, please use the following BibTeX entry to cite `pycellga`:
+
+```bibtex
+@article{karakaya2024improved,
+  title={An Improved Cellular Genetic Algorithm with Machine-Coded Operators for Real-Valued Optimisation Problems},
+  author={Karakaya, Sevgi Akten and Satman, Mehmet Hakan},
+  journal={Journal of Engineering Research and Applied Science},
+  volume={13},
+  number={1},
+  pages={2500--2514},
+  year={2024}
+}
