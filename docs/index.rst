@@ -17,8 +17,6 @@ promoting diversity and maintaining a balance between exploration and exploitati
 `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, 
 Machine Coded Compact CGA and Improved CGA with Machine Coded Operators for real-valued optimization problems.
 
-FOR CHECK TEXT---
-
 .. toctree::
    :maxdepth: 1
    :caption: Table of Contents :
