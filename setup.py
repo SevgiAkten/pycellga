@@ -18,4 +18,10 @@ setup(
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',  
+    project_urls={
+        'Documentation': 'https://sevgiakten.github.io/pycellga/',
+        'Source': 'https://github.com/SevgiAkten/pycellga',
+        'Issue Tracker': 'https://github.com/SevgiAkten/pycellga/issues',
+        'PyPI': 'https://pypi.org/project/pycellga/',
+    },
 )
