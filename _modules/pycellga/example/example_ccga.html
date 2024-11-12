@@ -269,6 +269,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pycellga.html#optimizer">Optimizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.Result"><code class="docutils literal notranslate"><span class="pre">Result</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.Result.__init__"><code class="docutils literal notranslate"><span class="pre">Result.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.Result.chromosome"><code class="docutils literal notranslate"><span class="pre">Result.chromosome</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.Result.fitness_value"><code class="docutils literal notranslate"><span class="pre">Result.fitness_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.Result.generation_found"><code class="docutils literal notranslate"><span class="pre">Result.generation_found</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.alpha_cga"><code class="docutils literal notranslate"><span class="pre">alpha_cga()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.ccga"><code class="docutils literal notranslate"><span class="pre">ccga()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pycellga.html#pycellga.optimizer.cga"><code class="docutils literal notranslate"><span class="pre">cga()</span></code></a></li>
@@ -382,12 +389,14 @@
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    tuple</span>
-<span class="sd">        A tuple containing the best solution chromosome and its corresponding value.</span>
+<span class="sd">    Result</span>
+<span class="sd">        A Result instance containing the best solution&#39;s chromosome, its fitness value, </span>
+<span class="sd">        and the generation in which it was found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Create an instance of the problem</span>
     <span class="n">problem_instance</span> <span class="o">=</span> <span class="n">ExampleProblem</span><span class="p">()</span>
 
+    <span class="c1"># Run the optimizer and get the result</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">ccga</span><span class="p">(</span>
         <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
@@ -401,7 +410,9 @@
     <span class="p">)</span>
 
     <span class="c1"># Print the results</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation found:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">generation_found</span><span class="p">)</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

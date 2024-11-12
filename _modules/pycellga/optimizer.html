@@ -269,6 +269,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pycellga.html#optimizer">Optimizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.Result"><code class="docutils literal notranslate"><span class="pre">Result</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.Result.__init__"><code class="docutils literal notranslate"><span class="pre">Result.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.Result.chromosome"><code class="docutils literal notranslate"><span class="pre">Result.chromosome</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.Result.fitness_value"><code class="docutils literal notranslate"><span class="pre">Result.fitness_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.Result.generation_found"><code class="docutils literal notranslate"><span class="pre">Result.generation_found</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.alpha_cga"><code class="docutils literal notranslate"><span class="pre">alpha_cga()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.ccga"><code class="docutils literal notranslate"><span class="pre">ccga()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pycellga.html#pycellga.optimizer.cga"><code class="docutils literal notranslate"><span class="pre">cga()</span></code></a></li>
@@ -378,6 +385,18 @@
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Callable</span>
 
 
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span>
+
+<div class="viewcode-block" id="Result">
+<a class="viewcode-back" href="../../pycellga.html#pycellga.optimizer.Result">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Result</span><span class="p">:</span>
+    <span class="n">chromosome</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">fitness_value</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">generation_found</span><span class="p">:</span> <span class="nb">int</span></div>
+
+
 <div class="viewcode-block" id="cga">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.optimizer.cga">[docs]</a>
 <span class="k">def</span> <span class="nf">cga</span><span class="p">(</span>
@@ -392,10 +411,10 @@
     <span class="n">selection</span><span class="p">:</span> <span class="n">SelectionOperator</span><span class="p">,</span>
     <span class="n">recombination</span><span class="p">:</span> <span class="n">RecombinationOperator</span><span class="p">,</span>
     <span class="n">mutation</span><span class="p">:</span> <span class="n">MutationOperator</span><span class="p">,</span>
-    <span class="n">mins</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
-    <span class="n">maxs</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">mins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="n">seed_par</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Optimize the given problem using a genetic algorithm.</span>
 
@@ -415,10 +434,6 @@
 <span class="sd">        Probability of crossover (between 0 and 1).</span>
 <span class="sd">    p_mutation : float</span>
 <span class="sd">        Probability of mutation (between 0 and 1).</span>
-<span class="sd">    known_best : float</span>
-<span class="sd">        Known best solution for gap calculation.</span>
-<span class="sd">    k_tournament : int</span>
-<span class="sd">        Size of the tournament for selection.</span>
 <span class="sd">    problem : AbstractProblem</span>
 <span class="sd">        The problem instance used for fitness evaluation.</span>
 <span class="sd">    selection : SelectionOperator</span>
@@ -436,10 +451,8 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    List</span>
-<span class="sd">        A list containing the best solution found during the optimization process, </span>
-<span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
-<span class="sd">        and the third is the generation at which it was found.</span>
+<span class="sd">    Result</span>
+<span class="sd">        A Result object containing the best solution found, with its chromosome, fitness value, and generation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">seed_par</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -449,7 +462,6 @@
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_solutions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">best_objectives</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">avg_objectives</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">method_name</span> <span class="o">=</span> <span class="n">OptimizationMethod</span><span class="o">.</span><span class="n">CGA</span>
 
@@ -457,18 +469,17 @@
     <span class="n">pop_list</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">ch_size</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span>
                           <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">mins</span><span class="o">=</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="n">maxs</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
 
-    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-        <span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
     <span class="n">best_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
     <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-        <span class="mi">0</span><span class="p">,</span>
-    <span class="p">]</span>
+    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+        <span class="n">chromosome</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+        <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+        <span class="n">generation_found</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
 
-    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">fitness_value</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">pop_list</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
     <span class="n">avg_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
 
     <span class="c1"># Evolutionary Algorithm Loop</span>
@@ -480,51 +491,35 @@
             <span class="n">rnd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="n">rnd</span> <span class="o">&lt;</span> <span class="n">p_crossover</span><span class="p">:</span>
-                <span class="n">offsprings</span> <span class="o">=</span> <span class="n">recombination</span><span class="p">(</span>
-                    <span class="n">parents</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span><span class="o">.</span><span class="n">get_recombinations</span><span class="p">()</span>
+                <span class="n">offsprings</span> <span class="o">=</span> <span class="n">recombination</span><span class="p">(</span><span class="n">parents</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span><span class="o">.</span><span class="n">get_recombinations</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">offsprings</span> <span class="o">=</span> <span class="n">parents</span>
 
             <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">offsprings</span><span class="p">)):</span>
-
                 <span class="n">mutation_cand</span> <span class="o">=</span> <span class="n">offsprings</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
-
-                <span class="c1"># for byte_mutation_dynamic and byte_mutation_random_dynamic</span>
-                <span class="c1"># p_mutation = p_mutation - ((g/n_gen)*p_mutation)</span>
-
                 <span class="n">rnd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
 
                 <span class="k">if</span> <span class="n">rnd</span> <span class="o">&lt;</span> <span class="n">p_mutation</span><span class="p">:</span>
                     <span class="n">mutated</span> <span class="o">=</span> <span class="n">mutation</span><span class="p">(</span><span class="n">mutation_cand</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span><span class="o">.</span><span class="n">mutate</span><span class="p">()</span>
                     <span class="n">offsprings</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">mutated</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">pass</span>
 
                 <span class="c1"># Replacement: Replace if better</span>
                 <span class="k">if</span> <span class="n">offsprings</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">parents</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
                     <span class="n">index</span> <span class="o">=</span> <span class="n">pop_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">parents</span><span class="p">[</span><span class="n">p</span><span class="p">])</span>
-                    <span class="n">new_p</span> <span class="o">=</span> <span class="n">offsprings</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
-                    <span class="n">old_p</span> <span class="o">=</span> <span class="n">pop_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-                    <span class="n">pop_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_p</span>
+                    <span class="n">pop_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">offsprings</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
 
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">pass</span>
-        <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-            <span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-
+        <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
         <span class="n">best_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
         <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-                <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-                <span class="n">generation</span><span class="p">,</span>
-            <span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">pass</span>
+        <span class="k">if</span> <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
+            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+                <span class="n">chromosome</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+                <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+                <span class="n">generation_found</span><span class="o">=</span><span class="n">generation</span>
+            <span class="p">)</span>
 
-        <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
+        <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">fitness_value</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">pop_list</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
         <span class="n">avg_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
         
         <span class="n">generation</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -549,7 +544,7 @@
     <span class="n">mins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="n">seed_par</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Optimize the given problem using a synchronous cellular genetic algorithm (Sync-CGA).</span>
 
@@ -580,16 +575,14 @@
 <span class="sd">    mins : List[float]</span>
 <span class="sd">        List of minimum values for each gene in the chromosome (for real value optimization).</span>
 <span class="sd">    maxs : List[float]</span>
-<span class="sd">        List of maximum values for each gene in the chromosome (for real value optimization.</span>
+<span class="sd">        List of maximum values for each gene in the chromosome (for real value optimization).</span>
 <span class="sd">    seed_par : int</span>
 <span class="sd">        Ensures the random number generation is repeatable.</span>
 <span class="sd">        </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    List</span>
-<span class="sd">        A list containing the best solution found during the optimization process, </span>
-<span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
-<span class="sd">        and the third is the generation at which it was found.</span>
+<span class="sd">    Result</span>
+<span class="sd">        A Result object containing the best solution found, with its chromosome, fitness value, and generation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">seed_par</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -599,27 +592,24 @@
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_solutions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">best_objectives</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">avg_objectives</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">method_name</span> <span class="o">=</span> <span class="n">OptimizationMethod</span><span class="o">.</span><span class="n">SYNCGA</span>
 
-
     <span class="c1"># Generate Initial Population</span>
     <span class="n">pop_list</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">ch_size</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span>
-                          <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">mins</span> <span class="o">=</span> <span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="n">maxs</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
+                          <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">mins</span><span class="o">=</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="n">maxs</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
 
     <span class="c1"># Sort population by fitness value</span>
-    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-        <span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
     <span class="c1"># Track the best solution in the initial population</span>
     <span class="n">best_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
     <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-        <span class="mi">0</span><span class="p">,</span>
-    <span class="p">]</span>
+    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+        <span class="n">chromosome</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+        <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+        <span class="n">generation_found</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
 
     <span class="c1"># Calculate the mean fitness for the initial population</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
@@ -667,12 +657,12 @@
         <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
         <span class="c1"># Update best ever solution if the current solution is better</span>
-        <span class="k">if</span> <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-                <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-                <span class="n">generation</span><span class="p">,</span>
-            <span class="p">]</span>
+        <span class="k">if</span> <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
+            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+                <span class="n">chromosome</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+                <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+                <span class="n">generation_found</span><span class="o">=</span><span class="n">generation</span>
+            <span class="p">)</span>
 
         <span class="c1"># Calculate the mean fitness for the current generation</span>
         <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
@@ -700,7 +690,7 @@
     <span class="n">mins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="n">seed_par</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Optimize a problem using an evolutionary algorithm with an alpha-male exchange mechanism.</span>
 
@@ -720,10 +710,6 @@
 <span class="sd">        Probability of crossover, should be between 0 and 1.</span>
 <span class="sd">    p_mutation : float</span>
 <span class="sd">        Probability of mutation, should be between 0 and 1.</span>
-<span class="sd">    known_best : float</span>
-<span class="sd">        Known best solution value for gap calculation.</span>
-<span class="sd">    k_tournament : int</span>
-<span class="sd">        Tournament size for selection.</span>
 <span class="sd">    problem : AbstractProblem</span>
 <span class="sd">        The problem instance used to evaluate fitness.</span>
 <span class="sd">    selection : SelectionOperator</span>
@@ -741,10 +727,8 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    List</span>
-<span class="sd">        A list containing the best solution found during the optimization process, </span>
-<span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
-<span class="sd">        and the third is the generation at which it was found.</span>
+<span class="sd">    Result</span>
+<span class="sd">        A Result object containing the best solution found, with its chromosome, fitness value, and generation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">seed_par</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -754,27 +738,24 @@
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_solutions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">best_objectives</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">avg_objectives</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">method_name</span> <span class="o">=</span> <span class="n">OptimizationMethod</span><span class="o">.</span><span class="n">ALPHA_CGA</span>
-
 
     <span class="c1"># Generate Initial Population</span>
     <span class="n">pop_list</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">ch_size</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span>
                           <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">mins</span><span class="o">=</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="n">maxs</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
     
     <span class="c1"># Sort population by fitness value</span>
-    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-        <span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
     <span class="c1"># Initialize tracking of best solutions</span>
     <span class="n">best_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
     <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-        <span class="mi">0</span><span class="p">,</span>
-    <span class="p">]</span>
+    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+        <span class="n">chromosome</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+        <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+        <span class="n">generation_found</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
 
     <span class="c1"># Calculate mean fitness for the initial population</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
@@ -811,8 +792,7 @@
 
                 <span class="c1"># Apply crossover with probability p_crossover</span>
                 <span class="k">if</span> <span class="n">rnd</span> <span class="o">&lt;</span> <span class="n">p_crossover</span><span class="p">:</span>
-                    <span class="n">offsprings</span> <span class="o">=</span> <span class="n">recombination</span><span class="p">(</span>
-                        <span class="n">parents</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span><span class="o">.</span><span class="n">get_recombinations</span><span class="p">()</span>
+                    <span class="n">offsprings</span> <span class="o">=</span> <span class="n">recombination</span><span class="p">(</span><span class="n">parents</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span><span class="o">.</span><span class="n">get_recombinations</span><span class="p">()</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">offsprings</span> <span class="o">=</span> <span class="n">parents</span>
 
@@ -836,19 +816,18 @@
                         <span class="n">pop_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_p</span>
 
         <span class="c1"># Sort population and update best solutions</span>
-        <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-            <span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+        <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
         <span class="n">best_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
         <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
         <span class="c1"># Update best ever solution if current solution is better</span>
-        <span class="k">if</span> <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-                <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-                <span class="n">generation</span><span class="p">,</span>
-            <span class="p">]</span>
+        <span class="k">if</span> <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
+            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+                <span class="n">chromosome</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+                <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+                <span class="n">generation_found</span><span class="o">=</span><span class="n">generation</span>
+            <span class="p">)</span>
 
         <span class="c1"># Update average objectives</span>
         <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
@@ -871,9 +850,9 @@
     <span class="n">selection</span><span class="p">:</span> <span class="n">SelectionOperator</span><span class="p">,</span>
     <span class="n">mins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Perform optimization using a (CCGA).</span>
+<span class="sd">    Perform optimization using a Cooperative Coevolutionary Genetic Algorithm (CCGA).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -894,42 +873,37 @@
 <span class="sd">    mins : List[float]</span>
 <span class="sd">        List of minimum values for each gene in the chromosome (for real value optimization).</span>
 <span class="sd">    maxs : List[float]</span>
-<span class="sd">        List of maximum values for each gene in the chromosome (for real value optimization</span>
-
+<span class="sd">        List of maximum values for each gene in the chromosome (for real value optimization).</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    List</span>
-<span class="sd">        A list containing the best solution found during the optimization process, </span>
-<span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
-<span class="sd">        and the third is the generation at which it was found.</span>
+<span class="sd">    Result</span>
+<span class="sd">        A Result object containing the best solution found during the optimization process,</span>
+<span class="sd">        including its chromosome, fitness value, and generation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_solutions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">best_objectives</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">avg_objectives</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">vector</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ch_size</span><span class="p">)]</span>
     <span class="n">method_name</span> <span class="o">=</span> <span class="n">OptimizationMethod</span><span class="o">.</span><span class="n">CCGA</span>
 
-
     <span class="c1"># Generate Initial Population</span>
     <span class="n">pop_list</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">ch_size</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span>
-                          <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span><span class="n">mins</span><span class="o">=</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="n">maxs</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
+                          <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">mins</span><span class="o">=</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="n">maxs</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
 
     <span class="c1"># Sort population by fitness value</span>
-    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-        <span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
     <span class="c1"># Initialize tracking of best solutions</span>
     <span class="n">best_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
     <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-        <span class="mi">0</span><span class="p">,</span>
-    <span class="p">]</span>
+    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+        <span class="n">chromosome</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+        <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+        <span class="n">generation_found</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
 
     <span class="c1"># Calculate mean fitness for the initial population</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
@@ -942,9 +916,7 @@
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pop_size</span><span class="p">):</span>
             <span class="c1"># Select parents and determine the winner and loser</span>
             <span class="n">parents</span> <span class="o">=</span> <span class="n">selection</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">get_parents</span><span class="p">()</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
+            <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">winner</span><span class="p">,</span> <span class="n">loser</span> <span class="o">=</span> <span class="n">compete</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">winner</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&gt;</span> <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
@@ -955,24 +927,23 @@
 
             <span class="c1"># Re-generate the population based on the updated vector</span>
             <span class="n">pop_list</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">ch_size</span><span class="p">,</span> <span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span>
-                                  <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
+                                  <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">mins</span><span class="o">=</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="n">maxs</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
 
-        <span class="c1"># Update best ever solution if current solution is better</span>
-        <span class="k">if</span> <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&gt;</span> <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">best</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
-                <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-                <span class="n">generation</span><span class="p">,</span>
-            <span class="p">]</span>
+        <span class="c1"># Update best ever solution if the current best solution is better</span>
+        <span class="k">if</span> <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&gt;</span> <span class="n">best_ever_solution</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
+            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+                <span class="n">chromosome</span><span class="o">=</span><span class="n">best</span><span class="o">.</span><span class="n">chromosome</span><span class="p">,</span>
+                <span class="n">fitness_value</span><span class="o">=</span><span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+                <span class="n">generation_found</span><span class="o">=</span><span class="n">generation</span>
+            <span class="p">)</span>
 
         <span class="c1"># Update average objectives</span>
         <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
         <span class="n">avg_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
-    
+
         <span class="n">generation</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">best_ever_solution</span></div>
-
 
 
 <div class="viewcode-block" id="mcccga">
@@ -983,11 +954,11 @@
     <span class="n">n_gen</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">ch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">gen_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">problem</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">problem</span><span class="p">:</span> <span class="n">AbstractProblem</span><span class="p">,</span>
     <span class="n">selection</span><span class="p">:</span> <span class="n">SelectionOperator</span><span class="p">,</span>
-    <span class="n">mins</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
-    <span class="n">maxs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+    <span class="n">mins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+    <span class="n">maxs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Optimize the given problem using a multi-population machine-coded compact genetic algorithm (MCCGA).</span>
 
@@ -1003,9 +974,9 @@
 <span class="sd">        Size of the chromosome.</span>
 <span class="sd">    gen_type : str</span>
 <span class="sd">        Type of the genome representation (e.g., &#39;Binary&#39;, &#39;Permutation&#39;, &#39;Real&#39;).</span>
-<span class="sd">    problem : Callable[[List[float]], float]</span>
-<span class="sd">        Function to evaluate the fitness of a solution. Takes a list of floats and returns a float.</span>
-<span class="sd">    selection : Callable</span>
+<span class="sd">    problem : AbstractProblem</span>
+<span class="sd">        Problem instance for fitness evaluation.</span>
+<span class="sd">    selection : SelectionOperator</span>
 <span class="sd">        Function or class used for selecting parents.</span>
 <span class="sd">    mins : List[float]</span>
 <span class="sd">        List of minimum values for the probability vector generation.</span>
@@ -1014,15 +985,13 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    List</span>
-<span class="sd">        A list containing the best solution found during the optimization process, </span>
-<span class="sd">        where the first element is the chromosome, the second is the fitness value, </span>
-<span class="sd">        and the third is the generation at which it was found.</span>
+<span class="sd">    Result</span>
+<span class="sd">        A Result instance containing the best solution found during optimization,</span>
+<span class="sd">        including its chromosome, fitness value, and generation found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">pop_size</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="n">n_rows</span>
     <span class="n">best_objectives</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">avg_objectives</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">method_name</span> <span class="o">=</span> <span class="n">OptimizationMethod</span><span class="o">.</span><span class="n">MCCCGA</span>
 
@@ -1034,18 +1003,16 @@
                           <span class="n">gen_type</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span><span class="o">.</span><span class="n">initial_population</span><span class="p">()</span>
 
     <span class="c1"># Sort population by fitness value</span>
-    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-        <span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+    <span class="n">pop_list_ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
     <span class="c1"># Track the best solution in the initial population</span>
     <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-    <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
-    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">best_byte_ch</span><span class="p">,</span>
-        <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-        <span class="mi">1</span><span class="p">,</span>
-    <span class="p">]</span>
+    <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+    <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+        <span class="n">chromosome</span><span class="o">=</span><span class="n">best_byte_ch</span><span class="p">,</span>
+        <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+        <span class="n">generation_found</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
 
     <span class="c1"># Calculate the mean fitness for the initial population</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
@@ -1059,8 +1026,7 @@
 
             <span class="c1"># Select parents from the population</span>
             <span class="n">parents</span> <span class="o">=</span> <span class="n">selection</span><span class="p">(</span><span class="n">pop_list</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">get_parents</span><span class="p">()</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
             <span class="c1"># Compete parents and identify the winner and loser</span>
             <span class="n">winner</span><span class="p">,</span> <span class="n">loser</span> <span class="o">=</span> <span class="n">compete</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
@@ -1076,15 +1042,14 @@
 
         <span class="c1"># Track the best fitness value and update the best solution if necessary</span>
         <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-        <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span>
-            <span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+        <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">best_byte_ch</span><span class="p">,</span>
-                <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
-                <span class="n">generation</span><span class="p">,</span>
-            <span class="p">]</span>
+        <span class="k">if</span> <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
+            <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+                <span class="n">chromosome</span><span class="o">=</span><span class="n">best_byte_ch</span><span class="p">,</span>
+                <span class="n">fitness_value</span><span class="o">=</span><span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
+                <span class="n">generation_found</span><span class="o">=</span><span class="n">generation</span>
+            <span class="p">)</span>
 
         <span class="c1"># Calculate the mean fitness for the current generation</span>
         <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
@@ -1098,12 +1063,14 @@
     <span class="n">best_byte_result</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">best_byte_ch</span><span class="p">)</span>
 
     <span class="c1"># Update the best-ever solution if the sampled solution is better</span>
-    <span class="k">if</span> <span class="n">best_byte_result</span> <span class="o">&lt;=</span> <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_byte_ch</span>
-        <span class="n">best_ever_solution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_byte_result</span>
+    <span class="k">if</span> <span class="n">best_byte_result</span> <span class="o">&lt;=</span> <span class="n">best_ever_solution</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
+        <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
+            <span class="n">chromosome</span><span class="o">=</span><span class="n">best_byte_ch</span><span class="p">,</span>
+            <span class="n">fitness_value</span><span class="o">=</span><span class="n">best_byte_result</span><span class="p">,</span>
+            <span class="n">generation_found</span><span class="o">=</span><span class="n">generation</span>
+        <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">best_ever_solution</span></div>
-
 
 
 <div class="viewcode-block" id="compete">
