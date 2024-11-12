@@ -328,6 +328,7 @@
   <h1>Source code for pycellga.problems.single_objective.discrete.binary.peak</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <div class="viewcode-block" id="Peak">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.peak.Peak">[docs]</a>
@@ -340,7 +341,14 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    None</span>
+<span class="sd">    design_variables : List[str]</span>
+<span class="sd">        Names of the design variables.</span>
+<span class="sd">    bounds : List[Tuple[float, float]]</span>
+<span class="sd">        Bounds for each design variable as (min, max).</span>
+<span class="sd">    objectives : List[str]</span>
+<span class="sd">        Objectives for optimization, e.g., &quot;minimize&quot; or &quot;maximize&quot;.</span>
+<span class="sd">    constraints : List[str]</span>
+<span class="sd">        Any constraints for the optimization problem.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
@@ -353,9 +361,23 @@
 <span class="sd">    # Maximum Fitness Value = 1.0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="Peak.__init__">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.peak.Peak.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the Peak problem with default values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">design_variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>  <span class="c1"># Each gene is binary (0 or 1)</span>
+        <span class="n">objectives</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;maximize&quot;</span><span class="p">]</span>  <span class="c1"># Aim to maximize fitness value</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># No additional constraints</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Peak.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.peak.Peak.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates the fitness of a given chromosome for the Peak problem.</span>
 
@@ -394,6 +416,22 @@
         <span class="n">fitness</span> <span class="o">=</span> <span class="n">min_distance</span> <span class="o">/</span> <span class="n">problem_length</span>
 
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Peak.evaluate">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.peak.Peak.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate function for compatibility with pymoo&#39;s optimizer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : numpy.ndarray</span>
+<span class="sd">            Array of input variables.</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Dictionary to store the output fitness values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

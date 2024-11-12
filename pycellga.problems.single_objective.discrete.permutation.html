@@ -344,16 +344,65 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProblem</span></code></p>
 <p>Represents the Traveling Salesman Problem (TSP).</p>
 <p>This class solves the TSP using geographical distances (GEO) for node coordinates.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.design_variables">
+<span class="sig-name descname"><span class="pre">design_variables</span></span><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.design_variables" title="Link to this definition"></a></dt>
+<dd><p>Names of the design variables (nodes in this case).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.bounds" title="Link to this definition"></a></dt>
+<dd><p>Bounds for each design variable as (min, max).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of tuples</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.objectives">
+<span class="sig-name descname"><span class="pre">objectives</span></span><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.objectives" title="Link to this definition"></a></dt>
+<dd><p>Objectives for optimization, e.g., “minimize” or “maximize”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.constraints">
+<span class="sig-name descname"><span class="pre">constraints</span></span><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.constraints" title="Link to this definition"></a></dt>
+<dd><p>Constraints for the optimization problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
 <p class="rubric">Notes</p>
-<p>#### burma14.tsp ########################################
-# EDGE_WEIGHT_TYPE: GEO,   use gographical_dist function
-# Length of chromosomes = 14
-# Known Best Route = []
-# Minumum Fitness Value = 3323
-#########################################################</p>
+<ul class="simple">
+<li><p>Uses geographical distance function (GEO) for evaluating routes.</p></li>
+<li><p>Example problem: burma14.tsp, with a known minimum distance.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycellga/problems/single_objective/discrete/permutation/tsp.html#Tsp.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the TSP problem with default attributes.</p>
+<p>Uses the ‘burma14’ TSP dataset as an example with 14 nodes.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.euclidean_dist">
-<span class="sig-name descname"><span class="pre">euclidean_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/pycellga/problems/single_objective/discrete/permutation/tsp.html#Tsp.euclidean_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.euclidean_dist" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">euclidean_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/pycellga/problems/single_objective/discrete/permutation/tsp.html#Tsp.euclidean_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.euclidean_dist" title="Link to this definition"></a></dt>
 <dd><p>Computes the Euclidean distance between two nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -373,9 +422,8 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.f">
-<span class="sig-name descname"><span class="pre">f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/pycellga/problems/single_objective/discrete/permutation/tsp.html#Tsp.f"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.f" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/pycellga/problems/single_objective/discrete/permutation/tsp.html#Tsp.f"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.f" title="Link to this definition"></a></dt>
 <dd><p>Evaluates the fitness of a given chromosome (route) for the TSP.</p>
-<p>This method calculates the total distance of the given route using geographical distances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>list</em>) – A list representing the route (chromosome), where each element is a node index.</p>
@@ -391,7 +439,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.gographical_dist">
-<span class="sig-name descname"><span class="pre">gographical_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/pycellga/problems/single_objective/discrete/permutation/tsp.html#Tsp.gographical_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.gographical_dist" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">gographical_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/pycellga/problems/single_objective/discrete/permutation/tsp.html#Tsp.gographical_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.gographical_dist" title="Link to this definition"></a></dt>
 <dd><p>Computes the geographical distance between two nodes using the geodesic distance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

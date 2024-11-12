@@ -327,6 +327,7 @@
              
   <h1>Source code for pycellga.problems.single_objective.discrete.binary.mmdp</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <div class="viewcode-block" id="Mmdp">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.mmdp.Mmdp">[docs]</a>
@@ -340,7 +341,14 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    None</span>
+<span class="sd">    design_variables : List[str]</span>
+<span class="sd">        Names of the design variables (in this case, binary chromosome genes).</span>
+<span class="sd">    bounds : List[Tuple[float, float]]</span>
+<span class="sd">        Bounds for each design variable (0 or 1).</span>
+<span class="sd">    objectives : List[str]</span>
+<span class="sd">        Objectives for optimization, e.g., &quot;maximize&quot; in this case.</span>
+<span class="sd">    constraints : List[str]</span>
+<span class="sd">        Any constraints for the optimization problem.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
@@ -353,9 +361,24 @@
 <span class="sd">    # Maximum Fitness Value = 40</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="Mmdp.__init__">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.mmdp.Mmdp.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the MMDP problem with predefined design variables, bounds, </span>
+<span class="sd">        objectives, and constraints.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">design_variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;gene&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">240</span><span class="p">)]</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">240</span><span class="p">)]</span>
+        <span class="n">objectives</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;maximize&quot;</span><span class="p">]</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Mmdp.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.mmdp.Mmdp.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates the fitness of a given chromosome for the MMDP.</span>
 
@@ -364,7 +387,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        x : list</span>
+<span class="sd">        x : List[int]</span>
 <span class="sd">            A list representing the chromosome, where each element is a binary </span>
 <span class="sd">            value (0 or 1).</span>
 
@@ -374,18 +397,12 @@
 <span class="sd">            The normalized fitness value of the chromosome, rounded to three </span>
 <span class="sd">            decimal places.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="n">subproblems_length</span> <span class="o">=</span> <span class="mi">6</span>
         <span class="n">subproblems_number</span> <span class="o">=</span> <span class="mi">40</span>
-        <span class="n">total_ones</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">partial_fitness</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">fitness</span> <span class="o">=</span> <span class="mf">0.0</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">subproblems_number</span><span class="p">):</span>
-            <span class="n">total_ones</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">subproblems_length</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">subproblems_length</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">total_ones</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">total_ones</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">subproblems_length</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">subproblems_length</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="n">total_ones</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">total_ones</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
                 <span class="n">partial_fitness</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -398,8 +415,7 @@
 
             <span class="n">fitness</span> <span class="o">+=</span> <span class="n">partial_fitness</span>
 
-        <span class="n">fitness_normalized</span> <span class="o">=</span> <span class="n">fitness</span> <span class="o">/</span> <span class="mi">40</span>
-
+        <span class="n">fitness_normalized</span> <span class="o">=</span> <span class="n">fitness</span> <span class="o">/</span> <span class="n">subproblems_number</span>
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness_normalized</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 </div>
 

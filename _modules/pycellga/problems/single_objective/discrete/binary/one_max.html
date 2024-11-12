@@ -327,6 +327,7 @@
              
   <h1>Source code for pycellga.problems.single_objective.discrete.binary.one_max</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <div class="viewcode-block" id="OneMax">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.one_max.OneMax">[docs]</a>
@@ -339,7 +340,14 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    None</span>
+<span class="sd">    design_variables : int</span>
+<span class="sd">        Number of design variables (chromosome length).</span>
+<span class="sd">    bounds : List[Tuple[float, float]]</span>
+<span class="sd">        Bounds for each design variable as (min, max).</span>
+<span class="sd">    objectives : List[str]</span>
+<span class="sd">        Objectives for optimization, e.g., &quot;maximize&quot;.</span>
+<span class="sd">    constraints : List[str]</span>
+<span class="sd">        Any constraints for the optimization problem.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
@@ -347,9 +355,34 @@
 <span class="sd">        Evaluates the fitness of a given chromosome.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="OneMax.__init__">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.one_max.OneMax.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                 <span class="n">design_variables</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                 <span class="n">bounds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
+                 <span class="n">objectives</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;maximize&quot;</span><span class="p">],</span>
+                 <span class="n">constraints</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the OneMax problem with default design variables, bounds, </span>
+<span class="sd">        objectives, and optional constraints.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        design_variables : int, optional</span>
+<span class="sd">            Number of design variables (default is 100).</span>
+<span class="sd">        bounds : List[Tuple[float, float]], optional</span>
+<span class="sd">            Bounds for each design variable in (min, max) format (default is [(0, 1)] * 100).</span>
+<span class="sd">        objectives : List[str], optional</span>
+<span class="sd">            Objectives for optimization, e.g., &quot;maximize&quot; (default is [&quot;maximize&quot;]).</span>
+<span class="sd">        constraints : List[str], optional</span>
+<span class="sd">            Constraints for the problem (default is an empty list).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="o">=</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="n">objectives</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="OneMax.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.one_max.OneMax.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates the fitness of a given chromosome for the OneMax problem.</span>
 
@@ -357,7 +390,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        x : list</span>
+<span class="sd">        x : List[int]</span>
 <span class="sd">            A list representing the chromosome, where each element is a binary </span>
 <span class="sd">            value (0 or 1).</span>
 
@@ -366,7 +399,7 @@
 <span class="sd">        float</span>
 <span class="sd">            The fitness value of the chromosome, which is the sum of its bits.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></div>
 </div>
 
 </pre></div>

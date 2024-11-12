@@ -327,11 +327,7 @@
              
   <h1>Source code for pycellga.problems.single_objective.continuous.dropwave</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># -5.12 ≤ xi ≤ 5.12    i = 1,2</span>
-<span class="c1"># Global minimum at f(0,0) = −1</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">power</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sqrt</span>
 
 <div class="viewcode-block" id="Dropwave">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.dropwave.Dropwave">[docs]</a>
@@ -342,57 +338,76 @@
 <span class="sd">    The Dropwave function is a multimodal function commonly used as a performance test problem for optimization algorithms.</span>
 <span class="sd">    It is defined within the bounds -5.12 ≤ xi ≤ 5.12 for i = 1, 2, and has a global minimum at f(0, 0) = -1.</span>
 
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    design_variables : list</span>
+<span class="sd">        The names of the variables, in this case [&quot;x1&quot;, &quot;x2&quot;].</span>
+<span class="sd">    bounds : list of tuples</span>
+<span class="sd">        The lower and upper bounds for each variable, [-5.12, 5.12] for both x1 and x2.</span>
+<span class="sd">    objectives : list</span>
+<span class="sd">        List defining the optimization objective, which is to &quot;minimize&quot; for this function.</span>
+<span class="sd">    num_variables : int</span>
+<span class="sd">        The number of variables (dimensions) for the function, which is 2 in this case.</span>
+
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
-<span class="sd">    f(x: list) -&gt; float</span>
-<span class="sd">        Computes the value of the Dropwave function at a given point x.</span>
+<span class="sd">    evaluate(x, out, *args, **kwargs)</span>
+<span class="sd">        Calculates the value of the Dropwave function at a given point x.</span>
+<span class="sd">    f(x)</span>
+<span class="sd">        Alias for evaluate to maintain compatibility with the rest of the codebase.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Dropwave.f">
-<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.dropwave.Dropwave.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="Dropwave.__init__">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.dropwave.Dropwave.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Dropwave problem-specific parameters</span>
+        <span class="n">design_variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">]</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.12</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.12</span><span class="p">)]</span>
+        <span class="n">objectives</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;minimize&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Initialize the AbstractProblem with specific parameters</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_variables</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="Dropwave.evaluate">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.dropwave.Dropwave.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Evaluate the Dropwave function at a given point.</span>
+<span class="sd">        Calculate the Dropwave function value for a given list of variables.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        x : list</span>
 <span class="sd">            A list of two floats representing the coordinates [x1, x2].</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        float</span>
-<span class="sd">            The value of the Dropwave function rounded to three decimal places.</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Dictionary to store the output fitness values.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        The Dropwave function is defined as:</span>
 <span class="sd">            f(x1, x2) = - (1 + cos(12 * sqrt(x1^2 + x2^2))) / (0.5 * (x1^2 + x2^2) + 2)</span>
 <span class="sd">        where x1 and x2 are the input variables.</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; dropwave = Dropwave()</span>
-<span class="sd">        &gt;&gt;&gt; dropwave.f([0, 0])</span>
-<span class="sd">        -1.0</span>
-<span class="sd">        &gt;&gt;&gt; dropwave.f([1, 1])</span>
-<span class="sd">        -0.028</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Extract the coordinates</span>
-        <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-        <span class="c1"># Compute the squared sums</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_variables</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must have exactly </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_variables</span><span class="si">}</span><span class="s2"> variables.&quot;</span><span class="p">)</span>
+        
+        <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span>
         <span class="n">sqrts_sums</span> <span class="o">=</span> <span class="n">power</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">power</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        
-        <span class="c1"># Compute the denominator term</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sqrts_sums</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
-        
-        <span class="c1"># Compute the fitness value</span>
-        <span class="n">fitness</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sqrts_sums</span><span class="p">)))</span> <span class="o">/</span> <span class="n">b</span>
+        <span class="n">denominator</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sqrts_sums</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">fitness</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sqrts_sums</span><span class="p">)))</span> <span class="o">/</span> <span class="n">denominator</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 
-        <span class="c1"># Return the fitness value rounded to three decimal places</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dropwave.f">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.dropwave.Dropwave.f">[docs]</a>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Alias for the evaluate method to maintain compatibility with the rest of the codebase.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span></div>
 </div>
 
 </pre></div>

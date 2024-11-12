@@ -328,6 +328,7 @@
   <h1>Source code for pycellga.problems.single_objective.continuous.ackley</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">exp</span>
 <span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
+
 <div class="viewcode-block" id="Ackley">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley">[docs]</a>
 <span class="k">class</span> <span class="nc">Ackley</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
@@ -340,12 +341,21 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    None</span>
+<span class="sd">    design_variables : List[str]</span>
+<span class="sd">        List of variable names.</span>
+<span class="sd">    bounds : List[Tuple[float, float]]</span>
+<span class="sd">        Bounds for each variable.</span>
+<span class="sd">    objectives : List[str]</span>
+<span class="sd">        Objectives for optimization.</span>
+<span class="sd">    constraints : List[str]</span>
+<span class="sd">        Any constraints for the problem.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
-<span class="sd">    f(x: list) -&gt; float</span>
-<span class="sd">        Calculates the Ackley function value for a given list of variables.</span>
+<span class="sd">    evaluate(x, out, *args, **kwargs)</span>
+<span class="sd">        Calculates the Ackley function value for given variables.</span>
+<span class="sd">    f(x)</span>
+<span class="sd">        Alias for evaluate to maintain compatibility with the rest of the codebase.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -353,34 +363,47 @@
 <span class="sd">    Global minimum at f(0, 0) = 0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Ackley.f">
-<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="Ackley.__init__">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimension</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">design_variables</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;x</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">)]</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mf">32.768</span><span class="p">,</span> <span class="mf">32.768</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">)]</span>
+        <span class="n">objectives</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;minimize&quot;</span><span class="p">]</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span> <span class="o">=</span> <span class="n">dimension</span></div>
+
+
+<div class="viewcode-block" id="Ackley.evaluate">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the Ackley function value for a given list of variables.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        x : list</span>
-<span class="sd">            A list of float variables.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        float</span>
-<span class="sd">            The Ackley function value.</span>
+<span class="sd">        x : numpy.ndarray</span>
+<span class="sd">            Array of input variables.</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Dictionary to store the output fitness values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">sum1</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">sum2</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">fitness</span> <span class="o">=</span> <span class="mf">0.0</span>
-
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-            <span class="n">gene</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">sum1</span> <span class="o">+=</span> <span class="n">gene</span> <span class="o">*</span> <span class="n">gene</span>
-            <span class="n">sum2</span> <span class="o">+=</span> <span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">gene</span><span class="p">)</span>
+        <span class="n">sum1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">gene</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">sum2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">gene</span><span class="p">)</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
         
-        <span class="n">fitness</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">20.0</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sum1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="o">-</span> <span class="n">exp</span><span class="p">(</span><span class="n">sum2</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">20.0</span> <span class="o">+</span> <span class="n">e</span>
+        <span class="n">fitness</span> <span class="o">=</span> <span class="o">-</span><span class="mf">20.0</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sum1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">))</span> <span class="o">-</span> <span class="n">exp</span><span class="p">(</span><span class="n">sum2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="o">+</span> <span class="mf">20.0</span> <span class="o">+</span> <span class="n">e</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
 
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ackley.f">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.ackley.Ackley.f">[docs]</a>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Alias for the evaluate method to maintain compatibility with the rest of the codebase.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span></div>
 </div>
 
 </pre></div>

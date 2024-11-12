@@ -328,6 +328,7 @@
   <h1>Source code for pycellga.problems.single_objective.discrete.binary.fms</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">random</span>
+
 <div class="viewcode-block" id="Fms">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.fms.Fms">[docs]</a>
 <span class="k">class</span> <span class="nc">Fms</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
@@ -338,7 +339,12 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    None</span>
+<span class="sd">    design_variables : int</span>
+<span class="sd">        The number of variables for the problem.</span>
+<span class="sd">    bounds : list of tuple</span>
+<span class="sd">        The bounds for each variable.</span>
+<span class="sd">    objectives : int</span>
+<span class="sd">        Number of objectives, set to 1 for single-objective optimization.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
@@ -351,6 +357,12 @@
 <span class="sd">    Maximum Fitness Value = 0.01</span>
 <span class="sd">    Maximum Fitness Value Error = 10^-2</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Fms.__init__">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.fms.Fms.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design_variables</span><span class="o">=</span><span class="mi">192</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">192</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="Fms.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.fms.Fms.f">[docs]</a>
@@ -371,56 +383,19 @@
         <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="mf">100.0</span>
         <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-        <span class="c1"># initialize parameters</span>
-        <span class="n">a1_int</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">w1_int</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">a2_int</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">w2_int</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">a3_int</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">w3_int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Initialize integer values for parameters</span>
+        <span class="n">a1_int</span><span class="p">,</span> <span class="n">w1_int</span><span class="p">,</span> <span class="n">a2_int</span><span class="p">,</span> <span class="n">w2_int</span><span class="p">,</span> <span class="n">a3_int</span><span class="p">,</span> <span class="n">w3_int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 
-        <span class="c1"># calculate parameter a1_int</span>
+        <span class="c1"># Convert segments of x to integer parameters</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">a1_int</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">a1_int</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
-        <span class="n">a1_int</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+            <span class="n">a1_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">a1_int</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">w1_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">w1_int</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">32</span><span class="p">]</span>
+            <span class="n">a2_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">a2_int</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">64</span><span class="p">]</span>
+            <span class="n">w2_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">w2_int</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">96</span><span class="p">]</span>
+            <span class="n">a3_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">a3_int</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">128</span><span class="p">]</span>
+            <span class="n">w3_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">w3_int</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">160</span><span class="p">]</span>
 
-        <span class="c1"># calculate parameter w1_int</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">w1_int</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">w1_int</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
-        <span class="n">w1_int</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
-
-        <span class="c1"># calculate parameter a2_int</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">96</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">a2_int</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">a2_int</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
-        <span class="n">a2_int</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
-
-        <span class="c1"># calculate parameter w2_int</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">128</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">w2_int</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">w2_int</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
-        <span class="n">w2_int</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
-
-        <span class="c1"># calculate parameter a3_int</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">160</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">a3_int</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">a3_int</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
-        <span class="n">a3_int</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
-
-        <span class="c1"># calculate parameter w3_int</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">192</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">w3_int</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">w3_int</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
-        <span class="n">w3_int</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
-
+        <span class="c1"># Map integer values to continuous values for each parameter</span>
         <span class="n">a1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">6.4</span> <span class="o">+</span> <span class="p">(</span><span class="mf">12.75</span> <span class="o">*</span> <span class="p">(</span><span class="n">a1_int</span> <span class="o">/</span> <span class="mf">4294967295.0</span><span class="p">))</span>
         <span class="n">w1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">6.4</span> <span class="o">+</span> <span class="p">(</span><span class="mf">12.75</span> <span class="o">*</span> <span class="p">(</span><span class="n">w1_int</span> <span class="o">/</span> <span class="mf">4294967295.0</span><span class="p">))</span>
         <span class="n">a2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">6.4</span> <span class="o">+</span> <span class="p">(</span><span class="mf">12.75</span> <span class="o">*</span> <span class="p">(</span><span class="n">a2_int</span> <span class="o">/</span> <span class="mf">4294967295.0</span><span class="p">))</span>
@@ -428,23 +403,33 @@
         <span class="n">a3</span> <span class="o">=</span> <span class="o">-</span><span class="mf">6.4</span> <span class="o">+</span> <span class="p">(</span><span class="mf">12.75</span> <span class="o">*</span> <span class="p">(</span><span class="n">a3_int</span> <span class="o">/</span> <span class="mf">4294967295.0</span><span class="p">))</span>
         <span class="n">w3</span> <span class="o">=</span> <span class="o">-</span><span class="mf">6.4</span> <span class="o">+</span> <span class="p">(</span><span class="mf">12.75</span> <span class="o">*</span> <span class="p">(</span><span class="n">w3_int</span> <span class="o">/</span> <span class="mf">4294967295.0</span><span class="p">))</span>
 
-        <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
-            <span class="n">target</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="mf">4.8</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mf">4.9</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">i</span><span class="p">)))))</span>
-        
-        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
-            <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="n">w1</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">a2</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="n">w2</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">a3</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">w3</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">j</span><span class="p">)))))</span>
+        <span class="c1"># Generate target signal based on predefined parameters</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="n">sin</span><span class="p">((</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="mf">4.8</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mf">4.9</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">i</span><span class="p">)))))</span>
+                  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
 
-        <span class="n">distance</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">partialfitnesss</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">fitness</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
-            <span class="n">distance</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-            <span class="n">partialfitnesss</span> <span class="o">+=</span> <span class="n">distance</span> <span class="o">*</span> <span class="n">distance</span>
-        
-        <span class="n">fitness</span> <span class="o">=</span> <span class="n">partialfitnesss</span>
+        <span class="c1"># Generate signal y based on the parameters derived from x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">a1</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="n">w1</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">a2</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="n">w2</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">a3</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">w3</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">j</span><span class="p">)))))</span>
+             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
+
+        <span class="c1"># Calculate fitness as the mean squared error between target and y</span>
+        <span class="n">fitness</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">target</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">))</span>
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Fms.evaluate">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.fms.Fms.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate function for compatibility with pymoo&#39;s optimizer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : numpy.ndarray</span>
+<span class="sd">            Array of input variables.</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Dictionary to store the output fitness values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

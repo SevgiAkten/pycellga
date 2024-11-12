@@ -339,18 +339,20 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Methods</span>
-<span class="sd">    -------</span>
-<span class="sd">    f(x: list) -&gt; float</span>
-<span class="sd">        Calculates the ECC function value for a given list of variables.</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    Length of chromosomes = 144</span>
-<span class="sd">    Maximum Fitness Value = 0.0674</span>
+<span class="sd">    design_variables : int</span>
+<span class="sd">        Number of binary variables, typically 144.</span>
+<span class="sd">    bounds : list of tuple</span>
+<span class="sd">        Bounds for each variable, typically [(0, 1)] * 144 for binary inputs.</span>
+<span class="sd">    objectives : int</span>
+<span class="sd">        Number of objectives, set to 1 for single-objective optimization.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Ecc.__init__">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.ecc.Ecc.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design_variables</span><span class="o">=</span><span class="mi">144</span><span class="p">):</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">design_variables</span><span class="p">)]</span>  <span class="c1"># Binary bounds for each variable</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="o">=</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+
 
 <div class="viewcode-block" id="Ecc.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.ecc.Ecc.f">[docs]</a>
@@ -366,31 +368,23 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        float</span>
-<span class="sd">            The ECC function value.</span>
+<span class="sd">            The ECC function value, rounded to four decimal places.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">individual_length</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1"># Length of individual code segments</span>
         <span class="n">half_code</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1"># Number of code segments to compare</span>
         <span class="n">partial_fitness</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Accumulated partial fitness value</span>
-        <span class="n">fitness</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Final fitness value</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">half_code</span><span class="p">):</span>
-            <span class="n">partial_fitness</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">individual_length</span> <span class="o">*</span> <span class="n">individual_length</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">half_code</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
-                    <span class="n">hamming</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Initialize Hamming distance</span>
-                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">individual_length</span><span class="p">):</span>
-                        <span class="c1"># Compute Hamming distance between segments</span>
-                        <span class="k">if</span> <span class="n">x</span><span class="p">[(</span><span class="n">i</span> <span class="o">*</span> <span class="n">individual_length</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">^</span> <span class="n">x</span><span class="p">[(</span><span class="n">j</span> <span class="o">*</span> <span class="n">individual_length</span> <span class="o">+</span> <span class="n">k</span><span class="p">)]]:</span>
-                            <span class="n">hamming</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">half_code</span><span class="p">):</span>  <span class="c1"># Avoid double-counting pairs</span>
+                <span class="n">hamming</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">individual_length</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="n">individual_length</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">individual_length</span><span class="p">))</span>
 
-                    <span class="c1"># Update partial fitness with contributions from current pair of segments</span>
+                <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">hamming</span> <span class="o">&lt;</span> <span class="n">individual_length</span><span class="p">:</span>
                     <span class="n">partial_fitness</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">hamming</span> <span class="o">*</span> <span class="n">hamming</span><span class="p">)</span> <span class="o">+</span> 
                                         <span class="mf">1.0</span> <span class="o">/</span> <span class="p">((</span><span class="n">individual_length</span> <span class="o">-</span> <span class="n">hamming</span><span class="p">)</span> <span class="o">*</span> 
                                                <span class="p">(</span><span class="n">individual_length</span> <span class="o">-</span> <span class="n">hamming</span><span class="p">)))</span>
 
         <span class="c1"># Calculate final fitness value</span>
-        <span class="n">fitness</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">partial_fitness</span><span class="p">)</span>
-
+        <span class="n">fitness</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">partial_fitness</span><span class="p">)</span> <span class="k">if</span> <span class="n">partial_fitness</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></div>
 </div>
 

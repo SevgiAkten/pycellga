@@ -334,23 +334,23 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sphere function implementation for optimization problems.</span>
 
-<span class="sd">    The Sphere function is widely used for testing optimization algorithms.</span>
-<span class="sd">    The function is usually evaluated on the hypercube x_i ∈ [-5.12, 5.12], for all i = 1, 2, ..., n.</span>
-
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Methods</span>
-<span class="sd">    -------</span>
-<span class="sd">    f(x: list) -&gt; float</span>
-<span class="sd">        Calculates the Sphere function value for a given list of variables.</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    -5.12 ≤ xi ≤ 5.12 for i = 1,…,n</span>
-<span class="sd">    Global minimum at f(0,...,0) = 0</span>
+<span class="sd">    The Sphere function is commonly used for testing optimization algorithms.</span>
+<span class="sd">    It is defined on a hypercube where each variable typically lies within [-5.12, 5.12].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sphere.__init__">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.sphere.Sphere.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design_variables</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the Sphere function with specified design variables and bounds.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        design_variables : int, optional</span>
+<span class="sd">            Number of variables for the function, by default 10.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="o">=</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="o">-</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.12</span><span class="p">)]</span> <span class="o">*</span> <span class="n">design_variables</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;minimize&quot;</span><span class="p">])</span></div>
+
 
 <div class="viewcode-block" id="Sphere.f">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.sphere.Sphere.f">[docs]</a>
@@ -368,7 +368,27 @@
 <span class="sd">        float</span>
 <span class="sd">            The Sphere function value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]),</span> <span class="mi">3</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_var</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must have exactly </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_var</span><span class="si">}</span><span class="s2"> variables.&quot;</span><span class="p">)</span>
+        
+        <span class="n">fitness</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">xi</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Sphere.evaluate">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.sphere.Sphere.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate function for compatibility with pymoo&#39;s optimizer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : numpy.ndarray</span>
+<span class="sd">            Array of input variables.</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Dictionary to store the output fitness values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

@@ -331,6 +331,7 @@
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <div class="viewcode-block" id="Tsp">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp">[docs]</a>
@@ -340,23 +341,44 @@
 
 <span class="sd">    This class solves the TSP using geographical distances (GEO) for node coordinates.</span>
 
-<span class="sd">    Notes</span>
+<span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    #### burma14.tsp ########################################</span>
-<span class="sd">    # EDGE_WEIGHT_TYPE: GEO,   use gographical_dist function</span>
-<span class="sd">    # Length of chromosomes = 14</span>
-<span class="sd">    # Known Best Route = []</span>
-<span class="sd">    # Minumum Fitness Value = 3323</span>
-<span class="sd">    #########################################################</span>
+<span class="sd">    design_variables : list</span>
+<span class="sd">        Names of the design variables (nodes in this case).</span>
+<span class="sd">    bounds : list of tuples</span>
+<span class="sd">        Bounds for each design variable as (min, max).</span>
+<span class="sd">    objectives : list</span>
+<span class="sd">        Objectives for optimization, e.g., &quot;minimize&quot; or &quot;maximize&quot;.</span>
+<span class="sd">    constraints : list</span>
+<span class="sd">        Constraints for the optimization problem.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - Uses geographical distance function (GEO) for evaluating routes.</span>
+<span class="sd">    - Example problem: burma14.tsp, with a known minimum distance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Tsp.__init__">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the TSP problem with default attributes.</span>
+
+<span class="sd">        Uses the &#39;burma14&#39; TSP dataset as an example with 14 nodes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">design_variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;node&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)]</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">14</span><span class="p">)]</span>  <span class="c1"># Nodes range from 1 to 14</span>
+        <span class="n">objectives</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;minimize&quot;</span><span class="p">]</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="Tsp.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates the fitness of a given chromosome (route) for the TSP.</span>
-
-<span class="sd">        This method calculates the total distance of the given route using geographical distances.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -368,20 +390,14 @@
 <span class="sd">        float</span>
 <span class="sd">            The total distance of the route, rounded to one decimal place.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-   
-
+        <span class="c1"># Load TSP data file</span>
         <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;burma14.tsp.txt&#39;</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fl</span><span class="p">:</span>
             <span class="n">problem</span> <span class="o">=</span> <span class="n">tsplib95</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span>
 
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">node_coords</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="n">node_x</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">node_y</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-            <span class="n">node_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="n">node_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
+        <span class="c1"># Compute distances between all pairs of nodes</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
             <span class="n">temp_row</span> <span class="o">=</span> <span class="p">[]</span>
@@ -389,27 +405,16 @@
                 <span class="n">temp_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gographical_dist</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
             <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_row</span><span class="p">)</span>
 
-        <span class="n">node_name</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">):</span>
-            <span class="n">node_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-            
-        <span class="n">Dist</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1"># Creating the dictionary of dictionaries</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_name</span><span class="p">):</span>
-            <span class="n">Dist</span><span class="p">[</span><span class="n">row_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_name</span><span class="p">):</span>
-                <span class="n">Dist</span><span class="p">[</span><span class="n">row_name</span><span class="p">][</span><span class="n">col_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="c1"># Dictionary of distances between nodes</span>
+        <span class="n">node_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+        <span class="n">Dist</span> <span class="o">=</span> <span class="p">{</span><span class="n">row_name</span><span class="p">:</span> <span class="p">{</span><span class="n">col_name</span><span class="p">:</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_name</span><span class="p">)}</span> 
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_name</span><span class="p">)}</span>
 
-        <span class="c1"># objective</span>
+        <span class="c1"># Calculate total route distance</span>
         <span class="n">fitness</span> <span class="o">=</span> <span class="mf">0.0</span>
-
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
             <span class="n">start_node</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-            <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-                <span class="n">end_node</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">end_node</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">end_node</span> <span class="o">=</span> <span class="n">x</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
             <span class="n">fitness</span> <span class="o">+=</span> <span class="n">Dist</span><span class="p">[</span><span class="n">start_node</span><span class="p">][</span><span class="n">end_node</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
@@ -417,7 +422,7 @@
 
 <div class="viewcode-block" id="Tsp.euclidean_dist">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.euclidean_dist">[docs]</a>
-    <span class="k">def</span> <span class="nf">euclidean_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">euclidean_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the Euclidean distance between two nodes.</span>
 
@@ -439,7 +444,7 @@
 
 <div class="viewcode-block" id="Tsp.gographical_dist">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.gographical_dist">[docs]</a>
-    <span class="k">def</span> <span class="nf">gographical_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">gographical_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the geographical distance between two nodes using the geodesic distance.</span>
 
@@ -455,11 +460,7 @@
 <span class="sd">        float</span>
 <span class="sd">            The geographical distance between the two nodes, rounded to one decimal place.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">dist</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
-            <span class="n">x_city</span> <span class="o">=</span> <span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
-            <span class="n">y_city</span> <span class="o">=</span> <span class="p">([</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
-            <span class="n">dist</span> <span class="o">=</span> <span class="n">geodesic</span><span class="p">(</span><span class="n">x_city</span><span class="p">,</span> <span class="n">y_city</span><span class="p">)</span><span class="o">.</span><span class="n">km</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">geodesic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">km</span>
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
 </div>
 

@@ -328,33 +328,43 @@
   <h1>Source code for pycellga.problems.single_objective.continuous.zakharov</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
 <span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">power</span> <span class="k">as</span> <span class="n">pw</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Any</span>
+
 <div class="viewcode-block" id="Zakharov">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.zakharov.Zakharov">[docs]</a>
 <span class="k">class</span> <span class="nc">Zakharov</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Zakharov function implementation for optimization problems.</span>
 
-<span class="sd">    The Zakharov function is widely used for testing optimization algorithms.</span>
-<span class="sd">    The function is usually evaluated on the hypercube x_i ∈ [-5, 10], for all i = 1, 2, ..., n.</span>
+<span class="sd">    The Zakharov function is commonly used to test optimization algorithms.</span>
+<span class="sd">    It evaluates inputs over the hypercube x_i ∈ [-5, 10].</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    None</span>
+<span class="sd">    design_variables : int</span>
+<span class="sd">        The number of variables for the problem.</span>
+<span class="sd">    bounds : list of tuple</span>
+<span class="sd">        The bounds for each variable, typically [(-5, 10), (-5, 10), ...].</span>
+<span class="sd">    objectives : list</span>
+<span class="sd">        Objectives for the problem, set to [&quot;minimize&quot;] for single-objective optimization.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
 <span class="sd">    f(x: list) -&gt; float</span>
 <span class="sd">        Calculates the Zakharov function value for a given list of variables.</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    -5 ≤ xi ≤ 10 for i = 1,…,n</span>
-<span class="sd">    Global minimum at f(0,..,0) = 0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Zakharov.__init__">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.zakharov.Zakharov.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design_variables</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">design_variables</span><span class="p">)]</span>
+        <span class="n">objectives</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;minimize&quot;</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">design_variables</span><span class="o">=</span><span class="n">design_variables</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">objectives</span><span class="o">=</span><span class="n">objectives</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="Zakharov.f">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.zakharov.Zakharov.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the Zakharov function value for a given list of variables.</span>
 
@@ -368,25 +378,27 @@
 <span class="sd">        float</span>
 <span class="sd">            The Zakharov function value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">fitness1</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">fitness2</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">fitness3</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">fitness</span> <span class="o">=</span> <span class="mf">0.0</span>
-        
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-            <span class="n">fitness1</span> <span class="o">+=</span> <span class="n">pw</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-            <span class="n">fitness2</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">fitness2</span> <span class="o">=</span> <span class="n">pw</span><span class="p">(</span><span class="n">fitness2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-            <span class="n">fitness3</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">fitness3</span> <span class="o">=</span> <span class="n">pw</span><span class="p">(</span><span class="n">fitness3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-
+        <span class="n">fitness1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pw</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">fitness2</span> <span class="o">=</span> <span class="n">pw</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">xi</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">fitness3</span> <span class="o">=</span> <span class="n">pw</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">xi</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span>
         <span class="n">fitness</span> <span class="o">=</span> <span class="n">fitness1</span> <span class="o">+</span> <span class="n">fitness2</span> <span class="o">+</span> <span class="n">fitness3</span>
-
         <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Zakharov.evaluate">
+<a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.zakharov.Zakharov.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">out</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate function for compatibility with pymoo&#39;s optimizer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : numpy.ndarray</span>
+<span class="sd">            Array of input variables.</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Dictionary to store the output fitness values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 </div>
 
 </pre></div>
