@@ -2,12 +2,15 @@ import pytest
 import random
 from individual import Individual, GeneType
 from problems.abstract_problem import AbstractProblem
-from recombination.unfair_avarage_crossover import UnfairAvarageCrossover  # Replace with the actual path if different
+from recombination.unfair_avarage_crossover import UnfairAvarageCrossover
 
 class MockProblem(AbstractProblem):
     """
     A mock problem class for testing purposes.
     """
+    def __init__(self):
+        super().__init__(design_variables=5, bounds=[(0, 10)] * 5, objectives=1)
+
     def f(self, x: list) -> float:
         """
         A mock fitness function that simply sums the chromosome values.
@@ -83,28 +86,25 @@ def test_unfair_average_crossover(setup_parents, setup_problem):
     print("Child 2 chromosome:", child2.chromosome)
 
     # Assertions to check correctness
-    assert isinstance(child1, Individual)
-    assert isinstance(child2, Individual)
-    assert len(child1.chromosome) == setup_parents[0].ch_size
-    assert len(child2.chromosome) == setup_parents[1].ch_size
+    assert isinstance(child1, Individual), "Child 1 is not an Individual instance."
+    assert isinstance(child2, Individual), "Child 2 is not an Individual instance."
+    assert len(child1.chromosome) == setup_parents[0].ch_size, "Child 1 chromosome length mismatch."
+    assert len(child2.chromosome) == setup_parents[1].ch_size, "Child 2 chromosome length mismatch."
 
-    # Ensure the offspring chromosomes are valid
+    # Ensure the offspring chromosomes are valid floats
     for gene in child1.chromosome:
-        assert isinstance(gene, float)
+        assert isinstance(gene, float), "Child 1 chromosome gene is not a float."
 
     for gene in child2.chromosome:
-        assert isinstance(gene, float)
+        assert isinstance(gene, float), "Child 2 chromosome gene is not a float."
 
     # Ensure the offspring chromosomes are different from the parents
-    assert child1.chromosome != setup_parents[0].chromosome
-    assert child1.chromosome != setup_parents[1].chromosome
-    assert child2.chromosome != setup_parents[0].chromosome
-    assert child2.chromosome != setup_parents[1].chromosome
+    assert child1.chromosome != setup_parents[0].chromosome, "Child 1 chromosome matches Parent 1."
+    assert child1.chromosome != setup_parents[1].chromosome, "Child 1 chromosome matches Parent 2."
+    assert child2.chromosome != setup_parents[0].chromosome, "Child 2 chromosome matches Parent 1."
+    assert child2.chromosome != setup_parents[1].chromosome, "Child 2 chromosome matches Parent 2."
 
     # Ensure the offspring chromosomes are different from each other
-    if child1.chromosome == child2.chromosome:
-        print("Child 1 and Child 2 have the same chromosome due to random selection.")
-
     assert child1.chromosome != child2.chromosome, "Child 1 and Child 2 should not have the same chromosome."
 
 if __name__ == "__main__":

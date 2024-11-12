@@ -1,28 +1,35 @@
 from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
+from typing import List, Any
+
 class Zakharov(AbstractProblem):
     """
     Zakharov function implementation for optimization problems.
 
-    The Zakharov function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-5, 10], for all i = 1, 2, ..., n.
+    The Zakharov function is commonly used to test optimization algorithms.
+    It evaluates inputs over the hypercube x_i ∈ [-5, 10].
 
     Attributes
     ----------
-    None
+    design_variables : int
+        The number of variables for the problem.
+    bounds : list of tuple
+        The bounds for each variable, typically [(-5, 10), (-5, 10), ...].
+    objectives : list
+        Objectives for the problem, set to ["minimize"] for single-objective optimization.
 
     Methods
     -------
     f(x: list) -> float
         Calculates the Zakharov function value for a given list of variables.
-
-    Notes
-    -----
-    -5 ≤ xi ≤ 10 for i = 1,…,n
-    Global minimum at f(0,..,0) = 0
     """
 
-    def f(self, x: list) -> float:
+    def __init__(self, design_variables=2):
+        bounds = [(-5, 10) for _ in range(design_variables)]
+        objectives = ["minimize"]
+        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
+
+    def f(self, x: List[float]) -> float:
         """
         Calculate the Zakharov function value for a given list of variables.
 
@@ -36,22 +43,21 @@ class Zakharov(AbstractProblem):
         float
             The Zakharov function value.
         """
-        fitness1 = 0.0
-        fitness2 = 0.0
-        fitness3 = 0.0
-        fitness = 0.0
-        
-        for i in range(len(x)):
-            fitness1 += pw(x[i], 2)
-
-        for i in range(len(x)):
-            fitness2 += 0.5 * (i + 1) * x[i]
-        fitness2 = pw(fitness2, 2)
-
-        for i in range(len(x)):
-            fitness3 += 0.5 * (i + 1) * x[i]
-        fitness3 = pw(fitness3, 4)
-
+        fitness1 = sum(pw(xi, 2) for xi in x)
+        fitness2 = pw(sum(0.5 * (i + 1) * xi for i, xi in enumerate(x)), 2)
+        fitness3 = pw(sum(0.5 * (i + 1) * xi for i, xi in enumerate(x)), 4)
         fitness = fitness1 + fitness2 + fitness3
-
         return round(fitness, 3)
+
+    def evaluate(self, x: List[float], out: dict, *args: Any, **kwargs: Any) -> None:
+        """
+        Evaluate function for compatibility with pymoo's optimizer.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        out["F"] = self.f(x)

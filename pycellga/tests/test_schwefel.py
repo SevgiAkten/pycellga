@@ -1,35 +1,46 @@
+import pytest
 from problems.single_objective.continuous.schwefel import Schwefel
 
-def test_schwefel():
+@pytest.fixture
+def setup_schwefel():
+    """
+    Fixture to provide an instance of the Schwefel problem.
+    """
+    return Schwefel(design_variables=4)
+
+def test_schwefel(setup_schwefel):
     """
     Test the Schwefel function implementation.
 
-    This test verifies the functionality of the Schwefel function on a set of predefined input values.
+    This test verifies the Schwefel function with a set of predefined inputs to ensure accuracy.
+
+    Parameters
+    ----------
+    setup_schwefel : fixture
+        The fixture providing the Schwefel problem instance.
     
-    The Schwefel function is used as a benchmark in optimization problems, and this test ensures
-    that the function computes the expected results for given inputs.
-
-    It performs assertions to check:
-    - The correctness of the function's output for specific input values.
-    - The proper rounding of the function's output to three decimal places.
-
-    Notes
-    -----
-    The Schwefel function is typically used to evaluate optimization algorithms, and the expected values
-    for the test cases are specific to the known behavior of the function.
+    Assertions
+    ----------
+    - The function's output is correctly rounded to three decimal places.
+    - The function returns the expected values for specific inputs.
 
     Examples
     --------
-    >>> test_schwefel()
+    >>> test_schwefel_function()
     """
 
-    theproblem = Schwefel()
+    theproblem = setup_schwefel
 
-    # Test case 1: Specific input values
-    assert theproblem.f([220.501, -400.025, 30.805, -105.50]) == round(1815.9104334968686, 3)
+    # Test cases with known values
+    assert theproblem.f([220.501, -400.025, 30.805, -105.50]) == pytest.approx(1815.910, rel=1e-3), \
+        "Failed test for input [220.501, -400.025, 30.805, -105.50]"
 
-    # Test case 2: Different specific input values
-    assert theproblem.f([-400.995, -25.230, -410.706, 420.305]) == round(2008.8379872817275, 3)
+    assert theproblem.f([-400.995, -25.230, -410.706, 420.305]) == pytest.approx(2008.838, rel=1e-3), \
+        "Failed test for input [-400.995, -25.230, -410.706, 420.305]"
 
-    # Test case 3: Uniform input values
-    assert round(theproblem.f([420.9687 for i in range(10)]), 2) == round(0.0, 3)
+    # Testing for the global minimum case
+    assert theproblem.f([420.9687 for _ in range(4)]) == pytest.approx(0.0, rel=1e-3), \
+        "Failed test for input [420.9687, 420.9687, 420.9687, 420.9687]"
+
+if __name__ == "__main__":
+    pytest.main()

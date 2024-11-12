@@ -1,17 +1,18 @@
 import pytest
-from problems.single_objective.continuous.bentcigar import Bentcigar  # Replace with the actual path if different
+from problems.single_objective.continuous.bentcigar import Bentcigar
 
 @pytest.fixture
 def setup_bentcigar():
     """
-    Fixture for creating an instance of the Bentcigar problem.
+    Fixture for creating an instance of the Bentcigar problem with a specified dimension.
 
     Returns
     -------
     Bentcigar
         An instance of the Bentcigar problem.
     """
-    return Bentcigar()
+    dimension = 10 
+    return Bentcigar(dimension=dimension)
 
 def test_bentcigar_function(setup_bentcigar):
     """

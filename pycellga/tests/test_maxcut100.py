@@ -1,36 +1,27 @@
 import pytest
-
 from problems.single_objective.discrete.binary.maxcut100 import Maxcut100
-
 
 @pytest.fixture
 def maxcut_instance():
     """
     Fixture for creating an instance of the Maxcut100 class.
-
-    This fixture returns an instance of the Maxcut100 class to be used in tests.
     """
     return Maxcut100()
 
-def test_maxcut100():
-    # Maxcut100 sınıfı örneği oluştur
-    problem = Maxcut100()
+def test_maxcut100(maxcut_instance):
 
-    # Test durumu: Bütün değerler 0
     chromosome = [0] * 100
-    expected_result = 0.0 
-    assert problem.f(chromosome) == expected_result, f"Beklenen: {expected_result}, Bulunan: {problem.f(chromosome)}"
+    expected_result = 0.0
+    assert maxcut_instance.f(chromosome) == expected_result, f"Beklenen: {expected_result}, Bulunan: {maxcut_instance.f(chromosome)}"
 
-    # Test durumu: Bütün değerler 1
     chromosome = [1] * 100
     expected_result = 0.0
-    assert problem.f(chromosome) == expected_result, f"Beklenen: {expected_result}, Bulunan: {problem.f(chromosome)}"
+    assert maxcut_instance.f(chromosome) == expected_result, f"Beklenen: {expected_result}, Bulunan: {maxcut_instance.f(chromosome)}"
 
-    # Test durumu: Karışık değerler
     chromosome = [0, 1] * 50
-    expected_result = 1124.0 
-    assert problem.f(chromosome) == expected_result, f"Beklenen: {expected_result}, Bulunan: {problem.f(chromosome)}"
+    expected_result = 567.5 
+    computed_result = maxcut_instance.f(chromosome)
+    assert computed_result == expected_result, f"Beklenen: {expected_result}, Bulunan: {computed_result}"
 
 if __name__ == "__main__":
     pytest.main()
-

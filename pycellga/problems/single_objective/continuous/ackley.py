@@ -1,5 +1,6 @@
 from numpy import pi, e, cos, sqrt, exp
 from problems.abstract_problem import AbstractProblem
+
 class Ackley(AbstractProblem):
     """
     Ackley function implementation for optimization problems.
@@ -10,12 +11,21 @@ class Ackley(AbstractProblem):
 
     Attributes
     ----------
-    None
+    design_variables : List[str]
+        List of variable names.
+    bounds : List[Tuple[float, float]]
+        Bounds for each variable.
+    objectives : List[str]
+        Objectives for optimization.
+    constraints : List[str]
+        Any constraints for the problem.
 
     Methods
     -------
-    f(x: list) -> float
-        Calculates the Ackley function value for a given list of variables.
+    evaluate(x, out, *args, **kwargs)
+        Calculates the Ackley function value for given variables.
+    f(x)
+        Alias for evaluate to maintain compatibility with the rest of the codebase.
 
     Notes
     -----
@@ -23,29 +33,36 @@ class Ackley(AbstractProblem):
     Global minimum at f(0, 0) = 0
     """
 
-    def f(self, x: list) -> float:
+    def __init__(self, dimension: int):
+        design_variables = [f"x{i+1}" for i in range(dimension)]
+        bounds = [(-32.768, 32.768) for _ in range(dimension)]
+        objectives = ["minimize"]
+        constraints = []
+
+        super().__init__(design_variables, bounds, objectives, constraints)
+        self.dimension = dimension
+
+    def evaluate(self, x, out, *args, **kwargs):
         """
         Calculate the Ackley function value for a given list of variables.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
-
-        Returns
-        -------
-        float
-            The Ackley function value.
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
         """
-        sum1 = 0.0
-        sum2 = 0.0
-        fitness = 0.0
-
-        for i in range(len(x)):
-            gene = x[i]
-            sum1 += gene * gene
-            sum2 += cos(2 * pi * gene)
+        sum1 = sum(gene ** 2 for gene in x)
+        sum2 = sum(cos(2 * pi * gene) for gene in x)
         
-        fitness += -20.0 * exp(-0.2 * sqrt(sum1 / len(x))) - exp(sum2 / len(x)) + 20.0 + e
+        fitness = -20.0 * exp(-0.2 * sqrt(sum1 / self.dimension)) - exp(sum2 / self.dimension) + 20.0 + e
+        out["F"] = round(fitness, 3)
 
-        return round(fitness, 3)
+    def f(self, x):
+        """
+        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        """
+        result = {}
+        self.evaluate(x, result)
+        return result["F"]

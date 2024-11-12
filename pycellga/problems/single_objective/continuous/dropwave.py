@@ -1,9 +1,5 @@
 from problems.abstract_problem import AbstractProblem
-import math
-from numpy import *
-
-# -5.12 ≤ xi ≤ 5.12    i = 1,2
-# Global minimum at f(0,0) = −1
+from numpy import power, cos, sqrt
 
 class Dropwave(AbstractProblem):
     """
@@ -12,52 +8,65 @@ class Dropwave(AbstractProblem):
     The Dropwave function is a multimodal function commonly used as a performance test problem for optimization algorithms.
     It is defined within the bounds -5.12 ≤ xi ≤ 5.12 for i = 1, 2, and has a global minimum at f(0, 0) = -1.
 
+    Attributes
+    ----------
+    design_variables : list
+        The names of the variables, in this case ["x1", "x2"].
+    bounds : list of tuples
+        The lower and upper bounds for each variable, [-5.12, 5.12] for both x1 and x2.
+    objectives : list
+        List defining the optimization objective, which is to "minimize" for this function.
+    num_variables : int
+        The number of variables (dimensions) for the function, which is 2 in this case.
+
     Methods
     -------
-    f(x: list) -> float
-        Computes the value of the Dropwave function at a given point x.
+    evaluate(x, out, *args, **kwargs)
+        Calculates the value of the Dropwave function at a given point x.
+    f(x)
+        Alias for evaluate to maintain compatibility with the rest of the codebase.
     """
 
-    def f(self, x: list) -> float:
+    def __init__(self):
+        # Dropwave problem-specific parameters
+        design_variables = ["x1", "x2"]
+        bounds = [(-5.12, 5.12), (-5.12, 5.12)]
+        objectives = ["minimize"]
+
+        # Initialize the AbstractProblem with specific parameters
+        super().__init__(design_variables, bounds, objectives)
+        self.num_variables = 2
+
+    def evaluate(self, x, out, *args, **kwargs):
         """
-        Evaluate the Dropwave function at a given point.
+        Calculate the Dropwave function value for a given list of variables.
 
         Parameters
         ----------
         x : list
             A list of two floats representing the coordinates [x1, x2].
-
-        Returns
-        -------
-        float
-            The value of the Dropwave function rounded to three decimal places.
+        out : dict
+            Dictionary to store the output fitness values.
 
         Notes
         -----
         The Dropwave function is defined as:
             f(x1, x2) = - (1 + cos(12 * sqrt(x1^2 + x2^2))) / (0.5 * (x1^2 + x2^2) + 2)
         where x1 and x2 are the input variables.
-
-        Examples
-        --------
-        >>> dropwave = Dropwave()
-        >>> dropwave.f([0, 0])
-        -1.0
-        >>> dropwave.f([1, 1])
-        -0.028
         """
-        # Extract the coordinates
-        x1 = x[0]
-        x2 = x[1]
-
-        # Compute the squared sums
+        if len(x) != self.num_variables:
+            raise ValueError(f"Input must have exactly {self.num_variables} variables.")
+        
+        x1, x2 = x
         sqrts_sums = power(x1, 2) + power(x2, 2)
-        
-        # Compute the denominator term
-        b = 0.5 * (sqrts_sums) + 2
-        
-        # Compute the fitness value
-        fitness = -(1 + cos(12 * sqrt(sqrts_sums))) / b
+        denominator = 0.5 * sqrts_sums + 2
+        fitness = -(1 + cos(12 * sqrt(sqrts_sums))) / denominator
+        out["F"] = round(fitness, 3)
 
-        # Return the fitness value rounded to three decimal places
-        return round(fitness, 3)
+    def f(self, x):
+        """
+        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        """
+        result = {}
+        self.evaluate(x, result)
+        return result["F"]

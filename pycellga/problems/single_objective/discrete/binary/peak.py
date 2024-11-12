@@ -1,5 +1,6 @@
 from problems.abstract_problem import AbstractProblem
 from numpy import random
+from typing import List, Tuple
 
 class Peak(AbstractProblem):
     """
@@ -10,7 +11,14 @@ class Peak(AbstractProblem):
 
     Attributes
     ----------
-    None
+    design_variables : List[str]
+        Names of the design variables.
+    bounds : List[Tuple[float, float]]
+        Bounds for each design variable as (min, max).
+    objectives : List[str]
+        Objectives for optimization, e.g., "minimize" or "maximize".
+    constraints : List[str]
+        Any constraints for the optimization problem.
 
     Methods
     -------
@@ -23,7 +31,18 @@ class Peak(AbstractProblem):
     # Maximum Fitness Value = 1.0
     """
 
-    def f(self, x: list) -> float:
+    def __init__(self):
+        """
+        Initializes the Peak problem with default values.
+        """
+        design_variables = ["x" + str(i) for i in range(100)]
+        bounds = [(0, 1) for _ in range(100)]  # Each gene is binary (0 or 1)
+        objectives = ["maximize"]  # Aim to maximize fitness value
+        constraints = []  # No additional constraints
+
+        super().__init__(design_variables, bounds, objectives, constraints)
+
+    def f(self, x: List[int]) -> float:
         """
         Evaluates the fitness of a given chromosome for the Peak problem.
 
@@ -62,3 +81,16 @@ class Peak(AbstractProblem):
         fitness = min_distance / problem_length
 
         return round(fitness, 3)
+
+    def evaluate(self, x, out, *args, **kwargs):
+        """
+        Evaluate function for compatibility with pymoo's optimizer.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        out["F"] = self.f(x)

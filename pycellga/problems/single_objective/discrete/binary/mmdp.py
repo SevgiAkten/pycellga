@@ -1,4 +1,5 @@
 from problems.abstract_problem import AbstractProblem
+from typing import List, Tuple
 
 class Mmdp(AbstractProblem):
     """
@@ -10,7 +11,14 @@ class Mmdp(AbstractProblem):
 
     Attributes
     ----------
-    None
+    design_variables : List[str]
+        Names of the design variables (in this case, binary chromosome genes).
+    bounds : List[Tuple[float, float]]
+        Bounds for each design variable (0 or 1).
+    objectives : List[str]
+        Objectives for optimization, e.g., "maximize" in this case.
+    constraints : List[str]
+        Any constraints for the optimization problem.
 
     Methods
     -------
@@ -23,7 +31,19 @@ class Mmdp(AbstractProblem):
     # Maximum Fitness Value = 40
     """
 
-    def f(self, x: list) -> float:
+    def __init__(self):
+        """
+        Initializes the MMDP problem with predefined design variables, bounds, 
+        objectives, and constraints.
+        """
+        design_variables = ["gene" + str(i) for i in range(240)]
+        bounds = [(0, 1) for _ in range(240)]
+        objectives = ["maximize"]
+        constraints = []
+
+        super().__init__(design_variables, bounds, objectives, constraints)
+
+    def f(self, x: List[int]) -> float:
         """
         Evaluates the fitness of a given chromosome for the MMDP.
 
@@ -32,7 +52,7 @@ class Mmdp(AbstractProblem):
 
         Parameters
         ----------
-        x : list
+        x : List[int]
             A list representing the chromosome, where each element is a binary 
             value (0 or 1).
 
@@ -42,18 +62,12 @@ class Mmdp(AbstractProblem):
             The normalized fitness value of the chromosome, rounded to three 
             decimal places.
         """
-
         subproblems_length = 6
         subproblems_number = 40
-        total_ones = 0
-        partial_fitness = 0.0
         fitness = 0.0
 
         for i in range(subproblems_number):
-            total_ones = 0
-            for j in range(subproblems_length):
-                if x[i * subproblems_length + j] == 1:
-                    total_ones += 1
+            total_ones = sum(x[i * subproblems_length + j] for j in range(subproblems_length))
 
             if total_ones == 0 or total_ones == 6:
                 partial_fitness = 1.0
@@ -66,6 +80,5 @@ class Mmdp(AbstractProblem):
 
             fitness += partial_fitness
 
-        fitness_normalized = fitness / 40
-
+        fitness_normalized = fitness / subproblems_number
         return round(fitness_normalized, 3)

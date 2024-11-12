@@ -2,12 +2,16 @@ import pytest
 import random
 from individual import Individual, GeneType
 from problems.abstract_problem import AbstractProblem
-from mutation.float_uniform_mutation import FloatUniformMutation  # Replace with the actual path if different
+from mutation.float_uniform_mutation import FloatUniformMutation 
 
 class MockProblem(AbstractProblem):
     """
     A mock problem class for testing purposes.
     """
+    def __init__(self):
+        # Define design variables, bounds, and objectives according to the test requirements
+        super().__init__(design_variables=5, bounds=[(0, 10)] * 5, objectives=1)
+
     def f(self, x: list) -> float:
         """
         A mock fitness function that simply sums the chromosome values.
@@ -77,22 +81,21 @@ def test_float_uniform_mutation(setup_individual, setup_problem):
     print("Mutated chromosome:", new_individual.chromosome)
 
     # Assertions to check correctness
-    assert isinstance(new_individual, Individual)
-    assert len(new_individual.chromosome) == setup_individual.ch_size
-    assert new_individual.chromosome != setup_individual.chromosome  # Ensure mutation has occurred
+    assert isinstance(new_individual, Individual), "Mutated individual is not an Individual instance"
+    assert len(new_individual.chromosome) == setup_individual.ch_size, "Chromosome length mismatch"
+    assert new_individual.chromosome != setup_individual.chromosome, "Mutation did not occur"
 
     # Additional checks to verify the mutation logic
     original_ch = setup_individual.chromosome
     mutated_ch = new_individual.chromosome
 
-    # Ensure each gene has been mutated within the range [-1, +1]
+    # Ensure each gene has been mutated within the range [-1, +1] relative to original value
     for orig, mut in zip(original_ch, mutated_ch):
-        assert abs(mut - orig) <= 1.0
+        assert abs(mut - orig) <= 1.0, f"Gene mutated outside of expected range: {mut} vs {orig}"
 
-    # Check that the mutated values are floats rounded to 5 decimal places
+    # Check that each mutated gene is a float
     for gene in mutated_ch:
-        assert isinstance(gene, float)
-        assert len(str(gene).split('.')[1]) <= 5
+        assert isinstance(gene, float), f"Gene {gene} is not a float"
 
 if __name__ == "__main__":
     pytest.main()

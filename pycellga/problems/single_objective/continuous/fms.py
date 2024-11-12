@@ -1,5 +1,6 @@
 from problems.abstract_problem import AbstractProblem
-from numpy import pi, sin, random
+from numpy import pi, sin
+import numpy as np
 
 class Fms(AbstractProblem):
     """
@@ -9,57 +10,59 @@ class Fms(AbstractProblem):
 
     Attributes
     ----------
-    None
+    design_variables : List[str]
+        List of variable names.
+    bounds : List[Tuple[float, float]]
+        Bounds for each variable.
+    objectives : List[str]
+        Objectives for optimization.
+    constraints : List[str]
+        Any constraints for the problem.
 
     Methods
     -------
-    f(x: list) -> float
-        Calculates the Fms function value for a given list of variables.
-
-    Notes
-    -----
-    -6.4 ≤ xi ≤ 6.35
-    Length of chromosomes = 6
-    Maximum Fitness Value = 0.01
-    Maximum Fitness Value Error = 10^-2
+    evaluate(x, out, *args, **kwargs)
+        Calculates the Fms function value for given variables.
+    f(x)
+        Alias for evaluate to maintain compatibility with the rest of the codebase.
     """
 
-    def f(self, x: list) -> float:
+    def __init__(self):
+        design_variables = ["a1", "w1", "a2", "w2", "a3", "w3"]
+        bounds = [(-6.4, 6.35)] * 6  # Same bounds for each variable
+        objectives = ["minimize"]
+        constraints = []
+        
+        super().__init__(design_variables, bounds, objectives, constraints)
+
+    def evaluate(self, x, out, *args, **kwargs):
         """
         Calculate the Fms function value for a given list of variables.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
-
-        Returns
-        -------
-        float
-            The Fms function value.
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
         """
         theta = (2.0 * pi) / 100.0
-        random.seed(100)
-
-        a1 = x[0]
-        w1 = x[1]
-        a2 = x[2]
-        w2 = x[3]
-        a3 = x[4]
-        w3 = x[5]
+        a1, w1, a2, w2, a3, w3 = x
 
         def yzero(t):
-            return 1.0 * sin((5.0 * theta * t) - (1.5 * sin((4.8 * theta * t) + (2.0 * sin(4.9 * theta * t)))))
+            return sin((5.0 * theta * t) - (1.5 * sin((4.8 * theta * t) + (2.0 * sin(4.9 * theta * t)))))
 
-        distance = 0.0
-        partialfitness = 0.0
-        fitness = 0.0
-
+        partial_fitness = 0.0
         for k in range(101):
-            distance = (
-                a1 * sin((w1 * theta * k) - (a2 * sin((w2 * theta * k) + (a3 * sin(w3 * theta * k))))))
-            distance -= yzero(k)
-            partialfitness += (distance * distance)
-        
-        fitness = partialfitness
-        return round(fitness, 3)
+            distance = a1 * sin((w1 * theta * k) - (a2 * sin((w2 * theta * k) + (a3 * sin(w3 * theta * k))))) - yzero(k)
+            partial_fitness += distance ** 2
+
+        out["F"] = round(partial_fitness, 3)
+
+    def f(self, x):
+        """
+        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        """
+        result = {}
+        self.evaluate(x, result)
+        return result["F"]

@@ -5,43 +5,55 @@ class Matyas(AbstractProblem):
     """
     Matyas function implementation for optimization problems.
 
-    The Matyas function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-10, 10], for all i = 1, 2, ..., n.
-
+    The Matyas function is commonly used to evaluate the performance of optimization algorithms.
+    It is a simple, continuous, convex function that has a global minimum at the origin.
+    
     Attributes
     ----------
-    None
+    design_variables : list of str
+        The names of the design variables, typically ["x1", "x2"] for 2 variables.
+    bounds : list of tuple
+        The bounds for each variable, typically [(-10, 10), (-10, 10)].
+    objectives : list of str
+        The objectives for optimization, set to ["minimize"].
 
     Methods
     -------
-    f(X: list) -> float
-        Calculates the Matyas function value for a given list of variables.
-
-    Notes
-    -----
-    -10 ≤ xi ≤ 10 for i = 1,…,n
-    Global minimum at f(0,...,0) = 0
+    evaluate(x, out, *args, **kwargs)
+        Computes the Matyas function value for a given list of variables.
+    f(x: list) -> float
+        Alias for evaluate to maintain compatibility with the rest of the codebase.
     """
 
-    def f(self, X: list) -> float:
+    def __init__(self):
+        design_variables = ["x1", "x2"]
+        bounds = [(-10, 10), (-10, 10)]
+        objectives = ["minimize"]
+
+        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
+
+    def evaluate(self, x, out, *args, **kwargs):
         """
         Calculate the Matyas function value for a given list of variables.
 
         Parameters
         ----------
-        X : list
-            A list of float variables.
-
-        Returns
-        -------
-        float
-            The Matyas function value.
+        x : list of float
+            A list of float variables representing a point in the solution space.
+        out : dict
+            Dictionary to store the output fitness value with key "F".
         """
-        # Ensure X has at least 2 elements
-        if len(X) < 2:
-            raise ValueError("At least two variables are required for the Matyas function.")
-        
-        fitness = 0.0
-        for i in range(len(X) - 1):
-            fitness += 0.26 * (pw(X[i], 2) + pw(X[i + 1], 2)) - 0.48 * X[i] * X[i + 1]
-        return round(fitness, 2)
+        if len(x) != 2:
+            raise ValueError("Matyas function is defined for exactly 2 variables.")
+
+        x1, x2 = x
+        fitness = 0.26 * (pw(x1, 2) + pw(x2, 2)) - 0.48 * x1 * x2
+        out["F"] = round(fitness, 2)
+
+    def f(self, x):
+        """
+        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        """
+        result = {}
+        self.evaluate(x, result)
+        return result["F"]

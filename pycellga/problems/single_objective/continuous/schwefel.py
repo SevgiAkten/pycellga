@@ -5,27 +5,48 @@ class Schwefel(AbstractProblem):
     """
     Schwefel function implementation for optimization problems.
 
-    The Schwefel function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-500, 500], for all i = 1, 2, ..., n.
+    This function is commonly used for testing optimization algorithms and is evaluated on the range
+    [-500, 500] for each variable.
 
     Attributes
     ----------
-    None
+    design_variables : int
+        The number of variables in the problem.
+    bounds : list of tuple
+        The bounds for each variable, typically [(-500, 500), (-500, 500), ...].
+    objectives : int
+        Number of objectives, set to 1 for single-objective optimization.
 
     Methods
     -------
+    evaluate(x, out, *args, **kwargs)
+        Calculates the Schwefel function value for a given list of variables, compatible with pymoo.
     f(x: list) -> float
-        Calculates the Schwefel function value for a given list of variables.
-
-    Notes
-    -----
-    -500 ≤ xi ≤ 500 for i = 1,…,n
-    Global minimum at f(420.9687,…,420.9687) = 0
+        Alias for evaluate to maintain compatibility with the rest of the codebase.
     """
 
-    def f(self, x: list) -> float:
+    def __init__(self, design_variables=2):
+        bounds = [(-500, 500) for _ in range(design_variables)]
+        super().__init__(design_variables=design_variables, bounds=bounds, objectives=1)
+
+    def evaluate(self, x, out, *args, **kwargs):
         """
         Calculate the Schwefel function value for a given list of variables.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            A numpy array of float variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        d = len(x)
+        fitness = sum(xi * sin(sqrt(abs(xi))) for xi in x)
+        out["F"] = round((418.9829 * d) - fitness, 3)
+
+    def f(self, x):
+        """
+        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
 
         Parameters
         ----------
@@ -37,10 +58,6 @@ class Schwefel(AbstractProblem):
         float
             The Schwefel function value.
         """
-        fitness = 0.0
-        d = len(x)
-        for i in range(d):
-            fitness += x[i] * sin(sqrt(abs(x[i])))
-        fitness = (418.9829 * d) - fitness
-
-        return round(fitness, 3)
+        result = {}
+        self.evaluate(x, result)
+        return result["F"]

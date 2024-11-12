@@ -1,39 +1,24 @@
+
 from problems.abstract_problem import AbstractProblem
 
 class Maxcut100(AbstractProblem):
     """
-    A class used to represent the Maximum Cut (MAXCUT) function for 100 nodes.
+    A class to represent the Maximum Cut (MAXCUT) problem for 100 nodes.
     
     Attributes
     ----------
-    None
+    problema : list of list of float
+        A matrix representing the weights between nodes in the MAXCUT problem.
 
     Methods
     -------
     f(x: list) -> float
-        Calculates the fitness value of a given chromosome.
-
-    Notes
-    -----
-    Length of chromosomes = 100
-    Maximum Fitness Value = 1077.0
-    """
-    def f(self, x: list) -> float:
-        """
         Calculates the fitness value of a given chromosome for the Maxcut problem.
-
-        Parameters
-        ----------
-        x : list
-            A list representing a chromosome.
-
-        Returns
-        -------
-        float
-            The fitness value of the chromosome.
-        """
-
-        problema = [
+    """
+    
+    def __init__(self):
+        
+        self.problema = [
             [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000,
                 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
             [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000,
@@ -236,13 +221,26 @@ class Maxcut100(AbstractProblem):
                 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
         ]
 
-        cols = 100
+    def f(self, x: list) -> float:
+        """
+        Calculates the fitness value of a given chromosome for the Maxcut problem.
+
+        Parameters
+        ----------
+        x : list
+            A list representing a chromosome.
+
+        Returns
+        -------
+        float
+            The fitness value of the chromosome.
+        """
         fitness = 0.0
+        n = len(self.problema)
+        
+        for i in range(n):
+            for j in range(i + 1, n):
+                if x[i] != x[j]:  # Nodes are in different subsets
+                    fitness += self.problema[i][j]
 
-        for i in range(cols-1):
-            j = i
-            for j in range(cols):
-                if (x[i] ^ x[j]):
-                    fitness = fitness + problema[i][j]
-
-        return round(fitness, 6)
+        return fitness

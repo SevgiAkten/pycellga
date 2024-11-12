@@ -6,29 +6,29 @@ def setup_powell():
     """
     Fixture to provide an instance of the Powell problem.
     """
-    return Powell()
+    return Powell(design_variables=8)  
 
 def test_powell_function(setup_powell):
     """
     Test the Powell function implementation.
 
-    This test checks the calculation of the Powell function value for given lists of float variables.
-    It uses predefined inputs and compares the outputs to the expected values.
+    Bu test, verilen değişken listeleri için Powell fonksiyonunun doğruluğunu kontrol eder.
+    Belirli girişler ve beklenen çıktılarla çalışır.
 
     Parameters
     ----------
     setup_powell : fixture
-        The fixture providing the Powell problem instance.
+        Powell problem örneğini sağlayan fixture.
     """
-    # Define sample input variables and their expected Powell function values
     test_cases = [
-        ([0.0, 0.0, 0.0, 0.0], 0.0),  # Global minimum
-        ([1.0, 2.0, 3.0, 4.0], 1512.0),  # Arbitrary point
-        ([1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0], 3024.0),  # Extra dimension
-        ([5.0, -4.0, 0.0, 0.0, 2.0, -3.0, 4.0, -5.0], 47571.0)  # Another arbitrary point
+        ([0.0, 0.0, 0.0, 0.0], 0.0),  
+        ([1.0, 2.0, 3.0, 4.0], 1512.0),  
+        ([1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0], 3024.0),  
+        ([5.0, -4.0, 0.0, 0.0, 2.0, -3.0, 4.0, -5.0], 47571.0)  
     ]
 
     for variables, expected_fitness in test_cases:
+        setup_powell.design_variables = len(variables)  
         fitness_value = setup_powell.f(variables)
         print(f"Variables: {variables} => Fitness: {fitness_value}, Expected: {expected_fitness}")
         assert isinstance(fitness_value, float)

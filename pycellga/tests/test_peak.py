@@ -1,6 +1,6 @@
 import pytest
 from numpy import random
-from problems.single_objective.discrete.binary.peak import Peak  
+from problems.single_objective.discrete.binary.peak import Peak
 
 @pytest.fixture
 def peak_instance():
@@ -36,6 +36,7 @@ def test_peak(peak_instance):
     # Reset the random seed to ensure the fitness function behaves deterministically
     random.seed(100)
 
+    # Run the tests
     for chromosome, expected_fitness in zip(test_cases, expected_fitness_values):
         fitness_value = peak_instance.f(chromosome)
         print(f"Chromosome: {chromosome[:12]}... (truncated) => Fitness: {fitness_value}")

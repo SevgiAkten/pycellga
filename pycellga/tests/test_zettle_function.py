@@ -23,9 +23,9 @@ def test_zettle_function(setup_zettle):
     # Define sample input variables and their expected Zettle function values
     test_cases = [
         ([0.0, 0.0], 0.0),                # Global minimum
-        ([1.0, 1.0], 0.25),                # Arbitrary point
-        ([2.0, -1.0], 1.5),            # Another arbitrary point
-        ([3.0, -2.0], 49.75)             # Another arbitrary point
+        ([1.0, 1.0], 0.25),               # Arbitrary point
+        ([2.0, -1.0], 1.5),               # Corrected expected value
+        ([3.0, -2.0], 49.75)              # Another arbitrary point
     ]
 
     for variables, expected_fitness in test_cases:

@@ -18,9 +18,9 @@ def test_maxcut20_01(maxcut_instance):
     It uses predefined inputs and compares the outputs to expected values.
     """
     # Define sample input chromosomes (binary lists)
-    sample_chromosome1 = [0, 1] * 10  # Example binary sequence
-    sample_chromosome2 = [1] * 20  # All ones
-    sample_chromosome3 = [0] * 20  # All zeros
+    sample_chromosome1 = [0, 1] * 10  # Alternating binary sequence
+    sample_chromosome2 = [1] * 20  # All ones (no cut)
+    sample_chromosome3 = [0] * 20  # All zeros (no cut)
 
     # Calculate the MAXCUT function value for the sample inputs
     fitness_value1 = maxcut_instance.f(sample_chromosome1)
@@ -32,13 +32,15 @@ def test_maxcut20_01(maxcut_instance):
     assert isinstance(fitness_value2, float)
     assert isinstance(fitness_value3, float)
 
-    assert fitness_value1 > 0
-    assert fitness_value2 == 0  # All ones should result in zero cut value
-    assert fitness_value3 == 0  # All zeros should result in zero cut value
+    # Specific assertions based on expected behavior
+    assert fitness_value1 > 0, f"Expected positive fitness, got {fitness_value1}"
+    assert fitness_value2 == 0, f"Expected zero fitness for all-ones, got {fitness_value2}"
+    assert fitness_value3 == 0, f"Expected zero fitness for all-zeros, got {fitness_value3}"
 
-    # Additional checks with known values
-    # Here we assume specific values and their known outputs for more thorough testing
-    # You can add more specific test cases if you have known outputs for certain inputs
+    print(f"Test results:\n"
+          f"Sample Chromosome 1 (Alternating): Fitness = {fitness_value1}\n"
+          f"Sample Chromosome 2 (All Ones): Fitness = {fitness_value2}\n"
+          f"Sample Chromosome 3 (All Zeros): Fitness = {fitness_value3}")
 
 if __name__ == "__main__":
     pytest.main()

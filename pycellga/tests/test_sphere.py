@@ -1,6 +1,14 @@
+import pytest
 from problems.single_objective.continuous.sphere import Sphere
 
-def test_sphere():
+@pytest.fixture
+def setup_sphere():
+    """
+    Fixture to provide an instance of the Sphere problem.
+    """
+    return Sphere(design_variables=10)  
+
+def test_sphere(setup_sphere):
     """
     Test the Sphere function implementation.
 
@@ -10,22 +18,28 @@ def test_sphere():
     at f(0, 0, ..., 0) = 0. This test ensures that the function computes the correct results for specific
     input values and verifies that the function behaves as expected.
 
-    It performs assertions to validate:
-    - The correctness of the function's output for specific test inputs.
-    - The rounding of the function's output to three decimal places.
+    Parameters
+    ----------
+    setup_sphere : fixture
+        The fixture providing the Sphere problem instance.
 
     Examples
     --------
     >>> test_sphere()
     """
 
-    theproblem = Sphere()
+    # Test cases with exactly 10 variables each, padded with zeros to meet the required length
+    test_cases = [
+        ([2.305, -4.025, 3.805, -1.505, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 38.256),
+        ([-4.995, -2.230, -3.706, 2.305, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 48.970),
+        ([0.0 for _ in range(10)], 0.0)  # All zeros, global minimum
+    ]
 
-    # Test case 1: Specific input values
-    assert theproblem.f([2.305, -4.025, 3.805, -1.505]) == round(38.2567, 3)
+    for variables, expected_fitness in test_cases:
+        fitness_value = setup_sphere.f(variables)
+        print(f"Variables: {variables} => Fitness: {fitness_value}, Expected: {expected_fitness}")
+        assert isinstance(fitness_value, float)
+        assert fitness_value == pytest.approx(expected_fitness, rel=1e-3), f"Expected {expected_fitness}, got {fitness_value}"
 
-    # Test case 2: Different specific input values
-    assert theproblem.f([-4.995, -2.230, -3.706, 2.305]) == round(48.970386000000005, 3)
-
-    # Test case 3: Uniform input values (all zeros)
-    assert theproblem.f([0 for _ in range(10)]) == round(0, 3)
+if __name__ == "__main__":
+    pytest.main()

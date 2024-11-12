@@ -1,40 +1,30 @@
 from problems.abstract_problem import AbstractProblem
+
 class Maxcut20_01(AbstractProblem):
     """
     Maximum Cut (MAXCUT) function implementation for optimization problems.
 
-    The MAXCUT function is used for testing optimization algorithms, particularly those involving maximum cut problems.
+    The MAXCUT function evaluates the fitness of a binary partition of nodes based on edge weights.
+    It is used to test optimization algorithms, particularly for maximum cut problems.
 
     Attributes
     ----------
-    None
+    problema : list of list of float
+        Adjacency matrix representing edge weights between nodes.
 
     Methods
     -------
     f(x: list) -> float
-        Calculates the MAXCUT function value for a given list of variables.
-
-    Notes
-    -----
-    Length of chromosomes = 20
-    Maximum Fitness Value = 10.119812
+        Calculates the MAXCUT function value for a given list of binary variables.
     """
 
-    def f(self, x: list) -> float:
-        """
-        Calculate the MAXCUT function value for a given list of variables.
+    def __init__(self, design_variables=20, bounds=None, objectives=1):
+        if bounds is None:
+            bounds = [(0, 1)] * design_variables  # Binary bounds for each variable
+        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
 
-        Parameters
-        ----------
-        x : list
-            A list of binary variables.
-
-        Returns
-        -------
-        float
-            The MAXCUT function value.
-        """
-        problema = [
+        # Define adjacency matrix (20x20 matrix of edge weights)
+        self.problema = [
             [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.359902,
                 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.313702, 0.000000, 0.000000, 0.000000],
             [0.000000, 0.000000, 0.000000, 0.000000, 0.848267, 0.000000, 0.000000, 0.000000, 0.287508, 0.000000,
@@ -77,13 +67,42 @@ class Maxcut20_01(AbstractProblem):
                 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
         ]
 
-        cols = 20
-        fitness = 0.0
+    def f(self, x: list) -> float:
+        """
+        Calculate the MAXCUT function value for a given list of binary variables.
 
-        for i in range(cols-1):
-            j = i
-            for j in range(cols):
-                if x[i] ^ x[j]:
-                    fitness += problema[i][j]
+        Parameters
+        ----------
+        x : list
+            A list of binary variables representing node partitions.
+
+        Returns
+        -------
+        float
+            The MAXCUT function value representing the total weight of edges cut by the partition.
+        """
+        fitness = 0.0
+        cols = len(self.problema)
+
+        for i in range(cols - 1):
+            for j in range(i + 1, cols):
+                if x[i] != x[j]:  # Nodes are in different partitions
+                    fitness += self.problema[i][j]
 
         return round(fitness, 6)
+
+    def evaluate(self, x, out, *args, **kwargs):
+        """
+        Evaluate function for compatibility with pymoo's optimizer.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        out["F"] = self.f(x)
+
+
+

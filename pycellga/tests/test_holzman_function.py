@@ -9,9 +9,9 @@ def setup_holzman():
     Returns
     -------
     Holzman
-        An instance of the Holzman problem.
+        An instance of the Holzman problem with 2 design variables.
     """
-    return Holzman()
+    return Holzman(design_variables=2)
 
 def test_holzman_function(setup_holzman):
     """
@@ -27,11 +27,11 @@ def test_holzman_function(setup_holzman):
     """
     # Define sample input variables and their expected Holzman function values
     test_cases = [
-        ([0.0, 0.0, 0.0], 0.0),  # Global minimum
-        ([1.0, 1.0, 1.0], 6.0),  # Points at which i=0 will dominate
-        ([1.0, 2.0, 3.0], 276.0),  # Arbitrary point
-        ([-1.0, -2.0, -3.0], 276.0),  # Symmetry check
-        ([1.5, -2.5, 3.5], 533.375)  # Another arbitrary point
+        ([0.0, 0.0], 0.0),                    # Global minimum
+        ([1.0, 1.0], 3.0),                    # 1^4 * 1 + 1^4 * 2 = 3.0
+        ([1.0, 2.0], 33.0),                   # 1^4 * 1 + 2^4 * 2 = 1 + 32 = 33
+        ([-1.0, -2.0], 33.0),                 # Symmetry check
+        ([1.5, -2.5], 5.0625 + 39.0625 * 2)   # 1.5^4 * 1 + (-2.5)^4 * 2
     ]
 
     for variables, expected_fitness in test_cases:

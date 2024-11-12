@@ -6,7 +6,7 @@ def setup_styblinski_tang():
     """
     Fixture to provide an instance of the StyblinskiTang problem.
     """
-    return StyblinskiTang()
+    return StyblinskiTang(design_variables=2)
 
 def test_styblinskitang_function(setup_styblinski_tang):
     """
@@ -23,10 +23,10 @@ def test_styblinskitang_function(setup_styblinski_tang):
     """
     # Define sample input variables and their expected Styblinski-Tang function values
     test_cases = [
-        ([-2.903534] * 2, -78.332),  # Global minimum
-        ([0.0, 0.0], 0.0),           # Simple case
-        ([1.0, 1.0], -10.0),         # Another arbitrary point
-        ([2.0, -1.0], -29.0)         # Corrected value
+        ([-2.903534, -2.903534], -78.332),  # Global minimum
+        ([0.0, 0.0], 0.0),                 # Simple case
+        ([1.0, 1.0], -10.0),               # Arbitrary point
+        ([2.0, -1.0], -29.0)               # Another arbitrary point
     ]
 
     for variables, expected_fitness in test_cases:

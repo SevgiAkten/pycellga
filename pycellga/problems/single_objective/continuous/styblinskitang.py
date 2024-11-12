@@ -7,21 +7,18 @@ class StyblinskiTang(AbstractProblem):
 
     The Styblinski-Tang function is widely used for testing optimization algorithms.
     The function is usually evaluated on the hypercube x_i ∈ [-5, 5], for all i = 1, 2, ..., n.
-
-    Attributes
-    ----------
-    None
-
-    Methods
-    -------
-    f(x: list) -> float
-        Calculates the Styblinski-Tang function value for a given list of variables.
-
-    Notes
-    -----
-    -5 ≤ xi ≤ 5 for i = 1,…,n
-    Global minimum at f(−2.903534, −2.903534) = −78.332
     """
+
+    def __init__(self, design_variables=2):
+        """
+        Initializes the Styblinski-Tang function with specified design variables and bounds.
+        
+        Parameters
+        ----------
+        design_variables : int, optional
+            Number of variables for the function, by default 2.
+        """
+        super().__init__(design_variables=design_variables, bounds=[(-5, 5)] * design_variables, objectives=["minimize"])
 
     def f(self, x: list) -> float:
         """
@@ -37,9 +34,22 @@ class StyblinskiTang(AbstractProblem):
         float
             The Styblinski-Tang function value.
         """
-        fitness = 0.0
-        for i in range(len(x)):
-            fitness += (pw(x[i], 4) - 16 * pw(x[i], 2) + 5 * x[i])
+        if len(x) != self.n_var:
+            raise ValueError(f"Input must have exactly {self.n_var} variables.")
         
-        fitness = fitness / len(x)
+        fitness = sum(pw(xi, 4) - 16 * pw(xi, 2) + 5 * xi for xi in x)
+        fitness /= self.n_var
         return round(fitness, 3)
+
+    def evaluate(self, x, out, *args, **kwargs):
+        """
+        Evaluate function for compatibility with pymoo's optimizer.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        out["F"] = self.f(x)

@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.discrete.binary.mmdp import Mmdp  # Replace with the actual path if different
+from problems.single_objective.discrete.binary.mmdp import Mmdp
 
 @pytest.fixture
 def mmdp_instance():
@@ -10,7 +10,7 @@ def mmdp_instance():
     """
     return Mmdp()
 
-def test_mmdp_function(mmdp_instance):
+def test_mmdp(mmdp_instance):
     """
     Test the Mmdp function implementation.
 
@@ -21,10 +21,10 @@ def test_mmdp_function(mmdp_instance):
     test_cases = [
         ([0] * 240, 1.0),  # All zeros: 1.0 for each subproblem, total 40, normalized 40/40=1.0
         ([1] * 240, 1.0),  # All ones: 1.0 for each subproblem, total 40, normalized 40/40=1.0
-        ([1, 0] * 120, 0.641),  # Alternating 1s and 0s, total fitness normalized appropriately
-        ([1, 0, 1, 0, 1, 0] * 40, 0.641),  # Alternating 1s and 0s in subproblems: normalized appropriately
-        ([1] * 6 + [0] * 6 + [1] * 6 + [0] * 222, 1.0),  # Mix of all ones and all zeros, normalized appropriately
-        ([0, 1, 1, 1, 1, 1] * 40, 0.0)  # Five ones and one zero in each subproblem: normalized appropriately
+        ([1, 0] * 120, 0.641),  # Alternating 1s and 0s, normalized as per problem definition
+        ([1, 0, 1, 0, 1, 0] * 40, 0.641),  # Alternating pattern within each subproblem
+        ([1] * 6 + [0] * 6 + [1] * 6 + [0] * 222, 1.0),  # Mix of all ones and all zeros
+        ([0, 1, 1, 1, 1, 1] * 40, 0.0)  # Five ones and one zero in each subproblem
     ]
 
     for chromosome, expected_fitness in test_cases:

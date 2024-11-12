@@ -6,7 +6,7 @@ def setup_schaffer2():
     """
     Fixture to provide an instance of the Schaffer2 problem.
     """
-    return Schaffer2()
+    return Schaffer2(design_variables=2)
 
 def test_schaffer2_function(setup_schaffer2):
     """
@@ -25,8 +25,8 @@ def test_schaffer2_function(setup_schaffer2):
     test_cases = [
         ([0.0, 0.0], 0.0),                # Global minimum
         ([1.0, 1.0], 0.002),              # Arbitrary point
-        ([2.0, -1.0], 0.025),            # Another arbitrary point (recalculated)
-        ([3.0, 4.0], 0.435)              # Another arbitrary point (recalculated)
+        ([2.0, -1.0], 0.025),             # Another arbitrary point 
+        ([3.0, 4.0], 0.435)               # Another arbitrary point 
     ]
 
     for variables, expected_fitness in test_cases:

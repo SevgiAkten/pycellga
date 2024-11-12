@@ -2,13 +2,20 @@ import pytest
 import numpy as np
 from individual import Individual, GeneType
 from problems.abstract_problem import AbstractProblem
-from recombination.byte_one_point_crossover import ByteOnePointCrossover  # Replace with the actual path if different
+from recombination.byte_one_point_crossover import ByteOnePointCrossover
 
 
 class MockProblem(AbstractProblem):
     """
     A mock problem class for testing purposes.
     """
+    def __init__(self):
+        # Set example values for required arguments
+        design_variables = 5  # Number of design variables
+        bounds = [(0.0, 10.0)] * design_variables  # Bounds for each variable
+        objectives = 1  # Number of objectives
+        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
+
     def f(self, x: list) -> float:
         """
         A mock fitness function that simply sums the chromosome values.

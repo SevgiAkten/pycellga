@@ -1,5 +1,5 @@
-from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
+from problems.abstract_problem import AbstractProblem
 
 class Threehumps(AbstractProblem):
     """
@@ -10,18 +10,21 @@ class Threehumps(AbstractProblem):
 
     Attributes
     ----------
-    None
+    bounds : list of tuple
+        Bounds for each variable, set to [(-5, 5), (-5, 5)] for this function.
+    design_variables : int
+        Number of variables for this problem, which is 2.
+    objectives : int
+        Number of objectives, which is 1 for single-objective optimization.
 
     Methods
     -------
     f(x: list) -> float
         Calculates the Three Hump Camel function value for a given list of variables.
-
-    Notes
-    -----
-    -5 ≤ xi ≤ 5 for i = 1,…,n
-    Global minimum at f(0,..,0) = 0
     """
+
+    def __init__(self):
+        super().__init__(design_variables=2, bounds=[(-5, 5), (-5, 5)], objectives=["minimize"])
 
     def f(self, x: list) -> float:
         """
@@ -37,8 +40,22 @@ class Threehumps(AbstractProblem):
         float
             The Three Hump Camel function value.
         """
-        fitness = 0.0
-        for i in range(len(x) - 1):
-            fitness += (2 * pw(x[i], 2) - 1.05 * pw(x[i], 4) + (pw(x[i], 6) / 6) + 
-                        (x[i] * x[i + 1]) + pw(x[i + 1], 2))
+        if len(x) != self.n_var:
+            raise ValueError(f"Input must have exactly {self.n_var} variables.")
+        
+        x1, x2 = x
+        fitness = 2 * pw(x1, 2) - 1.05 * pw(x1, 4) + (pw(x1, 6) / 6) + x1 * x2 + pw(x2, 2)
         return round(fitness, 6)
+
+    def evaluate(self, x, out, *args, **kwargs):
+        """
+        Evaluate method for compatibility with pymoo's framework.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        out["F"] = self.f(x)

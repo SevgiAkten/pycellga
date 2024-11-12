@@ -17,7 +17,9 @@ class MockProblem(AbstractProblem):
     f(chromosome : List[float]) -> float
         Returns the sum of the chromosome as the fitness value.
     """
-
+    def __init__(self):
+        super().__init__(design_variables=10, bounds=[(0, 1)] * 10, objectives=1)
+    
     def f(self, chromosome: List[float]) -> float:
         return sum(chromosome)
 
@@ -58,7 +60,8 @@ def test_initial_population_size(setup_population):
     """
     population = setup_population
     pop_list = population.initial_population()
-    assert len(pop_list) == population.n_rows * population.n_cols
+    expected_size = population.n_rows * population.n_cols
+    assert len(pop_list) == expected_size, f"Expected population size: {expected_size}, found: {len(pop_list)}"
 
 
 def test_fitness_evaluation(setup_population):
@@ -79,7 +82,7 @@ def test_fitness_evaluation(setup_population):
 
     for ind in pop_list:
         expected_fitness = population.problem.f(ind.chromosome)
-        assert ind.fitness_value == expected_fitness
+        assert ind.fitness_value == expected_fitness, f"Expected fitness: {expected_fitness}, found: {ind.fitness_value}"
 
 
 def test_neighborhood_assignment(setup_population):
@@ -102,4 +105,9 @@ def test_neighborhood_assignment(setup_population):
         expected_neighbors_positions = Linear9(
             position=ind.position, n_rows=population.n_rows, n_cols=population.n_cols
         ).calculate_neighbors_positions()
-        assert ind.neighbors_positions == expected_neighbors_positions
+        assert ind.neighbors_positions == expected_neighbors_positions, (
+            f"Expected neighbors: {expected_neighbors_positions}, found: {ind.neighbors_positions}"
+        )
+
+if __name__ == "__main__":
+    pytest.main()

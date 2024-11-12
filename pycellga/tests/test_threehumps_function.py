@@ -23,8 +23,8 @@ def test_threehumps_function(setup_threehumps):
     test_cases = [
         ([0.0, 0.0], 0.0),                  # Global minimum
         ([1.0, 1.0], 3.116667),             # Arbitrary point
-        ([2.0, -1.0], 0.866667),                 # Another arbitrary point
-        ([3.0, -2.0], 52.45)            # Another arbitrary point
+        ([2.0, -1.0], 0.866667),            # Another arbitrary point
+        ([3.0, -2.0], 52.45)                # Another arbitrary point
     ]
 
     for variables, expected_fitness in test_cases:
@@ -32,3 +32,29 @@ def test_threehumps_function(setup_threehumps):
         print(f"Variables: {variables} => Fitness: {fitness_value}, Expected: {expected_fitness}")
         assert isinstance(fitness_value, float)
         assert fitness_value == pytest.approx(expected_fitness, rel=1e-6), f"Expected {expected_fitness}, got {fitness_value}"
+
+def test_threehumps_evaluate(setup_threehumps):
+    """
+    Test the evaluate function for pymoo compatibility.
+
+    This test checks if the evaluate function returns correct fitness values
+    and is compatible with pymoo's expected input and output structure.
+    """
+    # Define test cases as input arrays
+    test_cases = [
+        ([0.0, 0.0], 0.0),
+        ([1.0, 1.0], 3.116667),
+        ([2.0, -1.0], 0.866667),
+        ([3.0, -2.0], 52.45)
+    ]
+
+    for variables, expected_fitness in test_cases:
+        out = {}
+        setup_threehumps.evaluate(variables, out)
+        fitness_value = out["F"]
+        print(f"Variables: {variables} => Fitness: {fitness_value}, Expected: {expected_fitness}")
+        assert isinstance(fitness_value, float)
+        assert fitness_value == pytest.approx(expected_fitness, rel=1e-6), f"Expected {expected_fitness}, got {fitness_value}"
+
+if __name__ == "__main__":
+    pytest.main()

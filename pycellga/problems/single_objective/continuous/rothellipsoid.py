@@ -5,28 +5,54 @@ class Rothellipsoid(AbstractProblem):
     """
     Rotated Hyper-Ellipsoid function implementation for optimization problems.
 
-    The Rotated Hyper-Ellipsoid function is widely used for testing optimization algorithms.
+    This function is widely used for testing optimization algorithms.
     The function is usually evaluated on the hypercube x_i ∈ [-100, 100], for all i = 1, 2, ..., n.
 
     Attributes
     ----------
-    None
+    design_variables : int
+        Number of variables (dimensions) for the problem.
+    bounds : list of tuple
+        The bounds for each variable, typically [(-100, 100), (-100, 100), ...].
+    objectives : int
+        Number of objectives, set to 1 for single-objective optimization.
 
     Methods
     -------
     f(x: list) -> float
-        Calculates the Rotated Hyper-Ellipsoid function value for a given list of variables.
-
-    Notes
-    -----
-    -100 ≤ xi ≤ 100 for i = 1,…,n
-    Global minimum at f(0,....,0) = 0
+        Alias for evaluate, calculates the Rotated Hyper-Ellipsoid function value for a given list of variables.
+    evaluate(x, out, *args, **kwargs)
+        Pymoo-compatible function for calculating the fitness values and storing them in the `out` dictionary.
     """
 
-    def f(self, x: list) -> float:
-        """
-        Calculate the Rotated Hyper-Ellipsoid function value for a given list of variables.
+    def __init__(self, design_variables=3):
+        # Initialize the parameters as required by AbstractProblem
+        super().__init__(
+            design_variables=[f"x{i+1}" for i in range(design_variables)],
+            bounds=[(-100, 100)] * design_variables,
+            objectives=["minimize"]
+        )
 
+    def evaluate(self, x, out, *args, **kwargs):
+        """
+        Calculate the Rotated Hyper-Ellipsoid function value for pymoo compatibility.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        fitness = 0.0
+        for i in range(len(x)):
+            fitness += (i + 1) * pw(x[i], 2)
+        out["F"] = round(fitness, 3)
+
+    def f(self, x):
+        """
+        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        
         Parameters
         ----------
         x : list
@@ -37,10 +63,6 @@ class Rothellipsoid(AbstractProblem):
         float
             The Rotated Hyper-Ellipsoid function value.
         """
-        fitness = 0.0
-        n = len(x)
-
-        for i in range(n):
-            fitness += (i + 2) * pw(x[i], 2)
-
-        return round(fitness, 3)
+        result = {}
+        self.evaluate(x, result)
+        return result["F"]

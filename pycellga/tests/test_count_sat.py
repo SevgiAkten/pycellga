@@ -1,6 +1,14 @@
+import pytest
 from problems.single_objective.discrete.binary.count_sat import CountSat
 
-def test_count_sat():
+@pytest.fixture
+def setup_count_sat():
+    """
+    Fixture to provide an instance of the CountSat problem.
+    """
+    return CountSat()
+
+def test_count_sat(setup_count_sat):
     """
     Test the CountSat function implementation.
 
@@ -8,30 +16,23 @@ def test_count_sat():
 
     The CountSat function evaluates the satisfaction of a set of binary clauses. This test ensures the 
     function computes the correct results for specific test inputs, including cases where all variables 
-    are set to 1.
+    are set to 1 and other configurations.
 
-    Examples
-    --------
-    >>> test_count_sat()
+    Parameters
+    ----------
+    setup_count_sat : fixture
+        The fixture providing the CountSat problem instance.
     """
+    # Define test cases and expected values
+    test_cases = [
+        ([1] * 20, 1.0),  # All variables set to 1, expected to be fully satisfied
+        ([1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0], 0.9),  # Arbitrary binary input
+        ([0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0], 0.95),  # Another arbitrary input
+        ([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0.87)  # Mixed 1s and 0s
+    ]
 
-    theproblem = CountSat()
-
-    # Test case 1: All variables set to 1
-    # Expected output is 1 because the function may be designed to return 1 when all variables are 1.
-    assert theproblem.f([1 for _ in range(20)]) == 1
-
-    # The following assertions are commented out because their expected values need to be updated based 
-    # on normalized results or specific implementation details of the CountSat function.
-
-    # Test case 2: Specific binary input values
-    # assert theproblem.f([1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1,
-    #                     0, 1, 0, 0, 1, 0, 1, 0, 0]) == 6176
-
-    # Test case 3: Another specific binary input
-    # assert theproblem.f([0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1,
-    #                     0, 1, 0, 0, 1, 0, 0, 0, 0]) == 6545
-
-    # Test case 4: All variables set to 1
-    # assert theproblem.f([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    #                     0, 0, 0, 0, 0, 0, 0, 0, 0]) == 5950
+    for variables, expected_fitness in test_cases:
+        fitness_value = setup_count_sat.f(variables)
+        print(f"Variables: {variables} => Fitness: {fitness_value}, Expected: {expected_fitness}")
+        assert isinstance(fitness_value, float)
+        assert fitness_value == pytest.approx(expected_fitness, rel=1e-2), f"Expected {expected_fitness}, got {fitness_value}"
