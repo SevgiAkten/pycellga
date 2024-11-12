@@ -43,8 +43,8 @@ def test_optimizer_ccga_binary():
         mins=[0] * 5,
         maxs=[1] * 5 
     )
-    assert result[1] == 5, "The ccga did not maximize the number of 1s."
-    assert result[0] == [1] * 5, "The chromosome does not match the optimal binary sequence."
+    assert result.fitness_value == 5, "The ccga did not maximize the number of 1s."
+    assert result.chromosome == [1] * 5, "The chromosome does not match the optimal binary sequence."
 
 if __name__ == "__main__":
     pytest.main()

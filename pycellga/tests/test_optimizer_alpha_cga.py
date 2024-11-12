@@ -50,8 +50,8 @@ def test_optimizer_alpha_cga_real():
         maxs=[32.768] * 5
         
     )
-    assert result[1] == 0.0, "The alpha_cga did not find the global minimum."
-    assert result[0] == [0.0] * 5, "The chromosome does not match the global minimum."
+    assert result.fitness_value == 0.0, "The alpha_cga did not find the global minimum."
+    assert result.chromosome == [0.0] * 5, "The chromosome does not match the global minimum."
 
 class BinaryProblem:
     """
@@ -98,8 +98,8 @@ def test_optimizer_alpha_cga_binary():
         mins=[0] * 10,
         maxs=[1] * 10
     )
-    assert result[1] == -10, "The alpha_cga did not maximize the number of 1s."
-    assert result[0] == [1] * 10, "The chromosome does not match the optimal binary sequence."
+    assert result.fitness_value == -10, "The alpha_cga did not maximize the number of 1s."
+    assert result.chromosome == [1] * 10, "The chromosome does not match the optimal binary sequence."
 
 
 
@@ -165,10 +165,10 @@ class PermutationProblem:
         )
 
         # Assert that the alpha_cga finds the global minimum
-        print(result[0])
-        print(result[1])
-        assert result[1] == 0.0, "The alpha_cga did not find the global minimum."
-        assert result[0] == target_permutation, "The chromosome does not match the target permutation."
+        print(result.fitness_value)
+        print(result.chromosome)
+        assert result.fitness_value == 0.0, "The alpha_cga did not find the global minimum."
+        assert result.chromosome == target_permutation, "The chromosome does not match the target permutation."
 
 
 def test_optimizer_alpha_cga_no_variation():
@@ -188,7 +188,7 @@ def test_optimizer_alpha_cga_no_variation():
         mins=[-32.768] * 5,
         maxs=[32.768] * 5
     )
-    assert result[1] != 0.0, "With no crossover or mutation, the solution should not reach the global minimum."
+    assert result.fitness_value != 0.0, "With no crossover or mutation, the solution should not reach the global minimum."
 
 
 if __name__ == "__main__":

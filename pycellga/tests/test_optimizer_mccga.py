@@ -45,8 +45,8 @@ def test_optimizer_mcccga_binary():
         mins=[-3.768] * 5,
         maxs=[3.768] * 5
     )
-    assert result[1] == 0.0, "The mcccga did not find the global minimum."
-    assert result[0] == [0.0] * 5, "The chromosome does not match the global minimum."
+    assert result.fitness_value == 0.0, "The mcccga did not find the global minimum."
+    assert result.chromosome == [0.0] * 5, "The chromosome does not match the global minimum."
 
 if __name__ == "__main__":
     pytest.main()

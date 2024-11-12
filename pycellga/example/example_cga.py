@@ -44,8 +44,9 @@ def run_cga_example():
     
     Returns
     -------
-    tuple
-        A tuple containing the best solution chromosome and its corresponding value.
+    Result
+        A Result instance containing the best solution's chromosome, its fitness value, 
+        and the generation in which it was found.
     """
     # Create an instance of the problem
     problem_instance = ExampleProblem()
@@ -68,7 +69,9 @@ def run_cga_example():
     )
 
     # Print the results
-    print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
+    print("Best solution chromosome:", result.chromosome)
+    print("Best fitness value:", result.fitness_value)
+    print("Generation found:", result.generation_found)
 
 if __name__ == "__main__":
     run_cga_example()

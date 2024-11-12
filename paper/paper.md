@@ -87,35 +87,38 @@ class ExampleProblem:
         pass
     
     def f(self, x):
-        
         return sum(pw(xi, 2) for xi in x)
 ```
 **Usage:**
 
 ```python
 result = pycellga.optimizer.cga(
-    n_cols = 5,
-    n_rows = 5,
-    n_gen = 100,
-    ch_size = 5,
-    gen_type = pycellga.optimizer.GeneType.REAL,
-    p_crossover = 0.9,
-    p_mutation = 0.2,
-    problem = ExampleProblem(),  # Replace with a real problem instance as needed
-    selection = pycellga.optimizer.TournamentSelection,
-    recombination = pycellga.optimizer.ByteOnePointCrossover,
-    mutation = pycellga.optimizer.ByteMutationRandom,
-    mins = [-32.768] * 5,  # Minimum values for each gene
-    maxs = [32.768] * 5,    # Maximum values for each gene
-    seed_par = 100 # Ensures the random number generation is repeatable
+    n_cols=5,
+    n_rows=5,
+    n_gen=100,
+    ch_size=5,
+    gen_type=pycellga.optimizer.GeneType.REAL,
+    p_crossover=0.9,
+    p_mutation=0.2,
+    problem=ExampleProblem(),  # Replace with a real problem instance as needed
+    selection=pycellga.optimizer.TournamentSelection,
+    recombination=pycellga.optimizer.ByteOnePointCrossover,
+    mutation=pycellga.optimizer.ByteMutationRandom,
+    mins=[-32.768] * 5,  # Minimum values for each gene
+    maxs=[32.768] * 5,    # Maximum values for each gene
+    seed_par=100  # Ensures the random number generation is repeatable
 )
-print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
 
-# The result is 
-# Best solution: 0.0 
+# Print the best solution details
+print("Best solution chromosome:", result.chromosome)
+print("Best fitness value:", result.fitness_value)
+print("Generation found:", result.generation_found)
+
+# Expected Output:
 # Best solution chromosome: [0.0, 0.0, 0.0, 0.0, 0.0]
+# Best fitness value: 0.0
+# Generation found: <generation_number>
 
 ```
-
 
 # References

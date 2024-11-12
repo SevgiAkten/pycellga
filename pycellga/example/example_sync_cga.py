@@ -42,11 +42,12 @@ def run_sync_cga_example():
     The sync_cga is configured with a 5x5 grid, 100 generations, and a chromosome size of 5.
     The problem being solved is an instance of the ExampleProblem class, 
     with real-valued genes, constrained by specified mins and maxs.
-    
+
     Returns
     -------
-    tuple
-        A tuple containing the best solution chromosome and its corresponding value.
+    Result
+        A Result instance containing the best solution's chromosome, its fitness value, 
+        and the generation in which it was found.
     """
     # Create an instance of the problem
     problem_instance = ExampleProblem()
@@ -69,7 +70,9 @@ def run_sync_cga_example():
     )
 
     # Print the results
-    print("Best solution:", result[1], "\nBest solution chromosome:", result[0])
+    print("Best solution chromosome:", result.chromosome)
+    print("Best fitness value:", result.fitness_value)
+    print("Generation found:", result.generation_found)
 
 if __name__ == "__main__":
     run_sync_cga_example()
