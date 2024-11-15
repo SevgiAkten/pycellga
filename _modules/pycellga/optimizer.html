@@ -337,49 +337,49 @@
 
 
 <span class="c1"># ------------------------------ selection --------------------------------- #</span>
-<span class="kn">from</span> <span class="nn">selection.roulette_wheel_selection</span> <span class="kn">import</span> <span class="n">RouletteWheelSelection</span>
-<span class="kn">from</span> <span class="nn">selection.tournament_selection</span> <span class="kn">import</span> <span class="n">TournamentSelection</span>
-<span class="kn">from</span> <span class="nn">selection.selection_operator</span> <span class="kn">import</span> <span class="n">SelectionOperator</span>
+<span class="kn">from</span> <span class="nn">pycellga.selection.roulette_wheel_selection</span> <span class="kn">import</span> <span class="n">RouletteWheelSelection</span>
+<span class="kn">from</span> <span class="nn">pycellga.selection.tournament_selection</span> <span class="kn">import</span> <span class="n">TournamentSelection</span>
+<span class="kn">from</span> <span class="nn">pycellga.selection.selection_operator</span> <span class="kn">import</span> <span class="n">SelectionOperator</span>
 <span class="c1"># -------------------------------------------------------------------------- #</span>
 
 <span class="c1"># ------------------------------ recombination ----------------------------- #</span>
-<span class="kn">from</span> <span class="nn">recombination.one_point_crossover</span> <span class="kn">import</span> <span class="n">OnePointCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.pmx_crossover</span> <span class="kn">import</span> <span class="n">PMXCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.two_point_crossover</span> <span class="kn">import</span> <span class="n">TwoPointCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.uniform_crossover</span> <span class="kn">import</span> <span class="n">UniformCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.byte_uniform_crossover</span> <span class="kn">import</span> <span class="n">ByteUniformCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.byte_one_point_crossover</span> <span class="kn">import</span> <span class="n">ByteOnePointCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.byte_one_point_crossover</span> <span class="kn">import</span> <span class="n">ByteOnePointCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.flat_crossover</span> <span class="kn">import</span> <span class="n">FlatCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.arithmetic_crossover</span> <span class="kn">import</span> <span class="n">ArithmeticCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.blxalpha_crossover</span> <span class="kn">import</span> <span class="n">BlxalphaCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.linear_crossover</span> <span class="kn">import</span> <span class="n">LinearCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.unfair_avarage_crossover</span> <span class="kn">import</span> <span class="n">UnfairAvarageCrossover</span>
-<span class="kn">from</span> <span class="nn">recombination.recombination_operator</span> <span class="kn">import</span> <span class="n">RecombinationOperator</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.one_point_crossover</span> <span class="kn">import</span> <span class="n">OnePointCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.pmx_crossover</span> <span class="kn">import</span> <span class="n">PMXCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.two_point_crossover</span> <span class="kn">import</span> <span class="n">TwoPointCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.uniform_crossover</span> <span class="kn">import</span> <span class="n">UniformCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.byte_uniform_crossover</span> <span class="kn">import</span> <span class="n">ByteUniformCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.byte_one_point_crossover</span> <span class="kn">import</span> <span class="n">ByteOnePointCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.byte_one_point_crossover</span> <span class="kn">import</span> <span class="n">ByteOnePointCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.flat_crossover</span> <span class="kn">import</span> <span class="n">FlatCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.arithmetic_crossover</span> <span class="kn">import</span> <span class="n">ArithmeticCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.blxalpha_crossover</span> <span class="kn">import</span> <span class="n">BlxalphaCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.linear_crossover</span> <span class="kn">import</span> <span class="n">LinearCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.unfair_avarage_crossover</span> <span class="kn">import</span> <span class="n">UnfairAvarageCrossover</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.recombination_operator</span> <span class="kn">import</span> <span class="n">RecombinationOperator</span>
 <span class="c1"># -------------------------------------------------------------------------- #</span>
 
 <span class="c1"># -------------------------------- mutation -------------------------------- #</span>
-<span class="kn">from</span> <span class="nn">mutation.bit_flip_mutation</span> <span class="kn">import</span> <span class="n">BitFlipMutation</span>
-<span class="kn">from</span> <span class="nn">mutation.byte_mutation</span> <span class="kn">import</span> <span class="n">ByteMutation</span>
-<span class="kn">from</span> <span class="nn">mutation.byte_mutation_random</span> <span class="kn">import</span> <span class="n">ByteMutationRandom</span>
-<span class="kn">from</span> <span class="nn">mutation.insertion_mutation</span> <span class="kn">import</span> <span class="n">InsertionMutation</span>
-<span class="kn">from</span> <span class="nn">mutation.shuffle_mutation</span> <span class="kn">import</span> <span class="n">ShuffleMutation</span>
-<span class="kn">from</span> <span class="nn">mutation.swap_mutation</span> <span class="kn">import</span> <span class="n">SwapMutation</span>
-<span class="kn">from</span> <span class="nn">mutation.two_opt_mutation</span> <span class="kn">import</span> <span class="n">TwoOptMutation</span>
-<span class="kn">from</span> <span class="nn">mutation.float_uniform_mutation</span> <span class="kn">import</span> <span class="n">FloatUniformMutation</span>
-<span class="kn">from</span> <span class="nn">mutation.mutation_operator</span> <span class="kn">import</span> <span class="n">MutationOperator</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.bit_flip_mutation</span> <span class="kn">import</span> <span class="n">BitFlipMutation</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.byte_mutation</span> <span class="kn">import</span> <span class="n">ByteMutation</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.byte_mutation_random</span> <span class="kn">import</span> <span class="n">ByteMutationRandom</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.insertion_mutation</span> <span class="kn">import</span> <span class="n">InsertionMutation</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.shuffle_mutation</span> <span class="kn">import</span> <span class="n">ShuffleMutation</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.swap_mutation</span> <span class="kn">import</span> <span class="n">SwapMutation</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.two_opt_mutation</span> <span class="kn">import</span> <span class="n">TwoOptMutation</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.float_uniform_mutation</span> <span class="kn">import</span> <span class="n">FloatUniformMutation</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.mutation_operator</span> <span class="kn">import</span> <span class="n">MutationOperator</span>
 <span class="c1"># -------------------------------------------------------------------------- #</span>
 
 
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">byte_operators</span>
-<span class="kn">from</span> <span class="nn">population</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">individual</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">mutation.bit_flip_mutation</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">selection.tournament_selection</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">recombination.one_point_crossover</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">problems.single_objective.discrete.binary.one_max</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.population</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.individual</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.bit_flip_mutation</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.selection.tournament_selection</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.one_point_crossover</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.problems.single_objective.discrete.binary.one_max</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Callable</span>
