@@ -1,11 +1,11 @@
 import pytest
-from individual import Individual, GeneType
-from grid import Grid
-from neighborhoods.linear_9 import Linear9
-from byte_operators import bits_to_floats
-from problems.abstract_problem import AbstractProblem
+from pycellga.individual import Individual, GeneType
+from pycellga.grid import Grid
+from pycellga.neighborhoods.linear_9 import Linear9
+from pycellga.byte_operators import bits_to_floats
+from pycellga.problems.abstract_problem import AbstractProblem
 from typing import List
-from population import Population, OptimizationMethod
+from pycellga.population import Population, OptimizationMethod
 
 
 class MockProblem(AbstractProblem):

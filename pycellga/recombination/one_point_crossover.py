@@ -1,8 +1,8 @@
 import numpy as np
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from pycellga.individual import *
+from pycellga.problems.abstract_problem import AbstractProblem
 from typing import List
-from recombination.recombination_operator import RecombinationOperator
+from pycellga.recombination.recombination_operator import RecombinationOperator
 
 
 class OnePointCrossover(RecombinationOperator):

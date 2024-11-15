@@ -1,8 +1,8 @@
 import pytest
 import numpy as np
-from individual import Individual, GeneType
-from problems.abstract_problem import AbstractProblem
-from recombination.byte_one_point_crossover import ByteOnePointCrossover
+from pycellga.individual import Individual, GeneType
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.recombination.byte_one_point_crossover import ByteOnePointCrossover
 
 
 class MockProblem(AbstractProblem):

@@ -2,7 +2,7 @@ from enum import Enum
 from numpy import random
 import numpy as np
 import random as rd
-from problems.abstract_problem import AbstractProblem
+from pycellga.problems.abstract_problem import AbstractProblem
 
 
 class GeneType(Enum):

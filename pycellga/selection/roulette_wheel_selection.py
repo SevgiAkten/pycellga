@@ -1,6 +1,6 @@
 from typing import List
-from individual import Individual
-from selection.selection_operator import SelectionOperator
+from pycellga.individual import Individual
+from pycellga.selection.selection_operator import SelectionOperator
 import random
 
 class RouletteWheelSelection(SelectionOperator):

@@ -1,9 +1,9 @@
 import numpy.random as randomgenerator
-from individual import *
-from problems.abstract_problem import AbstractProblem
+from pycellga.individual import *
+from pycellga.problems.abstract_problem import AbstractProblem
 from typing import List
 import struct
-from recombination.recombination_operator import RecombinationOperator
+from pycellga.recombination.recombination_operator import RecombinationOperator
 
 class ByteUniformCrossover(RecombinationOperator):
     """

@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.schwefel import Schwefel
+from pycellga.problems.single_objective.continuous.schwefel import Schwefel
 
 @pytest.fixture
 def setup_schwefel():

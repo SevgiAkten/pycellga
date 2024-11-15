@@ -1,6 +1,6 @@
-from mutation.shuffle_mutation import ShuffleMutation
-from problems.single_objective.discrete.permutation.tsp import Tsp
-from individual import Individual, GeneType
+from pycellga.mutation.shuffle_mutation import ShuffleMutation
+from pycellga.problems.single_objective.discrete.permutation.tsp import Tsp
+from pycellga.individual import Individual, GeneType
 import random
 
 def test_shuffle_mutation():

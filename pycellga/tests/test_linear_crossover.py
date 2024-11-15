@@ -1,8 +1,8 @@
 import pytest
 import random
-from individual import Individual
-from problems.abstract_problem import AbstractProblem
-from recombination.linear_crossover import LinearCrossover
+from pycellga.individual import Individual
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.recombination.linear_crossover import LinearCrossover
 
 class MockProblem(AbstractProblem):
     """

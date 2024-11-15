@@ -1,4 +1,4 @@
-from problems.abstract_problem import AbstractProblem
+from pycellga.problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
 
 class Rothellipsoid(AbstractProblem):

@@ -1,6 +1,6 @@
 import numpy as np
 from mpmath import power as pw
-from problems.abstract_problem import AbstractProblem
+from pycellga.problems.abstract_problem import AbstractProblem
 
 class Sumofdifferentpowers(AbstractProblem):
     """

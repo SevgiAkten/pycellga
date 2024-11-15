@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.dropwave import Dropwave
+from pycellga.problems.single_objective.continuous.dropwave import Dropwave
 
 @pytest.fixture
 def setup_dropwave():

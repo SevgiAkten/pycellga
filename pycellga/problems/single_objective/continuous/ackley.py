@@ -1,5 +1,5 @@
 from numpy import pi, e, cos, sqrt, exp
-from problems.abstract_problem import AbstractProblem
+from pycellga.problems.abstract_problem import AbstractProblem
 
 class Ackley(AbstractProblem):
     """

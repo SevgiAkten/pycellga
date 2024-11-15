@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.bohachevsky import Bohachevsky
+from pycellga.problems.single_objective.continuous.bohachevsky import Bohachevsky
 
 @pytest.fixture
 def setup_bohachevsky():

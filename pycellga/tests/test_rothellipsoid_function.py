@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.rothellipsoid import Rothellipsoid
+from pycellga.problems.single_objective.continuous.rothellipsoid import Rothellipsoid
 
 @pytest.fixture
 def setup_rothellipsoid():

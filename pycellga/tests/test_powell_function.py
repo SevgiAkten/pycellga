@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.powell import Powell
+from pycellga.problems.single_objective.continuous.powell import Powell
 
 @pytest.fixture
 def setup_powell():

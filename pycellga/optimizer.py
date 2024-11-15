@@ -2,49 +2,49 @@
 
 
 # ------------------------------ selection --------------------------------- #
-from selection.roulette_wheel_selection import RouletteWheelSelection
-from selection.tournament_selection import TournamentSelection
-from selection.selection_operator import SelectionOperator
+from pycellga.selection.roulette_wheel_selection import RouletteWheelSelection
+from pycellga.selection.tournament_selection import TournamentSelection
+from pycellga.selection.selection_operator import SelectionOperator
 # -------------------------------------------------------------------------- #
 
 # ------------------------------ recombination ----------------------------- #
-from recombination.one_point_crossover import OnePointCrossover
-from recombination.pmx_crossover import PMXCrossover
-from recombination.two_point_crossover import TwoPointCrossover
-from recombination.uniform_crossover import UniformCrossover
-from recombination.byte_uniform_crossover import ByteUniformCrossover
-from recombination.byte_one_point_crossover import ByteOnePointCrossover
-from recombination.byte_one_point_crossover import ByteOnePointCrossover
-from recombination.flat_crossover import FlatCrossover
-from recombination.arithmetic_crossover import ArithmeticCrossover
-from recombination.blxalpha_crossover import BlxalphaCrossover
-from recombination.linear_crossover import LinearCrossover
-from recombination.unfair_avarage_crossover import UnfairAvarageCrossover
-from recombination.recombination_operator import RecombinationOperator
+from pycellga.recombination.one_point_crossover import OnePointCrossover
+from pycellga.recombination.pmx_crossover import PMXCrossover
+from pycellga.recombination.two_point_crossover import TwoPointCrossover
+from pycellga.recombination.uniform_crossover import UniformCrossover
+from pycellga.recombination.byte_uniform_crossover import ByteUniformCrossover
+from pycellga.recombination.byte_one_point_crossover import ByteOnePointCrossover
+from pycellga.recombination.byte_one_point_crossover import ByteOnePointCrossover
+from pycellga.recombination.flat_crossover import FlatCrossover
+from pycellga.recombination.arithmetic_crossover import ArithmeticCrossover
+from pycellga.recombination.blxalpha_crossover import BlxalphaCrossover
+from pycellga.recombination.linear_crossover import LinearCrossover
+from pycellga.recombination.unfair_avarage_crossover import UnfairAvarageCrossover
+from pycellga.recombination.recombination_operator import RecombinationOperator
 # -------------------------------------------------------------------------- #
 
 # -------------------------------- mutation -------------------------------- #
-from mutation.bit_flip_mutation import BitFlipMutation
-from mutation.byte_mutation import ByteMutation
-from mutation.byte_mutation_random import ByteMutationRandom
-from mutation.insertion_mutation import InsertionMutation
-from mutation.shuffle_mutation import ShuffleMutation
-from mutation.swap_mutation import SwapMutation
-from mutation.two_opt_mutation import TwoOptMutation
-from mutation.float_uniform_mutation import FloatUniformMutation
-from mutation.mutation_operator import MutationOperator
+from pycellga.mutation.bit_flip_mutation import BitFlipMutation
+from pycellga.mutation.byte_mutation import ByteMutation
+from pycellga.mutation.byte_mutation_random import ByteMutationRandom
+from pycellga.mutation.insertion_mutation import InsertionMutation
+from pycellga.mutation.shuffle_mutation import ShuffleMutation
+from pycellga.mutation.swap_mutation import SwapMutation
+from pycellga.mutation.two_opt_mutation import TwoOptMutation
+from pycellga.mutation.float_uniform_mutation import FloatUniformMutation
+from pycellga.mutation.mutation_operator import MutationOperator
 # -------------------------------------------------------------------------- #
 
 
 import random
 import numpy as np
 import byte_operators
-from population import *
-from individual import *
-from mutation.bit_flip_mutation import *
-from selection.tournament_selection import *
-from recombination.one_point_crossover import *
-from problems.single_objective.discrete.binary.one_max import *
+from pycellga.population import *
+from pycellga.individual import *
+from pycellga.mutation.bit_flip_mutation import *
+from pycellga.selection.tournament_selection import *
+from pycellga.recombination.one_point_crossover import *
+from pycellga.problems.single_objective.discrete.binary.one_max import *
 
 from typing import Callable, List, Tuple
 from collections.abc import Callable

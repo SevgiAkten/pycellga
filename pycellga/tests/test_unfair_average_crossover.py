@@ -1,8 +1,8 @@
 import pytest
 import random
-from individual import Individual, GeneType
-from problems.abstract_problem import AbstractProblem
-from recombination.unfair_avarage_crossover import UnfairAvarageCrossover
+from pycellga.individual import Individual, GeneType
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.recombination.unfair_avarage_crossover import UnfairAvarageCrossover
 
 class MockProblem(AbstractProblem):
     """

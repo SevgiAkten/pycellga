@@ -1,8 +1,8 @@
 import numpy as np
 import random as rd
-from individual import *
-from problems.abstract_problem import AbstractProblem
-from mutation.mutation_operator import MutationOperator
+from pycellga.individual import *
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.mutation.mutation_operator import MutationOperator
 
 class ShuffleMutation(MutationOperator):
     """

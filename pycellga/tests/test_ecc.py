@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.discrete.binary.ecc import Ecc
+from pycellga.problems.single_objective.discrete.binary.ecc import Ecc
 
 @pytest.fixture
 def ecc_instance():
