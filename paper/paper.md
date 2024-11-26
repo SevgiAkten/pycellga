@@ -49,7 +49,14 @@ In addition, the `pycellga` package features Alpha-male CGA, developed based on 
 
 # State of the field
 
-There are several existing software packages that implement genetic algorithms, such as DEAP and PyGAD. However, most of these packages do not specifically focus on the integration of cellular automata with genetic algorithms, except for JCell, which is a Java implementation of CGAs [@alba2008cellular]. `pycellga` addresses this gap by offering a specialized toolkit for CGAs, leveraging the strengths of both methodologies. `pycellga` includes machine-coded operators with byte-level implementations. Additionally, it features methods such as Alpha-male CGA, Machine-Coded Compact CGA, and Improved CGA with Machine-Coded Operators.
+There are several existing software packages that implement genetic algorithms, such as DEAP and PyGAD. These libraries provide a wide range of tools for evolutionary computation and are highly flexible for various optimization tasks. However, most of these packages do not specifically focus on the integration of cellular automata with genetic algorithms, except for JCell, which is a Java implementation of CGAs [@alba2008cellular]. 
+
+The lack of CGA variants in widely used Python libraries may be attributed to the complexity and niche appeal of cellular genetic algorithms. CGAs, by design, require a spatially structured population and localized interactions, which add an extra layer of complexity compared to traditional GAs. Additionally, while traditional GAs are well-documented and widely adopted, CGAs have been primarily explored in academic research, with fewer applications in mainstream problem-solving scenarios. This may have led to limited adoption in general-purpose optimization libraries.
+
+`pycellga` addresses this gap by offering a specialized toolkit for CGAs, leveraging the strengths of both cellular automata and genetic algorithms. By incorporating features such as Alpha-male CGA, Machine-Coded Compact CGA, and Improved CGA with Machine-Coded Operators, `pycellga` provides unparalleled support for tackling complex optimization problems. Its use of machine-coded operators, adhering to IEEE 754 floating-point arithmetic standards, ensures high precision and computational efficiency, making it a significant advancement in the field.
+
+The introduction of `pycellga` represents a deliberate effort to bring CGA variants into broader usage, making these powerful algorithms more accessible to researchers and practitioners. By providing a Python-based implementation, `pycellga` bridges the gap between theoretical advancements in CGA research and their practical applications, thus addressing the limitations in existing software ecosystems.
+
 
 
 # Statement of need 
