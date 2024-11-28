@@ -37,7 +37,38 @@ Please ensure your code follows the project's coding standards. Use PEP 8 as a g
 
 ### Testing
 
-Ensure that your code changes do not break existing tests and write new tests for new functionality. Run all tests to verify.
+Before submitting a pull request, ensure that your changes pass all the tests and do not introduce any regressions. Here's how to test your changes:
+
+1. **Set up your environment**:
+    - Install all necessary dependencies from `requirements.txt`:
+      ```bash
+      pip install -r requirements.txt
+      ```
+    - Install any additional developer dependencies:
+      ```bash
+      pip install pytest pytest-cov
+      ```
+
+2. **Run the tests**:
+    - Execute the test suite using `pytest`:
+      ```bash
+      pytest
+      ```
+    - Verify that all tests pass without errors.
+
+3. **Check code coverage**:
+    - Run tests with coverage reporting:
+      ```bash
+      pytest --cov=pycellga
+      ```
+    - Ensure that your changes do not significantly reduce the code coverage. A minimum of 90% coverage is recommended.
+
+4. **Add new tests (if applicable)**:
+    - If your changes introduce new features or modify existing functionality, write additional test cases to cover these changes.
+    - Place your tests in the appropriate subdirectory within the `tests` folder, following the naming convention `test_<feature_name>.py`.
+
+5. **Review testing guidelines**:
+    - Ensure your tests follow the existing style and structure used in the project. Use descriptive function names and provide comments where necessary to clarify the test's purpose.
 
 ### Documentation
 

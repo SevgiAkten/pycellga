@@ -3,7 +3,6 @@ Contributing
 
 We’re thrilled that you’re considering contributing to `pycellga`! Community contributions drive innovation and help us improve the software. Whether it’s reporting bugs, suggesting enhancements, or submitting pull requests, your support is invaluable.
 
-
 Ways to Contribute
 ------------------
 
@@ -64,19 +63,19 @@ When you’re ready to submit your changes, follow these guidelines to ensure a 
 1. **Write Clear Commit Messages**: Each commit message should be clear and descriptive.
 2. **Run Tests**: Verify that all tests pass. Tests can be run from the `tests` folder or main directory:
 
-   - From the `tests` folder:
+- From the `tests` folder:
 
-     .. code-block:: bash
+.. code-block:: bash
 
-         cd tests
-         pytest *         # or
-         pytest -v
+    cd tests
+    pytest *         # or
+    pytest -v
 
-   - From the main project directory:
+- From the main project directory:
 
-     .. code-block:: bash
+.. code-block:: bash
 
-         pytest -v
+    pytest -v
 
 3. **Submit a Pull Request**: Push your branch to GitHub, navigate to the main repository, and open a pull request.
 
@@ -98,19 +97,55 @@ Before submitting a pull request, ensure that all tests pass. Tests can be run i
 
 1. **From the `tests` folder**:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-       cd tests
-       pytest *         # or
-       pytest -v
+    cd tests
+    pytest *         # or
+    pytest -v
 
 2. **From the main project directory**:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-       pytest -v
+    pytest -v
 
-If you add new functionality, consider adding tests to cover your changes.
+Testing Guidelines
+------------------
 
+Here are additional details for testing your contributions:
+
+1. **Set up your environment**:
+
+- Install the dependencies listed in `requirements.txt`:
+
+.. code-block:: bash
+
+    pip install -r requirements.txt
+
+- Install testing dependencies like `pytest`:
+
+.. code-block:: bash
+
+    pip install pytest pytest-cov
+
+2. **Run coverage checks**:
+
+- To ensure your changes are covered by tests, run:
+
+.. code-block:: bash
+
+    pytest --cov=pycellga
+
+3. **Write new tests**:
+
+- If your contribution involves new functionality, write test cases to validate its behavior.
+- Place test files in the `tests` folder, following the naming convention `test_<feature_name>.py`.
+
+4. **Review existing tests**:
+
+- Familiarize yourself with the project's test structure by reviewing existing tests in the `tests` folder.
+- Ensure your tests align with the same style and structure.
+
+By following these testing guidelines, you help maintain the quality and reliability of `pycellga`.
 
 Thank you for considering a contribution to `pycellga`. We’re excited to see what you’ll bring to the project!

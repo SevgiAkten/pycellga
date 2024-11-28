@@ -110,6 +110,54 @@ We have provided a basic example above. If you're interested in exploring more e
 
 Contributions are welcome! Please read the contributing guidelines first.
 
+## Testing
+
+To ensure that `pycellga` works as expected, we have provided a comprehensive suite of tests. Follow these steps to run the tests locally:
+
+1. **Install dependencies**: Make sure you have installed all the necessary dependencies from `requirements.txt`. You can install them using the following command:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. **Run tests**: Navigate to the root directory of the project and run the test suite using `pytest`. 
+
+    ```bash
+    pytest
+    ```
+
+    This will automatically discover and execute all the test cases.
+
+3. **Check code coverage** (Optional): You can check the test coverage of the package using `pytest-cov`. First, ensure you have installed `pytest-cov`:
+
+    ```bash
+    pip install pytest-cov
+    ```
+
+    Then, run the tests with coverage reporting:
+
+    ```bash
+    pytest --cov=pycellga
+    ```
+
+    A summary of code coverage will be displayed in the terminal.
+    
+4. **Generate coverage reports**: If you want a detailed HTML report of the code coverage, run:
+
+    ```bash
+    pytest --cov=pycellga --cov-report=html
+    ```
+
+    Open the `htmlcov/index.html` file in a web browser to view the detailed coverage report.
+
+5. **Add new tests (if applicable)**:
+    - If your changes introduce new features or modify existing functionality, write additional test cases to cover these changes.
+    - Place your tests in the appropriate subdirectory within the `tests` folder, following the naming convention `test_<feature_name>.py`.
+
+6. **Review testing guidelines**:
+    - Ensure your tests follow the existing style and structure used in the project. Use descriptive function names and provide comments where necessary to clarify the test's purpose.
+
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
