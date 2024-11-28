@@ -1,4 +1,4 @@
-from pycellga.neighborhoods.linear_5 import Linear5
+from neighborhoods.linear_5 import Linear5
 
 def test_linear_5():
     """

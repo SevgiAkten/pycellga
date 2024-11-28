@@ -1,8 +1,8 @@
 import pytest
 import random
-from pycellga.individual import Individual, GeneType
-from pycellga.problems.abstract_problem import AbstractProblem
-from pycellga.recombination.flat_crossover import FlatCrossover
+from individual import Individual, GeneType
+from problems.abstract_problem import AbstractProblem
+from recombination.flat_crossover import FlatCrossover
 
 class MockProblem(AbstractProblem):
     """

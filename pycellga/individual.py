@@ -2,7 +2,7 @@ from enum import Enum
 from numpy import random
 import numpy as np
 import random as rd
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 
 
 class GeneType(Enum):
@@ -109,7 +109,7 @@ class Individual:
                 self.chromosome = [rd.uniform(-1.0, 0.1) for i in range(self.ch_size)]
 
         else:
-            raise NotImplementedError(self.gen_type + " not implemented yet.")
+            raise NotImplementedError("This gen_type not implemented yet.")
         return self.chromosome
 
 

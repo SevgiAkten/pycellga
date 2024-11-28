@@ -1,6 +1,6 @@
 import numpy as np
 from typing import List
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 
 class Chichinadze(AbstractProblem):
     """

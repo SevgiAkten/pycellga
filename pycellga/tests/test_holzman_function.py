@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.holzman import Holzman
+from problems.single_objective.continuous.holzman import Holzman
 
 @pytest.fixture
 def setup_holzman():

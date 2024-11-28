@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.matyas import Matyas
+from problems.single_objective.continuous.matyas import Matyas
 
 @pytest.fixture
 def setup_matyas():

@@ -1,9 +1,9 @@
 from typing import List
-from pycellga.individual import *
-from pycellga.grid import *
-from pycellga.neighborhoods.linear_9 import Linear9
-from pycellga.byte_operators import *
-from pycellga.problems.abstract_problem import AbstractProblem
+from individual import *
+from grid import *
+from neighborhoods.linear_9 import Linear9
+from byte_operators import *
+from problems.abstract_problem import AbstractProblem
 from enum import Enum 
 
 

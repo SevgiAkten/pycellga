@@ -1,7 +1,7 @@
-from pycellga.problems.single_objective.discrete.binary.one_max import OneMax
-from pycellga.selection.roulette_wheel_selection import RouletteWheelSelection
-from pycellga.population import Population, OptimizationMethod
-from pycellga.individual import GeneType
+from problems.single_objective.discrete.binary.one_max import OneMax
+from selection.roulette_wheel_selection import RouletteWheelSelection
+from population import Population, OptimizationMethod
+from individual import GeneType
 
 def test_roulette_wheel_selection():
     """

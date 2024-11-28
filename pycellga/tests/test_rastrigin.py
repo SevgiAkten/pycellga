@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.rastrigin import Rastrigin
+from problems.single_objective.continuous.rastrigin import Rastrigin
 
 @pytest.fixture
 def setup_rastrigin():

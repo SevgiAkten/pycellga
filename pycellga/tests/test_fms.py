@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.fms import Fms 
+from problems.single_objective.continuous.fms import Fms 
 import numpy as np
 
 @pytest.fixture

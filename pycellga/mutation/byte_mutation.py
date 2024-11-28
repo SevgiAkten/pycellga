@@ -1,8 +1,8 @@
 import numpy as np
-from pycellga.individual import *
-from pycellga.problems.abstract_problem import AbstractProblem
+from individual import *
+from problems.abstract_problem import AbstractProblem
 import struct
-from pycellga.mutation.mutation_operator import MutationOperator
+from mutation.mutation_operator import MutationOperator
 
 class ByteMutation(MutationOperator):
     """

@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.zettle import Zettle
+from problems.single_objective.continuous.zettle import Zettle
 
 @pytest.fixture
 def setup_zettle():

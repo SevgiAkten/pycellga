@@ -1,7 +1,7 @@
 import numpy as np
-from pycellga.problems.single_objective.discrete.binary.one_max import OneMax
-from pycellga.recombination.two_point_crossover import TwoPointCrossover
-from pycellga.individual import Individual, GeneType
+from problems.single_objective.discrete.binary.one_max import OneMax
+from recombination.two_point_crossover import TwoPointCrossover
+from individual import Individual, GeneType
 
 def test_two_point_crossover():
     """

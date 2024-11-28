@@ -1,4 +1,4 @@
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 from typing import List, Tuple
 
 class OneMax(AbstractProblem):
@@ -64,4 +64,4 @@ class OneMax(AbstractProblem):
         float
             The fitness value of the chromosome, which is the sum of its bits.
         """
-        return float(sum(x))
+        return float(-sum(x))

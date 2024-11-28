@@ -1,4 +1,4 @@
-from pycellga.grid import Grid
+from grid import Grid
 
 def test_grid():
     """

@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.styblinskitang import StyblinskiTang
+from problems.single_objective.continuous.styblinskitang import StyblinskiTang
 
 @pytest.fixture
 def setup_styblinski_tang():

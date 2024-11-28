@@ -1,4 +1,4 @@
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 from numpy import pi, sin, random
 
 class Fms(AbstractProblem):

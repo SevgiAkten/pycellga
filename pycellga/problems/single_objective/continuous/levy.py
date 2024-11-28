@@ -1,4 +1,4 @@
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 import math
 from mpmath import power as pw
 from typing import List

@@ -1,4 +1,4 @@
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 from typing import List, Tuple
 
 class Mmdp(AbstractProblem):

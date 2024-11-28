@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.sumofdifferentpowers import Sumofdifferentpowers  
+from problems.single_objective.continuous.sumofdifferentpowers import Sumofdifferentpowers  
 
 @pytest.fixture
 def setup_sumofdifferentpowers():

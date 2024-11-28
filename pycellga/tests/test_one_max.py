@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.discrete.binary.one_max import OneMax  
+from problems.single_objective.discrete.binary.one_max import OneMax  
 
 @pytest.fixture
 def one_max_instance():
@@ -21,11 +21,11 @@ def test_one_max(one_max_instance):
     """
     # Test case 1: All variables set to 1
     # Expected output is 5 because there are 5 ones in the input list.
-    assert one_max_instance.f([1, 1, 1, 1, 1]) == 5
+    assert one_max_instance.f([1, 1, 1, 1, 1]) == -5
 
     # Test case 2: All variables set to 1 in a list of size 6
     # Expected output is 6 because there are 6 ones in the input list.
-    assert one_max_instance.f([1, 1, 1, 1, 1, 1]) == 6
+    assert one_max_instance.f([1, 1, 1, 1, 1, 1]) == -6
 
     # Test case 3: All variables set to 0
     # Expected output is 0 because there are no ones in the input list.
@@ -33,7 +33,7 @@ def test_one_max(one_max_instance):
 
     # Test case 4: Mixed 1s and 0s
     # Expected output is 3 because there are 3 ones in the input list.
-    assert one_max_instance.f([1, 0, 1, 0, 1]) == 3
+    assert one_max_instance.f([1, 0, 1, 0, 1]) == -3
 
 if __name__ == "__main__":
     pytest.main()

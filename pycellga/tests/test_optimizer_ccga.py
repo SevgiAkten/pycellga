@@ -1,5 +1,5 @@
 import pytest
-from pycellga.optimizer import ccga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
+from optimizer import ccga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
 from typing import List
 
 class BinaryProblem:

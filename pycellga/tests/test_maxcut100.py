@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.discrete.binary.maxcut100 import Maxcut100
+from problems.single_objective.discrete.binary.maxcut100 import Maxcut100
 
 @pytest.fixture
 def maxcut_instance():

@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.zakharov import Zakharov
+from problems.single_objective.continuous.zakharov import Zakharov
 
 @pytest.fixture
 def setup_zakharov():

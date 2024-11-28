@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.discrete.binary.count_sat import CountSat
+from problems.single_objective.discrete.binary.count_sat import CountSat
 
 @pytest.fixture
 def setup_count_sat():

@@ -1,5 +1,5 @@
 import pytest
-from pycellga.problems.single_objective.continuous.pow import Pow
+from problems.single_objective.continuous.pow import Pow
 
 @pytest.fixture
 def setup_pow():

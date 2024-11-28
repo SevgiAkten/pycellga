@@ -1,4 +1,4 @@
-from pycellga.neighborhoods.compact_25 import Compact25
+from neighborhoods.compact_25 import Compact25
 
 def test_compact_25():
     """

@@ -1,4 +1,4 @@
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 import tsplib95
 from math import sqrt
 from geopy.distance import geodesic

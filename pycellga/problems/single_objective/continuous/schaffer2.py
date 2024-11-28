@@ -1,6 +1,6 @@
 import numpy as np
 from numpy import power as pw
-from pycellga.problems.abstract_problem import AbstractProblem
+from problems.abstract_problem import AbstractProblem
 
 class Schaffer2(AbstractProblem):
     """

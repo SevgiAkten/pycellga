@@ -1,4 +1,4 @@
-from pycellga.problems.single_objective.continuous.ackley import Ackley
+from problems.single_objective.continuous.ackley import Ackley
 import numpy as np
 
 def test_ackley():

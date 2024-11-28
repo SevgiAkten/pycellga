@@ -1,5 +1,5 @@
 import pytest
-from pycellga.optimizer import sync_cga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
+from optimizer import sync_cga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
 import mpmath as mp
 from typing import List
 

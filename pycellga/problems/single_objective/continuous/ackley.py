@@ -1,5 +1,5 @@
-from numpy import pi, e, cos, sqrt, exp
-from pycellga.problems.abstract_problem import AbstractProblem
+from numpy import pi, e, cos, sqrt, exp,power
+from problems.abstract_problem import AbstractProblem
 
 class Ackley(AbstractProblem):
     """
@@ -53,7 +53,7 @@ class Ackley(AbstractProblem):
         out : dict
             Dictionary to store the output fitness values.
         """
-        sum1 = sum(gene ** 2 for gene in x)
+        sum1 = sum(power(gene,2) for gene in x)
         sum2 = sum(cos(2 * pi * gene) for gene in x)
         
         fitness = -20.0 * exp(-0.2 * sqrt(sum1 / self.dimension)) - exp(sum2 / self.dimension) + 20.0 + e

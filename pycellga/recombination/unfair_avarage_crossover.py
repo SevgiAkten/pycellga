@@ -1,8 +1,8 @@
 import random
-from pycellga.individual import *
-from pycellga.problems.abstract_problem import AbstractProblem
+from individual import *
+from problems.abstract_problem import AbstractProblem
 from typing import List
-from pycellga.recombination.recombination_operator import RecombinationOperator
+from recombination.recombination_operator import RecombinationOperator
 
 class UnfairAvarageCrossover(RecombinationOperator):
     """
