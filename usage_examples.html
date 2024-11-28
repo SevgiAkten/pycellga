@@ -298,6 +298,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#example-problem">Example Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exampleproblem-class">ExampleProblem Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customization-scenarios">Customization Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selecting-gene-types">Selecting Gene Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#problem-selection">Problem Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-problems">Continuous Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binary-problems">Binary Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#permutation-problems">Permutation Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selection-operators">Selection Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recombination-operators">Recombination Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mutation-operators">Mutation Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-scenarios">Example Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-1-binary-optimization-with-tournament-selection">Scenario 1: Binary Optimization with Tournament Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-2-real-valued-optimization-with-byte-one-point-crossover">Scenario 2: Real-Valued Optimization with Byte One Point Crossover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-3-permutation-optimization-for-traveling-salesman-problem">Scenario 3: Permutation Optimization for Traveling Salesman Problem</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
@@ -392,6 +405,191 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/SevgiAkten/pycellga/tree/main/pycellga/example">Click here to see the other examples</a> available directly in the repository.</p></li>
 </ul>
+</section>
+<section id="customization-scenarios">
+<h2>Customization Scenarios<a class="headerlink" href="#customization-scenarios" title="Link to this heading"></a></h2>
+<p><cite>pycellga</cite> allows users to customize the methods and operators used in their optimization problems. Below are some examples to help you design your own scenarios.</p>
+</section>
+<section id="selecting-gene-types">
+<h2>Selecting Gene Types<a class="headerlink" href="#selecting-gene-types" title="Link to this heading"></a></h2>
+<p>You can change the <cite>gen_type</cite> parameter based on the type of problem:</p>
+<ul class="simple">
+<li><p><cite>pycellga.optimizer.GeneType.REAL</cite> for real-valued problems.</p></li>
+<li><p><cite>pycellga.optimizer.GeneType.BINARY</cite> for binary problems.</p></li>
+<li><p><cite>pycellga.optimizer.GeneType.PERMUTATION</cite> for permutation-based problems.</p></li>
+</ul>
+</section>
+<section id="problem-selection">
+<h2>Problem Selection<a class="headerlink" href="#problem-selection" title="Link to this heading"></a></h2>
+<p><cite>pycellga</cite> includes several built-in problems for quick usage, categorized into continuous (real-valued), binary, and permutation problems. These problems allow users to directly specify the <cite>problem</cite> parameter for quick implementation.</p>
+</section>
+<section id="continuous-problems">
+<h2>Continuous Problems<a class="headerlink" href="#continuous-problems" title="Link to this heading"></a></h2>
+<p>For continuous optimization problems, the following functions are available:</p>
+<ul class="simple">
+<li><p><cite>pycellga.optimizer.Ackley()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Bentcigar()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Bohachevsky()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Chichinadze()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Dropwave()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Fms()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Griewank()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Holzman()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Levy()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Matyas()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Pow()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Powell()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Rastrigin()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Rosenbrock()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Rothellipsoid()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Schaffer()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Schaffer2()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Schwefel()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Sphere()</cite></p></li>
+<li><p><cite>pycellga.optimizer.StyblinskiTang()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Sumofdifferentpowers()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Threehumps()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Zakharov()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Zettle()</cite></p></li>
+</ul>
+</section>
+<section id="binary-problems">
+<h2>Binary Problems<a class="headerlink" href="#binary-problems" title="Link to this heading"></a></h2>
+<p>For binary optimization problems, use the following built-in options:</p>
+<ul class="simple">
+<li><p><cite>pycellga.optimizer.CountSat()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Ecc()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Maxcut20_01()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Maxcut20_09()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Maxcut100()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Mmdp()</cite></p></li>
+<li><p><cite>pycellga.optimizer.OneMax()</cite></p></li>
+<li><p><cite>pycellga.optimizer.Peak()</cite></p></li>
+</ul>
+</section>
+<section id="permutation-problems">
+<h2>Permutation Problems<a class="headerlink" href="#permutation-problems" title="Link to this heading"></a></h2>
+<p>For permutation-based optimization problems, the following option is available:</p>
+<ul class="simple">
+<li><p><cite>pycellga.optimizer.Tsp()</cite></p></li>
+</ul>
+<p>These built-in problems provide a diverse set of test cases, allowing users to explore <cite>pycellga</cite>’s capabilities across a wide range of optimization challenges. Users can also define custom problems to suit their specific needs.</p>
+</section>
+<section id="selection-operators">
+<h2>Selection Operators<a class="headerlink" href="#selection-operators" title="Link to this heading"></a></h2>
+<p>Choose from a variety of selection methods:</p>
+<ul class="simple">
+<li><p><cite>pycellga.optimizer.TournamentSelection</cite></p></li>
+<li><p><cite>pycellga.optimizer.RouletteWheelSelection</cite></p></li>
+</ul>
+</section>
+<section id="recombination-operators">
+<h2>Recombination Operators<a class="headerlink" href="#recombination-operators" title="Link to this heading"></a></h2>
+<p>The package provides multiple crossover operators:</p>
+<ul class="simple">
+<li><p><cite>pycellga.optimizer.OnePointCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.PMXCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.TwoPointCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.UniformCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.ByteUniformCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.ByteOnePointCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.FlatCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.ArithmeticCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.BlxalphaCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.LinearCrossover</cite></p></li>
+<li><p><cite>pycellga.optimizer.UnfairAvarageCrossover</cite></p></li>
+</ul>
+</section>
+<section id="mutation-operators">
+<h2>Mutation Operators<a class="headerlink" href="#mutation-operators" title="Link to this heading"></a></h2>
+<p>You can customize mutation with these options:</p>
+<ul class="simple">
+<li><p><cite>pycellga.optimizer.BitFlipMutation</cite></p></li>
+<li><p><cite>pycellga.optimizer.ByteMutation</cite></p></li>
+<li><p><cite>pycellga.optimizer.ByteMutationRandom</cite></p></li>
+<li><p><cite>pycellga.optimizer.InsertionMutation</cite></p></li>
+<li><p><cite>pycellga.optimizer.ShuffleMutation</cite></p></li>
+<li><p><cite>pycellga.optimizer.SwapMutation</cite></p></li>
+<li><p><cite>pycellga.optimizer.TwoOptMutation</cite></p></li>
+<li><p><cite>pycellga.optimizer.FloatUniformMutation</cite></p></li>
+<li><p><cite>pycellga.optimizer.MutationOperator</cite></p></li>
+</ul>
+</section>
+<section id="example-scenarios">
+<h2>Example Scenarios<a class="headerlink" href="#example-scenarios" title="Link to this heading"></a></h2>
+</section>
+<section id="scenario-1-binary-optimization-with-tournament-selection">
+<h2>Scenario 1: Binary Optimization with Tournament Selection<a class="headerlink" href="#scenario-1-binary-optimization-with-tournament-selection" title="Link to this heading"></a></h2>
+<p>Optimize a binary problem using tournament selection, one-point crossover, and bit-flip mutation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">ch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">gen_type</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span>
+    <span class="n">p_crossover</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">p_mutation</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">problem</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">OneMax</span><span class="p">(),</span>  <span class="c1"># Built-in binary optimization problem</span>
+    <span class="n">selection</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+    <span class="n">recombination</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">OnePointCrossover</span><span class="p">,</span>
+    <span class="n">mutation</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">BitFlipMutation</span><span class="p">,</span>
+    <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">seed_par</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="scenario-2-real-valued-optimization-with-byte-one-point-crossover">
+<h2>Scenario 2: Real-Valued Optimization with Byte One Point Crossover<a class="headerlink" href="#scenario-2-real-valued-optimization-with-byte-one-point-crossover" title="Link to this heading"></a></h2>
+<p>Solve a real-valued optimization problem using Byte One Point Crossover and Byte Mutation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">ch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">gen_type</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">REAL</span><span class="p">,</span>
+    <span class="n">p_crossover</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">p_mutation</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">problem</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">Ackley</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>  <span class="c1"># Built-in real-valued optimization problem</span>
+    <span class="n">selection</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">RouletteWheelSelection</span><span class="p">,</span>
+    <span class="n">recombination</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">ByteOnePointCrossover</span><span class="p">,</span>
+    <span class="n">mutation</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">ByteMutation</span><span class="p">,</span>
+    <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">seed_par</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="scenario-3-permutation-optimization-for-traveling-salesman-problem">
+<h2>Scenario 3: Permutation Optimization for Traveling Salesman Problem<a class="headerlink" href="#scenario-3-permutation-optimization-for-traveling-salesman-problem" title="Link to this heading"></a></h2>
+<p>Optimize a TSP using permutation encoding, PMX crossover, and swap mutation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">ch_size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>  <span class="c1"># Number of cities</span>
+    <span class="n">gen_type</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">PERMUTATION</span><span class="p">,</span>
+    <span class="n">p_crossover</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">p_mutation</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">problem</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">Tsp</span><span class="p">(),</span>  <span class="c1"># Built-in TSP optimization problem</span>
+    <span class="n">selection</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+    <span class="n">recombination</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">PMXCrossover</span><span class="p">,</span>
+    <span class="n">mutation</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">SwapMutation</span><span class="p">,</span>
+    <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">*</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">seed_par</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These scenarios demonstrate how to adapt pycellga to different optimization problems using its flexible configuration options.</p>
 </section>
 </section>
 

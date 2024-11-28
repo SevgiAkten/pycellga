@@ -15,10 +15,10 @@ The `pycellga` package is a Python library for implementing and testing cellular
 
 
 **Core Modules**
---------------
+------------------
 
 Population Management
---------------
+----------------------
 
 Handles the initialization and management of the population in CGA. It includes methods for population updates, replacement, and neighborhood interactions within the grid structure.
 
@@ -30,7 +30,7 @@ Handles the initialization and management of the population in CGA. It includes 
 
 
 Individual Representation
---------------
+--------------------------
 
 Represents an individual in the population, encapsulating attributes like the chromosome and fitness value. This module provides the fundamental building blocks for individuals used within the CGA framework.
 
