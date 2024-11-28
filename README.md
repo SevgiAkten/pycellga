@@ -3,7 +3,7 @@
 ![Repo Size](https://img.shields.io/github/repo-size/SevgiAkten/pycellga)
 ![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)
 ![GitHub Contributors](https://img.shields.io/github/contributors/SevgiAkten/pycellga)
-[![PyPI version](https://img.shields.io/pypi/v/pycellga.svg?cacheBuster=123456)](https://pypi.org/project/pycellga/)
+[![PyPI version](https://img.shields.io/pypi/v/pycellga.svg?cacheSeconds=60)](https://pypi.org/project/pycellga/)
 
 
 
