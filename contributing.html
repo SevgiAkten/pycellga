@@ -319,6 +319,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#pull-request-guidelines">Pull Request Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#coding-standards">Coding Standards</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-tests">Running Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-guidelines">Testing Guidelines</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="citing.html">Citing</a></li>
@@ -393,24 +394,25 @@
 <section id="pull-request-guidelines">
 <h2>Pull Request Guidelines<a class="headerlink" href="#pull-request-guidelines" title="Link to this heading"></a></h2>
 <p>When you’re ready to submit your changes, follow these guidelines to ensure a smooth review process:</p>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p><strong>Write Clear Commit Messages</strong>: Each commit message should be clear and descriptive.</p></li>
-<li><p><strong>Run Tests</strong>: Verify that all tests pass. Tests can be run from the <cite>tests</cite> folder or main directory:</p>
-<ul>
-<li><p>From the <cite>tests</cite> folder:</p>
+<li><p><strong>Run Tests</strong>: Verify that all tests pass. Tests can be run from the <cite>tests</cite> folder or main directory:</p></li>
+</ol>
+<ul class="simple">
+<li><p>From the <cite>tests</cite> folder:</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>tests
 pytest<span class="w"> </span>*<span class="w">         </span><span class="c1"># or</span>
 pytest<span class="w"> </span>-v
 </pre></div>
 </div>
-</li>
-<li><p>From the main project directory:</p>
+<ul class="simple">
+<li><p>From the main project directory:</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-v
 </pre></div>
 </div>
-</li>
-</ul>
-</li>
+<ol class="arabic simple" start="3">
 <li><p><strong>Submit a Pull Request</strong>: Push your branch to GitHub, navigate to the main repository, and open a pull request.</p></li>
 <li><p><strong>Respond to Reviews</strong>: Be responsive to feedback during the review process, and make any requested changes to ensure your contribution is merged smoothly.</p></li>
 </ol>
@@ -427,21 +429,63 @@ pytest<span class="w"> </span>-v
 <section id="running-tests">
 <h2>Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h2>
 <p>Before submitting a pull request, ensure that all tests pass. Tests can be run in the <cite>tests</cite> folder or from the main directory as follows:</p>
-<ol class="arabic">
-<li><p><strong>From the `tests` folder</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>From the `tests` folder</strong>:</p></li>
+</ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>tests
 pytest<span class="w"> </span>*<span class="w">         </span><span class="c1"># or</span>
 pytest<span class="w"> </span>-v
 </pre></div>
 </div>
-</li>
-<li><p><strong>From the main project directory</strong>:</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>From the main project directory</strong>:</p></li>
+</ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-v
 </pre></div>
 </div>
-</li>
+</section>
+<section id="testing-guidelines">
+<h2>Testing Guidelines<a class="headerlink" href="#testing-guidelines" title="Link to this heading"></a></h2>
+<p>Here are additional details for testing your contributions:</p>
+<ol class="arabic simple">
+<li><p><strong>Set up your environment</strong>:</p></li>
 </ol>
-<p>If you add new functionality, consider adding tests to cover your changes.</p>
+<ul class="simple">
+<li><p>Install the dependencies listed in <cite>requirements.txt</cite>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Install testing dependencies like <cite>pytest</cite>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pytest<span class="w"> </span>pytest-cov
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Run coverage checks</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p>To ensure your changes are covered by tests, run:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>pycellga
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Write new tests</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p>If your contribution involves new functionality, write test cases to validate its behavior.</p></li>
+<li><p>Place test files in the <cite>tests</cite> folder, following the naming convention <cite>test_&lt;feature_name&gt;.py</cite>.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>Review existing tests</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Familiarize yourself with the project’s test structure by reviewing existing tests in the <cite>tests</cite> folder.</p></li>
+<li><p>Ensure your tests align with the same style and structure.</p></li>
+</ul>
+<p>By following these testing guidelines, you help maintain the quality and reliability of <cite>pycellga</cite>.</p>
 <p>Thank you for considering a contribution to <cite>pycellga</cite>. We’re excited to see what you’ll bring to the project!</p>
 </section>
 </section>
