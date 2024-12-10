@@ -336,9 +336,11 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">)))</span>
 
-<span class="kn">import</span> <span class="nn">optimizer</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">optimizer</span> <span class="kn">import</span> <span class="n">mcccga</span>
 <span class="kn">from</span> <span class="nn">individual</span> <span class="kn">import</span> <span class="n">GeneType</span>
+<span class="kn">from</span> <span class="nn">selection</span> <span class="kn">import</span> <span class="n">TournamentSelection</span>
 
 <div class="viewcode-block" id="RealProblem">
 <a class="viewcode-back" href="../../../pycellga.example.html#pycellga.example.example_mcccga.RealProblem">[docs]</a>
@@ -398,14 +400,14 @@
     <span class="c1"># Create an instance of the problem</span>
     <span class="n">problem_instance</span> <span class="o">=</span> <span class="n">RealProblem</span><span class="p">()</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">mcccga</span><span class="p">(</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">mcccga</span><span class="p">(</span>
         <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">n_gen</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
         <span class="n">ch_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">gen_type</span><span class="o">=</span><span class="n">GeneType</span><span class="o">.</span><span class="n">REAL</span><span class="p">,</span>
         <span class="n">problem</span><span class="o">=</span><span class="n">problem_instance</span><span class="p">,</span>  <span class="c1"># Pass the RealProblem instance</span>
-        <span class="n">selection</span><span class="o">=</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+        <span class="n">selection</span><span class="o">=</span><span class="n">TournamentSelection</span><span class="p">,</span>
         <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
         <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mf">3.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
     <span class="p">)</span>

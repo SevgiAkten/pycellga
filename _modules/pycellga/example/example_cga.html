@@ -335,9 +335,14 @@
 <span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">)))</span>
-<span class="kn">import</span> <span class="nn">optimizer</span>
-<span class="kn">from</span> <span class="nn">individual</span> <span class="kn">import</span> <span class="n">GeneType</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">power</span> <span class="k">as</span> <span class="n">pw</span>
+
+<span class="kn">from</span> <span class="nn">optimizer</span> <span class="kn">import</span> <span class="n">cga</span>
+<span class="kn">from</span> <span class="nn">individual</span> <span class="kn">import</span> <span class="n">GeneType</span>
+<span class="kn">from</span> <span class="nn">recombination</span> <span class="kn">import</span> <span class="n">ByteOnePointCrossover</span>
+<span class="kn">from</span> <span class="nn">mutation</span> <span class="kn">import</span> <span class="n">ByteMutationRandom</span>
+<span class="kn">from</span> <span class="nn">selection</span> <span class="kn">import</span> <span class="n">TournamentSelection</span>
+
 
 <div class="viewcode-block" id="ExampleProblem">
 <a class="viewcode-back" href="../../../pycellga.example.html#pycellga.example.example_cga.ExampleProblem">[docs]</a>
@@ -396,7 +401,7 @@
     <span class="c1"># Create an instance of the problem</span>
     <span class="n">problem_instance</span> <span class="o">=</span> <span class="n">ExampleProblem</span><span class="p">()</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cga</span><span class="p">(</span>
         <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">n_gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -405,9 +410,9 @@
         <span class="n">p_crossover</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
         <span class="n">p_mutation</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
         <span class="n">problem</span><span class="o">=</span><span class="n">problem_instance</span><span class="p">,</span>  <span class="c1"># Pass the ExampleProblem instance</span>
-        <span class="n">selection</span><span class="o">=</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
-        <span class="n">recombination</span><span class="o">=</span><span class="n">optimizer</span><span class="o">.</span><span class="n">ByteOnePointCrossover</span><span class="p">,</span>
-        <span class="n">mutation</span><span class="o">=</span><span class="n">optimizer</span><span class="o">.</span><span class="n">ByteMutationRandom</span><span class="p">,</span>
+        <span class="n">selection</span><span class="o">=</span><span class="n">TournamentSelection</span><span class="p">,</span>
+        <span class="n">recombination</span><span class="o">=</span><span class="n">ByteOnePointCrossover</span><span class="p">,</span>
+        <span class="n">mutation</span><span class="o">=</span><span class="n">ByteMutationRandom</span><span class="p">,</span>
         <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1"># Minimum values for each gene</span>
         <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>    <span class="c1"># Maximum values for each gene</span>
         <span class="n">seed_par</span><span class="o">=</span><span class="mi">100</span>
