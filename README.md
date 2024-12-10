@@ -56,7 +56,12 @@ Here’s how we can define this problem in Python using the `ExampleProblem` cla
 
 ```python
 from mpmath import power as pw
-import pycellga 
+
+from pycellga.optimizer import cga
+from pycellga.individual import GeneType
+from pycellga.selection import TournamentSelection
+from pycellga.recombination import ByteOnePointCrossover
+from pycellga.mutation import ByteMutationRandom
 
 class ExampleProblem:
     
@@ -70,18 +75,18 @@ class ExampleProblem:
 **Usage:**
 
 ```python
-result = pycellga.optimizer.cga(
+result = cga(
     n_cols=5,
     n_rows=5,
     n_gen=100,
     ch_size=5,
-    gen_type=pycellga.optimizer.GeneType.REAL,
+    gen_type=GeneType.REAL,
     p_crossover=0.9,
     p_mutation=0.2,
     problem=ExampleProblem(),  # Replace with a real problem instance as needed
-    selection=pycellga.optimizer.TournamentSelection,
-    recombination=pycellga.optimizer.ByteOnePointCrossover,
-    mutation=pycellga.optimizer.ByteMutationRandom,
+    selection=TournamentSelection,
+    recombination=ByteOnePointCrossover,
+    mutation=ByteMutationRandom,
     mins=[-32.768] * 5,  # Minimum values for each gene
     maxs=[32.768] * 5,    # Maximum values for each gene
     seed_par=100  # Ensures the random number generation is repeatable
@@ -90,12 +95,10 @@ result = pycellga.optimizer.cga(
 # Print the best solution details
 print("Best solution chromosome:", result.chromosome)
 print("Best fitness value:", result.fitness_value)
-print("Generation found:", result.generation_found)
 
 # Expected Output:
 # Best solution chromosome: [0.0, 0.0, 0.0, 0.0, 0.0]
 # Best fitness value: 0.0
-# Generation found: <generation_number>
 
 ```
 

@@ -2,9 +2,11 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import optimizer
 import numpy as np
+
+from optimizer import mcccga
 from individual import GeneType
+from selection import TournamentSelection
 
 class RealProblem:
     """
@@ -53,14 +55,14 @@ def run_mcccga_example():
     # Create an instance of the problem
     problem_instance = RealProblem()
 
-    result = optimizer.mcccga(
+    result = mcccga(
         n_cols=5,
         n_rows=5,
         n_gen=500,
         ch_size=5,
         gen_type=GeneType.REAL,
         problem=problem_instance,  # Pass the RealProblem instance
-        selection=optimizer.TournamentSelection,
+        selection=TournamentSelection,
         mins=[-3.768] * 5,
         maxs=[3.768] * 5
     )

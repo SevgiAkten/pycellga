@@ -1,7 +1,12 @@
 import pytest
-from optimizer import cga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
 import mpmath as mp
 from typing import List
+
+from optimizer import cga
+from individual import GeneType
+from recombination import OnePointCrossover, ByteOnePointCrossover, PMXCrossover
+from mutation import BitFlipMutation, ByteMutationRandom, SwapMutation
+from selection import TournamentSelection
 
 class RealProblem:
     """
@@ -156,9 +161,9 @@ class PermutationProblem:
             p_crossover=0.9,
             p_mutation=0.2,
             problem=problem.f(target_permutation),
-            selection=TournamentSelection(),
-            recombination=PMXCrossover(),
-            mutation=SwapMutation(),
+            selection=TournamentSelection,
+            recombination=PMXCrossover,
+            mutation=SwapMutation,
             mins=[0] * 10,
             maxs=[9] * 10
         )
@@ -188,7 +193,6 @@ def test_optimizer_cga_no_variation():
         maxs=[32.768] * 5
     )
     assert result.fitness_value != 0.0, "With no crossover or mutation, the solution should not reach the global minimum."
-
 
 
 if __name__ == "__main__":

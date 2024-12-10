@@ -17,7 +17,12 @@ Here’s how we can define this problem in Python using the `ExampleProblem` cla
 .. code-block:: python
 
     from mpmath import power as pw
-    import pycellga 
+
+    from pycellga.optimizer import cga
+    from pycellga.individual import GeneType
+    from pycellga.selection import TournamentSelection
+    from pycellga.recombination import ByteOnePointCrossover
+    from pycellga.mutation import ByteMutationRandom
 
     class ExampleProblem:
         
@@ -31,18 +36,18 @@ Here’s how we can define this problem in Python using the `ExampleProblem` cla
 
 .. code-block:: python
 
-    result = pycellga.optimizer.cga(
+    result = cga(
         n_cols = 5,
         n_rows = 5,
         n_gen = 100,
         ch_size = 5,
-        gen_type = pycellga.optimizer.GeneType.REAL,
+        gen_type = GeneType.REAL,
         p_crossover = 0.9,
         p_mutation = 0.2,
         problem = ExampleProblem(),  # Replace with a real problem instance as needed
-        selection = pycellga.optimizer.TournamentSelection,
-        recombination = pycellga.optimizer.ByteOnePointCrossover,
-        mutation = pycellga.optimizer.ByteMutationRandom,
+        selection = TournamentSelection,
+        recombination = ByteOnePointCrossover,
+        mutation = ByteMutationRandom,
         mins = [-32.768] * 5,  # Minimum values for each gene
         maxs = [32.768] * 5,    # Maximum values for each gene
         seed_par = 100 # Ensures the random number generation is repeatable
@@ -67,7 +72,12 @@ The Alpha Cellular Genetic Algorithm optimizes a real-valued problem using Blxal
 .. code-block:: python
 
     from mpmath import power as pw
-    import pycellga 
+
+    from pycellga.optimizer import alpha_cga
+    from pycellga.individual import GeneType
+    from pycellga.selection import TournamentSelection
+    from pycellga.recombination import BlxalphaCrossover
+    from pycellga.mutation import FloatUniformMutation
 
     class ExampleProblem:
         
@@ -78,18 +88,18 @@ The Alpha Cellular Genetic Algorithm optimizes a real-valued problem using Blxal
             return sum(pw(xi, 2) for xi in x)
 
 
-    result = pycellga.optimizer.alpha_cga(
+    result = alpha_cga(
         n_cols=5,
         n_rows=5,
         n_gen=100,
         ch_size=10,
-        gen_type=pycellga.optimizer.GeneType.REAL,
+        gen_type=GeneType.REAL,
         p_crossover=0.9,
         p_mutation=0.2,
         problem=ExampleProblem(),
-        selection=pycellga.optimizer.TournamentSelection,
-        recombination=pycellga.optimizer.BlxalphaCrossover,
-        mutation=pycellga.optimizer.FloatUniformMutation,
+        selection=TournamentSelection,
+        recombination=BlxalphaCrossover,
+        mutation=FloatUniformMutation,
         mins=[-15] * 10,
         maxs=[15] * 10,
         seed_par=100
@@ -105,7 +115,9 @@ The Compact Cellular Genetic Algorithm optimizes a binary problem where the goal
 
 .. code-block:: python
 
-    import pycellga 
+    from pycellga.optimizer import ccga
+    from pycellga.individual import GeneType
+    from pycellga.selection import TournamentSelection
 
     class ExampleProblem:
         def __init__(self):
@@ -114,14 +126,14 @@ The Compact Cellular Genetic Algorithm optimizes a binary problem where the goal
         def f(self, x):
             return sum(x)
 
-    result = pycellga.optimizer.ccga(
+    result = ccga(
         n_cols=5,
         n_rows=5,
         n_gen=100,
         ch_size=10,
-        gen_type=pycellga.optimizer.GeneType.BINARY,
+        gen_type=GeneType.BINARY,
         problem=ExampleProblem(),
-        selection=pycellga.optimizer.TournamentSelection,
+        selection=TournamentSelection,
         mins=[0] * 10,
         maxs=[1] * 10
     )
@@ -135,7 +147,10 @@ The Machine-Coded Compact Cellular Genetic Algorithm solves real-valued optimiza
 
 .. code-block:: python
 
-    import pycellga
+    from pycellga.optimizer import mcccga
+    from pycellga.individual import GeneType
+    from pycellga.selection import TournamentSelection
+    
 
     class RealProblem:
         def __init__(self):
@@ -144,14 +159,14 @@ The Machine-Coded Compact Cellular Genetic Algorithm solves real-valued optimiza
         def f(self, x):
             return sum(np.power(xi, 2) for xi in x)
 
-    result = pycellga.optimizer.mcccga(
+    result = mcccga(
         n_cols=5,
         n_rows=5,
         n_gen=500,
         ch_size=5,
-        gen_type=pycellga.optimizer.GeneType.REAL,
+        gen_type=GeneType.REAL,
         problem=RealProblem(),
-        selection=pycellga.optimizer.TournamentSelection,
+        selection=TournamentSelection,
         mins=[-3.55] * 5,
         maxs=[3.55] * 5
     )
@@ -165,7 +180,11 @@ The Synchronous Cellular Genetic Algorithm optimizes a real-valued problem in a 
 
 .. code-block:: python
 
-    import pycellga
+    from pycellga.optimizer import sync_cga
+    from pycellga.individual import GeneType
+    from pycellga.selection import TournamentSelection
+    from pycellga.recombination import BlxalphaCrossover
+    from pycellga.mutation import FloatUniformMutation
 
     class ExampleProblem:
         def __init__(self):
@@ -174,18 +193,18 @@ The Synchronous Cellular Genetic Algorithm optimizes a real-valued problem in a 
         def f(self, x):
             return sum(pw(xi, 2) for xi in x)
 
-    result = pycellga.optimizer.sync_cga(
+    result = sync_cga(
         n_cols=5,
         n_rows=5,
         n_gen=100,
         ch_size=5,
-        gen_type=pycellga.optimizer.GeneType.REAL,
+        gen_type=GeneType.REAL,
         p_crossover=0.9,
         p_mutation=0.2,
         problem=ExampleProblem(),
-        selection=pycellga.optimizer.TournamentSelection,
-        recombination=pycellga.optimizer.BlxalphaCrossover,
-        mutation=pycellga.optimizer.FloatUniformMutation,
+        selection=TournamentSelection,
+        recombination=BlxalphaCrossover,
+        mutation=FloatUniformMutation,
         mins=[-32.768] * 5,
         maxs=[32.768] * 5,
         seed_par=100
@@ -203,9 +222,9 @@ Customization Scenarios
 
 You can change the `gen_type` parameter based on the type of problem:
 
-- `pycellga.optimizer.GeneType.REAL` for real-valued problems.
-- `pycellga.optimizer.GeneType.BINARY` for binary problems.
-- `pycellga.optimizer.GeneType.PERMUTATION` for permutation-based problems.
+- `pycellga.individual.GeneType.REAL` for real-valued problems.
+- `pycellga.individual.GeneType.BINARY` for binary problems.
+- `pycellga.individual.GeneType.PERMUTATION` for permutation-based problems.
 
 
 **Problem Selection**
@@ -216,49 +235,49 @@ You can change the `gen_type` parameter based on the type of problem:
 
 For continuous optimization problems, the following functions are available:
 
-- `pycellga.optimizer.Ackley()`
-- `pycellga.optimizer.Bentcigar()`
-- `pycellga.optimizer.Bohachevsky()`
-- `pycellga.optimizer.Chichinadze()`
-- `pycellga.optimizer.Dropwave()`
-- `pycellga.optimizer.Fms()`
-- `pycellga.optimizer.Griewank()`
-- `pycellga.optimizer.Holzman()`
-- `pycellga.optimizer.Levy()`
-- `pycellga.optimizer.Matyas()`
-- `pycellga.optimizer.Pow()`
-- `pycellga.optimizer.Powell()`
-- `pycellga.optimizer.Rastrigin()`
-- `pycellga.optimizer.Rosenbrock()`
-- `pycellga.optimizer.Rothellipsoid()`
-- `pycellga.optimizer.Schaffer()`
-- `pycellga.optimizer.Schaffer2()`
-- `pycellga.optimizer.Schwefel()`
-- `pycellga.optimizer.Sphere()`
-- `pycellga.optimizer.StyblinskiTang()`
-- `pycellga.optimizer.Sumofdifferentpowers()`
-- `pycellga.optimizer.Threehumps()`
-- `pycellga.optimizer.Zakharov()`
-- `pycellga.optimizer.Zettle()`
+- `pycellga.problems.Ackley`
+- `pycellga.problems.Bentcigar`
+- `pycellga.problems.Bohachevsky`
+- `pycellga.problems.Chichinadze`
+- `pycellga.problems.Dropwave`
+- `pycellga.problems.Fms`
+- `pycellga.problems.Griewank`
+- `pycellga.problems.Holzman`
+- `pycellga.problems.Levy`
+- `pycellga.problems.Matyas`
+- `pycellga.problems.Pow`
+- `pycellga.problems.Powell`
+- `pycellga.problems.Rastrigin`
+- `pycellga.problems.Rosenbrock`
+- `pycellga.problems.Rothellipsoid`
+- `pycellga.problems.Schaffer`
+- `pycellga.problems.Schaffer2`
+- `pycellga.problems.Schwefel`
+- `pycellga.problems.Sphere`
+- `pycellga.problems.StyblinskiTang`
+- `pycellga.problems.Sumofdifferentpowers`
+- `pycellga.problems.Threehumps`
+- `pycellga.problems.Zakharov`
+- `pycellga.problems.Zettle`
 
 **Binary Problems**
 
 For binary optimization problems, use the following built-in options:
 
-- `pycellga.optimizer.CountSat()`
-- `pycellga.optimizer.Ecc()`
-- `pycellga.optimizer.Maxcut20_01()`
-- `pycellga.optimizer.Maxcut20_09()`
-- `pycellga.optimizer.Maxcut100()`
-- `pycellga.optimizer.Mmdp()`
-- `pycellga.optimizer.OneMax()`
-- `pycellga.optimizer.Peak()`
+- `pycellga.problems.CountSat`
+- `pycellga.problems.Ecc`
+- `pycellga.problems.Maxcut20_01`
+- `pycellga.problems.Maxcut20_09`
+- `pycellga.problems.Maxcut100`
+- `pycellga.problems.Mmdp`
+- `pycellga.problems.OneMax`
+- `pycellga.problems.Peak`
 
 **Permutation Problems**
 
 For permutation-based optimization problems, the following option is available:
 
-- `pycellga.optimizer.Tsp()`
+- `pycellga.problems.Tsp`
 
 These built-in problems provide a diverse set of test cases, allowing users to explore `pycellga`'s capabilities across a wide range of optimization challenges. Users can also define custom problems to suit their specific needs.
 
@@ -267,38 +286,38 @@ These built-in problems provide a diverse set of test cases, allowing users to e
 
 Choose from a variety of selection methods:
 
-- `pycellga.optimizer.TournamentSelection`
-- `pycellga.optimizer.RouletteWheelSelection`
+- `pycellga.selection.TournamentSelection`
+- `pycellga.selection.RouletteWheelSelection`
 
 **Recombination Operators**
 
 The package provides multiple crossover operators:
 
-- `pycellga.optimizer.OnePointCrossover`
-- `pycellga.optimizer.PMXCrossover`
-- `pycellga.optimizer.TwoPointCrossover`
-- `pycellga.optimizer.UniformCrossover`
-- `pycellga.optimizer.ByteUniformCrossover`
-- `pycellga.optimizer.ByteOnePointCrossover`
-- `pycellga.optimizer.FlatCrossover`
-- `pycellga.optimizer.ArithmeticCrossover`
-- `pycellga.optimizer.BlxalphaCrossover`
-- `pycellga.optimizer.LinearCrossover`
-- `pycellga.optimizer.UnfairAvarageCrossover`
+- `pycellga.recombination.OnePointCrossover`
+- `pycellga.recombination.PMXCrossover`
+- `pycellga.recombination.TwoPointCrossover`
+- `pycellga.recombination.UniformCrossover`
+- `pycellga.recombination.ByteUniformCrossover`
+- `pycellga.recombination.ByteOnePointCrossover`
+- `pycellga.recombination.FlatCrossover`
+- `pycellga.recombination.ArithmeticCrossover`
+- `pycellga.recombination.BlxalphaCrossover`
+- `pycellga.recombination.LinearCrossover`
+- `pycellga.recombination.UnfairAvarageCrossover`
 
 **Mutation Operators**
 
 You can customize mutation with these options:
 
-- `pycellga.optimizer.BitFlipMutation`
-- `pycellga.optimizer.ByteMutation`
-- `pycellga.optimizer.ByteMutationRandom`
-- `pycellga.optimizer.InsertionMutation`
-- `pycellga.optimizer.ShuffleMutation`
-- `pycellga.optimizer.SwapMutation`
-- `pycellga.optimizer.TwoOptMutation`
-- `pycellga.optimizer.FloatUniformMutation`
-- `pycellga.optimizer.MutationOperator`
+- `pycellga.mutation.BitFlipMutation`
+- `pycellga.mutation.ByteMutation`
+- `pycellga.mutation.ByteMutationRandom`
+- `pycellga.mutation.InsertionMutation`
+- `pycellga.mutation.ShuffleMutation`
+- `pycellga.mutation.SwapMutation`
+- `pycellga.mutation.TwoOptMutation`
+- `pycellga.mutation.FloatUniformMutation`
+- `pycellga.mutation.MutationOperator`
 
 
 **Example Scenarios**
@@ -309,18 +328,25 @@ Optimize a binary problem using tournament selection, one-point crossover, and b
 
 .. code-block:: python
 
-    result = pycellga.optimizer.cga(
+    from pycellga.optimizer import cga
+    from pycellga.individual import GeneType
+    from pycellga.problems import OneMax
+    from pycellga.selection import TournamentSelection
+    from pycellga.recombination import OnePointCrossover
+    from pycellga.mutation import BitFlipMutation
+
+    result = cga(
         n_cols=5,
         n_rows=5,
         n_gen=100,
         ch_size=10,
-        gen_type=pycellga.optimizer.GeneType.BINARY,
+        gen_type=GeneType.BINARY,
         p_crossover=0.8,
         p_mutation=0.1,
-        problem=pycellga.optimizer.OneMax(),  # Built-in binary optimization problem
-        selection=pycellga.optimizer.TournamentSelection,
-        recombination=pycellga.optimizer.OnePointCrossover,
-        mutation=pycellga.optimizer.BitFlipMutation,
+        problem=OneMax(),  # Built-in binary optimization problem
+        selection=TournamentSelection,
+        recombination=OnePointCrossover,
+        mutation=BitFlipMutation,
         mins=[0] * 10,
         maxs=[1] * 10,
         seed_par=100
@@ -335,18 +361,25 @@ Solve a real-valued optimization problem using Byte One Point Crossover and Byte
 
 .. code-block:: python
 
-    result = pycellga.optimizer.cga(
+    from pycellga.optimizer import cga
+    from pycellga.individual import GeneType
+    from pycellga.problems import Ackley
+    from pycellga.selection import RouletteWheelSelection
+    from pycellga.recombination import ByteOnePointCrossover
+    from pycellga.mutation import ByteMutation
+
+    result = cga(
         n_cols=5,
         n_rows=5,
         n_gen=100,
         ch_size=10,
-        gen_type=pycellga.optimizer.GeneType.REAL,
+        gen_type=GeneType.REAL,
         p_crossover=0.9,
         p_mutation=0.2,
-        problem=pycellga.optimizer.Ackley(10),  # Built-in real-valued optimization problem
-        selection=pycellga.optimizer.RouletteWheelSelection,
-        recombination=pycellga.optimizer.ByteOnePointCrossover,
-        mutation=pycellga.optimizer.ByteMutation,
+        problem=Ackley(10),  # Built-in real-valued optimization problem
+        selection=RouletteWheelSelection,
+        recombination=ByteOnePointCrossover,
+        mutation=ByteMutation,
         mins=[-32.768] * 10,
         maxs=[32.768] * 10,
         seed_par=100
@@ -360,18 +393,25 @@ Optimize a TSP using permutation encoding, PMX crossover, and swap mutation.
 
 .. code-block:: python
 
-    result = pycellga.optimizer.cga(
+    from pycellga.optimizer import cga
+    from pycellga.individual import GeneType
+    from pycellga.problems import Tsp
+    from pycellga.selection import TournamentSelection
+    from pycellga.recombination import PMXCrossover
+    from pycellga.mutation import SwapMutation
+
+    result = cga(
         n_cols=5,
         n_rows=5,
         n_gen=300,
         ch_size=14,  # Number of cities
-        gen_type=pycellga.optimizer.GeneType.PERMUTATION,
+        gen_type=GeneType.PERMUTATION,
         p_crossover=0.85,
         p_mutation=0.15,
-        problem=pycellga.optimizer.Tsp(),  # Built-in TSP optimization problem
-        selection=pycellga.optimizer.TournamentSelection,
-        recombination=pycellga.optimizer.PMXCrossover,
-        mutation=pycellga.optimizer.SwapMutation,
+        problem=Tsp(),  # Built-in TSP optimization problem
+        selection=TournamentSelection,
+        recombination=PMXCrossover,
+        mutation=SwapMutation,
         mins=[1] * 14,
         maxs=[14] * 14,
         seed_par=100

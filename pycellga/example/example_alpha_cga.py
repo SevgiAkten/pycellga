@@ -2,9 +2,14 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import optimizer
-from individual import GeneType
 from numpy import power as pw
+
+from optimizer import alpha_cga
+from individual import GeneType
+from recombination import BlxalphaCrossover
+from mutation import FloatUniformMutation
+from selection import TournamentSelection
+
 
 class ExampleProblem:
     """
@@ -53,7 +58,7 @@ def run_alpha_cga_example():
     problem_instance = ExampleProblem()
 
     # Run the optimizer and get the result
-    result = optimizer.alpha_cga(
+    result = alpha_cga(
         n_cols=5,
         n_rows=5,
         n_gen=100,
@@ -62,9 +67,9 @@ def run_alpha_cga_example():
         p_crossover=0.9,
         p_mutation=0.2,
         problem=problem_instance,  # Pass the ExampleProblem instance
-        selection=optimizer.TournamentSelection,
-        recombination=optimizer.BlxalphaCrossover,
-        mutation=optimizer.FloatUniformMutation,
+        selection=TournamentSelection,
+        recombination=BlxalphaCrossover,
+        mutation=FloatUniformMutation,
         mins=[-32.768] * 10,  # Minimum values for each gene
         maxs=[32.768] * 10,    # Maximum values for each gene
         seed_par=100

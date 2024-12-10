@@ -1,7 +1,12 @@
 import pytest
-from optimizer import alpha_cga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
 import mpmath as mp
 from typing import List
+
+from optimizer import alpha_cga
+from individual import GeneType
+from recombination import ByteOnePointCrossover, OnePointCrossover, PMXCrossover
+from mutation import ByteMutationRandom, BitFlipMutation, SwapMutation
+from selection import TournamentSelection
 
 class RealProblem:
     """
@@ -157,9 +162,9 @@ class PermutationProblem:
             p_crossover=0.9,
             p_mutation=0.2,
             problem=problem.f(target_permutation),
-            selection=TournamentSelection(),
-            recombination=PMXCrossover(),
-            mutation=SwapMutation(),
+            selection=TournamentSelection,
+            recombination=PMXCrossover,
+            mutation=SwapMutation,
             mins=[0] * 10,
             maxs=[9] * 10
         )

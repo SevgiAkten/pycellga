@@ -1,6 +1,10 @@
 import pytest
-from optimizer import ccga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
 from typing import List
+
+from optimizer import ccga
+from individual import GeneType
+from selection import TournamentSelection
+from individual import GeneType
 
 class BinaryProblem:
     """

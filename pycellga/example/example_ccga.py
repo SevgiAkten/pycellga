@@ -2,7 +2,9 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import optimizer
+from optimizer import ccga
+from individual import GeneType
+from selection import TournamentSelection
 from individual import GeneType
 
 class ExampleProblem:
@@ -51,14 +53,14 @@ def run_ccga_example():
     problem_instance = ExampleProblem()
 
     # Run the optimizer and get the result
-    result = optimizer.ccga(
+    result = ccga(
         n_cols=5,
         n_rows=5,
         n_gen=100,
         ch_size=10,
         gen_type=GeneType.BINARY,
         problem=problem_instance,  # Pass the ExampleProblem instance
-        selection=optimizer.TournamentSelection,
+        selection=TournamentSelection,
         mins=[0] * 10,  # Minimum values for each gene (binary)
         maxs=[1] * 10   # Maximum values for each gene (binary)
     )

@@ -1,7 +1,10 @@
 import pytest
-from optimizer import mcccga, GeneType, TournamentSelection, ByteOnePointCrossover, ByteMutationRandom, OnePointCrossover, BitFlipMutation, PMXCrossover, SwapMutation
 import mpmath as mp
 from typing import List
+
+from optimizer import mcccga
+from individual import GeneType
+from selection import TournamentSelection
 
 class RealProblem:
     """
