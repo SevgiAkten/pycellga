@@ -1,5 +1,5 @@
-pycellga: A Comprehensive Guide
-===============================
+pycellga: API Reference
+========================
 
 The `pycellga` package is a Python library for implementing and testing cellular genetic algorithms (CGAs). This guide provides an in-depth look at each module, offering descriptions and use cases to help users understand and utilize the library effectively.
 
