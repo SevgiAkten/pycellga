@@ -6,7 +6,7 @@ The `pycellga.mutation` module provides a comprehensive set of mutation operator
 This module includes the following mutation operators:
 
 **Bit Flip Mutation**
---------------
+------------------------------
 
 Applies a bitwise flip to binary-encoded chromosomes. This operator is a classic choice for binary genetic algorithms, offering a simple yet effective mutation approach.
 
@@ -16,7 +16,7 @@ Applies a bitwise flip to binary-encoded chromosomes. This operator is a classic
    :show-inheritance:
 
 **Byte-Level Mutation**
---------------
+------------------------------
 
 Performs mutations at the byte level for real-valued chromosomes. This operator leverages byte manipulation to create small, precise adjustments in the solution space, optimizing the algorithm's performance for continuous functions.
 
@@ -26,7 +26,7 @@ Performs mutations at the byte level for real-valued chromosomes. This operator 
    :show-inheritance:
 
 **Randomized Byte Mutation**
---------------
+------------------------------
 
 Introduces randomness at the byte level, enabling broader exploration in real-valued optimization tasks. This operator is particularly effective when a high degree of variation is desirable.
 
@@ -36,7 +36,7 @@ Introduces randomness at the byte level, enabling broader exploration in real-va
    :show-inheritance:
 
 **Uniform Float Mutation**
---------------
+------------------------------
 
 Applies uniform random mutations across real-valued chromosomes. This operator is suitable for continuous optimization, where each gene is adjusted within a defined range to enhance solution diversity.
 
@@ -46,7 +46,7 @@ Applies uniform random mutations across real-valued chromosomes. This operator i
    :show-inheritance:
 
 **Insertion-Based Mutation**
---------------
+------------------------------
 
 A mutation strategy tailored for permutation-based representations, such as in sequencing and scheduling problems. This operator repositions a randomly selected gene within the chromosome, altering the order while preserving elements.
 
@@ -57,7 +57,7 @@ A mutation strategy tailored for permutation-based representations, such as in s
 
 
 **Shuffle Mutation**
---------------
+------------------------------
 
 Randomly rearranges a subset of genes in the chromosome. This operator is effective in permutation-based problems, promoting diversity by shuffling segments without altering individual gene values.
 
@@ -67,7 +67,7 @@ Randomly rearranges a subset of genes in the chromosome. This operator is effect
    :show-inheritance:
 
 **Swap Mutation**
---------------
+-------------------
 
 Swaps the positions of two genes, introducing subtle changes ideal for permutation-based optimizations. This operator is commonly applied in combinatorial problems where order is significant.
 
@@ -77,7 +77,7 @@ Swaps the positions of two genes, introducing subtle changes ideal for permutati
    :show-inheritance:
 
 **Two-Opt Mutation**
---------------
+----------------------
 
 A mutation operator frequently used in path optimization problems, such as the Traveling Salesman Problem. It reverses a segment of the chromosome, allowing for new path configurations without altering the gene order.
 

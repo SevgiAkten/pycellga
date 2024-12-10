@@ -294,23 +294,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cga-cellular-genetic-algorithm">cga (Cellular Genetic Algorithm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-problem">Example Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exampleproblem-class">ExampleProblem Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-usage-examples">Advanced Usage Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#customization-scenarios">Customization Scenarios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#selecting-gene-types">Selecting Gene Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#problem-selection">Problem Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#continuous-problems">Continuous Problems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#binary-problems">Binary Problems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#permutation-problems">Permutation Problems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#selection-operators">Selection Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recombination-operators">Recombination Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mutation-operators">Mutation Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-scenarios">Example Scenarios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scenario-1-binary-optimization-with-tournament-selection">Scenario 1: Binary Optimization with Tournament Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scenario-2-real-valued-optimization-with-byte-one-point-crossover">Scenario 2: Real-Valued Optimization with Byte One Point Crossover</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scenario-3-permutation-optimization-for-traveling-salesman-problem">Scenario 3: Permutation Optimization for Traveling Salesman Problem</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
@@ -351,18 +336,11 @@
              
   <section id="usage-examples">
 <h1>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h1>
-<p>In this section, we’ll explain the <cite>cga</cite> method in the optimizer and provide an example of how to use it. The package includes various ready-to-use crossover and mutation operators, along with real-valued, binary, and permutation functions that you can run directly. Examples for other methods are available in the <cite>example</cite> folder, while an example for <cite>cga</cite> is provided below.</p>
-<section id="cga-cellular-genetic-algorithm">
-<h2>cga (Cellular Genetic Algorithm)<a class="headerlink" href="#cga-cellular-genetic-algorithm" title="Link to this heading"></a></h2>
-<p><strong>cga</strong> is a type of genetic algorithm where the population is structured as a grid (or other topologies), and each individual interacts only with its neighbors. This structure helps maintain diversity in the population and can prevent premature convergence. To specialize the CGA for real-valued optimization problems, ICGA (Improved CGA) with machine-coded representation can be used, applying byte operators. The encoding and decoding of numbers follow the IEEE 754 standard for floating-point arithmetic, yielding better results for continuous functions.</p>
-</section>
-<section id="example-problem">
-<h2>Example Problem<a class="headerlink" href="#example-problem" title="Link to this heading"></a></h2>
+<p>In this section, we’ll explain the <cite>cga</cite> method in the optimizer and provide an example of how to use it.</p>
+<p><strong>Example Problem</strong></p>
 <p>Suppose we have a problem that we want to minimize using a Cellular Genetic Algorithm (CGA). The problem is defined as a simple sum of squares function, where the goal is to find a chromosome (vector) that minimizes the function.</p>
 <p>The sum of squares function computes the sum of the squares of each element in the chromosome. This function reaches its global minimum when all elements of the chromosome are equal to 0. The corresponding function value at this point is 0.</p>
-</section>
-<section id="exampleproblem-class">
-<h2>ExampleProblem Class<a class="headerlink" href="#exampleproblem-class" title="Link to this heading"></a></h2>
+<p><strong>ExampleProblem Class</strong></p>
 <p>Here’s how we can define this problem in Python using the <cite>ExampleProblem</cite> class:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">power</span> <span class="k">as</span> <span class="n">pw</span>
 <span class="kn">import</span> <span class="nn">pycellga</span>
@@ -376,9 +354,7 @@
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pw</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p><strong>Usage</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
     <span class="n">n_cols</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
     <span class="n">n_rows</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
@@ -395,37 +371,149 @@
     <span class="n">maxs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>    <span class="c1"># Maximum values for each gene</span>
     <span class="n">seed_par</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># Ensures the random number generation is repeatable</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 
 <span class="c1"># The result is</span>
 <span class="c1"># Best solution: 0.0</span>
 <span class="c1"># Best solution chromosome: [0.0, 0.0, 0.0, 0.0, 0.0]</span>
 </pre></div>
 </div>
-<p>We have provided a basic example above. If you’re interested in exploring more examples:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/SevgiAkten/pycellga/tree/main/pycellga/example">Click here to see the other examples</a> available directly in the repository.</p></li>
-</ul>
+<section id="advanced-usage-examples">
+<h2>Advanced Usage Examples<a class="headerlink" href="#advanced-usage-examples" title="Link to this heading"></a></h2>
+<p>The following examples demonstrate the usage of other methods provided by <cite>pycellga</cite>, including <cite>alpha_cga</cite>, <cite>ccga</cite>, <cite>mcccga</cite>, and <cite>sync_cga</cite>. Each example highlights a unique algorithm solving real-world optimization problems.</p>
+<p><strong>Example 1: Alpha Cellular Genetic Algorithm (alpha_cga)</strong></p>
+<p>The Alpha Cellular Genetic Algorithm optimizes a real-valued problem using Blxalpha Crossover  and Float Uniform Mutation operators.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">power</span> <span class="k">as</span> <span class="n">pw</span>
+<span class="kn">import</span> <span class="nn">pycellga</span>
+
+<span class="k">class</span> <span class="nc">ExampleProblem</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pw</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">alpha_cga</span><span class="p">(</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">ch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">gen_type</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">REAL</span><span class="p">,</span>
+    <span class="n">p_crossover</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">p_mutation</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">problem</span><span class="o">=</span><span class="n">ExampleProblem</span><span class="p">(),</span>
+    <span class="n">selection</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+    <span class="n">recombination</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">BlxalphaCrossover</span><span class="p">,</span>
+    <span class="n">mutation</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">FloatUniformMutation</span><span class="p">,</span>
+    <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">seed_par</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>—</p>
+<p><strong>Example 2: Compact Cellular Genetic Algorithm (ccga)</strong></p>
+<p>The Compact Cellular Genetic Algorithm optimizes a binary problem where the goal is to maximize the number of <a href="#id1"><span class="problematic" id="id2">`</span></a>1`s.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycellga</span>
+
+<span class="k">class</span> <span class="nc">ExampleProblem</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">ccga</span><span class="p">(</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">ch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">gen_type</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span>
+    <span class="n">problem</span><span class="o">=</span><span class="n">ExampleProblem</span><span class="p">(),</span>
+    <span class="n">selection</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+    <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example 3: Machine-Coded Compact Cellular Genetic Algorithm (mcccga)</strong></p>
+<p>The Machine-Coded Compact Cellular Genetic Algorithm solves real-valued optimization problems with machine-coded representation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycellga</span>
+
+<span class="k">class</span> <span class="nc">RealProblem</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">mcccga</span><span class="p">(</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">ch_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gen_type</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">REAL</span><span class="p">,</span>
+    <span class="n">problem</span><span class="o">=</span><span class="n">RealProblem</span><span class="p">(),</span>
+    <span class="n">selection</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+    <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.55</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mf">3.55</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example 4: Synchronous Cellular Genetic Algorithm (sync_cga)</strong></p>
+<p>The Synchronous Cellular Genetic Algorithm optimizes a real-valued problem in a 5x5 grid using the crossover and mutation operators.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycellga</span>
+
+<span class="k">class</span> <span class="nc">ExampleProblem</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pw</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">sync_cga</span><span class="p">(</span>
+    <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_rows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">ch_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gen_type</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">GeneType</span><span class="o">.</span><span class="n">REAL</span><span class="p">,</span>
+    <span class="n">p_crossover</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">p_mutation</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">problem</span><span class="o">=</span><span class="n">ExampleProblem</span><span class="p">(),</span>
+    <span class="n">selection</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">TournamentSelection</span><span class="p">,</span>
+    <span class="n">recombination</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">BlxalphaCrossover</span><span class="p">,</span>
+    <span class="n">mutation</span><span class="o">=</span><span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">FloatUniformMutation</span><span class="p">,</span>
+    <span class="n">mins</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">maxs</span><span class="o">=</span><span class="p">[</span><span class="mf">32.768</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">seed_par</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution chromosome:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="customization-scenarios">
 <h2>Customization Scenarios<a class="headerlink" href="#customization-scenarios" title="Link to this heading"></a></h2>
 <p><cite>pycellga</cite> allows users to customize the methods and operators used in their optimization problems. Below are some examples to help you design your own scenarios.</p>
-</section>
-<section id="selecting-gene-types">
-<h2>Selecting Gene Types<a class="headerlink" href="#selecting-gene-types" title="Link to this heading"></a></h2>
+<p><strong>Selecting Gene Types</strong></p>
 <p>You can change the <cite>gen_type</cite> parameter based on the type of problem:</p>
 <ul class="simple">
 <li><p><cite>pycellga.optimizer.GeneType.REAL</cite> for real-valued problems.</p></li>
 <li><p><cite>pycellga.optimizer.GeneType.BINARY</cite> for binary problems.</p></li>
 <li><p><cite>pycellga.optimizer.GeneType.PERMUTATION</cite> for permutation-based problems.</p></li>
 </ul>
-</section>
-<section id="problem-selection">
-<h2>Problem Selection<a class="headerlink" href="#problem-selection" title="Link to this heading"></a></h2>
+<p><strong>Problem Selection</strong></p>
 <p><cite>pycellga</cite> includes several built-in problems for quick usage, categorized into continuous (real-valued), binary, and permutation problems. These problems allow users to directly specify the <cite>problem</cite> parameter for quick implementation.</p>
-</section>
-<section id="continuous-problems">
-<h2>Continuous Problems<a class="headerlink" href="#continuous-problems" title="Link to this heading"></a></h2>
+<p><strong>Continuous Problems</strong></p>
 <p>For continuous optimization problems, the following functions are available:</p>
 <ul class="simple">
 <li><p><cite>pycellga.optimizer.Ackley()</cite></p></li>
@@ -453,9 +541,7 @@
 <li><p><cite>pycellga.optimizer.Zakharov()</cite></p></li>
 <li><p><cite>pycellga.optimizer.Zettle()</cite></p></li>
 </ul>
-</section>
-<section id="binary-problems">
-<h2>Binary Problems<a class="headerlink" href="#binary-problems" title="Link to this heading"></a></h2>
+<p><strong>Binary Problems</strong></p>
 <p>For binary optimization problems, use the following built-in options:</p>
 <ul class="simple">
 <li><p><cite>pycellga.optimizer.CountSat()</cite></p></li>
@@ -467,25 +553,19 @@
 <li><p><cite>pycellga.optimizer.OneMax()</cite></p></li>
 <li><p><cite>pycellga.optimizer.Peak()</cite></p></li>
 </ul>
-</section>
-<section id="permutation-problems">
-<h2>Permutation Problems<a class="headerlink" href="#permutation-problems" title="Link to this heading"></a></h2>
+<p><strong>Permutation Problems</strong></p>
 <p>For permutation-based optimization problems, the following option is available:</p>
 <ul class="simple">
 <li><p><cite>pycellga.optimizer.Tsp()</cite></p></li>
 </ul>
 <p>These built-in problems provide a diverse set of test cases, allowing users to explore <cite>pycellga</cite>’s capabilities across a wide range of optimization challenges. Users can also define custom problems to suit their specific needs.</p>
-</section>
-<section id="selection-operators">
-<h2>Selection Operators<a class="headerlink" href="#selection-operators" title="Link to this heading"></a></h2>
+<p><strong>Selection Operators</strong></p>
 <p>Choose from a variety of selection methods:</p>
 <ul class="simple">
 <li><p><cite>pycellga.optimizer.TournamentSelection</cite></p></li>
 <li><p><cite>pycellga.optimizer.RouletteWheelSelection</cite></p></li>
 </ul>
-</section>
-<section id="recombination-operators">
-<h2>Recombination Operators<a class="headerlink" href="#recombination-operators" title="Link to this heading"></a></h2>
+<p><strong>Recombination Operators</strong></p>
 <p>The package provides multiple crossover operators:</p>
 <ul class="simple">
 <li><p><cite>pycellga.optimizer.OnePointCrossover</cite></p></li>
@@ -500,9 +580,7 @@
 <li><p><cite>pycellga.optimizer.LinearCrossover</cite></p></li>
 <li><p><cite>pycellga.optimizer.UnfairAvarageCrossover</cite></p></li>
 </ul>
-</section>
-<section id="mutation-operators">
-<h2>Mutation Operators<a class="headerlink" href="#mutation-operators" title="Link to this heading"></a></h2>
+<p><strong>Mutation Operators</strong></p>
 <p>You can customize mutation with these options:</p>
 <ul class="simple">
 <li><p><cite>pycellga.optimizer.BitFlipMutation</cite></p></li>
@@ -515,12 +593,8 @@
 <li><p><cite>pycellga.optimizer.FloatUniformMutation</cite></p></li>
 <li><p><cite>pycellga.optimizer.MutationOperator</cite></p></li>
 </ul>
-</section>
-<section id="example-scenarios">
-<h2>Example Scenarios<a class="headerlink" href="#example-scenarios" title="Link to this heading"></a></h2>
-</section>
-<section id="scenario-1-binary-optimization-with-tournament-selection">
-<h2>Scenario 1: Binary Optimization with Tournament Selection<a class="headerlink" href="#scenario-1-binary-optimization-with-tournament-selection" title="Link to this heading"></a></h2>
+<p><strong>Example Scenarios</strong></p>
+<p><strong>Scenario 1: Binary Optimization with Tournament Selection</strong></p>
 <p>Optimize a binary problem using tournament selection, one-point crossover, and bit-flip mutation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
     <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
@@ -542,9 +616,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="scenario-2-real-valued-optimization-with-byte-one-point-crossover">
-<h2>Scenario 2: Real-Valued Optimization with Byte One Point Crossover<a class="headerlink" href="#scenario-2-real-valued-optimization-with-byte-one-point-crossover" title="Link to this heading"></a></h2>
+<p><strong>Scenario 2: Real-Valued Optimization with Byte One Point Crossover</strong></p>
 <p>Solve a real-valued optimization problem using Byte One Point Crossover and Byte Mutation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
     <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
@@ -566,9 +638,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best fitness value:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="scenario-3-permutation-optimization-for-traveling-salesman-problem">
-<h2>Scenario 3: Permutation Optimization for Traveling Salesman Problem<a class="headerlink" href="#scenario-3-permutation-optimization-for-traveling-salesman-problem" title="Link to this heading"></a></h2>
+<p><strong>Scenario 3: Permutation Optimization for Traveling Salesman Problem</strong></p>
 <p>Optimize a TSP using permutation encoding, PMX crossover, and swap mutation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pycellga</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">cga</span><span class="p">(</span>
     <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>

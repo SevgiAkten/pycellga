@@ -5,7 +5,7 @@ The `pycellga.problems` package provides a collection of problem definitions for
 
 
 **Abstract Problem Base**
---------------
+------------------------------
 
 This module defines an abstract base class, `AbstractProblem`, which provides a standard interface for defining optimization problems. By inheriting from this base class, users can create custom problem definitions that are compatible with the rest of the `pycellga` framework. Key components of the base class include methods for evaluating objective values, setting constraints, and managing design variables.
 
@@ -15,7 +15,7 @@ This module defines an abstract base class, `AbstractProblem`, which provides a 
    :show-inheritance:
 
 **Single-Objective Problems**
---------------
+------------------------------
 The `single_objective` subpackage includes a set of benchmark functions commonly used to evaluate optimization algorithms in terms of convergence speed, accuracy, and robustness. These problems are designed for scenarios where only one objective needs to be optimized.
 
 .. toctree::

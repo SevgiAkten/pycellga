@@ -1,11 +1,11 @@
 Continuous Optimization Problems
-============================================
+==================================
 
 The `pycellga.problems.single_objective.continuous` package offers a range of continuous, single-objective benchmark functions. These functions are commonly used to evaluate the performance of optimization algorithms in terms of convergence accuracy, robustness, and computation speed. Below is a list of available benchmark functions in this package, each addressing unique aspects of optimization.
 
 
 **Ackley Function**
---------------
+----------------------
 A multimodal function known for its large number of local minima. Used to evaluate an algorithm's ability to escape local optima.
 
 .. automodule:: pycellga.problems.single_objective.continuous.ackley
@@ -14,7 +14,7 @@ A multimodal function known for its large number of local minima. Used to evalua
    :show-inheritance:
 
 **Bent Cigar Function**
---------------
+------------------------
 A unimodal function that is rotationally invariant, used to test convergence speed and robustness.
 
 .. automodule:: pycellga.problems.single_objective.continuous.bentcigar
@@ -23,7 +23,7 @@ A unimodal function that is rotationally invariant, used to test convergence spe
    :show-inheritance:
 
 **Bohachevsky Function**
---------------
+-------------------------
 Characterized by its simple structure with some local minima, making it ideal for testing fine-tuning capabilities.
 
 .. automodule:: pycellga.problems.single_objective.continuous.bohachevsky
@@ -32,7 +32,7 @@ Characterized by its simple structure with some local minima, making it ideal fo
    :show-inheritance:
 
 **Chichinadze Function**
---------------
+------------------------------
 A complex landscape with both smooth and steep regions, suitable for testing algorithms on challenging landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.chichinadze
@@ -41,7 +41,7 @@ A complex landscape with both smooth and steep regions, suitable for testing alg
    :show-inheritance:
 
 **Drop Wave Function**
---------------
+------------------------------
 A multimodal function often used to evaluate the balance between exploration and exploitation.
 
 .. automodule:: pycellga.problems.single_objective.continuous.dropwave
@@ -50,7 +50,7 @@ A multimodal function often used to evaluate the balance between exploration and
    :show-inheritance:
 
 **Frequency Modulation Sound Function (FMS)**
---------------
+------------------------------------------------
 A complex, multimodal function commonly used to test the robustness of optimization algorithms.
 
 .. automodule:: pycellga.problems.single_objective.continuous.fms
@@ -59,7 +59,7 @@ A complex, multimodal function commonly used to test the robustness of optimizat
    :show-inheritance:
 
 **Griewank Function**
---------------
+----------------------
 A continuous, nonlinear function with numerous local minima, commonly used to test an algorithm's global search capability.
 
 .. automodule:: pycellga.problems.single_objective.continuous.griewank
@@ -68,7 +68,7 @@ A continuous, nonlinear function with numerous local minima, commonly used to te
    :show-inheritance:
 
 **Holzman Function**
---------------
+---------------------
 An experimental function that provides various levels of difficulty for different optimization approaches.
 
 .. automodule:: pycellga.problems.single_objective.continuous.holzman
@@ -77,7 +77,7 @@ An experimental function that provides various levels of difficulty for differen
    :show-inheritance:
 
 **Levy Function**
---------------
+-------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.levy
@@ -86,7 +86,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Matyas Function**
---------------
+--------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.matyas
@@ -95,7 +95,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Pow Function**
---------------
+------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.pow
@@ -105,7 +105,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
 
 
 **Powell Function**
---------------
+---------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.powell
@@ -114,7 +114,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Rastrigin Function**
---------------
+-----------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.rastrigin
@@ -124,7 +124,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
 
 
 **Rosenbrock Function**
---------------
+------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.rosenbrock
@@ -133,7 +133,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Rothellipsoid Function**
---------------
+----------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.rothellipsoid
@@ -143,7 +143,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
 
 
 **Schaffer Function**
---------------
+----------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.schaffer
@@ -152,7 +152,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Schaffer2 Function**
---------------
+-----------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.schaffer2
@@ -161,7 +161,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Schwefel Function**
---------------
+----------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.schwefel
@@ -170,7 +170,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Sphere Function**
---------------
+--------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.sphere
@@ -179,7 +179,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Styblinskitang Function**
---------------
+------------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.styblinskitang
@@ -188,7 +188,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Sumofdifferentpowers Function**
---------------
+----------------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.sumofdifferentpowers
@@ -197,7 +197,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Threehumps Function**
---------------
+-------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.threehumps
@@ -206,7 +206,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Zakharov Function**
---------------
+----------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.zakharov
@@ -215,7 +215,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 **Zettle Function**
---------------
+---------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
 .. automodule:: pycellga.problems.single_objective.continuous.zettle

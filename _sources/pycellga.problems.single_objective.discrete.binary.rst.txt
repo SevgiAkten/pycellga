@@ -15,7 +15,7 @@ A binary satisfaction problem, often used to evaluate an algorithm’s ability t
    :show-inheritance:
 
 **ECC Problem**
---------------
+-----------------
 
 The ECC problem tests the efficiency of algorithms in solving problems related to error-correcting codes, which have discrete solution spaces and are commonly encountered in communication systems.
 
@@ -25,7 +25,7 @@ The ECC problem tests the efficiency of algorithms in solving problems related t
    :show-inheritance:
 
 **Fletcher-Powell (FMS) Binary Problem**
---------------
+----------------------------------------------
 
 A binary version of the Fletcher-Powell function, used to evaluate robustness and efficiency in finding optimal solutions within a binary space.
 
@@ -35,7 +35,7 @@ A binary version of the Fletcher-Powell function, used to evaluate robustness an
    :show-inheritance:
 
 **Max-Cut (100 nodes)**
---------------
+------------------------------
 
 A max-cut problem involving 100 nodes, often used in graph partitioning. This problem challenges algorithms in finding optimal binary partitions.
 
@@ -45,7 +45,7 @@ A max-cut problem involving 100 nodes, often used in graph partitioning. This pr
    :show-inheritance:
 
 **Max-Cut (20 nodes, Density 0.1)**
---------------
+----------------------------------------------
 
 A max-cut problem with 20 nodes and a sparsity factor of 0.1. Suitable for testing performance on sparse graphs with limited connections.
 
@@ -55,7 +55,7 @@ A max-cut problem with 20 nodes and a sparsity factor of 0.1. Suitable for testi
    :show-inheritance:
 
 **Max-Cut (20 nodes, Density 0.9)**
---------------
+----------------------------------------------
 
 A denser version of the max-cut problem with a density of 0.9, requiring algorithms to manage numerous connections and find optimal partitions.
 
@@ -65,7 +65,7 @@ A denser version of the max-cut problem with a density of 0.9, requiring algorit
    :show-inheritance:
 
 **Multi-modal Deceptive Problem (MMDP)**
---------------
+----------------------------------------------
 
 A challenging binary problem with deceptive local optima, commonly used to assess an algorithm's ability to escape local traps in a binary landscape.
 
@@ -75,7 +75,7 @@ A challenging binary problem with deceptive local optima, commonly used to asses
    :show-inheritance:
 
 **One-Max Problem**
---------------
+------------------------------
 
 A classic benchmark in binary optimization, where the objective is to maximize the number of ones in a binary string. This problem tests the algorithm's ability to drive binary values towards an optimum.
 
@@ -85,7 +85,7 @@ A classic benchmark in binary optimization, where the objective is to maximize t
    :show-inheritance:
 
 **Peak Problem**
---------------
+------------------------------
 
 A binary optimization problem featuring multiple peaks. This problem is suitable for evaluating an algorithm’s performance in a rugged binary landscape with multiple local optima.
 

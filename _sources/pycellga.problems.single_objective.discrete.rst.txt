@@ -5,7 +5,7 @@ The `pycellga.problems.single_objective.discrete` package contains discrete, sin
 
 
 **Binary-Based Problems**
---------------
+------------------------------
 The `binary` subpackage contains a set of benchmark problems where solutions are represented as binary strings. These problems are widely used to test algorithms’ performance on discrete, combinatorial spaces with binary encoding. 
 
 .. toctree::
@@ -14,7 +14,7 @@ The `binary` subpackage contains a set of benchmark problems where solutions are
    pycellga.problems.single_objective.discrete.binary
 
 **Permutation-Based Problems**
---------------
+--------------------------------
 The `permutation` subpackage focuses on problems where the solution is a permutation of elements, such as sequencing or ordering tasks. This subpackage is particularly useful for evaluating algorithms that work on combinatorial optimization problems, such as the Traveling Salesman Problem (TSP).
 
 .. toctree::
