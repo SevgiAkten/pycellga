@@ -5,8 +5,13 @@ from problems.single_objective.continuous.rastrigin import Rastrigin
 def setup_rastrigin():
     """
     Fixture to provide an instance of the Rastrigin problem.
+    
+    Returns
+    -------
+    Rastrigin
+        An instance of the Rastrigin problem with 4 design variables.
     """
-    return Rastrigin(design_variables=4)
+    return Rastrigin(n_var=4)
 
 def test_rastrigin(setup_rastrigin):
     """
@@ -30,8 +35,9 @@ def test_rastrigin(setup_rastrigin):
     for variables, expected_fitness in test_cases:
         fitness_value = setup_rastrigin.f(variables)
         print(f"Variables: {variables} => Fitness: {fitness_value}, Expected: {expected_fitness}")
-        assert isinstance(fitness_value, float)
-        assert fitness_value == pytest.approx(expected_fitness, rel=1e-3), f"Expected {expected_fitness}, got {fitness_value}"
+        assert isinstance(fitness_value, float), "Fitness value should be a float."
+        assert fitness_value == pytest.approx(expected_fitness, rel=1e-3), \
+            f"Expected {expected_fitness}, got {fitness_value}"
 
 if __name__ == "__main__":
     pytest.main()

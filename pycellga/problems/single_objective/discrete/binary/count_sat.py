@@ -1,4 +1,6 @@
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
+from typing import List
 
 class CountSat(AbstractProblem):
     """
@@ -8,25 +10,39 @@ class CountSat(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : int
+    n_var : int
         The number of variables (chromosome length) for the problem.
-    bounds : list of tuple
-        The bounds for each binary variable, typically [(0, 1), (0, 1), ...] for binary inputs.
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+    gen_type : GeneType
+        The type of genes used in the problem, set to BINARY.
+    xl : int
+        Lower bounds for binary variables, fixed to 0.
+    xu : int
+        Upper bounds for binary variables, fixed to 1.
 
     Methods
     -------
-    f(x: list) -> float
+    f(x: List[int]) -> float
         Calculates the CountSat function value for a given list of binary variables.
+    evaluate(x: List[int], out: dict, *args, **kwargs) -> None
+        Pymoo-compatible evaluation method for batch processing.
     """
 
-    def __init__(self, design_variables=20):
-        super().__init__(design_variables=design_variables,
-                         bounds=[(0, 1) for _ in range(design_variables)],
-                         objectives=["maximize"])
+    def __init__(self, n_var: int = 20):
+        """
+        Initialize the CountSat problem.
 
-    def f(self, x: list) -> float:
+        Parameters
+        ----------
+        n_var : int, optional
+            Number of binary variables (chromosome length) for the problem, by default 20.
+        """
+        gen_type = GeneType.BINARY
+        xl = 0  # Lower bound for binary variables
+        xu = 1  # Upper bound for binary variables
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: List[int]) -> float:
         """
         Calculate the CountSat function value for a given list of binary variables.
 
@@ -47,16 +63,18 @@ class CountSat(AbstractProblem):
         variables = len(x)
 
         # Calculate the fitness based on the CountSat formula
-        fitness = (total_ones + 
-                   (variables * (variables - 1) * (variables - 2)) - 
-                   ((variables - 2) * total_ones * (total_ones - 1)) + 
-                   (total_ones * (total_ones - 1) * (total_ones - 2)))
+        fitness = (
+            total_ones
+            + (variables * (variables - 1) * (variables - 2))
+            - ((variables - 2) * total_ones * (total_ones - 1))
+            + (total_ones * (total_ones - 1) * (total_ones - 2))
+        )
 
         # Normalize the fitness value
         fitness_normalized = fitness / 6860
         return round(fitness_normalized, 3)
 
-    def evaluate(self, x, out, *args, **kwargs):
+    def evaluate(self, x: List[int], out: dict, *args, **kwargs) -> None:
         """
         Evaluate function for compatibility with pymoo's optimizer.
 

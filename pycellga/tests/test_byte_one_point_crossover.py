@@ -1,6 +1,7 @@
 import pytest
 import numpy as np
-from individual import Individual, GeneType
+from individual import Individual
+from common import GeneType
 from problems.abstract_problem import AbstractProblem
 from recombination.byte_one_point_crossover import ByteOnePointCrossover
 
@@ -9,12 +10,14 @@ class MockProblem(AbstractProblem):
     """
     A mock problem class for testing purposes.
     """
-    def __init__(self):
-        # Set example values for required arguments
-        design_variables = 5  # Number of design variables
-        bounds = [(0.0, 10.0)] * design_variables  # Bounds for each variable
-        objectives = 1  # Number of objectives
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
+    def __init__(self, n_var):
+
+        super().__init__(
+            gen_type=GeneType.BINARY,
+            n_var=n_var,
+            xl=0, 
+            xu=1
+        )
 
     def f(self, x: list) -> float:
         """
@@ -60,7 +63,7 @@ def setup_problem():
     MockProblem
         An instance of the mock problem.
     """
-    return MockProblem()
+    return MockProblem(n_var=5)
 
 def test_byte_one_point_crossover(setup_parents, setup_problem):
     """

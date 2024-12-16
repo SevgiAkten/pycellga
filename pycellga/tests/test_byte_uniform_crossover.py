@@ -1,6 +1,7 @@
 import pytest
 import numpy.random as randomgenerator
-from individual import Individual, GeneType
+from individual import Individual
+from common import GeneType
 from problems.abstract_problem import AbstractProblem
 from recombination.byte_uniform_crossover import ByteUniformCrossover
 
@@ -8,9 +9,14 @@ class MockProblem(AbstractProblem):
     """
     A mock problem class for testing purposes.
     """
-    def __init__(self):
-        # Set bounds as a list of tuples for each design variable
-        super().__init__(design_variables=5, bounds=[(0, 10)] * 5, objectives=1)
+    def __init__(self, n_var):
+
+        super().__init__(
+            gen_type=GeneType.BINARY,
+            n_var=n_var,
+            xl=0, 
+            xu=1
+        )
 
     def f(self, x: list) -> float:
         """
@@ -56,7 +62,7 @@ def setup_problem():
     MockProblem
         An instance of the mock problem.
     """
-    return MockProblem()
+    return MockProblem(n_var=5)
 
 def test_byte_uniform_crossover(setup_parents, setup_problem):
     """

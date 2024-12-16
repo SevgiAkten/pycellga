@@ -1,7 +1,7 @@
 from problems.single_objective.discrete.binary.one_max import OneMax
 from selection.roulette_wheel_selection import RouletteWheelSelection
 from population import Population, OptimizationMethod
-from individual import GeneType
+from common import GeneType
 
 def test_roulette_wheel_selection():
     """

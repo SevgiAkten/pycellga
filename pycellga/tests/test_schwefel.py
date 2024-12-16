@@ -6,7 +6,7 @@ def setup_schwefel():
     """
     Fixture to provide an instance of the Schwefel problem.
     """
-    return Schwefel(design_variables=4)
+    return Schwefel(n_var=4)
 
 def test_schwefel(setup_schwefel):
     """

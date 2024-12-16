@@ -1,5 +1,6 @@
 from recombination.one_point_crossover import OnePointCrossover
-from individual import Individual, GeneType
+from individual import Individual
+from common import GeneType
 from problems.single_objective.discrete.binary.one_max import OneMax
 
 def test_one_point_crossover():

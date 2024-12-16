@@ -2,73 +2,53 @@ from problems.abstract_problem import AbstractProblem
 import math
 from mpmath import power as pw
 from typing import List
+from common import GeneType
+
 
 class Levy(AbstractProblem):
     """
     Levy function implementation for optimization problems.
 
     The Levy function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-10, 10], for all i = 1, 2, ..., n.
+    It evaluates inputs over the hypercube x_i ∈ [-10, 10].
 
     Attributes
     ----------
-    design_variables : List[str]
-        The names of the design variables.
-    bounds : List[Tuple[float, float]]
-        The bounds for each variable, typically [(-10, 10), (-10, 10), ...].
-    objectives : List[str]
-        Objectives for optimization, usually "minimize" for single-objective functions.
-    constraints : List[str]
-        Any constraints for the optimization problem.
+    n_var : int
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (REAL).
+    xl : float
+        Lower bounds for the variables, fixed to -10.
+    xu : float
+        Upper bounds for the variables, fixed to 10.
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Calculates the Levy function value for a given list of variables and stores in `out`.
-    f(x: list) -> float
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
-
-    Notes
-    -----
-    -10 ≤ xi ≤ 10 for i = 1,…,n
-    Global minimum at f(1,1,...,1) = 0
+    f(x: List[float]) -> float
+        Compute the Levy function value for a given solution.
+    evaluate(x: List[float], out: dict, *args, **kwargs) -> None
+        Pymoo-compatible evaluation method for batch processing.
     """
 
-    def __init__(self, dimension: int = 2):
-        design_variables = [f"x{i+1}" for i in range(dimension)]
-        bounds = [(-10, 10) for _ in range(dimension)]
-        objectives = ["minimize"]
-        constraints = []
-
-        super().__init__(design_variables, bounds, objectives, constraints)
-        self.dimension = dimension
-
-    def evaluate(self, x: List[float], out, *args, **kwargs):
+    def __init__(self, n_var: int = 2):
         """
-        Evaluate the Levy function at a given point.
+        Initialize the Levy problem.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
-        out : dict
-            Dictionary to store the output fitness value.
+        n_var : int, optional
+            Number of variables (dimensions) for the problem, by default 2.
         """
-        if len(x) != self.dimension:
-            raise ValueError(f"Input must have exactly {self.dimension} variables.")
+        gen_type = GeneType.REAL
+        xl = -10.0
+        xu = 10.0
 
-        fitness = 0.0
-        for i in range(self.dimension - 1):
-            term1 = pw(math.sin(3 * x[i] * math.pi), 2)
-            term2 = (pw((x[i] - 1), 2)) * (1 + pw(math.sin(3 * x[i + 1] * math.pi), 2))
-            term3 = (pw((x[i + 1] - 1), 2)) * (1 + pw(math.sin(2 * x[i + 1] * math.pi), 2))
-            fitness += term1 + term2 + term3
-
-        out["F"] = round(fitness, 3)
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
     def f(self, x: List[float]) -> float:
         """
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+        Compute the Levy function value for a given solution.
 
         Parameters
         ----------
@@ -78,8 +58,29 @@ class Levy(AbstractProblem):
         Returns
         -------
         float
-            The calculated Levy function value.
+            The Levy function value.
         """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        if len(x) != self.n_var:
+            raise ValueError(f"Input must have exactly {self.n_var} variables.")
+
+        fitness = 0.0
+        for i in range(self.n_var - 1):
+            term1 = pw(math.sin(3 * x[i] * math.pi), 2)
+            term2 = (pw((x[i] - 1), 2)) * (1 + pw(math.sin(3 * x[i + 1] * math.pi), 2))
+            term3 = (pw((x[i + 1] - 1), 2)) * (1 + pw(math.sin(2 * x[i + 1] * math.pi), 2))
+            fitness += term1 + term2 + term3
+
+        return round(fitness, 3)
+
+    def evaluate(self, x: List[float], out: dict, *args, **kwargs) -> None:
+        """
+        Evaluate method for compatibility with pymoo's framework.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        out["F"] = self.f(x)

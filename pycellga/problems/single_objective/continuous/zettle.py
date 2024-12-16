@@ -1,41 +1,53 @@
-from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
+from typing import List
+from problems.abstract_problem import AbstractProblem
+from common import GeneType
+
 
 class Zettle(AbstractProblem):
     """
     Zettle function implementation for optimization problems.
 
     The Zettle function is widely used for testing optimization algorithms.
-    It is usually evaluated on the hypercube x_i ∈ [-5, 5] for all i = 1, 2, ..., n.
+    It is typically evaluated on the hypercube x_i ∈ [-5, 5].
 
     Attributes
     ----------
-    design_variables : int
-        The number of variables for the problem.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-5, 5), (-5, 5), ...].
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+    n_var : int
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (REAL).
+    xl : float
+        Lower bounds for the variables, fixed to -5.
+    xu : float
+        Upper bounds for the variables, fixed to 5.
 
     Methods
     -------
     f(x: list) -> float
-        Calculates the Zettle function value for a given list of variables.
-
-    Notes
-    -----
-    -5 ≤ xi ≤ 5 for i = 1,…,n
-    Global minimum at f(-0.0299, 0) = -0.003791
+        Compute the Zettle function value for a given solution.
+    evaluate(x: list, out: dict, *args, **kwargs) -> None
+        Pymoo-compatible evaluation method for batch processing.
     """
 
-    def __init__(self, design_variables=2):
-        super().__init__(design_variables=design_variables, 
-                         bounds=[(-5, 5) for _ in range(design_variables)], 
-                         objectives=["minimize"])
-
-    def f(self, x: list) -> float:
+    def __init__(self, n_var: int = 2):
         """
-        Calculate the Zettle function value for a given list of variables.
+        Initialize the Zettle problem.
+
+        Parameters
+        ----------
+        n_var : int, optional
+            Number of variables (dimensions) for the problem, by default 2.
+        """
+        gen_type = GeneType.REAL
+        xl = -5.0
+        xu = 5.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: List[float]) -> float:
+        """
+        Compute the Zettle function value for a given solution.
 
         Parameters
         ----------
@@ -53,5 +65,18 @@ class Zettle(AbstractProblem):
         fitness = 0.0
         for i in range(len(x) - 1):
             fitness += pw((pw(x[i], 2) + pw(x[i + 1], 2)) - 2 * x[i], 2) + 0.25 * x[i]
-        
+
         return round(fitness, 6)
+
+    def evaluate(self, x: List[float], out: dict, *args, **kwargs) -> None:
+        """
+        Evaluate method for compatibility with pymoo's framework.
+
+        Parameters
+        ----------
+        x : numpy.ndarray
+            Array of input variables.
+        out : dict
+            Dictionary to store the output fitness values.
+        """
+        out["F"] = self.f(x)

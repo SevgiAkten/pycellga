@@ -1,5 +1,6 @@
 from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
+from common import GeneType
 
 class Matyas(AbstractProblem):
     """
@@ -7,53 +8,58 @@ class Matyas(AbstractProblem):
 
     The Matyas function is commonly used to evaluate the performance of optimization algorithms.
     It is a simple, continuous, convex function that has a global minimum at the origin.
-    
+
     Attributes
     ----------
-    design_variables : list of str
-        The names of the design variables, typically ["x1", "x2"] for 2 variables.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-10, 10), (-10, 10)].
-    objectives : list of str
-        The objectives for optimization, set to ["minimize"].
+    gen_type : GeneType
+        The type of genes used in the problem (fixed to REAL).
+    n_var : int
+        Number of variables (dimensions) in the problem (fixed to 2).
+    xl : float
+        Lower bound for the variables (fixed to -10).
+    xu : float
+        Upper bound for the variables (fixed to 10).
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Computes the Matyas function value for a given list of variables.
     f(x: list) -> float
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+        Computes the Matyas function value for a given solution.
     """
 
     def __init__(self):
-        design_variables = ["x1", "x2"]
-        bounds = [(-10, 10), (-10, 10)]
-        objectives = ["minimize"]
-
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
-
-    def evaluate(self, x, out, *args, **kwargs):
         """
-        Calculate the Matyas function value for a given list of variables.
+        Initialize the Matyas problem.
+
+        This problem is defined for exactly 2 variables with bounds [-10, 10].
+
+        Parameters
+        ----------
+        None
+        """
+        gen_type = GeneType.REAL
+        n_var = 2
+        xl = -10.0
+        xu = 10.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x):
+        """
+        Compute the Matyas function value for a given solution.
 
         Parameters
         ----------
         x : list of float
             A list of float variables representing a point in the solution space.
-        out : dict
-            Dictionary to store the output fitness value with key "F".
+
+        Returns
+        -------
+        float
+            The computed fitness value for the given solution.
         """
         if len(x) != 2:
             raise ValueError("Matyas function is defined for exactly 2 variables.")
 
         x1, x2 = x
         fitness = 0.26 * (pw(x1, 2) + pw(x2, 2)) - 0.48 * x1 * x2
-        out["F"] = round(fitness, 2)
-
-    def f(self, x):
-        """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
-        """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        return round(fitness, 2)

@@ -1,5 +1,7 @@
 from problems.abstract_problem import AbstractProblem
-from typing import List, Tuple
+from typing import List
+from common import GeneType
+
 
 class OneMax(AbstractProblem):
     """
@@ -10,14 +12,14 @@ class OneMax(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : int
-        Number of design variables (chromosome length).
-    bounds : List[Tuple[float, float]]
-        Bounds for each design variable as (min, max).
-    objectives : List[str]
-        Objectives for optimization, e.g., "maximize".
-    constraints : List[str]
-        Any constraints for the optimization problem.
+    gen_type : GeneType
+        Type of genes used in the problem (binary in this case).
+    n_var : int
+        The number of design variables (default is 100).
+    xl : float
+        The lower bound for the design variables (0 for binary genes).
+    xu : float
+        The upper bound for the design variables (1 for binary genes).
 
     Methods
     -------
@@ -25,27 +27,21 @@ class OneMax(AbstractProblem):
         Evaluates the fitness of a given chromosome.
     """
 
-    def __init__(self, 
-                 design_variables: int = 100,
-                 bounds: List[Tuple[float, float]] = [(0, 1)] * 100,
-                 objectives: List[str] = ["maximize"],
-                 constraints: List[str] = []):
+    def __init__(self, n_var: int = 100):
         """
-        Initialize the OneMax problem with default design variables, bounds, 
-        objectives, and optional constraints.
+        Initialize the OneMax problem with a default number of variables (100) 
+        and binary gene bounds.
 
         Parameters
         ----------
-        design_variables : int, optional
+        n_var : int, optional
             Number of design variables (default is 100).
-        bounds : List[Tuple[float, float]], optional
-            Bounds for each design variable in (min, max) format (default is [(0, 1)] * 100).
-        objectives : List[str], optional
-            Objectives for optimization, e.g., "maximize" (default is ["maximize"]).
-        constraints : List[str], optional
-            Constraints for the problem (default is an empty list).
         """
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives, constraints=constraints)
+        xl = 0
+        xu = 1
+        gen_type=GeneType.BINARY
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
     def f(self, x: List[int]) -> float:
         """

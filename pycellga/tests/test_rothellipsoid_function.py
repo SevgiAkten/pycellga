@@ -6,7 +6,7 @@ def setup_rothellipsoid():
     """
     Fixture to provide an instance of the Rotated Hyper-Ellipsoid problem.
     """
-    return Rothellipsoid(design_variables=3)
+    return Rothellipsoid(n_var=3)
 
 def test_rothellipsoid_function(setup_rothellipsoid):
     """

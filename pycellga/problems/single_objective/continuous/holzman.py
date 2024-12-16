@@ -1,31 +1,31 @@
 from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
 from typing import List
+from common import GeneType
+
 
 class Holzman(AbstractProblem):
     """
     Holzman function implementation for optimization problems.
 
     The Holzman function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-10, 10], for all i = 1, 2, ..., n.
+    It is usually evaluated on the hypercube xi ∈ [-10, 10], for all i = 1, 2, ..., n.
 
     Attributes
     ----------
-    design_variables : List[str]
-        Names of the design variables.
-    bounds : List[Tuple[float, float]]
-        Bounds for each variable.
-    objectives : List[str]
-        Objectives for optimization.
-    constraints : List[str]
-        Any constraints for the problem.
+    n_var : int
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (fixed to REAL).
+    xl : float
+        Lower bound for the variables (fixed to -10).
+    xu : float
+        Upper bound for the variables (fixed to 10).
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Calculates the Holzman function value for given variables.
-    f(x: list) -> float
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+    f(x: List[float]) -> float
+        Compute the Holzman function value for a single solution.
 
     Notes
     -----
@@ -33,33 +33,34 @@ class Holzman(AbstractProblem):
     Global minimum at f(0,...,0) = 0
     """
 
-    def __init__(self, design_variables: int = 2):
-        var_names = [f"x{i+1}" for i in range(design_variables)]
-        bounds = [(-10, 10) for _ in range(design_variables)]
-        objectives = ["minimize"]
-        constraints = []
-
-        super().__init__(var_names, bounds, objectives, constraints)
-        self.design_variables = design_variables
-
-    def evaluate(self, x: List[float], out, *args, **kwargs):
+    def __init__(self, n_var: int = 2):
         """
-        Calculate the Holzman function value for a given list of variables.
+        Initialize the Holzman problem.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
-        out : dict
-            Dictionary to store the output fitness value.
+        n_var : int, optional
+            Number of variables (dimensions) in the problem, by default 2.
         """
-        fitness = sum((i + 1) * pw(x[i], 4) for i in range(len(x)))
-        out["F"] = round(fitness, 3)
+        gen_type = GeneType.REAL
+        xl = -10.0
+        xu = 10.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
     def f(self, x: List[float]) -> float:
         """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        Compute the Holzman function value for a single solution.
+
+        Parameters
+        ----------
+        x : list or numpy.ndarray
+            Array of input variables.
+
+        Returns
+        -------
+        float
+            The computed fitness value for the given solution.
         """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        fitness = sum((i + 1) * pw(x[i], 4) for i in range(len(x)))
+        return round(fitness, 3)

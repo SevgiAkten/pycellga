@@ -1,58 +1,66 @@
 import numpy as np
 from numpy import power as pw
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
 
 class Schaffer2(AbstractProblem):
     """
     Modified Schaffer function #2 implementation for optimization problems.
 
     The Modified Schaffer function #2 is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-100, 100], for all i = 1, 2, ..., n.
+    The function is evaluated on the hypercube x_i ∈ [-100, 100], for all i = 1, 2, ..., n.
 
     Attributes
     ----------
-    design_variables : int
-        The number of design variables.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-100, 100), (-100, 100), ...].
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+    n_var : int
+        The number of variables (dimensions) for the problem.
+    gen_type : GeneType
+        Type of genes used in the problem, fixed to REAL.
+    xl : float
+        Lower bounds for the variables, fixed to -100.
+    xu : float
+        Upper bounds for the variables, fixed to 100.
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Evaluates the Modified Schaffer function #2 value for a given list of variables.
     f(x: list) -> float
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+        Compute the Modified Schaffer function #2 value for a single solution.
+    evaluate(x, out, *args, **kwargs)
+        Compute the fitness value(s) for pymoo's optimization framework.
     """
 
-    def __init__(self, design_variables=2):
-        super().__init__(design_variables=[f"x{i+1}" for i in range(design_variables)],
-                         bounds=[(-100, 100)] * design_variables,
-                         objectives=["minimize"])
-
-    def evaluate(self, x, out, *args, **kwargs):
+    def __init__(self, n_var: int = 2):
         """
-        Evaluate the Modified Schaffer function #2 value for a given list of variables.
+        Initialize the Modified Schaffer function #2.
 
         Parameters
         ----------
-        x : numpy.ndarray
+        n_var : int, optional
+            Number of variables (dimensions) for the problem, by default 2.
+        """
+        gen_type = GeneType.REAL
+        xl = -100.0
+        xu = 100.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: list) -> float:
+        """
+        Compute the Modified Schaffer function #2 value for a single solution.
+
+        Parameters
+        ----------
+        x : list or numpy.ndarray
             Array of input variables.
-        out : dict
-            Dictionary to store the output fitness values.
+
+        Returns
+        -------
+        float
+            The computed fitness value for the given solution.
         """
         fitness = 0.0
         for i in range(len(x) - 1):
             term1 = np.sin(pw(x[i], 2) - pw(x[i + 1], 2)) ** 2
             term2 = (1 + 0.001 * (pw(x[i], 2) + pw(x[i + 1], 2))) ** 2
             fitness += 0.5 + ((term1 - 0.5) / term2)
-        out["F"] = round(fitness, 3)
-
-    def f(self, x):
-        """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
-        """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        return round(fitness, 3)

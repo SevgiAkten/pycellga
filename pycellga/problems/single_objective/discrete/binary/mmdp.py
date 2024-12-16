@@ -1,5 +1,7 @@
 from problems.abstract_problem import AbstractProblem
-from typing import List, Tuple
+from typing import List
+from common import GeneType
+
 
 class Mmdp(AbstractProblem):
     """
@@ -11,37 +13,32 @@ class Mmdp(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : List[str]
-        Names of the design variables (in this case, binary chromosome genes).
-    bounds : List[Tuple[float, float]]
-        Bounds for each design variable (0 or 1).
-    objectives : List[str]
-        Objectives for optimization, e.g., "maximize" in this case.
-    constraints : List[str]
-        Any constraints for the optimization problem.
+    gen_type : GeneType
+        Type of genes used in the problem (binary in this case).
+    n_var : int
+        The number of design variables (240 for MMDP).
+    xl : float
+        The lower bound  for the design variables (0 for binary genes).
+    xu : float
+        The upper bound for the design variables (1 for binary genes).
 
     Methods
     -------
     f(x: list) -> float
         Evaluates the fitness of a given chromosome.
-    
-    Notes
-    -----
-    # Length of chromosomes = 240
-    # Maximum Fitness Value = 40
     """
 
     def __init__(self):
         """
-        Initializes the MMDP problem with predefined design variables, bounds, 
-        objectives, and constraints.
+        Initializes the MMDP problem with binary genes, 240 design variables, 
+        and predefined bounds.
         """
-        design_variables = ["gene" + str(i) for i in range(240)]
-        bounds = [(0, 1) for _ in range(240)]
-        objectives = ["maximize"]
-        constraints = []
+        n_var = 240  
+        xl = 0
+        xu = 1
+        gen_type=GeneType.BINARY
 
-        super().__init__(design_variables, bounds, objectives, constraints)
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
     def f(self, x: List[int]) -> float:
         """

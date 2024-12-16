@@ -2,7 +2,9 @@ import numpy as np
 import pytest
 from mutation.bit_flip_mutation import BitFlipMutation
 from problems.single_objective.discrete.binary.one_max import OneMax
-from individual import Individual, GeneType
+from individual import Individual
+from common import GeneType
+
 
 def test_bit_flip_mutation():
     """

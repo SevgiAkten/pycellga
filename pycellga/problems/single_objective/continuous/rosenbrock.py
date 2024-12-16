@@ -1,5 +1,8 @@
 from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
+from common import GeneType
+from typing import List
+
 
 class Rosenbrock(AbstractProblem):
     """
@@ -10,59 +13,52 @@ class Rosenbrock(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : int
-        Number of variables for the problem.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-5, 10), (-5, 10), ...].
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+    n_var : int
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (fixed to REAL).
+    xl : float
+        Lower bounds for the variables (fixed to -5).
+    xu : float
+        Upper bounds for the variables (fixed to 10).
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Evaluates the Rosenbrock function value for a given list of variables.
-    f(x: list) -> float
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
-
-    Notes
-    -----
-    -5 ≤ xi ≤ 10 for i = 1,…,n
-    Global minimum at f(1,...,1) = 0
+    f(x: List[float]) -> float
+        Compute the Rosenbrock function value for a single solution.
     """
 
-    def __init__(self, design_variables=2):
-        self.design_variables = design_variables
-        bounds = [(-5, 10) for _ in range(design_variables)]
-        super().__init__(design_variables=[f"x{i+1}" for i in range(design_variables)], bounds=bounds, objectives=["minimize"])
-
-    def evaluate(self, x, out, *args, **kwargs):
+    def __init__(self, n_var: int = 2):
         """
-        Calculate the Rosenbrock function value for a given list of variables.
+        Initialize the Rosenbrock problem.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
-        out : dict
-            Dictionary to store the output fitness values.
+        n_var : int, optional
+            Number of variables (dimensions) in the problem, by default 2.
         """
-        fitness = sum([(100 * pw((x[i + 1] - pw(x[i], 2)), 2)) + pw((1 - x[i]), 2) for i in range(len(x) - 1)])
-        out["F"] = round(fitness, 3)
+        gen_type = GeneType.REAL
+        xl = -5.0
+        xu = 10.0
 
-    def f(self, x: list) -> float:
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: List[float]) -> float:
         """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        Compute the Rosenbrock function value for a single solution.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
+        x : list or numpy.ndarray
+            Array of input variables.
 
         Returns
         -------
         float
-            The Rosenbrock function value.
+            The computed fitness value for the given solution.
         """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        if len(x) != self.n_var:
+            raise ValueError(f"Input must have exactly {self.n_var} variables.")
+
+        fitness = sum([(100 * pw((x[i + 1] - pw(x[i], 2)), 2)) + pw((1 - x[i]), 2) for i in range(self.n_var - 1)])
+        return round(fitness, 3)

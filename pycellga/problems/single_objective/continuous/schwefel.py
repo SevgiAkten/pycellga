@@ -1,63 +1,66 @@
-from numpy import sin, sqrt
+from numpy import sin, sqrt, abs
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
 
 class Schwefel(AbstractProblem):
     """
     Schwefel function implementation for optimization problems.
 
-    This function is commonly used for testing optimization algorithms and is evaluated on the range
-    [-500, 500] for each variable.
+    The Schwefel function is commonly used for testing optimization algorithms.
+    It is evaluated on the range [-500, 500] for each variable and has a global minimum
+    at f(420.9687,...,420.9687) = 0.
 
     Attributes
     ----------
-    design_variables : int
-        The number of variables in the problem.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-500, 500), (-500, 500), ...].
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+    n_var : int
+        The number of variables (dimensions) for the problem.
+    gen_type : GeneType
+        The type of genes used in the problem, fixed to REAL.
+    xl : float
+        The lower bounds for the variables, fixed to -500.
+    xu : float
+        The upper bounds for the variables, fixed to 500.
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Calculates the Schwefel function value for a given list of variables, compatible with pymoo.
     f(x: list) -> float
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+        Compute the Schwefel function value for a single solution.
+
+    Notes
+    -----
+    -500 ≤ xi ≤ 500 for i = 1,…,n
+    Global minimum at f(420.9687,...,420.9687) = 0
     """
 
-    def __init__(self, design_variables=2):
-        bounds = [(-500, 500) for _ in range(design_variables)]
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=1)
-
-    def evaluate(self, x, out, *args, **kwargs):
+    def __init__(self, n_var: int = 2):
         """
-        Calculate the Schwefel function value for a given list of variables.
+        Initialize the Schwefel function with the specified number of variables.
 
         Parameters
         ----------
-        x : numpy.ndarray
-            A numpy array of float variables.
-        out : dict
-            Dictionary to store the output fitness values.
+        n_var : int, optional
+            The number of variables (dimensions) for the problem, by default 2.
         """
-        d = len(x)
-        fitness = sum(xi * sin(sqrt(abs(xi))) for xi in x)
-        out["F"] = round((418.9829 * d) - fitness, 3)
+        gen_type = GeneType.REAL
+        xl = -500.0
+        xu = 500.0
 
-    def f(self, x):
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: list) -> float:
         """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        Compute the Schwefel function value for a single solution.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
+        x : list or numpy.ndarray
+            Array of input variables.
 
         Returns
         -------
         float
-            The Schwefel function value.
+            The computed fitness value for the given solution.
         """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        d = len(x)
+        fitness = sum(xi * sin(sqrt(abs(xi))) for xi in x)
+        return round((418.9829 * d) - fitness, 3)

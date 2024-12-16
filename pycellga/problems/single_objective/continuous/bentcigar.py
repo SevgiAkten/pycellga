@@ -1,7 +1,8 @@
 from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
 from typing import List
-import numpy as np
+from common import GeneType
+
 
 class Bentcigar(AbstractProblem):
     """
@@ -12,21 +13,19 @@ class Bentcigar(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : List[str]
-        List of variable names.
-    bounds : List[Tuple[float, float]]
-        Bounds for each variable.
-    objectives : List[str]
-        Objectives for optimization.
-    constraints : List[str]
-        Any constraints for the problem.
+    n_var : int
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (fixed to REAL).
+    xl : float
+        Lower bound for each variable (fixed to -100).
+    xu : float
+        Upper bound for each variable (fixed to 100).
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Calculates the Bentcigar function value for given variables.
-    f(x)
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+    f(x: List[float]) -> float
+        Compute the Bentcigar function value for a single solution.
 
     Notes
     -----
@@ -34,37 +33,38 @@ class Bentcigar(AbstractProblem):
     Global minimum at f(0,...,0) = 0
     """
 
-    def __init__(self, dimension: int):
-        design_variables = [f"x{i+1}" for i in range(dimension)]
-        bounds = [(-100, 100) for _ in range(dimension)]
-        objectives = ["minimize"]
-        constraints = []
-
-        super().__init__(design_variables, bounds, objectives, constraints)
-        self.dimension = dimension
-
-    def evaluate(self, x, out, *args, **kwargs):
+    def __init__(self, n_var: int):
         """
-        Calculate the Bentcigar function value for a given list of variables.
+        Initialize the Bentcigar problem.
 
         Parameters
         ----------
-        x : numpy.ndarray
-            Array of input variables.
-        out : dict
-            Dictionary to store the output fitness values.
+        n_var : int
+            Number of variables (dimensions) in the problem.
         """
-        a = pw(x[0], 2)
-        b = pw(10, 6)
-        sum_val = sum(pw(xi, 2) for xi in x[1:])
-        
-        fitness = a + (b * sum_val)
-        out["F"] = round(fitness, 3)
+        gen_type = GeneType.REAL  
+        xl = -100.0
+        xu = 100.0
 
-    def f(self, x):
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: List[float]) -> float:
         """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        Compute the Bentcigar function value for a single solution.
+
+        Parameters
+        ----------
+        x : list or numpy.ndarray
+            Array of input variables.
+
+        Returns
+        -------
+        float
+            The computed fitness value for the given solution.
         """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        a = pw(x[0], 2)  
+        b = pw(10, 6)    
+        sum_val = sum(pw(xi, 2) for xi in x[1:])  
+
+        fitness = a + (b * sum_val)
+        return round(fitness, 3)

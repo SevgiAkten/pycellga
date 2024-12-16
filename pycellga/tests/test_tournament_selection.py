@@ -1,7 +1,7 @@
 from problems.single_objective.discrete.binary.one_max import OneMax
 from selection.tournament_selection import TournamentSelection
 from population import Population, OptimizationMethod
-from individual import GeneType
+from common import GeneType
 
 def test_tournament_selection():
     """

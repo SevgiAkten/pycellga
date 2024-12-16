@@ -3,7 +3,9 @@ import tsplib95
 from math import sqrt
 from geopy.distance import geodesic
 import os
-from typing import List, Tuple
+from typing import List
+from common import GeneType
+
 
 class Tsp(AbstractProblem):
     """
@@ -13,33 +15,55 @@ class Tsp(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : list
-        Names of the design variables (nodes in this case).
-    bounds : list of tuples
-        Bounds for each design variable as (min, max).
-    objectives : list
-        Objectives for optimization, e.g., "minimize" or "maximize".
-    constraints : list
-        Constraints for the optimization problem.
-
-    Notes
-    -----
-    - Uses geographical distance function (GEO) for evaluating routes.
-    - Example problem: burma14.tsp, with a known minimum distance.
+    gen_type : GeneType
+        The type of genes used in the problem (permutation in this case).
+    n_var : int
+        The number of nodes in the TSP problem.
+    xl : int
+        The minimum value for each variable (1 in this case, node index starts at 1).
+    xu : int
+        The maximum value for each variable (number of nodes).
     """
 
-    def __init__(self):
+    def __init__(self, n_var: int = 14):
         """
         Initialize the TSP problem with default attributes.
 
-        Uses the 'burma14' TSP dataset as an example with 14 nodes.
+        Parameters
+        ----------
+        n_var : int, optional
+            Number of nodes in the TSP problem (default is 14).
         """
-        design_variables = ["node" + str(i) for i in range(1, 15)]
-        bounds = [(1, 14) for _ in range(14)]  # Nodes range from 1 to 14
-        objectives = ["minimize"]
-        constraints = []
+        xl = [1] 
+        xu = [14]
+        gen_type=GeneType.PERMUTATION
 
-        super().__init__(design_variables, bounds, objectives, constraints)
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+        # Load TSP data file
+        file_path = os.path.join(os.path.dirname(__file__), "burma14.tsp.txt")
+        with open(file_path) as fl:
+            self.problem = tsplib95.read(fl)
+            self.node_coords = list(self.problem.node_coords.values())
+
+        # Precompute distances
+        self.distances = self._compute_distances()
+
+    def _compute_distances(self):
+        """
+        Precomputes the geographical distances between all node pairs.
+
+        Returns
+        -------
+        dict
+            A dictionary with distances between all node pairs.
+        """
+        distances = {}
+        for i, coord_a in enumerate(self.node_coords):
+            distances[i + 1] = {}
+            for j, coord_b in enumerate(self.node_coords):
+                distances[i + 1][j + 1] = self.geographical_dist(coord_a, coord_b)
+        return distances
 
     def f(self, x: List[int]) -> float:
         """
@@ -55,55 +79,14 @@ class Tsp(AbstractProblem):
         float
             The total distance of the route, rounded to one decimal place.
         """
-        # Load TSP data file
-        file_path = os.path.join(os.path.dirname(__file__), 'burma14.tsp.txt')
-        with open(file_path) as fl:
-            problem = tsplib95.read(fl)
-
-        nodes = list(problem.node_coords.values())
-
-        # Compute distances between all pairs of nodes
-        temp = []
-        for i in nodes:
-            temp_row = []
-            for j in nodes:
-                temp_row.append(self.gographical_dist(i, j))
-            temp.append(temp_row)
-
-        # Dictionary of distances between nodes
-        node_name = list(range(1, 15))
-        Dist = {row_name: {col_name: temp[i][j] for j, col_name in enumerate(node_name)} 
-                for i, row_name in enumerate(node_name)}
-
-        # Calculate total route distance
         fitness = 0.0
         for i in range(len(x)):
             start_node = x[i]
             end_node = x[(i + 1) % len(x)]
-            fitness += Dist[start_node][end_node]
-
+            fitness += self.distances[start_node][end_node]
         return round(fitness, 1)
 
-    def euclidean_dist(self, a: List[float], b: List[float]) -> float:
-        """
-        Computes the Euclidean distance between two nodes.
-
-        Parameters
-        ----------
-        a : list
-            Coordinates of the first node.
-        b : list
-            Coordinates of the second node.
-
-        Returns
-        -------
-        float
-            The Euclidean distance between the two nodes, rounded to one decimal place.
-        """
-        dist = sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
-        return round(dist, 1)
-
-    def gographical_dist(self, a: List[float], b: List[float]) -> float:
+    def geographical_dist(self, a: List[float], b: List[float]) -> float:
         """
         Computes the geographical distance between two nodes using the geodesic distance.
 

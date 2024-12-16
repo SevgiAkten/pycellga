@@ -11,7 +11,7 @@ def setup_levy():
     Levy
         An instance of the Levy problem with the default dimensions.
     """
-    return Levy(dimension=2)
+    return Levy(n_var=2)
 
 def test_levy_function(setup_levy):
     """

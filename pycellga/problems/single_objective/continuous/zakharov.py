@@ -1,37 +1,53 @@
-from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
-from typing import List, Any
+from typing import List
+from problems.abstract_problem import AbstractProblem
+from common import GeneType
+
 
 class Zakharov(AbstractProblem):
     """
     Zakharov function implementation for optimization problems.
 
-    The Zakharov function is commonly used to test optimization algorithms.
-    It evaluates inputs over the hypercube x_i ∈ [-5, 10].
+    The Zakharov function is widely used for testing optimization algorithms.
+    It is evaluated on the hypercube x_i ∈ [-5, 10] for all variables.
 
     Attributes
     ----------
-    design_variables : int
-        The number of variables for the problem.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-5, 10), (-5, 10), ...].
-    objectives : list
-        Objectives for the problem, set to ["minimize"] for single-objective optimization.
+    n_var : int
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (REAL).
+    xl : float
+        Lower bounds for the variables, fixed to -5.
+    xu : float
+        Upper bounds for the variables, fixed to 10.
 
     Methods
     -------
     f(x: list) -> float
-        Calculates the Zakharov function value for a given list of variables.
+        Compute the Zakharov function value for a given solution.
+    evaluate(x: list, out: dict, *args, **kwargs) -> None
+        Pymoo-compatible evaluation method for batch processing.
     """
 
-    def __init__(self, design_variables=2):
-        bounds = [(-5, 10) for _ in range(design_variables)]
-        objectives = ["minimize"]
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
+    def __init__(self, n_var: int = 2):
+        """
+        Initialize the Zakharov problem.
+
+        Parameters
+        ----------
+        n_var : int, optional
+            Number of variables (dimensions) for the problem, by default 2.
+        """
+        gen_type = GeneType.REAL
+        xl = -5.0
+        xu = 10.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
     def f(self, x: List[float]) -> float:
         """
-        Calculate the Zakharov function value for a given list of variables.
+        Compute the Zakharov function value for a given solution.
 
         Parameters
         ----------
@@ -43,15 +59,18 @@ class Zakharov(AbstractProblem):
         float
             The Zakharov function value.
         """
+        if len(x) != self.n_var:
+            raise ValueError(f"Input must have exactly {self.n_var} variables.")
+
         fitness1 = sum(pw(xi, 2) for xi in x)
         fitness2 = pw(sum(0.5 * (i + 1) * xi for i, xi in enumerate(x)), 2)
         fitness3 = pw(sum(0.5 * (i + 1) * xi for i, xi in enumerate(x)), 4)
         fitness = fitness1 + fitness2 + fitness3
         return round(fitness, 3)
 
-    def evaluate(self, x: List[float], out: dict, *args: Any, **kwargs: Any) -> None:
+    def evaluate(self, x: List[float], out: dict, *args, **kwargs) -> None:
         """
-        Evaluate function for compatibility with pymoo's optimizer.
+        Evaluate method for compatibility with pymoo's framework.
 
         Parameters
         ----------

@@ -1,5 +1,7 @@
 from numpy import cos, pi
+from typing import List
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
 
 class Rastrigin(AbstractProblem):
     """
@@ -10,38 +12,37 @@ class Rastrigin(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : int
-        The number of variables for the problem.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-5.12, 5.12), (-5.12, 5.12), ...].
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+    gen_type : GeneType
+        The type of genes used in the problem, set to REAL.
+    n_var : int
+        The number of variables (dimensions) in the problem.
+    xl : float
+        The lower bound for each variable, set to -5.12.
+    xu : float
+        The upper bound for each variable, set to 5.12.
 
     Methods
     -------
-    f(x: list) -> float
-        Calculates the Rastrigin function value for a given list of variables.
-
-    Notes
-    -----
-    -5.12 ≤ xi ≤ 5.12 for i = 1,…,n
-    Global minimum at f(0,...,0) = 0
+    f(x: List[float]) -> float
+        Computes the Rastrigin function value for a given solution.
     """
 
-    def __init__(self, design_variables=2):
+    def __init__(self, n_var: int = 2):
         """
         Initialize the Rastrigin problem with the specified number of variables.
 
         Parameters
         ----------
-        design_variables : int, optional
-            The number of design variables, by default 2.
+        n_var : int, optional
+            The number of design variables (dimensions), by default 2.
         """
-        self.design_variables = design_variables
-        self.bounds = [(-5.12, 5.12) for _ in range(design_variables)]
-        self.objectives = 1
+        gen_type = GeneType.REAL
+        xl = -5.12
+        xu = 5.12
 
-    def f(self, x: list) -> float:
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: List[float]) -> float:
         """
         Calculate the Rastrigin function value for a given list of variables.
 
@@ -53,11 +54,11 @@ class Rastrigin(AbstractProblem):
         Returns
         -------
         float
-            The Rastrigin function value.
+            The computed Rastrigin function value.
         """
-        if len(x) != self.design_variables:
-            raise ValueError(f"Input must have exactly {self.design_variables} variables.")
+        if len(x) != self.n_var:
+            raise ValueError(f"Input must have exactly {self.n_var} variables.")
 
         A = 10.0
-        fitness = (A * self.design_variables) + sum([(xi ** 2) - (A * cos(2 * pi * xi)) for xi in x])
+        fitness = (A * self.n_var) + sum([(xi ** 2) - (A * cos(2 * pi * xi)) for xi in x])
         return round(fitness, 3)

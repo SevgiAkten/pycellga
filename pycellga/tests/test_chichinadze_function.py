@@ -9,24 +9,9 @@ def setup_chichinadze():
     Returns
     -------
     Chichinadze
-        An instance of the Chichinadze problem with specified design variables and bounds.
+        An instance of the Chichinadze problem.
     """
     return Chichinadze()
-
-def test_chichinadze_attributes(setup_chichinadze):
-    """
-    Test the attributes of the Chichinadze problem to ensure they match expected values.
-
-    Parameters
-    ----------
-    setup_chichinadze : fixture
-        The fixture providing the Chichinadze problem instance.
-    """
-    problem = setup_chichinadze
-    assert problem.design_variables == ["x", "y"], "Design variables do not match expected values."
-    assert problem.bounds == [(-30, 30), (-30, 30)], "Bounds do not match expected values."
-    assert problem.objectives == ["minimize"], "Objectives do not match expected values."
-    assert problem.constraints == [], "Constraints should be empty."
 
 def test_chichinadze_function(setup_chichinadze):
     """
@@ -51,8 +36,10 @@ def test_chichinadze_function(setup_chichinadze):
 
     for variables, expected_fitness in test_cases:
         fitness_value = setup_chichinadze.f(variables)
-        assert isinstance(fitness_value, float)
-        assert fitness_value == pytest.approx(expected_fitness, rel=1e-4), f"Expected {expected_fitness}, got {fitness_value}"
+        print(f"Variables: {variables} => Fitness: {fitness_value}")
+        assert isinstance(fitness_value, float), "Fitness value should be a float."
+        assert fitness_value == pytest.approx(expected_fitness, rel=1e-4), \
+            f"Expected {expected_fitness}, got {fitness_value}"
 
 if __name__ == "__main__":
     pytest.main()

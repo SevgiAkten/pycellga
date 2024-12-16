@@ -11,7 +11,7 @@ def setup_holzman():
     Holzman
         An instance of the Holzman problem with 2 design variables.
     """
-    return Holzman(design_variables=2)
+    return Holzman(n_var=2)
 
 def test_holzman_function(setup_holzman):
     """
@@ -37,8 +37,9 @@ def test_holzman_function(setup_holzman):
     for variables, expected_fitness in test_cases:
         fitness_value = setup_holzman.f(variables)
         print(f"Variables: {variables} => Fitness: {fitness_value}")
-        assert isinstance(fitness_value, float)
-        assert fitness_value == pytest.approx(expected_fitness, rel=1e-3), f"Expected {expected_fitness}, got {fitness_value}"
+        assert isinstance(fitness_value, float), "Fitness value should be a float."
+        assert fitness_value == pytest.approx(expected_fitness, rel=1e-3), \
+            f"Expected {expected_fitness}, got {fitness_value}"
 
 if __name__ == "__main__":
     pytest.main()

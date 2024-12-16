@@ -1,44 +1,56 @@
 from mpmath import power as pw
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
+
 
 class Threehumps(AbstractProblem):
     """
     Three Hump Camel function implementation for optimization problems.
 
-    The Three Hump Camel function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-5, 5], for all i = 1, 2, ..., n.
+    The Three Hump Camel function is commonly used for testing optimization algorithms.
+    It is defined for two variables within the bounds [-5, 5].
 
     Attributes
     ----------
-    bounds : list of tuple
-        Bounds for each variable, set to [(-5, 5), (-5, 5)] for this function.
-    design_variables : int
-        Number of variables for this problem, which is 2.
-    objectives : int
-        Number of objectives, which is 1 for single-objective optimization.
+    n_var : int
+        Number of variables (dimensions) for the problem, fixed to 2.
+    gen_type : GeneType
+        Type of genes used in the problem (REAL).
+    xl : float
+        Lower bounds for the variables, fixed to -5.
+    xu : float
+        Upper bounds for the variables, fixed to 5.
 
     Methods
     -------
     f(x: list) -> float
-        Calculates the Three Hump Camel function value for a given list of variables.
+        Compute the Three Hump Camel function value for a given solution.
     """
 
     def __init__(self):
-        super().__init__(design_variables=2, bounds=[(-5, 5), (-5, 5)], objectives=["minimize"])
+        """
+        Initialize the Three Hump Camel problem.
+        """
+        gen_type = GeneType.REAL
+        n_var = 2
+        xl = -5.0
+        xu = 5.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
     def f(self, x: list) -> float:
         """
-        Calculate the Three Hump Camel function value for a given list of variables.
+        Compute the Three Hump Camel function value for a given solution.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
+        x : list or numpy.ndarray
+            Array of input variables.
 
         Returns
         -------
         float
-            The Three Hump Camel function value.
+            The computed fitness value for the given solution.
         """
         if len(x) != self.n_var:
             raise ValueError(f"Input must have exactly {self.n_var} variables.")

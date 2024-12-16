@@ -1,6 +1,8 @@
 from problems.abstract_problem import AbstractProblem
 from mpmath import power as pw
-from typing import List, Tuple
+from typing import List
+from common import GeneType
+
 
 class Pow(AbstractProblem):
     """
@@ -12,67 +14,56 @@ class Pow(AbstractProblem):
 
     Attributes
     ----------
-    design_variables : List[str]
-        The names of the design variables.
-    bounds : List[Tuple[float, float]]
-        The bounds for each variable, typically [(-5.0, 15.0) for each dimension].
-    objectives : List[str]
-        Objectives for optimization, e.g., "minimize".
+    gen_type : GeneType
+        The type of genes used in the problem (REAL).
+    n_var : int
+        The number of design variables.
+    xl : float
+        The lower bound for the variables (-5.0).
+    xu : float
+        The upper bound for the variables (15.0).
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Calculates the Pow function value for compatibility with Pymoo's optimizer.
-    f(x: list) -> float
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+    f(x: List[float]) -> float
+        Compute the Pow function value for a given solution.
     """
 
-    def __init__(self, design_variables=5):
-        # Define design variable names
-        design_variable_names = [f"x{i+1}" for i in range(design_variables)]
-        bounds = [(-5.0, 15.0) for _ in range(design_variables)]
-        objectives = ["minimize"]
-
-        # Initialize the AbstractProblem
-        super().__init__(design_variable_names, bounds, objectives)
-        self.design_variables = design_variables
-
-    def evaluate(self, x, out, *args, **kwargs):
+    def __init__(self, n_var: int = 5):
         """
-        Calculate the Pow function value for a given list of variables.
+        Initialize the Pow problem.
 
         Parameters
         ----------
-        x : list
-            A list of float variables representing the point in the solution space.
-        out : dict
-            Dictionary to store the output fitness values.
+        n_var : int, optional
+            The number of variables (dimensions) in the problem, by default 5.
         """
-        if len(x) != self.design_variables:
-            raise ValueError(f"Input must have exactly {self.design_variables} variables.")
+        gen_type = GeneType.REAL
+        xl = -5.0
+        xu = 15.0
 
-        fitness = (pw(x[0] - 5, 2) +
-                   pw(x[1] - 7, 2) +
-                   pw(x[2] - 9, 2) +
-                   pw(x[3] - 3, 2) +
-                   pw(x[4] - 2, 2))
-
-        out["F"] = round(fitness, 2)
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
     def f(self, x: List[float]) -> float:
         """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
+        Compute the Pow function value for a given solution.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
+        x : list of float
+            A list of float variables representing a point in the solution space.
 
         Returns
         -------
         float
-            The Pow function value.
+            The computed fitness value for the given solution.
         """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        if len(x) != self.n_var:
+            raise ValueError(f"Input must have exactly {self.n_var} variables.")
+
+        # Define the target values
+        target = [5, 7, 9, 3, 2]
+
+        # Compute the fitness as the sum of squared differences
+        fitness = sum(pw(xi - ti, 2) for xi, ti in zip(x, target))
+        return round(fitness, 2)

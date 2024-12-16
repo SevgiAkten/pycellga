@@ -6,7 +6,7 @@ def setup_schaffer():
     """
     Fixture to provide an instance of the Schaffer problem with the default number of design variables.
     """
-    return Schaffer(design_variables=2)
+    return Schaffer(n_var=2)
 
 def test_schaffer_function(setup_schaffer):
     """

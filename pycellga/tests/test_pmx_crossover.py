@@ -1,6 +1,7 @@
 from problems.single_objective.discrete.permutation.tsp import Tsp
 from recombination.pmx_crossover import PMXCrossover
-from individual import Individual, GeneType
+from individual import Individual
+from common import GeneType
 import random
 
 def test_pmx_crossover():

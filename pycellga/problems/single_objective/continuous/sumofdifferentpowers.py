@@ -1,27 +1,29 @@
+from problems.abstract_problem import AbstractProblem
+from common import GeneType
 import numpy as np
 from mpmath import power as pw
-from problems.abstract_problem import AbstractProblem
-
 class Sumofdifferentpowers(AbstractProblem):
     """
     Sum of Different Powers function implementation for optimization problems.
 
-    The Sum of Different Powers function is often used for testing optimization algorithms.
-    It is usually evaluated within the bounds x_i ∈ [-1, 1] for each variable.
+    The Sum of Different Powers function is commonly used to test optimization algorithms.
+    It is defined over the range [-1, 1] for each variable, with a global minimum of 0 at the origin.
 
     Attributes
     ----------
     n_var : int
-        The number of variables for the problem.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-1, 1), (-1, 1), ...].
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (fixed to REAL).
+    xl : float
+        Lower bounds for the variables (fixed to -1).
+    xu : float
+        Upper bounds for the variables (fixed to 1).
 
     Methods
     -------
     f(x: list) -> float
-        Calculates the Sum of Different Powers function value for a given list of variables.
+        Compute the Sum of Different Powers function value for a given solution.
 
     Notes
     -----
@@ -29,24 +31,34 @@ class Sumofdifferentpowers(AbstractProblem):
     Global minimum at f(0,...,0) = 0.
     """
 
-    def __init__(self, design_variables=2):
-        bounds = [(-1, 1) for _ in range(design_variables)]
-        objectives = ["minimize"]
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
-
-    def f(self, x: list) -> float:
+    def __init__(self, n_var: int = 2):
         """
-        Calculate the Sum of Different Powers function value for a given list of variables.
+        Initialize the Sum of Different Powers problem.
 
         Parameters
         ----------
-        x : list
-            A list of float variables.
+        n_var : int, optional
+            Number of variables (dimensions) in the problem, by default 2.
+        """
+        gen_type = GeneType.REAL
+        xl = -1.0
+        xu = 1.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: list) -> float:
+        """
+        Compute the Sum of Different Powers function value for a given solution.
+
+        Parameters
+        ----------
+        x : list or numpy.ndarray
+            Array of input variables.
 
         Returns
         -------
         float
-            The Sum of Different Powers function value.
+            The computed fitness value for the given solution.
         """
         if len(x) != self.n_var:
             raise ValueError(f"Input must have exactly {self.n_var} variables.")
@@ -56,7 +68,7 @@ class Sumofdifferentpowers(AbstractProblem):
 
     def evaluate(self, x, out, *args, **kwargs):
         """
-        Evaluate method for compatibility with pymoo's framework.
+        Evaluate function for compatibility with pymoo's optimizer.
 
         Parameters
         ----------

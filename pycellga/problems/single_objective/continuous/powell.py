@@ -1,46 +1,64 @@
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
 from mpmath import power as pw
+from typing import List
 
 class Powell(AbstractProblem):
     """
     Powell function implementation for optimization problems.
 
     The Powell function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x_i ∈ [-4, 5], for all i = 1, 2, ..., n.
-
+    It is typically evaluated on the hypercube x_i ∈ [-4, 5], for all i = 1, 2, ..., n.
+    
     Attributes
     ----------
-    design_variables : int
-        The number of variables for the problem.
-    bounds : list of tuple
-        The bounds for each variable, typically [(-4, 5), (-4, 5), ...].
-    objectives : int
-        Number of objectives, set to 1 for single-objective optimization.
+    n_var : int
+        Number of variables (dimensions) in the problem.
+    gen_type : GeneType
+        Type of genes used in the problem (REAL for this implementation).
+    xl : float
+        Lower bound for the variables (fixed to -4).
+    xu : float
+        Upper bound for the variables (fixed to 5).
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs) -> None
-        Calculates the Powell function value and stores in the output dictionary.
-
-    f(x: list) -> float
-        Wrapper for evaluate to maintain compatibility with the rest of the codebase.
+    f(x: List[float]) -> float
+        Compute the Powell function value for a given solution.
     """
 
-    def __init__(self, design_variables=4):
-        bounds = [(-4, 5) for _ in range(design_variables)]
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=["minimize"])
-
-    def evaluate(self, x, out, *args, **kwargs):
+    def __init__(self, n_var: int = 4):
         """
-        Evaluate the Powell function at a given point.
+        Initialize the Powell problem.
 
         Parameters
         ----------
-        x : list or numpy array
-            Input variables.
-        out : dict
-            Output dictionary to store the function value.
+        n_var : int, optional
+            Number of variables (dimensions) in the problem, by default 4.
         """
+        gen_type = GeneType.REAL
+        xl = -4.0
+        xu = 5.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: List[float]) -> float:
+        """
+        Compute the Powell function value for a given solution.
+
+        Parameters
+        ----------
+        x : list of float
+            A list of float variables representing a point in the solution space.
+
+        Returns
+        -------
+        float
+            The computed fitness value for the given solution.
+        """
+        if len(x) % 4 != 0:
+            raise ValueError("Powell function requires the number of variables to be a multiple of 4.")
+
         fitness = 0.0
         d = len(x) // 4
         
@@ -51,22 +69,4 @@ class Powell(AbstractProblem):
             e = pw(x[4 * i] - x[4 * i + 3], 4)
             fitness += a + 5 * b + c + 10 * e
 
-        out["F"] = round(fitness, 1)
-
-    def f(self, x):
-        """
-        Wrapper for the evaluate method to maintain compatibility.
-
-        Parameters
-        ----------
-        x : list
-            A list of float variables.
-
-        Returns
-        -------
-        float
-            The computed Powell function value.
-        """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        return round(fitness, 1)

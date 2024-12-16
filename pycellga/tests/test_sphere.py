@@ -6,7 +6,7 @@ def setup_sphere():
     """
     Fixture to provide an instance of the Sphere problem.
     """
-    return Sphere(design_variables=10)  
+    return Sphere(n_var=10)  
 
 def test_sphere(setup_sphere):
     """

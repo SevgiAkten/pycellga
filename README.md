@@ -56,45 +56,49 @@ Here’s how we can define this problem in Python using the `ExampleProblem` cla
 
 ```python
 from mpmath import power as pw
+from typing import List
 
 from pycellga.optimizer import cga
-from pycellga.individual import GeneType
-from pycellga.selection import TournamentSelection
 from pycellga.recombination import ByteOnePointCrossover
 from pycellga.mutation import ByteMutationRandom
+from pycellga.selection import TournamentSelection
+from pycellga.problems import AbstractProblem
+from pycellga.common import GeneType
 
-class ExampleProblem:
-    
-    def __init__(self):
-        pass
-    
-    def f(self, x):
-        
-        return sum(pw(xi, 2) for xi in x)
+class ExampleProblem(AbstractProblem):
+
+    def __init__(self, n_var):
+
+        super().__init__(
+            gen_type=GeneType.REAL,
+            n_var=n_var,
+            xl=-100, 
+            xu=100
+        )
+
+    def f(self, x: List[float]) -> float:
+        return round(sum(pw(xi, 2) for xi in x),3)
 ```
 **Usage:**
 
 ```python
 result = cga(
-    n_cols=5,
-    n_rows=5,
-    n_gen=100,
-    ch_size=5,
-    gen_type=GeneType.REAL,
-    p_crossover=0.9,
-    p_mutation=0.2,
-    problem=ExampleProblem(),  # Replace with a real problem instance as needed
-    selection=TournamentSelection,
-    recombination=ByteOnePointCrossover,
-    mutation=ByteMutationRandom,
-    mins=[-32.768] * 5,  # Minimum values for each gene
-    maxs=[32.768] * 5,    # Maximum values for each gene
-    seed_par=100  # Ensures the random number generation is repeatable
-)
+        n_cols=5,
+        n_rows=5,
+        n_gen=100,
+        ch_size=5,
+        p_crossover=0.9,
+        p_mutation=0.2,
+        problem=ExampleProblem(n_var=5),
+        selection=TournamentSelection,
+        recombination=ByteOnePointCrossover,
+        mutation=ByteMutationRandom,
+        seed_par=100
+    )
 
-# Print the best solution details
-print("Best solution chromosome:", result.chromosome)
-print("Best fitness value:", result.fitness_value)
+    # Print the results
+    print("Best solution chromosome:", result.chromosome)
+    print("Best fitness value:", result.fitness_value)
 
 # Expected Output:
 # Best solution chromosome: [0.0, 0.0, 0.0, 0.0, 0.0]

@@ -6,7 +6,7 @@ def setup_styblinski_tang():
     """
     Fixture to provide an instance of the StyblinskiTang problem.
     """
-    return StyblinskiTang(design_variables=2)
+    return StyblinskiTang(n_var=2)
 
 def test_styblinskitang_function(setup_styblinski_tang):
     """

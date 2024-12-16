@@ -1,21 +1,17 @@
-
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
+
 
 class Maxcut100(AbstractProblem):
     """
     A class to represent the Maximum Cut (MAXCUT) problem for 100 nodes.
-    
+
     Attributes
     ----------
     problema : list of list of float
         A matrix representing the weights between nodes in the MAXCUT problem.
-
-    Methods
-    -------
-    f(x: list) -> float
-        Calculates the fitness value of a given chromosome for the Maxcut problem.
     """
-    
+
     def __init__(self):
         
         self.problema = [
@@ -221,19 +217,28 @@ class Maxcut100(AbstractProblem):
                 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
         ]
 
-    def f(self, x: list) -> float:
+        
+        n_var = 100  
+        xl = 0
+        xu = 1
+        gen_type = GeneType.BINARY
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x):
         """
-        Calculates the fitness value of a given chromosome for the Maxcut problem.
+        Fitness function for the Maxcut problem.
+        Calculates the cut value of the given binary solution vector `x`.
 
         Parameters
         ----------
-        x : list
-            A list representing a chromosome.
+        x : list of int
+            Binary vector representing the solution.
 
         Returns
         -------
         float
-            The fitness value of the chromosome.
+            The fitness value (cut value).
         """
         fitness = 0.0
         n = len(self.problema)
@@ -244,3 +249,17 @@ class Maxcut100(AbstractProblem):
                     fitness += self.problema[i][j]
 
         return fitness
+
+    def evaluate(self, x, out, *args, **kwargs):
+        """
+        Evaluates the Maxcut problem for a given solution `x`.
+
+        Parameters
+        ----------
+        x : ndarray
+            Decision variable matrix (each row is a solution vector).
+        out : dict
+            Output dictionary where results will be stored.
+        """
+        # Fitness değerlerini hesapla ve çıktıya ekle
+        out["F"] = [self.f(ind) for ind in x]

@@ -27,15 +27,12 @@ def cga(
     n_rows: int,
     n_gen: int,
     ch_size: int,
-    gen_type: str,
     p_crossover: float,
     p_mutation: float,
     problem: AbstractProblem,
     selection: SelectionOperator,
     recombination: RecombinationOperator,
     mutation: MutationOperator,
-    mins: List[float] = [],
-    maxs: List[float] = [],
     seed_par: int = None
 ) -> Result:
     """
@@ -89,8 +86,15 @@ def cga(
     method_name = OptimizationMethod.CGA
 
     # Generate Initial Population
-    pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem, mins=mins, maxs=maxs).initial_population()
+    pop_list = Population(
+                method_name, 
+                ch_size, 
+                n_rows, 
+                n_cols,
+                gen_type = problem.gen_type, 
+                problem = problem,
+                mins = problem.xl,
+                maxs = problem.xu).initial_population()
 
     pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value)
 
@@ -153,15 +157,12 @@ def sync_cga(
     n_rows: int,
     n_gen: int,
     ch_size: int,
-    gen_type: str,
     p_crossover: float,
     p_mutation: float,
     problem: Callable[[List[float]], float],
     selection: SelectionOperator,
     recombination: RecombinationOperator,
     mutation: MutationOperator,
-    mins: List[float] = [],
-    maxs: List[float] = [],
     seed_par: int = None
 ) -> Result:
     """
@@ -215,8 +216,15 @@ def sync_cga(
     method_name = OptimizationMethod.SYNCGA
 
     # Generate Initial Population
-    pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem, mins=mins, maxs=maxs).initial_population()
+    pop_list = Population(
+                method_name, 
+                ch_size, 
+                n_rows, 
+                n_cols,
+                gen_type = problem.gen_type, 
+                problem = problem,
+                mins = problem.xl,
+                maxs = problem.xu).initial_population()
 
     # Sort population by fitness value
     pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value)
@@ -296,15 +304,12 @@ def alpha_cga(
     n_rows: int,
     n_gen: int,
     ch_size: int,
-    gen_type: str,
     p_crossover: float,
     p_mutation: float,
     problem: AbstractProblem,
     selection: SelectionOperator,
     recombination: RecombinationOperator,
     mutation: MutationOperator,
-    mins: List[float] = [],
-    maxs: List[float] = [],
     seed_par: int = None
 ) -> Result:
     """
@@ -358,8 +363,15 @@ def alpha_cga(
     method_name = OptimizationMethod.ALPHA_CGA
 
     # Generate Initial Population
-    pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem, mins=mins, maxs=maxs).initial_population()
+    pop_list = Population(
+                method_name, 
+                ch_size, 
+                n_rows, 
+                n_cols,
+                gen_type = problem.gen_type, 
+                problem = problem,
+                mins = problem.xl,
+                maxs = problem.xu).initial_population()
     
     # Sort population by fitness value
     pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value)
@@ -458,11 +470,8 @@ def ccga(
     n_rows: int,
     n_gen: int,
     ch_size: int,
-    gen_type: str,
     problem: AbstractProblem,
-    selection: SelectionOperator,
-    mins: List[float] = [],
-    maxs: List[float] = []
+    selection: SelectionOperator
 ) -> Result:
     """
     Perform optimization using a Cooperative Coevolutionary Genetic Algorithm (CCGA).
@@ -503,8 +512,15 @@ def ccga(
     method_name = OptimizationMethod.CCGA
 
     # Generate Initial Population
-    pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem, vector, mins=mins, maxs=maxs).initial_population()
+    pop_list = Population(
+                method_name, 
+                ch_size, 
+                n_rows, 
+                n_cols,
+                gen_type = problem.gen_type, 
+                problem = problem,
+                mins = problem.xl,
+                maxs = problem.xu).initial_population()
 
     # Sort population by fitness value
     pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value)
@@ -539,8 +555,15 @@ def ccga(
             update_vector(vector, winner, loser, pop_size)
 
             # Re-generate the population based on the updated vector
-            pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                                  gen_type, problem, vector, mins=mins, maxs=maxs).initial_population()
+            pop_list = Population(
+                method_name, 
+                ch_size, 
+                n_rows, 
+                n_cols,
+                gen_type = problem.gen_type, 
+                problem = problem,
+                mins = problem.xl,
+                maxs = problem.xu).initial_population()
 
         # Update best ever solution if the current best solution is better
         if best.fitness_value > best_ever_solution.fitness_value:
@@ -563,11 +586,8 @@ def mcccga(
     n_rows: int,
     n_gen: int,
     ch_size: int,
-    gen_type: str,
     problem: AbstractProblem,
-    selection: SelectionOperator,
-    mins: List[float],
-    maxs: List[float]
+    selection: SelectionOperator
 ) -> Result:
     """
     Optimize the given problem using a multi-population machine-coded compact genetic algorithm (MCCGA).
@@ -582,16 +602,10 @@ def mcccga(
         Number of generations to evolve.
     ch_size : int
         Size of the chromosome.
-    gen_type : str
-        Type of the genome representation (e.g., 'Binary', 'Permutation', 'Real').
     problem : AbstractProblem
         Problem instance for fitness evaluation.
     selection : SelectionOperator
         Function or class used for selecting parents.
-    mins : List[float]
-        List of minimum values for the probability vector generation.
-    maxs : List[float]
-        List of maximum values for the probability vector generation.
 
     Returns
     -------
@@ -605,12 +619,22 @@ def mcccga(
     avg_objectives = []
     method_name = OptimizationMethod.MCCCGA
 
+    mins = problem.xl
+    maxs = problem.xu
+
     # Generate initial probability vector
     vector = generate_probability_vector(mins, maxs, pop_size)
 
     # Generate Initial Population
-    pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                          gen_type, problem, vector).initial_population()
+    pop_list = Population(
+                method_name, 
+                ch_size, 
+                n_rows, 
+                n_cols,
+                problem.gen_type, 
+                problem, 
+                vector).initial_population()
+
 
     # Sort population by fitness value
     pop_list_ordered = sorted(pop_list, key=lambda x: x.fitness_value)
@@ -647,8 +671,14 @@ def mcccga(
             update_vector(vector, winner, loser, pop_size)
 
         # Re-generate the population based on the updated vector
-        pop_list = Population(method_name, ch_size, n_rows, n_cols,
-                              gen_type, problem, vector).initial_population()
+        pop_list = Population(
+                method_name, 
+                ch_size, 
+                n_rows, 
+                n_cols,
+                problem.gen_type, 
+                problem, 
+                vector).initial_population()
 
         # Track the best fitness value and update the best solution if necessary
         best_objectives.append(best.fitness_value)

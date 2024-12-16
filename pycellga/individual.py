@@ -1,19 +1,13 @@
-from enum import Enum 
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
 from numpy import random
 import numpy as np
 import random as rd
 from problems.abstract_problem import AbstractProblem
-
-
-class GeneType(Enum):
-    """
-    GeneType is an enumeration class that represents the type of genome representation for an individual in an evolutionary algorithm.
-    The three types of genome representation are BINARY, PERMUTATION, and REAL.
-    """
-    BINARY = 1
-    PERMUTATION = 2
-    REAL = 3
-
+from common import GeneType
 
 
 class Individual:

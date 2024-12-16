@@ -1,31 +1,31 @@
 import numpy as np
 from typing import List
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
+
 
 class Chichinadze(AbstractProblem):
     """
     Chichinadze function implementation for optimization problems.
 
     The Chichinadze function is widely used for testing optimization algorithms.
-    The function is usually evaluated on the hypercube x, y ∈ [-30, 30].
+    It is usually evaluated on the hypercube x, y ∈ [-30, 30].
 
     Attributes
     ----------
-    design_variables : List[str]
-        List of variable names.
-    bounds : List[Tuple[float, float]]
-        Bounds for each variable.
-    objectives : List[str]
-        Objectives for optimization.
-    constraints : List[str]
-        Any constraints for the problem.
+    n_var : int
+        Number of variables (fixed to 2 for x and y).
+    gen_type : GeneType
+        Type of genes used in the problem (fixed to REAL).
+    xl : float
+        Lower bound for the variables (fixed to -30).
+    xu : float
+        Upper bound for the variables (fixed to 30).
 
     Methods
     -------
-    evaluate(x, out, *args, **kwargs)
-        Calculates the Chichinadze function value for given variables.
-    f(x)
-        Alias for evaluate to maintain compatibility with the rest of the codebase.
+    f(x: List[float]) -> float
+        Compute the Chichinadze function value for a single solution.
 
     Notes
     -----
@@ -34,23 +34,29 @@ class Chichinadze(AbstractProblem):
     """
 
     def __init__(self):
-        design_variables = ["x", "y"]
-        bounds = [(-30, 30), (-30, 30)]
-        objectives = ["minimize"]
-        constraints = []
-
-        super().__init__(design_variables, bounds, objectives, constraints)
-
-    def evaluate(self, x, out, *args, **kwargs):
         """
-        Calculate the Chichinadze function value for a given list of variables.
+        Initialize the Chichinadze problem.
+        """
+        gen_type = GeneType.REAL
+        n_var = 2  # Fixed to 2 for x and y
+        xl = -30.0
+        xu = 30.0
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
+
+    def f(self, x: List[float]) -> float:
+        """
+        Compute the Chichinadze function value for a single solution.
 
         Parameters
         ----------
-        x : numpy.ndarray
+        x : list or numpy.ndarray
             Array of input variables.
-        out : dict
-            Dictionary to store the output fitness values.
+
+        Returns
+        -------
+        float
+            The computed fitness value for the given solution.
         """
         x_val, y_val = x[0], x[1]
         term1 = x_val**2 - 12 * x_val + 11
@@ -59,12 +65,4 @@ class Chichinadze(AbstractProblem):
         term4 = (1.0 / np.sqrt(5)) * np.exp(-((y_val - 0.5)**2) / 2)
         fitness = term1 + term2 + term3 - term4
 
-        out["F"] = round(fitness, 4)
-
-    def f(self, x: List[float]) -> float:
-        """
-        Alias for the evaluate method to maintain compatibility with the rest of the codebase.
-        """
-        result = {}
-        self.evaluate(x, result)
-        return result["F"]
+        return round(fitness, 4)

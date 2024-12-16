@@ -1,6 +1,7 @@
 from problems.single_objective.discrete.binary.one_max import OneMax
 from recombination.uniform_crossover import UniformCrossover
-from individual import Individual, GeneType
+from individual import Individual
+from common import GeneType
 
 def test_uniform_crossover():
     """

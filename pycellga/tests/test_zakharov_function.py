@@ -6,7 +6,7 @@ def setup_zakharov():
     """
     Fixture to provide an instance of the Zakharov problem.
     """
-    return Zakharov(design_variables=2)
+    return Zakharov(n_var=2)
 
 def test_zakharov_function(setup_zakharov):
     """
@@ -24,7 +24,7 @@ def test_zakharov_function(setup_zakharov):
     ]
 
     # Testing 3 variables requires initializing with design_variables=3
-    three_var_problem = Zakharov(design_variables=3)
+    three_var_problem = Zakharov(n_var=3)
     extended_test_case = ([1.0, 2.0, 3.0], 2464.0)
 
     # Run test cases with default 2-variable problem

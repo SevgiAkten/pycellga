@@ -1,4 +1,6 @@
 from problems.abstract_problem import AbstractProblem
+from common import GeneType
+from typing import List
 
 class Maxcut20_01(AbstractProblem):
     """
@@ -16,12 +18,20 @@ class Maxcut20_01(AbstractProblem):
     -------
     f(x: list) -> float
         Calculates the MAXCUT function value for a given list of binary variables.
+    evaluate(x: list, out: dict) -> None
+        Pymoo-compatible evaluation method for batch processing.
     """
 
-    def __init__(self, design_variables=20, bounds=None, objectives=1):
-        if bounds is None:
-            bounds = [(0, 1)] * design_variables  # Binary bounds for each variable
-        super().__init__(design_variables=design_variables, bounds=bounds, objectives=objectives)
+    def __init__(self):
+        """
+        Initialize the MAXCUT problem with binary variables and adjacency matrix.
+        """
+        n_var = 20  # Number of binary variables (nodes)
+        xl = 0  # Lower bound for binary variables
+        xu = 1  # Upper bound for binary variables
+        gen_type = GeneType.BINARY
+
+        super().__init__(gen_type=gen_type, n_var=n_var, xl=xl, xu=xu)
 
         # Define adjacency matrix (20x20 matrix of edge weights)
         self.problema = [
@@ -67,7 +77,7 @@ class Maxcut20_01(AbstractProblem):
                 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
         ]
 
-    def f(self, x: list) -> float:
+    def f(self, x: List[int]) -> float:
         """
         Calculate the MAXCUT function value for a given list of binary variables.
 
@@ -91,7 +101,7 @@ class Maxcut20_01(AbstractProblem):
 
         return round(fitness, 6)
 
-    def evaluate(self, x, out, *args, **kwargs):
+    def evaluate(self, x: List[int], out: dict, *args, **kwargs) -> None:
         """
         Evaluate function for compatibility with pymoo's optimizer.
 
@@ -103,6 +113,3 @@ class Maxcut20_01(AbstractProblem):
             Dictionary to store the output fitness values.
         """
         out["F"] = self.f(x)
-
-
-

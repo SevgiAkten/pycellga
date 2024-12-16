@@ -11,7 +11,7 @@ def setup_griewank():
     Griewank
         An instance of the Griewank problem.
     """
-    return Griewank(dimensions=2) 
+    return Griewank(n_var=2)  # Initialize with 2 dimensions
 
 def test_griewank_function(setup_griewank):
     """

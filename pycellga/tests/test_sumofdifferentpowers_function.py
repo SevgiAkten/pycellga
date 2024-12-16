@@ -7,7 +7,7 @@ def setup_sumofdifferentpowers():
     Fixture to create an instance of the Sumofdifferentpowers problem.
     """
     # Instantiate with a specific number of design variables if needed
-    return Sumofdifferentpowers(design_variables=3)
+    return Sumofdifferentpowers(n_var=3)
 
 def test_sumofdifferentpowers_function(setup_sumofdifferentpowers):
     """

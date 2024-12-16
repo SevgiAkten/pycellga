@@ -1,5 +1,5 @@
 import pytest
-from individual import Individual, GeneType
+from common import GeneType
 from grid import Grid
 from neighborhoods.linear_9 import Linear9
 from byte_operators import bits_to_floats
@@ -17,8 +17,14 @@ class MockProblem(AbstractProblem):
     f(chromosome : List[float]) -> float
         Returns the sum of the chromosome as the fitness value.
     """
-    def __init__(self):
-        super().__init__(design_variables=10, bounds=[(0, 1)] * 10, objectives=1)
+    def __init__(self, n_var):
+
+        super().__init__(
+            gen_type=GeneType.BINARY,
+            n_var=n_var,
+            xl=0, 
+            xu=1
+        )
     
     def f(self, chromosome: List[float]) -> float:
         return sum(chromosome)
@@ -34,7 +40,8 @@ def setup_population():
     Population
         A population instance with a mock problem.
     """
-    mock_problem = MockProblem()
+    mock_problem = MockProblem(n_var=10)
+    
     return Population(
         method_name=OptimizationMethod.CGA,
         ch_size=10,

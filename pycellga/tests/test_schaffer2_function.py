@@ -6,7 +6,7 @@ def setup_schaffer2():
     """
     Fixture to provide an instance of the Schaffer2 problem.
     """
-    return Schaffer2(design_variables=2)
+    return Schaffer2(n_var=2)
 
 def test_schaffer2_function(setup_schaffer2):
     """

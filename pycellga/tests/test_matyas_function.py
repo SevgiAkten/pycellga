@@ -38,19 +38,22 @@ def test_matyas_function(setup_matyas):
     AssertionError
         If the actual fitness value does not match the expected fitness value.
     """
+    # Define test cases with expected outputs
     test_cases = [
         ([0.0, 0.0], 0.0),
         ([1.0, 1.0], 0.04),
         ([-1.0, -1.0], 0.04),
         ([5.0, -5.0], 25.0),
-        ([10.0, 10.0], 4.0)
+        ([10.0, 10.0], 4.0)  
     ]
 
+    # Loop through each test case and validate the fitness value
     for variables, expected_fitness in test_cases:
         fitness_value = setup_matyas.f(variables)
         print(f"Variables: {variables} => Fitness: {fitness_value}, Expected: {expected_fitness}")
-        assert isinstance(fitness_value, float)
-        assert fitness_value == pytest.approx(expected_fitness, rel=1e-2), f"Expected {expected_fitness}, got {fitness_value}"
+        assert isinstance(fitness_value, float), "Fitness value should be a float."
+        assert fitness_value == pytest.approx(expected_fitness, rel=1e-2), \
+            f"Expected {expected_fitness}, got {fitness_value}"
 
 if __name__ == "__main__":
     pytest.main()
