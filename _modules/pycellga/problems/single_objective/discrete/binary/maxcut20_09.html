@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pycellga.problems.single_objective.discrete.binary.maxcut20_09 &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=292eb321"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../../index.html" class="icon icon-home">
+            PYCELLGA Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html#installing-from-pypi">Installing from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html#installing-from-source">Installing from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html#verifying-the-installation">Verifying the Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html#uninstallation">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../pycellga.html">Components of pycellga</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html">Neighborhood Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#the-concept-of-neighborhood"><strong>The Concept of Neighborhood</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#neighborhood-scheme-examples"><strong>Neighborhood Scheme Examples</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#api-references"><strong>API References</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#linear-5"><strong>Linear 5</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#linear-9"><strong>Linear 9</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#compact-9"><strong>Compact 9</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#compact-13"><strong>Compact 13</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#compact-21"><strong>Compact 21</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.neighborhoods.html#compact-25"><strong>Compact 25</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.mutation.html">Mutation Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.mutation.html#understanding-mutation"><strong>Understanding Mutation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.mutation.html#mutation-examples"><strong>Mutation Examples</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.mutation.html#api-references"><strong>API References</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#bit-flip-mutation"><strong>Bit Flip Mutation</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#byte-mutation"><strong>Byte Mutation</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#randomized-byte-mutation"><strong>Randomized Byte Mutation</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#uniform-float-mutation"><strong>Uniform Float Mutation</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#insertion-based-mutation"><strong>Insertion-Based Mutation</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#shuffle-mutation"><strong>Shuffle Mutation</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#swap-mutation"><strong>Swap Mutation</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.mutation.html#two-opt-mutation"><strong>Two-Opt Mutation</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.recombination.html">Recombination Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.recombination.html#understanding-recombination"><strong>Understanding Recombination</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.recombination.html#recombination-examples"><strong>Recombination Examples</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.recombination.html#api-references"><strong>API References</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.arithmetic_crossover"><strong>Arithmetic Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.blxalpha_crossover"><strong>BLX-Alpha Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.byte_one_point_crossover"><strong>Byte One-Point Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.byte_uniform_crossover"><strong>Byte Uniform Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.flat_crossover"><strong>Flat Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.linear_crossover"><strong>Linear Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.one_point_crossover"><strong>One-Point Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.pmx_crossover"><strong>Partially Matched Crossover (PMX)</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.two_point_crossover"><strong>Two-Point Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.unfair_avarage_crossover"><strong>Unfair Average Crossover</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.recombination.html#module-pycellga.recombination.uniform_crossover"><strong>Uniform Crossover</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.selection.html">Selection Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.selection.html#selection-mechanism"><strong>Selection Mechanism</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.selection.html#selection-example"><strong>Selection Example</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.selection.html#api-references"><strong>API References</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.selection.html#tournament-selection"><strong>Tournament Selection</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.selection.html#roulette-wheel-selection"><strong>Roulette Wheel Selection</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.problems.html">Problem Definitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.problems.html#abstractproblem-class"><strong>AbstractProblem Class</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.problems.html#key-features">Key Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.problems.html#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.problems.html#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.problems.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.problems.html#module-pycellga.problems.abstract_problem"><strong>API References</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.problems.html#pycellga.problems.abstract_problem.AbstractProblem"><code class="docutils literal notranslate"><span class="pre">AbstractProblem</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.problems.html#single-objective-problems"><strong>Single-Objective Problems</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.problems.single_objective.html">Single-Objective Optimization Problems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#core-modules-api-refences"><strong>Core Modules API Refences</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#population-management">Population Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.OptimizationMethod"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.OptimizationMethod.ALPHA_CGA"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod.ALPHA_CGA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.OptimizationMethod.CCGA"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod.CCGA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.OptimizationMethod.CGA"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod.CGA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.OptimizationMethod.MCCCGA"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod.MCCCGA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.OptimizationMethod.SYNCGA"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod.SYNCGA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population"><code class="docutils literal notranslate"><span class="pre">Population</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.method_name"><code class="docutils literal notranslate"><span class="pre">Population.method_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.ch_size"><code class="docutils literal notranslate"><span class="pre">Population.ch_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.n_rows"><code class="docutils literal notranslate"><span class="pre">Population.n_rows</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.n_cols"><code class="docutils literal notranslate"><span class="pre">Population.n_cols</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.gen_type"><code class="docutils literal notranslate"><span class="pre">Population.gen_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.problem"><code class="docutils literal notranslate"><span class="pre">Population.problem</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.vector"><code class="docutils literal notranslate"><span class="pre">Population.vector</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.__init__"><code class="docutils literal notranslate"><span class="pre">Population.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.population.Population.initial_population"><code class="docutils literal notranslate"><span class="pre">Population.initial_population()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#individual-representation">Individual Representation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual"><code class="docutils literal notranslate"><span class="pre">Individual</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.chromosome"><code class="docutils literal notranslate"><span class="pre">Individual.chromosome</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.fitness_value"><code class="docutils literal notranslate"><span class="pre">Individual.fitness_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.position"><code class="docutils literal notranslate"><span class="pre">Individual.position</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.neighbors_positions"><code class="docutils literal notranslate"><span class="pre">Individual.neighbors_positions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.neighbors"><code class="docutils literal notranslate"><span class="pre">Individual.neighbors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.gen_type"><code class="docutils literal notranslate"><span class="pre">Individual.gen_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.ch_size"><code class="docutils literal notranslate"><span class="pre">Individual.ch_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.__init__"><code class="docutils literal notranslate"><span class="pre">Individual.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.generate_candidate"><code class="docutils literal notranslate"><span class="pre">Individual.generate_candidate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.getneighbors"><code class="docutils literal notranslate"><span class="pre">Individual.getneighbors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.getneighbors_positions"><code class="docutils literal notranslate"><span class="pre">Individual.getneighbors_positions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.randomize"><code class="docutils literal notranslate"><span class="pre">Individual.randomize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.setneighbors"><code class="docutils literal notranslate"><span class="pre">Individual.setneighbors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.individual.Individual.setneighbors_positions"><code class="docutils literal notranslate"><span class="pre">Individual.setneighbors_positions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#grid-structure">Grid Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.grid.Grid"><code class="docutils literal notranslate"><span class="pre">Grid</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.grid.Grid.n_rows"><code class="docutils literal notranslate"><span class="pre">Grid.n_rows</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.grid.Grid.n_cols"><code class="docutils literal notranslate"><span class="pre">Grid.n_cols</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.grid.Grid.__init__"><code class="docutils literal notranslate"><span class="pre">Grid.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.grid.Grid.make_2d_grid"><code class="docutils literal notranslate"><span class="pre">Grid.make_2d_grid()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#byte-operators">Byte Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.byte_operators.bits_to_float"><code class="docutils literal notranslate"><span class="pre">bits_to_float()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.byte_operators.bits_to_floats"><code class="docutils literal notranslate"><span class="pre">bits_to_floats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.byte_operators.float_to_bits"><code class="docutils literal notranslate"><span class="pre">float_to_bits()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.byte_operators.floats_to_bits"><code class="docutils literal notranslate"><span class="pre">floats_to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../pycellga.html#optimizer">Optimizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#cellular-genetic-algorithm-cga"><strong>Cellular Genetic Algorithm (cga)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#synchronous-cellular-genetic-algorithm-sync-cga"><strong>Synchronous Cellular Genetic Algorithm (sync_cga)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#alpha-male-cellular-genetic-algorithm-alpha-cga"><strong>Alpha Male Cellular Genetic Algorithm (alpha_cga)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#improved-cga-with-machine-coded-operators"><strong>Improved CGA with Machine-Coded Operators</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#machine-coded-compact-cellular-genetic-algorithm-mcccga"><strong>Machine-Coded Compact Cellular Genetic Algorithm (mcccga)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../pycellga.html#api-references"><strong>API References</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.Result"><code class="docutils literal notranslate"><span class="pre">Result</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.Result.__init__"><code class="docutils literal notranslate"><span class="pre">Result.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.Result.chromosome"><code class="docutils literal notranslate"><span class="pre">Result.chromosome</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.Result.fitness_value"><code class="docutils literal notranslate"><span class="pre">Result.fitness_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.Result.generation_found"><code class="docutils literal notranslate"><span class="pre">Result.generation_found</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.alpha_cga"><code class="docutils literal notranslate"><span class="pre">alpha_cga()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.ccga"><code class="docutils literal notranslate"><span class="pre">ccga()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.cga"><code class="docutils literal notranslate"><span class="pre">cga()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.compete"><code class="docutils literal notranslate"><span class="pre">compete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.generate_probability_vector"><code class="docutils literal notranslate"><span class="pre">generate_probability_vector()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.mcccga"><code class="docutils literal notranslate"><span class="pre">mcccga()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.random_vector_between"><code class="docutils literal notranslate"><span class="pre">random_vector_between()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.sync_cga"><code class="docutils literal notranslate"><span class="pre">sync_cga()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../pycellga.html#pycellga.optimizer.update_vector"><code class="docutils literal notranslate"><span class="pre">update_vector()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../usage_examples.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../usage_examples.html#advanced-usage-examples">Advanced Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../usage_examples.html#customization-scenarios">Customization Scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../contributing.html#ways-to-contribute">Ways to Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../contributing.html#development-setup">Development Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../contributing.html#coding-standards">Coding Standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../contributing.html#running-tests">Running Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../contributing.html#testing-guidelines">Testing Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../citing.html">Citing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">PYCELLGA Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pycellga.problems.single_objective.discrete.binary.maxcut20_09</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pycellga.problems.single_objective.discrete.binary.maxcut20_09</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span> <span class="nn">common</span> <span class="kn">import</span> <span class="n">GeneType</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<div class="viewcode-block" id="Maxcut20_09">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_09.Maxcut20_09">[docs]</a>
+<span class="k">class</span> <span class="nc">Maxcut20_09</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Maximum Cut (MAXCUT) function for optimization on a 20-node graph.</span>
+
+<span class="sd">    This class evaluates the cut value by summing weights of edges</span>
+<span class="sd">    between nodes in different partitions defined by binary variables.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    problema : list of list of float</span>
+<span class="sd">        Adjacency matrix representing edge weights between nodes.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    f(x: List[int]) -&gt; float</span>
+<span class="sd">        Calculates the MAXCUT function value for a given list of binary variables.</span>
+<span class="sd">    evaluate(x: List[int], out: dict) -&gt; None</span>
+<span class="sd">        Pymoo-compatible evaluation method for batch processing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Maxcut20_09.__init__">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_09.Maxcut20_09.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the MAXCUT problem with binary variables and adjacency matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_var</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Number of binary variables (nodes)</span>
+        <span class="n">xl</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Lower bound for binary variables</span>
+        <span class="n">xu</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Upper bound for binary variables</span>
+        <span class="n">gen_type</span> <span class="o">=</span> <span class="n">GeneType</span><span class="o">.</span><span class="n">BINARY</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">gen_type</span><span class="o">=</span><span class="n">gen_type</span><span class="p">,</span> <span class="n">n_var</span><span class="o">=</span><span class="n">n_var</span><span class="p">,</span> <span class="n">xl</span><span class="o">=</span><span class="n">xl</span><span class="p">,</span> <span class="n">xu</span><span class="o">=</span><span class="n">xu</span><span class="p">)</span>
+
+        <span class="c1"># Define adjacency matrix (20x20 matrix of edge weights)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">problema</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.130622</span><span class="p">,</span> <span class="mf">0.694577</span><span class="p">,</span> <span class="mf">0.922028</span><span class="p">,</span> <span class="mf">0.335786</span><span class="p">,</span> <span class="mf">0.359902</span><span class="p">,</span> <span class="mf">0.279580</span><span class="p">,</span> <span class="mf">0.880418</span><span class="p">,</span> <span class="mf">0.201529</span><span class="p">,</span> <span class="mf">0.313702</span><span class="p">,</span>
+             <span class="mf">0.322765</span><span class="p">,</span> <span class="mf">0.399944</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.848267</span><span class="p">,</span> <span class="mf">0.933051</span><span class="p">,</span> <span class="mf">0.085267</span><span class="p">,</span> <span class="mf">0.957646</span><span class="p">,</span> <span class="mf">0.331033</span><span class="p">,</span> <span class="mf">0.389269</span><span class="p">,</span> <span class="mf">0.193177</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.130622</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.946416</span><span class="p">,</span> <span class="mf">0.388165</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.232571</span><span class="p">,</span> <span class="mf">0.605770</span><span class="p">,</span> <span class="mf">0.065642</span><span class="p">,</span> <span class="mf">0.114155</span><span class="p">,</span> <span class="mf">0.737786</span><span class="p">,</span>
+             <span class="mf">0.033571</span><span class="p">,</span> <span class="mf">0.843579</span><span class="p">,</span> <span class="mf">0.465199</span><span class="p">,</span> <span class="mf">0.043667</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.382358</span><span class="p">,</span> <span class="mf">0.661252</span><span class="p">,</span> <span class="mf">0.931556</span><span class="p">,</span> <span class="mf">0.206577</span><span class="p">,</span> <span class="mf">0.262331</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.694577</span><span class="p">,</span> <span class="mf">0.946416</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.989211</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.152213</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.084579</span><span class="p">,</span> <span class="mf">0.610150</span><span class="p">,</span> <span class="mf">0.131790</span><span class="p">,</span>
+             <span class="mf">0.950083</span><span class="p">,</span> <span class="mf">0.426541</span><span class="p">,</span> <span class="mf">0.721013</span><span class="p">,</span> <span class="mf">0.428389</span><span class="p">,</span> <span class="mf">0.308932</span><span class="p">,</span> <span class="mf">0.861261</span><span class="p">,</span> <span class="mf">0.479196</span><span class="p">,</span> <span class="mf">0.863363</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.110013</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.922028</span><span class="p">,</span> <span class="mf">0.388165</span><span class="p">,</span> <span class="mf">0.989211</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.785464</span><span class="p">,</span> <span class="mf">0.227321</span><span class="p">,</span> <span class="mf">0.469172</span><span class="p">,</span> <span class="mf">0.032054</span><span class="p">,</span> <span class="mf">0.574073</span><span class="p">,</span> <span class="mf">0.736906</span><span class="p">,</span>
+             <span class="mf">0.764415</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.495863</span><span class="p">,</span> <span class="mf">0.602718</span><span class="p">,</span> <span class="mf">0.684042</span><span class="p">,</span> <span class="mf">0.492622</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.918634</span><span class="p">,</span> <span class="mf">0.974679</span><span class="p">,</span> <span class="mf">0.134843</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.335786</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.785464</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.478171</span><span class="p">,</span> <span class="mf">0.684823</span><span class="p">,</span> <span class="mf">0.594988</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.043655</span><span class="p">,</span>
+             <span class="mf">0.266736</span><span class="p">,</span> <span class="mf">0.265187</span><span class="p">,</span> <span class="mf">0.167750</span><span class="p">,</span> <span class="mf">0.539353</span><span class="p">,</span> <span class="mf">0.120596</span><span class="p">,</span> <span class="mf">0.483133</span><span class="p">,</span> <span class="mf">0.928091</span><span class="p">,</span> <span class="mf">0.571874</span><span class="p">,</span> <span class="mf">0.118362</span><span class="p">,</span> <span class="mf">0.808725</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.359902</span><span class="p">,</span> <span class="mf">0.232571</span><span class="p">,</span> <span class="mf">0.152213</span><span class="p">,</span> <span class="mf">0.227321</span><span class="p">,</span> <span class="mf">0.478171</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.969750</span><span class="p">,</span> <span class="mf">0.948758</span><span class="p">,</span> <span class="mf">0.527900</span><span class="p">,</span> <span class="mf">0.652776</span><span class="p">,</span>
+             <span class="mf">0.990039</span><span class="p">,</span> <span class="mf">0.945809</span><span class="p">,</span> <span class="mf">0.831436</span><span class="p">,</span> <span class="mf">0.355298</span><span class="p">,</span> <span class="mf">0.049061</span><span class="p">,</span> <span class="mf">0.103966</span><span class="p">,</span> <span class="mf">0.897422</span><span class="p">,</span> <span class="mf">0.732376</span><span class="p">,</span> <span class="mf">0.491590</span><span class="p">,</span> <span class="mf">0.526179</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.279580</span><span class="p">,</span> <span class="mf">0.605770</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.469172</span><span class="p">,</span> <span class="mf">0.684823</span><span class="p">,</span> <span class="mf">0.969750</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.652418</span><span class="p">,</span> <span class="mf">0.123045</span><span class="p">,</span> <span class="mf">0.368941</span><span class="p">,</span>
+             <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.053590</span><span class="p">,</span> <span class="mf">0.035474</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.360846</span><span class="p">,</span> <span class="mf">0.665888</span><span class="p">,</span> <span class="mf">0.757456</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.912162</span><span class="p">,</span> <span class="mf">0.974535</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.880418</span><span class="p">,</span> <span class="mf">0.065642</span><span class="p">,</span> <span class="mf">0.084579</span><span class="p">,</span> <span class="mf">0.032054</span><span class="p">,</span> <span class="mf">0.594988</span><span class="p">,</span> <span class="mf">0.948758</span><span class="p">,</span> <span class="mf">0.652418</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.656499</span><span class="p">,</span> <span class="mf">0.879623</span><span class="p">,</span>
+             <span class="mf">0.656778</span><span class="p">,</span> <span class="mf">0.572563</span><span class="p">,</span> <span class="mf">0.107108</span><span class="p">,</span> <span class="mf">0.550337</span><span class="p">,</span> <span class="mf">0.230315</span><span class="p">,</span> <span class="mf">0.568378</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.915765</span><span class="p">,</span> <span class="mf">0.659182</span><span class="p">,</span> <span class="mf">0.688311</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.201529</span><span class="p">,</span> <span class="mf">0.114155</span><span class="p">,</span> <span class="mf">0.610150</span><span class="p">,</span> <span class="mf">0.574073</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.527900</span><span class="p">,</span> <span class="mf">0.123045</span><span class="p">,</span> <span class="mf">0.656499</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.995883</span><span class="p">,</span>
+             <span class="mf">0.172727</span><span class="p">,</span> <span class="mf">0.442540</span><span class="p">,</span> <span class="mf">0.974869</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.997630</span><span class="p">,</span> <span class="mf">0.035737</span><span class="p">,</span> <span class="mf">0.835247</span><span class="p">,</span> <span class="mf">0.139724</span><span class="p">,</span> <span class="mf">0.859992</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.313702</span><span class="p">,</span> <span class="mf">0.737786</span><span class="p">,</span> <span class="mf">0.131790</span><span class="p">,</span> <span class="mf">0.736906</span><span class="p">,</span> <span class="mf">0.043655</span><span class="p">,</span> <span class="mf">0.652776</span><span class="p">,</span> <span class="mf">0.368941</span><span class="p">,</span> <span class="mf">0.879623</span><span class="p">,</span> <span class="mf">0.995883</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span>
+             <span class="mf">0.120131</span><span class="p">,</span> <span class="mf">0.483339</span><span class="p">,</span> <span class="mf">0.969497</span><span class="p">,</span> <span class="mf">0.300482</span><span class="p">,</span> <span class="mf">0.879444</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.836946</span><span class="p">,</span> <span class="mf">0.084211</span><span class="p">,</span> <span class="mf">0.723167</span><span class="p">,</span> <span class="mf">0.195939</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.322765</span><span class="p">,</span> <span class="mf">0.033571</span><span class="p">,</span> <span class="mf">0.950083</span><span class="p">,</span> <span class="mf">0.764415</span><span class="p">,</span> <span class="mf">0.266736</span><span class="p">,</span> <span class="mf">0.990039</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.656778</span><span class="p">,</span> <span class="mf">0.172727</span><span class="p">,</span> <span class="mf">0.120131</span><span class="p">,</span>
+             <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.950398</span><span class="p">,</span> <span class="mf">0.236138</span><span class="p">,</span> <span class="mf">0.268245</span><span class="p">,</span> <span class="mf">0.701255</span><span class="p">,</span> <span class="mf">0.894728</span><span class="p">,</span> <span class="mf">0.303465</span><span class="p">,</span> <span class="mf">0.989424</span><span class="p">,</span> <span class="mf">0.228973</span><span class="p">,</span> <span class="mf">0.978178</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.399944</span><span class="p">,</span> <span class="mf">0.843579</span><span class="p">,</span> <span class="mf">0.426541</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.265187</span><span class="p">,</span> <span class="mf">0.945809</span><span class="p">,</span> <span class="mf">0.053590</span><span class="p">,</span> <span class="mf">0.572563</span><span class="p">,</span> <span class="mf">0.442540</span><span class="p">,</span> <span class="mf">0.483339</span><span class="p">,</span>
+             <span class="mf">0.950398</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.060377</span><span class="p">,</span> <span class="mf">0.854370</span><span class="p">,</span> <span class="mf">0.488094</span><span class="p">,</span> <span class="mf">0.581746</span><span class="p">,</span> <span class="mf">0.935845</span><span class="p">,</span> <span class="mf">0.723815</span><span class="p">,</span> <span class="mf">0.225213</span><span class="p">,</span> <span class="mf">0.424806</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.465199</span><span class="p">,</span> <span class="mf">0.721013</span><span class="p">,</span> <span class="mf">0.495863</span><span class="p">,</span> <span class="mf">0.167750</span><span class="p">,</span> <span class="mf">0.831436</span><span class="p">,</span> <span class="mf">0.035474</span><span class="p">,</span> <span class="mf">0.107108</span><span class="p">,</span> <span class="mf">0.974869</span><span class="p">,</span> <span class="mf">0.969497</span><span class="p">,</span>
+             <span class="mf">0.236138</span><span class="p">,</span> <span class="mf">0.060377</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.404249</span><span class="p">,</span> <span class="mf">0.867185</span><span class="p">,</span> <span class="mf">0.865152</span><span class="p">,</span> <span class="mf">0.330739</span><span class="p">,</span> <span class="mf">0.876005</span><span class="p">,</span> <span class="mf">0.978220</span><span class="p">,</span> <span class="mf">0.651577</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.848267</span><span class="p">,</span> <span class="mf">0.043667</span><span class="p">,</span> <span class="mf">0.428389</span><span class="p">,</span> <span class="mf">0.602718</span><span class="p">,</span> <span class="mf">0.539353</span><span class="p">,</span> <span class="mf">0.355298</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.550337</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.300482</span><span class="p">,</span>
+             <span class="mf">0.268245</span><span class="p">,</span> <span class="mf">0.854370</span><span class="p">,</span> <span class="mf">0.404249</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.492553</span><span class="p">,</span> <span class="mf">0.088188</span><span class="p">,</span> <span class="mf">0.690603</span><span class="p">,</span> <span class="mf">0.287630</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.690291</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.933051</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.308932</span><span class="p">,</span> <span class="mf">0.684042</span><span class="p">,</span> <span class="mf">0.120596</span><span class="p">,</span> <span class="mf">0.049061</span><span class="p">,</span> <span class="mf">0.360846</span><span class="p">,</span> <span class="mf">0.230315</span><span class="p">,</span> <span class="mf">0.997630</span><span class="p">,</span> <span class="mf">0.879444</span><span class="p">,</span>
+             <span class="mf">0.701255</span><span class="p">,</span> <span class="mf">0.488094</span><span class="p">,</span> <span class="mf">0.867185</span><span class="p">,</span> <span class="mf">0.492553</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.593581</span><span class="p">,</span> <span class="mf">0.076547</span><span class="p">,</span> <span class="mf">0.297751</span><span class="p">,</span> <span class="mf">0.159191</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.085267</span><span class="p">,</span> <span class="mf">0.382358</span><span class="p">,</span> <span class="mf">0.861261</span><span class="p">,</span> <span class="mf">0.492622</span><span class="p">,</span> <span class="mf">0.483133</span><span class="p">,</span> <span class="mf">0.103966</span><span class="p">,</span> <span class="mf">0.665888</span><span class="p">,</span> <span class="mf">0.568378</span><span class="p">,</span> <span class="mf">0.035737</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span>
+             <span class="mf">0.894728</span><span class="p">,</span> <span class="mf">0.581746</span><span class="p">,</span> <span class="mf">0.865152</span><span class="p">,</span> <span class="mf">0.088188</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.747596</span><span class="p">,</span> <span class="mf">0.562290</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.955731</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.957646</span><span class="p">,</span> <span class="mf">0.661252</span><span class="p">,</span> <span class="mf">0.479196</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.928091</span><span class="p">,</span> <span class="mf">0.897422</span><span class="p">,</span> <span class="mf">0.757456</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.835247</span><span class="p">,</span> <span class="mf">0.836946</span><span class="p">,</span>
+             <span class="mf">0.303465</span><span class="p">,</span> <span class="mf">0.935845</span><span class="p">,</span> <span class="mf">0.330739</span><span class="p">,</span> <span class="mf">0.690603</span><span class="p">,</span> <span class="mf">0.593581</span><span class="p">,</span> <span class="mf">0.747596</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.244949</span><span class="p">,</span> <span class="mf">0.994884</span><span class="p">,</span> <span class="mf">0.067050</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.331033</span><span class="p">,</span> <span class="mf">0.931556</span><span class="p">,</span> <span class="mf">0.863363</span><span class="p">,</span> <span class="mf">0.918634</span><span class="p">,</span> <span class="mf">0.571874</span><span class="p">,</span> <span class="mf">0.732376</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.915765</span><span class="p">,</span> <span class="mf">0.139724</span><span class="p">,</span> <span class="mf">0.084211</span><span class="p">,</span>
+             <span class="mf">0.989424</span><span class="p">,</span> <span class="mf">0.723815</span><span class="p">,</span> <span class="mf">0.876005</span><span class="p">,</span> <span class="mf">0.287630</span><span class="p">,</span> <span class="mf">0.076547</span><span class="p">,</span> <span class="mf">0.562290</span><span class="p">,</span> <span class="mf">0.244949</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.621331</span><span class="p">,</span> <span class="mf">0.752926</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.389269</span><span class="p">,</span> <span class="mf">0.206577</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.974679</span><span class="p">,</span> <span class="mf">0.118362</span><span class="p">,</span> <span class="mf">0.491590</span><span class="p">,</span> <span class="mf">0.912162</span><span class="p">,</span> <span class="mf">0.659182</span><span class="p">,</span> <span class="mf">0.859992</span><span class="p">,</span> <span class="mf">0.723167</span><span class="p">,</span>
+             <span class="mf">0.228973</span><span class="p">,</span> <span class="mf">0.225213</span><span class="p">,</span> <span class="mf">0.978220</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.297751</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.994884</span><span class="p">,</span> <span class="mf">0.621331</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.224879</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.193177</span><span class="p">,</span> <span class="mf">0.262331</span><span class="p">,</span> <span class="mf">0.110013</span><span class="p">,</span> <span class="mf">0.134843</span><span class="p">,</span> <span class="mf">0.808725</span><span class="p">,</span> <span class="mf">0.526179</span><span class="p">,</span> <span class="mf">0.974535</span><span class="p">,</span> <span class="mf">0.688311</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="mf">0.195939</span><span class="p">,</span>
+             <span class="mf">0.978178</span><span class="p">,</span> <span class="mf">0.424806</span><span class="p">,</span> <span class="mf">0.651577</span><span class="p">,</span> <span class="mf">0.690291</span><span class="p">,</span> <span class="mf">0.159191</span><span class="p">,</span> <span class="mf">0.955731</span><span class="p">,</span> <span class="mf">0.067050</span><span class="p">,</span> <span class="mf">0.752926</span><span class="p">,</span> <span class="mf">0.224879</span><span class="p">,</span> <span class="mf">0.000000</span><span class="p">]</span>
+        <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Maxcut20_09.f">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_09.Maxcut20_09.f">[docs]</a>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the MAXCUT function value for a given list of binary variables.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : List[int]</span>
+<span class="sd">            A list of binary variables representing node partitions.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The MAXCUT function value representing the total weight of edges cut by the partition.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fitness</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problema</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>  <span class="c1"># Nodes are in different partitions</span>
+                    <span class="n">fitness</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problema</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">fitness</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Maxcut20_09.evaluate">
+<a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_09.Maxcut20_09.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">out</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate function for compatibility with pymoo&#39;s optimizer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : numpy.ndarray</span>
+<span class="sd">            Array of input variables.</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            Dictionary to store the output fitness values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sevgi Akten Karakaya, Mehmet Hakan Satman.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
