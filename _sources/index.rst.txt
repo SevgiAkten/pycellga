@@ -17,6 +17,14 @@ promoting diversity and maintaining a balance between exploration and exploitati
 `pycellga` has machine coded operators with byte implementations. Beside it has Alpha-male CGA, 
 Machine Coded Compact CGA and Improved CGA with Machine Coded Operators for real-valued optimization problems.
 
+.. image:: images/cycle_cga.png
+   :scale: 40%
+   :alt: Reproductive cycle of an individual in cGA
+   :align: center
+
+
+A representation of the reproductive cycle of an individual in a cellular genetic algorithm.
+
 .. toctree::
    :maxdepth: 1
    :caption: Table of Contents :

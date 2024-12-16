@@ -14,7 +14,7 @@ A binary satisfaction problem, often used to evaluate an algorithm’s ability t
    :undoc-members:
    :show-inheritance:
 
-**ECC Problem**
+**Error Correcting Codes Design Problem (ECC)**
 -----------------
 
 The ECC problem tests the efficiency of algorithms in solving problems related to error-correcting codes, which have discrete solution spaces and are commonly encountered in communication systems.
@@ -24,10 +24,10 @@ The ECC problem tests the efficiency of algorithms in solving problems related t
    :undoc-members:
    :show-inheritance:
 
-**Fletcher-Powell (FMS) Binary Problem**
+**Frequency Modulation Sounds Problem (FMS)**
 ----------------------------------------------
 
-A binary version of the Fletcher-Powell function, used to evaluate robustness and efficiency in finding optimal solutions within a binary space.
+A binary version of the Frequency Modulation Sounds function, used to evaluate robustness and efficiency in finding optimal solutions within a binary space.
 
 .. automodule:: pycellga.problems.single_objective.discrete.binary.fms
    :members:
@@ -64,7 +64,7 @@ A denser version of the max-cut problem with a density of 0.9, requiring algorit
    :undoc-members:
    :show-inheritance:
 
-**Multi-modal Deceptive Problem (MMDP)**
+**Massively Multimodal Deceptive Problem (MMDP)**
 ----------------------------------------------
 
 A challenging binary problem with deceptive local optima, commonly used to assess an algorithm's ability to escape local traps in a binary landscape.

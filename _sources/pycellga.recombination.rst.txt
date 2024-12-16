@@ -1,115 +1,139 @@
 Recombination Operators
 ===================================
 
-The `pycellga.recombination` package includes various recombination (crossover) operators used to combine genetic information from parent chromosomes to create offspring in genetic algorithms. Each crossover operator serves a unique purpose and is suitable for different types of genetic representations, including binary, real-valued, and permutation-based chromosomes.
+Recombination (crossover) is a fundamental genetic algorithm operator that combines the genetic information of two parents to generate new offspring. The choice of a recombination operator depends on the chromosome representation (binary, real-valued, or permutation-based) and the nature of the optimization problem.
 
 
+**Understanding Recombination**
+--------------------------------
+
+Recombination operators promote diversity and exploration in the solution space. They allow offspring to inherit traits from both parents, which can lead to better solutions over generations.
+
+Below are some common recombination techniques used in genetic algorithms:
+
+- **Binary Chromosomes**: Techniques like One-Point Crossover and Uniform Crossover are well-suited for binary representations, where each gene is a bit (0 or 1).
+- **Real-Valued Chromosomes**: Methods such as Byte One Point Crossover, Arithmetic Crossover and BLX-Alpha Crossover facilitate exploration in continuous domains.
+- **Permutation-Based Chromosomes**: Operators like PMX (Partially Matched Crossover) ensure valid offspring while preserving order relationships in sequencing problems.
+
+
+**Recombination Examples**
+--------------------------
+
+**One-Point Crossover**
+
+One-Point Crossover is one of the simplest and most widely used techniques for binary chromosomes. A random crossover point is selected, and segments from the parents are swapped to create offspring.
+
+.. image:: images/one_point_c.png
+   :scale: 50%
+   :align: center
+   :alt: One-Point Crossover
+
+Figure 1: An example of One-Point Crossover.
+
+
+**Two-Point Crossover**
+
+Two-Point Crossover extends the idea of One-Point Crossover by selecting two random crossover points. The segment between the two points is swapped between the parents, producing offspring with potentially more diverse genetic combinations.
+
+.. image:: images/two_point_c.png
+   :scale: 50%
+   :align: center
+   :alt: Two-Point Crossover
+
+Figure 2: An example of Two-Point Crossover.
+
+
+**Uniform Crossover**
+
+In Uniform Crossover, a mask composed of bits is determined over the length of the chromosome. These bits, which take the value 0 or 1, specify which parent the gene for the offspring will be chosen from. Bits with the value 1 are distributed uniformly with a probability of 0.5.
+
+For example, as illustrated below, bits in the mask with a 0 value indicate that the gene will be selected from Parent X, while bits with a 1 value indicate that the gene will be selected from Parent Y. The reverse process is applied to produce the second offspring.
+
+.. image:: images/uniform_c.png
+   :scale: 50%
+   :align: center
+   :alt: Uniform Crossover
+
+Figure 3: An example of Uniform Crossover.
+
+
+**API References**
+------------------
+
+The following sections provide detailed documentation for the recombination operators available in the `pycellga.recombination` package.
 
 **Arithmetic Crossover**
--------------------------
-
-Performs arithmetic operations on parent genes to produce offspring. Often used in real-valued genetic algorithms to create intermediate values between parent genes.
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.arithmetic_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **BLX-Alpha Crossover**
-------------------------
-
-Generates offspring by creating genes within a specified range around parent genes, controlled by the `alpha` parameter. Effective in real-valued optimization for maintaining diversity.
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.blxalpha_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Byte One-Point Crossover**
-------------------------------
-
-A one-point crossover operator specifically designed for byte-based chromosomes, suitable for machine-coded genetic algorithms.
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.byte_one_point_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Byte Uniform Crossover**
----------------------------
-
-Applies uniform crossover at the byte level, allowing fine control over gene mixing in machine-coded chromosomes.
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.byte_uniform_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Flat Crossover**
--------------------
-
-Creates offspring by generating random values within a range defined by the parent genes. Suitable for real-valued chromosomes.
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.flat_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Linear Crossover**
----------------------
-
-Generates offspring by linearly combining genes of the parents. This operator is useful in real-valued optimization for exploring intermediate values.
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.linear_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **One-Point Crossover**
-------------------------
-
-A classic crossover technique where a single crossover point is chosen to swap segments between parents. Commonly used in binary-encoded genetic algorithms.
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.one_point_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Partially Matched Crossover (PMX)**
----------------------------------------
-
-A crossover method designed for permutation-based chromosomes, such as sequencing problems. Maintains gene order by partially matching segments between parents.
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.pmx_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Two-Point Crossover**
-------------------------
-
-A crossover method with two crossover points, allowing for a higher level of gene exchange between parents. Widely used in binary-encoded algorithms.
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.two_point_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Unfair Average Crossover**
-------------------------------
-
-Calculates the average of parent genes with a slight bias, leading to offspring that retain more traits of one parent. Used in real-valued genetic algorithms.
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.unfair_avarage_crossover
    :members:
    :undoc-members:
    :show-inheritance:
 
 **Uniform Crossover**
-----------------------
-
-Swaps genes randomly between parents, creating diverse offspring. Suitable for both binary and real-valued genetic representations.
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: pycellga.recombination.uniform_crossover
    :members:
    :undoc-members:

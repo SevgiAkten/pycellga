@@ -132,7 +132,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :undoc-members:
    :show-inheritance:
 
-**Rothellipsoid Function**
+**Rotated Hyper-Ellipsoid Function**
 ----------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
@@ -142,7 +142,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :show-inheritance:
 
 
-**Schaffer Function**
+**Modified Schaffer Function #1**
 ----------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
@@ -151,7 +151,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :undoc-members:
    :show-inheritance:
 
-**Schaffer2 Function**
+**Modified Schaffer Function #2**
 -----------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
@@ -178,7 +178,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :undoc-members:
    :show-inheritance:
 
-**Styblinskitang Function**
+**Styblinski-Tang Function**
 ------------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
@@ -187,7 +187,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :undoc-members:
    :show-inheritance:
 
-**Sumofdifferentpowers Function**
+**Sum of Different Powers Function**
 ----------------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
@@ -196,7 +196,7 @@ This function is used to test the efficiency of algorithms on smooth, differenti
    :undoc-members:
    :show-inheritance:
 
-**Threehumps Function**
+**Three Hump Camel Function**
 -------------------------
 This function is used to test the efficiency of algorithms on smooth, differentiable landscapes.
 
