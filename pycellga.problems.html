@@ -305,8 +305,9 @@ A method compatible with <cite>pymoo</cite> optimizers that wraps the <cite>f</c
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <p>Below is an example of how to create a custom optimization problem by inheriting from <cite>AbstractProblem</cite>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycellga.problems</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
 <span class="kn">from</span> <span class="nn">pycellga.common</span> <span class="kn">import</span> <span class="n">GeneType</span>
+
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 

@@ -47,8 +47,9 @@ Below is an example of how to create a custom optimization problem by inheriting
 
 .. code-block:: python
 
-   from pycellga.problems import AbstractProblem
+   from pycellga.problems.abstract_problem import AbstractProblem
    from pycellga.common import GeneType
+
    from typing import List
    import numpy as np
 

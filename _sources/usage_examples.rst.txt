@@ -20,10 +20,10 @@ Here’s how we can define this problem in Python using the `ExampleProblem` cla
     from typing import List
 
     from pycellga.optimizer import cga
-    from pycellga.recombination import ByteOnePointCrossover
-    from pycellga.mutation import ByteMutationRandom
-    from pycellga.selection import TournamentSelection
-    from pycellga.problems import AbstractProblem
+    from pycellga.recombination.byte_one_point_crossover import ByteOnePointCrossover
+    from pycellga.mutation.byte_mutation_random import ByteMutationRandom
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.problems.abstract_problem import AbstractProblem
     from pycellga.common import GeneType
 
     class ExampleProblem(AbstractProblem):
@@ -83,10 +83,10 @@ The Alpha Cellular Genetic Algorithm optimizes a real-valued problem using Blxal
     from typing import List
 
     from pycellga.optimizer import alpha_cga
-    from pycellga.recombination import BlxalphaCrossover
-    from pycellga.mutation import FloatUniformMutation
-    from pycellga.selection import TournamentSelection
-    from pycellga.problems import AbstractProblem
+    from pycellga.recombination.blxalpha_crossover import BlxalphaCrossover 
+    from pycellga.mutation.float_uniform_mutation import FloatUniformMutation 
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.problems.abstract_problem import AbstractProblem
     from pycellga.common import GeneType
 
 
@@ -130,11 +130,10 @@ The Alpha Cellular Genetic Algorithm optimizes a real-valued problem using Blxal
 The Compact Cellular Genetic Algorithm optimizes a binary problem where the goal is to maximize the number of `1`s.
 
 .. code-block:: python
-
     
     from pycellga.optimizer import ccga
-    from pycellga.selection import TournamentSelection
-    from pycellga.problems import AbstractProblem
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.problems.abstract_problem import AbstractProblem
     from pycellga.common import GeneType
 
     class ExampleProblem(AbstractProblem):
@@ -174,8 +173,8 @@ The Machine-Coded Compact Cellular Genetic Algorithm solves real-valued optimiza
     import numpy as np
 
     from pycellga.optimizer import mcccga
-    from pycellga.selection import TournamentSelection
-    from pycellga.problems import AbstractProblem
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.problems.abstract_problem import AbstractProblem
     from pycellga.common import GeneType
 
     class RealProblem(AbstractProblem):
@@ -216,10 +215,10 @@ The Synchronous Cellular Genetic Algorithm optimizes a real-valued problem in a 
     from typing import List
 
     from pycellga.optimizer import sync_cga
-    from pycellga.recombination import BlxalphaCrossover
-    from pycellga.mutation import FloatUniformMutation
-    from pycellga.selection import TournamentSelection
-    from pycellga.problems import AbstractProblem
+    from pycellga.recombination.blxalpha_crossover import BlxalphaCrossover 
+    from pycellga.mutation.float_uniform_mutation import FloatUniformMutation 
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.problems.abstract_problem import AbstractProblem
     from pycellga.common import GeneType
 
 
@@ -335,7 +334,7 @@ For permutation-based optimization problems, the following option is available:
 
 .. code-block:: python 
 
-    from problems.single_objective.discrete.permutation.tsp import Tsp
+    from pycellga.problems.single_objective.discrete.permutation.tsp import Tsp
 
 
 These built-in problems provide a diverse set of test cases, allowing users to explore `pycellga`'s capabilities across a wide range of optimization challenges. Users can also define custom problems to suit their specific needs.
@@ -347,8 +346,8 @@ Choose from selection methods:
 
 .. code-block:: python 
 
-    from selection.tournament_selection import TournamentSelection
-    from selection.roulette_wheel_selection import RouletteWheelSelection
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.selection.roulette_wheel_selection import RouletteWheelSelection
 
 
 **Recombination Operators**
@@ -395,10 +394,11 @@ Optimize a binary problem using tournament selection, one-point crossover, and b
 .. code-block:: python
 
     from pycellga.optimizer import cga
-    from problems.single_objective.discrete.binary.one_max import OneMax 
-    from pycellga.selection import TournamentSelection
-    from pycellga.recombination import OnePointCrossover
-    from pycellga.mutation import BitFlipMutation
+    from pycellga.problems.single_objective.discrete.binary.one_max import OneMax 
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.recombination.one_point_crossover import OnePointCrossover
+    from pycellga.mutation.bit_flip_mutation import BitFlipMutation
+
 
     result = cga(
         n_cols=5,
@@ -424,10 +424,10 @@ Solve a real-valued optimization problem using Byte One Point Crossover and Byte
 .. code-block:: python
 
     from pycellga.optimizer import cga
-    from problems.single_objective.continuous.ackley import Ackley
-    from pycellga.selection import RouletteWheelSelection
-    from pycellga.recombination import ByteOnePointCrossover
-    from pycellga.mutation import ByteMutation
+    from pycellga.problems.single_objective.continuous.ackley import Ackley
+    from pycellga.recombination.byte_one_point_crossover import ByteOnePointCrossover
+    from pycellga.selection.roulette_wheel_selection import RouletteWheelSelection
+    from pycellga.mutation.byte_mutation import ByteMutation 
 
     result = cga(
         n_cols=5,
@@ -452,10 +452,10 @@ Optimize a TSP using permutation encoding, PMX crossover, and swap mutation.
 .. code-block:: python
 
     from pycellga.optimizer import cga
-    from problems.single_objective.discrete.permutation.tsp import Tsp
-    from pycellga.selection import TournamentSelection
-    from pycellga.recombination import PMXCrossover
-    from pycellga.mutation import SwapMutation
+    from pycellga.problems.single_objective.discrete.permutation.tsp import Tsp
+    from pycellga.selection.tournament_selection import TournamentSelection
+    from pycellga.recombination.pmx_crossover import PMXCrossover
+    from pycellga.mutation.swap_mutation import SwapMutation
 
     result = cga(
         n_cols=5,

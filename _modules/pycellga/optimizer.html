@@ -265,13 +265,14 @@
 <span></span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">byte_operators</span>
-<span class="kn">from</span> <span class="nn">population</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">individual</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">mutation.bit_flip_mutation</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">selection.tournament_selection</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">recombination.one_point_crossover</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">problems.single_objective.discrete.binary.one_max</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">pycellga.byte_operators</span> <span class="kn">import</span> <span class="o">*</span> 
+<span class="kn">from</span> <span class="nn">pycellga.population</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.individual</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.mutation.bit_flip_mutation</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.selection.tournament_selection</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.recombination.one_point_crossover</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pycellga.problems.single_objective.discrete.binary.one_max</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Callable</span>
@@ -922,7 +923,7 @@
 
     <span class="c1"># Track the best solution in the initial population</span>
     <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-    <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+    <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">bits_to_floats</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
     <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
         <span class="n">chromosome</span><span class="o">=</span><span class="n">best_byte_ch</span><span class="p">,</span>
         <span class="n">fitness_value</span><span class="o">=</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span>
@@ -963,7 +964,7 @@
 
         <span class="c1"># Track the best fitness value and update the best solution if necessary</span>
         <span class="n">best_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">)</span>
-        <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+        <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">bits_to_floats</span><span class="p">(</span><span class="n">pop_list_ordered</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">best</span><span class="o">.</span><span class="n">fitness_value</span> <span class="o">&lt;</span> <span class="n">best_ever_solution</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">:</span>
             <span class="n">best_ever_solution</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span>
@@ -975,12 +976,12 @@
         <span class="c1"># Calculate the mean fitness for the current generation</span>
         <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness_value</span><span class="p">,</span> <span class="n">pop_list</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pop_list</span><span class="p">)</span>
         <span class="n">avg_objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
-        <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
+        <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">bits_to_floats</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">chromosome</span><span class="p">)</span>
 
         <span class="n">generation</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="c1"># Evaluate the final solution sampled from the probability vector</span>
-    <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">bits_to_floats</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">vector</span><span class="p">))</span>
+    <span class="n">best_byte_ch</span> <span class="o">=</span> <span class="n">bits_to_floats</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">vector</span><span class="p">))</span>
     <span class="n">best_byte_result</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">best_byte_ch</span><span class="p">)</span>
 
     <span class="c1"># Update the best-ever solution if the sampled solution is better</span>
@@ -1099,7 +1100,7 @@
 
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntries</span><span class="p">):</span>
         <span class="n">floats</span> <span class="o">=</span> <span class="n">random_vector_between</span><span class="p">(</span><span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="p">)</span>
-        <span class="n">floatbits</span> <span class="o">=</span> <span class="n">byte_operators</span><span class="o">.</span><span class="n">floats_to_bits</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span>
+        <span class="n">floatbits</span> <span class="o">=</span> <span class="n">floats_to_bits</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbits</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">floatbits</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">probvector</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">probvector</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">mutrate</span>
