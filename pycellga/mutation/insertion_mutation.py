@@ -1,7 +1,8 @@
 import numpy as np
-from individual import *
-from problems.abstract_problem import AbstractProblem
-from mutation.mutation_operator import MutationOperator
+
+from pycellga.individual import *
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.mutation.mutation_operator import MutationOperator
 
 class InsertionMutation(MutationOperator):
     """

@@ -1,10 +1,10 @@
 import pytest
 import mpmath as mp
 
-from optimizer import mcccga
-from common import GeneType
-from selection import TournamentSelection
-from problems import AbstractProblem
+from pycellga.optimizer import mcccga
+from pycellga.common import GeneType
+from pycellga.selection.tournament_selection import TournamentSelection
+from pycellga.problems.abstract_problem import AbstractProblem
 
 class RealProblem(AbstractProblem):
     

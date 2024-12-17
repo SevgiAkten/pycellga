@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.schaffer import Schaffer
+from pycellga.problems.single_objective.continuous.schaffer import Schaffer
 
 @pytest.fixture
 def setup_schaffer():

@@ -1,6 +1,7 @@
-from problems.abstract_problem import AbstractProblem
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
+
 from numpy import pi, sin, random
-from common import GeneType
 from typing import List
 
 class Fms(AbstractProblem):

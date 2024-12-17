@@ -1,7 +1,8 @@
-from problems.abstract_problem import AbstractProblem
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
+
 from numpy import random
 from typing import List
-from common import GeneType
 
 
 class Peak(AbstractProblem):

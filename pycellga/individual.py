@@ -1,13 +1,10 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 
 from numpy import random
 import numpy as np
 import random as rd
-from problems.abstract_problem import AbstractProblem
-from common import GeneType
+
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 
 class Individual:

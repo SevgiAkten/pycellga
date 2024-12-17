@@ -1,6 +1,8 @@
-from problems.abstract_problem import AbstractProblem
+
 from mpmath import power as pw
-from common import GeneType
+
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 class Matyas(AbstractProblem):
     """

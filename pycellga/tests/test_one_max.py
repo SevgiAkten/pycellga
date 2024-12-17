@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.discrete.binary.one_max import OneMax  
+from pycellga.problems.single_objective.discrete.binary.one_max import OneMax  
 
 @pytest.fixture
 def one_max_instance():

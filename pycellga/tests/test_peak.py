@@ -1,6 +1,7 @@
 import pytest
 from numpy import random
-from problems.single_objective.discrete.binary.peak import Peak
+
+from pycellga.problems.single_objective.discrete.binary.peak import Peak
 
 @pytest.fixture
 def peak_instance():

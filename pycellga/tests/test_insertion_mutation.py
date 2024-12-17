@@ -1,8 +1,9 @@
-from mutation.insertion_mutation import InsertionMutation
-from problems.single_objective.discrete.permutation.tsp import Tsp
-from individual import Individual
-from common import GeneType
 import random
+
+from pycellga.mutation.insertion_mutation import InsertionMutation
+from pycellga.problems.single_objective.discrete.permutation.tsp import Tsp
+from pycellga.individual import Individual
+from pycellga.common import GeneType
 
 def test_insertion_mutation():
     """

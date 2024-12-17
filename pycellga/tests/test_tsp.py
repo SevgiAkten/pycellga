@@ -1,4 +1,4 @@
-from problems.single_objective.discrete.permutation.tsp import Tsp
+from pycellga.problems.single_objective.discrete.permutation.tsp import Tsp
 import random
 import pytest
 

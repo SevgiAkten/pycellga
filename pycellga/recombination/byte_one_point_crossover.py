@@ -1,9 +1,10 @@
-import numpy as np
-from individual import Individual
-from problems.abstract_problem import AbstractProblem
-from typing import List
 import struct
-from recombination.recombination_operator import RecombinationOperator
+import numpy as np
+from typing import List
+
+from pycellga.individual import Individual
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.recombination.recombination_operator import RecombinationOperator
 
 class ByteOnePointCrossover(RecombinationOperator):
     """

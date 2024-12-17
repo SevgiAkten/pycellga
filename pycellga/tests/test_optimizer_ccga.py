@@ -1,9 +1,9 @@
 import pytest
 
-from optimizer import ccga
-from selection import TournamentSelection
-from common import GeneType
-from problems import AbstractProblem
+from pycellga.optimizer import ccga
+from pycellga.selection.tournament_selection import TournamentSelection
+from pycellga.common import GeneType
+from pycellga.problems.abstract_problem import AbstractProblem
 
 class BinaryProblem(AbstractProblem):
 

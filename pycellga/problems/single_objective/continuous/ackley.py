@@ -1,7 +1,8 @@
-from numpy import pi, e, cos, sqrt, exp, power
-from problems.abstract_problem import AbstractProblem
 from typing import List
-from common import GeneType
+from numpy import pi, e, cos, sqrt, exp, power
+
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 
 class Ackley(AbstractProblem):

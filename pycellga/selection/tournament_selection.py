@@ -1,7 +1,8 @@
-from typing import List
-from individual import Individual
-from selection.selection_operator import SelectionOperator
 import numpy as np
+from typing import List
+
+from pycellga.individual import Individual
+from pycellga.selection.selection_operator import SelectionOperator
 
 
 class TournamentSelection(SelectionOperator):

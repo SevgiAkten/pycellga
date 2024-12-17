@@ -1,7 +1,8 @@
-from problems.single_objective.discrete.permutation.tsp import Tsp
-from recombination.pmx_crossover import PMXCrossover
-from individual import Individual
-from common import GeneType
+from pycellga.problems.single_objective.discrete.permutation.tsp import Tsp
+from pycellga.recombination.pmx_crossover import PMXCrossover
+from pycellga.individual import Individual
+from pycellga.common import GeneType
+
 import random
 
 def test_pmx_crossover():

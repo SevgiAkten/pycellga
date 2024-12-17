@@ -2,12 +2,16 @@ import pytest
 import mpmath as mp
 from typing import List
 
-from optimizer import alpha_cga
-from common import GeneType
-from recombination import ByteOnePointCrossover, OnePointCrossover, PMXCrossover
-from mutation import ByteMutationRandom, BitFlipMutation, SwapMutation
-from selection import TournamentSelection
-from problems import AbstractProblem
+from pycellga.optimizer import alpha_cga
+from pycellga.common import GeneType
+from pycellga.recombination.byte_one_point_crossover import ByteOnePointCrossover
+from pycellga.recombination.one_point_crossover import OnePointCrossover
+from pycellga.recombination.pmx_crossover import PMXCrossover
+from pycellga.mutation.byte_mutation_random import ByteMutationRandom
+from pycellga.mutation.bit_flip_mutation import BitFlipMutation
+from pycellga.mutation.swap_mutation import SwapMutation
+from pycellga.selection.tournament_selection import TournamentSelection
+from pycellga.problems.abstract_problem import AbstractProblem
 
 
 class RealProblem(AbstractProblem):

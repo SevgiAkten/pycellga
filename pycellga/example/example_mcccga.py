@@ -1,13 +1,10 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import numpy as np
 
-from optimizer import mcccga
-from selection import TournamentSelection
-from problems import AbstractProblem
-from common import GeneType
+from pycellga.optimizer import mcccga
+from pycellga.selection.tournament_selection import TournamentSelection
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 class RealProblem(AbstractProblem):
 

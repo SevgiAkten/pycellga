@@ -1,10 +1,11 @@
-from problems.abstract_problem import AbstractProblem
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
+
+import os
 import tsplib95
 from math import sqrt
-from geopy.distance import geodesic
-import os
 from typing import List
-from common import GeneType
+from geopy.distance import geodesic
 
 
 class Tsp(AbstractProblem):

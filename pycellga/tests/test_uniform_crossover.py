@@ -1,7 +1,7 @@
-from problems.single_objective.discrete.binary.one_max import OneMax
-from recombination.uniform_crossover import UniformCrossover
-from individual import Individual
-from common import GeneType
+from pycellga.problems.single_objective.discrete.binary.one_max import OneMax
+from pycellga.recombination.uniform_crossover import UniformCrossover
+from pycellga.individual import Individual
+from pycellga.common import GeneType
 
 def test_uniform_crossover():
     """

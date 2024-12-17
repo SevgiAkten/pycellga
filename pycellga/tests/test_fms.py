@@ -1,6 +1,8 @@
-import pytest
-from problems.single_objective.continuous.fms import Fms
 import numpy as np
+import pytest
+
+from pycellga.problems.single_objective.continuous.fms import Fms
+
 
 @pytest.fixture
 def fms_instance():

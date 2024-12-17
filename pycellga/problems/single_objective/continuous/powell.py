@@ -1,7 +1,8 @@
-from problems.abstract_problem import AbstractProblem
-from common import GeneType
 from mpmath import power as pw
 from typing import List
+
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 class Powell(AbstractProblem):
     """

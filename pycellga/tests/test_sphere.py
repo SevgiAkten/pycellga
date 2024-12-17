@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.sphere import Sphere
+from pycellga.problems.single_objective.continuous.sphere import Sphere
 
 @pytest.fixture
 def setup_sphere():

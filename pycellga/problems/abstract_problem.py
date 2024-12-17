@@ -1,7 +1,8 @@
-from abc import ABC, abstractmethod
 from typing import List, Any
+from abc import ABC, abstractmethod
 from pymoo.core.problem import Problem
-from common import GeneType
+
+from pycellga.common import GeneType
 
 class AbstractProblem(Problem, ABC):
     """

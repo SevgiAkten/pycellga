@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.levy import Levy
+from pycellga.problems.single_objective.continuous.levy import Levy
 
 @pytest.fixture
 def setup_levy():

@@ -1,7 +1,8 @@
-from individual import *
-from problems.abstract_problem import AbstractProblem
 from typing import List
-from recombination.recombination_operator import RecombinationOperator
+
+from pycellga.individual import *
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.recombination.recombination_operator import RecombinationOperator
 
 class PMXCrossover(RecombinationOperator):
     """

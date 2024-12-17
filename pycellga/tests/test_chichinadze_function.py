@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.chichinadze import Chichinadze
+from pycellga.problems.single_objective.continuous.chichinadze import Chichinadze
 
 @pytest.fixture
 def setup_chichinadze():

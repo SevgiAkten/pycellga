@@ -103,10 +103,10 @@ from mpmath import power as pw
 from typing import List
 
 from pycellga.optimizer import cga
-from pycellga.recombination import ByteOnePointCrossover
-from pycellga.mutation import ByteMutationRandom
-from pycellga.selection import TournamentSelection
-from pycellga.problems import AbstractProblem
+from pycellga.recombination.byte_one_point_crossover import ByteOnePointCrossover
+from pycellga.mutation.byte_mutation_random import ByteMutationRandom
+from pycellga.selection.tournament_selection import TournamentSelection
+from pycellga.problems.abstract_problem import AbstractProblem
 from pycellga.common import GeneType
 
 class ExampleProblem(AbstractProblem):

@@ -1,13 +1,14 @@
 
 import random
 import numpy as np
-import byte_operators
-from population import *
-from individual import *
-from mutation.bit_flip_mutation import *
-from selection.tournament_selection import *
-from recombination.one_point_crossover import *
-from problems.single_objective.discrete.binary.one_max import *
+
+from pycellga.byte_operators import * 
+from pycellga.population import *
+from pycellga.individual import *
+from pycellga.mutation.bit_flip_mutation import *
+from pycellga.selection.tournament_selection import *
+from pycellga.recombination.one_point_crossover import *
+from pycellga.problems.single_objective.discrete.binary.one_max import *
 
 from typing import Callable, List, Tuple
 from collections.abc import Callable
@@ -641,7 +642,7 @@ def mcccga(
 
     # Track the best solution in the initial population
     best_objectives.append(pop_list_ordered[0].fitness_value)
-    best_byte_ch = byte_operators.bits_to_floats(pop_list_ordered[0].chromosome)
+    best_byte_ch = bits_to_floats(pop_list_ordered[0].chromosome)
     best_ever_solution = Result(
         chromosome=best_byte_ch,
         fitness_value=pop_list_ordered[0].fitness_value,
@@ -682,7 +683,7 @@ def mcccga(
 
         # Track the best fitness value and update the best solution if necessary
         best_objectives.append(best.fitness_value)
-        best_byte_ch = byte_operators.bits_to_floats(pop_list_ordered[0].chromosome)
+        best_byte_ch = bits_to_floats(pop_list_ordered[0].chromosome)
 
         if best.fitness_value < best_ever_solution.fitness_value:
             best_ever_solution = Result(
@@ -694,12 +695,12 @@ def mcccga(
         # Calculate the mean fitness for the current generation
         mean = sum(map(lambda x: x.fitness_value, pop_list)) / len(pop_list)
         avg_objectives.append(mean)
-        best_byte_ch = byte_operators.bits_to_floats(best.chromosome)
+        best_byte_ch = bits_to_floats(best.chromosome)
 
         generation += 1
 
     # Evaluate the final solution sampled from the probability vector
-    best_byte_ch = byte_operators.bits_to_floats(sample(vector))
+    best_byte_ch = bits_to_floats(sample(vector))
     best_byte_result = problem.f(best_byte_ch)
 
     # Update the best-ever solution if the sampled solution is better
@@ -806,7 +807,7 @@ def generate_probability_vector(mins: List[float], maxs: List[float], ntries: in
 
     for _ in range(ntries):
         floats = random_vector_between(mins, maxs)
-        floatbits = byte_operators.floats_to_bits(floats)
+        floatbits = floats_to_bits(floats)
         for k in range(nbits):
             if floatbits[k] == 1:
                 probvector[k] = probvector[k] + mutrate

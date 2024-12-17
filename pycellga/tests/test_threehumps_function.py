@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.threehumps import Threehumps
+from pycellga.problems.single_objective.continuous.threehumps import Threehumps
 
 @pytest.fixture
 def setup_threehumps():

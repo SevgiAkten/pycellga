@@ -1,9 +1,10 @@
 import numpy as np
 import pytest
-from mutation.bit_flip_mutation import BitFlipMutation
-from problems.single_objective.discrete.binary.one_max import OneMax
-from individual import Individual
-from common import GeneType
+
+from pycellga.mutation.bit_flip_mutation import BitFlipMutation
+from pycellga.problems.single_objective.discrete.binary.one_max import OneMax
+from pycellga.individual import Individual
+from pycellga.common import GeneType
 
 
 def test_bit_flip_mutation():

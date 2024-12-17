@@ -1,5 +1,5 @@
 import pytest
-from byte_operators import float_to_bits, bits_to_float, floats_to_bits, bits_to_floats
+from pycellga.byte_operators import float_to_bits, bits_to_float, floats_to_bits, bits_to_floats
 
 def test_float_to_bits():
     """

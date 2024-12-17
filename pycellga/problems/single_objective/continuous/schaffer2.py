@@ -1,7 +1,8 @@
 import numpy as np
 from numpy import power as pw
-from problems.abstract_problem import AbstractProblem
-from common import GeneType
+
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 class Schaffer2(AbstractProblem):
     """

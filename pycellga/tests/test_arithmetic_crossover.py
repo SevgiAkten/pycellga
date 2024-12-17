@@ -1,10 +1,10 @@
 import pytest
 import random
 
-from individual import Individual
-from common import GeneType
-from problems.abstract_problem import AbstractProblem
-from recombination.arithmetic_crossover import ArithmeticCrossover 
+from pycellga.individual import Individual
+from pycellga.common import GeneType
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.recombination.arithmetic_crossover import ArithmeticCrossover 
 
 class MockProblem(AbstractProblem):
     """

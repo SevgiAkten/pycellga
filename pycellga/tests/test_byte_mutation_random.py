@@ -1,9 +1,10 @@
 import pytest
 import numpy as np
-from individual import Individual
-from common import GeneType
-from problems.abstract_problem import AbstractProblem
-from mutation.byte_mutation_random import ByteMutationRandom 
+
+from pycellga.individual import Individual
+from pycellga.common import GeneType
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.mutation.byte_mutation_random import ByteMutationRandom 
 
 class MockProblem(AbstractProblem):
     """

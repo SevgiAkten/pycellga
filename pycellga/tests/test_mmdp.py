@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.discrete.binary.mmdp import Mmdp
+from pycellga.problems.single_objective.discrete.binary.mmdp import Mmdp
 
 @pytest.fixture
 def mmdp_instance():

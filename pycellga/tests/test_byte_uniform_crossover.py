@@ -1,9 +1,10 @@
 import pytest
 import numpy.random as randomgenerator
-from individual import Individual
-from common import GeneType
-from problems.abstract_problem import AbstractProblem
-from recombination.byte_uniform_crossover import ByteUniformCrossover
+
+from pycellga.individual import Individual
+from pycellga.common import GeneType
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.recombination.byte_uniform_crossover import ByteUniformCrossover
 
 class MockProblem(AbstractProblem):
     """

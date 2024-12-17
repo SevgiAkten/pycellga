@@ -1,6 +1,7 @@
 from numpy import sin, sqrt, abs
-from problems.abstract_problem import AbstractProblem
-from common import GeneType
+
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 class Schwefel(AbstractProblem):
     """

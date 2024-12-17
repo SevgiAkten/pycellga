@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.bentcigar import Bentcigar
+from pycellga.problems.single_objective.continuous.bentcigar import Bentcigar
 
 @pytest.fixture
 def setup_bentcigar():

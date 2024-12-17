@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.griewank import Griewank
+from pycellga.problems.single_objective.continuous.griewank import Griewank
 
 @pytest.fixture
 def setup_griewank():

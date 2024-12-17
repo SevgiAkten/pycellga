@@ -1,5 +1,5 @@
 import pytest
-from problems.single_objective.continuous.rosenbrock import Rosenbrock
+from pycellga.problems.single_objective.continuous.rosenbrock import Rosenbrock
 
 @pytest.fixture
 def setup_rosenbrock():

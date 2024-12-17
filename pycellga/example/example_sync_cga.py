@@ -1,16 +1,13 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from numpy import power as pw
 from typing import List
 
-from optimizer import sync_cga
-from recombination import BlxalphaCrossover
-from mutation import FloatUniformMutation
-from selection import TournamentSelection
-from problems import AbstractProblem
-from common import GeneType
+from pycellga.optimizer import sync_cga
+from pycellga.recombination.blxalpha_crossover import BlxalphaCrossover
+from pycellga.mutation.float_uniform_mutation import FloatUniformMutation
+from pycellga.selection.tournament_selection import TournamentSelection
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 
 class ExampleProblem(AbstractProblem):

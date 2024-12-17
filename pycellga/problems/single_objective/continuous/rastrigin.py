@@ -1,7 +1,8 @@
 from numpy import cos, pi
 from typing import List
-from problems.abstract_problem import AbstractProblem
-from common import GeneType
+
+from pycellga.problems.abstract_problem import AbstractProblem
+from pycellga.common import GeneType
 
 class Rastrigin(AbstractProblem):
     """

@@ -1,8 +1,9 @@
 import pytest
 from numpy import random
 import random as rd
-from individual import Individual
-from common import GeneType
+
+from pycellga.individual import Individual
+from pycellga.common import GeneType
 
 
 @pytest.fixture
