@@ -4,7 +4,7 @@
 ![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)
 ![GitHub Contributors](https://img.shields.io/github/contributors/SevgiAkten/pycellga)
 [![PyPI version](https://img.shields.io/pypi/v/pycellga.svg)](https://pypi.org/project/pycellga/)
-
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.07322/status.svg)](https://doi.org/10.21105/joss.07322)
 
 # pycellga: A Python Package for Improved Cellular Genetic Algorithms
 
@@ -181,19 +181,23 @@ If you use `pycellga` in your research, please cite it as follows:
 
 **APA Format**
 
-Karakaya, S. A., & Satman, M. H. (2024). An Improved Cellular Genetic Algorithm with Machine-Coded Operators for Real-Valued Optimisation Problems. *Journal of Engineering Research and Applied Science, 13*(1), 2500-2514.
+Karakaya, S. A., & Satman, M.H. (2025). pycellga: A Python package for improved cellular genetic algorithms. Journal of Open Source Software, 10(105), 7322. https://doi.org/10.21105/joss.07322
+
 
 **BibTeX Format**
 
 For LaTeX users, please use the following BibTeX entry to cite `pycellga`:
 
 ```bibtex
-@article{karakaya2024improved,
-  title={An Improved Cellular Genetic Algorithm with Machine-Coded Operators for Real-Valued Optimisation Problems},
-  author={Karakaya, Sevgi Akten and Satman, Mehmet Hakan},
-  journal={Journal of Engineering Research and Applied Science},
-  volume={13},
-  number={1},
-  pages={2500--2514},
-  year={2024}
+@article{karakaya2025pycellga,
+  author       = {Sevgi Akten Karakaya and Mehmet Hakan Satman},
+  title        = {pycellga: A Python package for improved cellular genetic algorithms},
+  journal      = {Journal of Open Source Software},
+  year         = {2025},
+  volume       = {10},
+  number       = {105},
+  pages        = {7322},
+  doi          = {10.21105/joss.07322},
+  url          = {https://doi.org/10.21105/joss.07322}
 }
+
