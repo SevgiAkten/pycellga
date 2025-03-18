@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycellga.mutation.byte_mutation &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
   
@@ -262,16 +262,16 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pycellga.mutation.byte_mutation</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">struct</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">pycellga.individual</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
-<span class="kn">from</span> <span class="nn">pycellga.mutation.mutation_operator</span> <span class="kn">import</span> <span class="n">MutationOperator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.individual</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.problems.abstract_problem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.mutation.mutation_operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">MutationOperator</span>
 
 <div class="viewcode-block" id="ByteMutation">
 <a class="viewcode-back" href="../../../pycellga.mutation.html#pycellga.mutation.byte_mutation.ByteMutation">[docs]</a>
-<span class="k">class</span> <span class="nc">ByteMutation</span><span class="p">(</span><span class="n">MutationOperator</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ByteMutation</span><span class="p">(</span><span class="n">MutationOperator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ByteMutation operator defined in (Satman, 2013). ByteMutation performs a byte-wise mutation </span>
 <span class="sd">    on an individual&#39;s chromosome in a Genetic Algorithm.</span>
@@ -286,7 +286,7 @@
 
 <div class="viewcode-block" id="ByteMutation.__init__">
 <a class="viewcode-back" href="../../../pycellga.mutation.html#pycellga.mutation.byte_mutation.ByteMutation.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mutation_cand</span><span class="p">:</span> <span class="n">Individual</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">problem</span><span class="p">:</span> <span class="n">AbstractProblem</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mutation_cand</span><span class="p">:</span> <span class="n">Individual</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">problem</span><span class="p">:</span> <span class="n">AbstractProblem</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the ByteMutation object.</span>
 
@@ -303,7 +303,7 @@
 
 <div class="viewcode-block" id="ByteMutation.mutate">
 <a class="viewcode-back" href="../../../pycellga.mutation.html#pycellga.mutation.byte_mutation.ByteMutation.mutate">[docs]</a>
-    <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Individual</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Individual</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Perform a byte-wise mutation on the candidate individual.</span>
 

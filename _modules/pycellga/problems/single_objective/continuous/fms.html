@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycellga.problems.single_objective.continuous.fms &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
 
   
@@ -263,16 +263,16 @@
              
   <h1>Source code for pycellga.problems.single_objective.continuous.fms</h1><div class="highlight"><pre>
 <span></span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 
-<span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
-<span class="kn">from</span> <span class="nn">pycellga.common</span> <span class="kn">import</span> <span class="n">GeneType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.problems.abstract_problem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneType</span>
 
 
 <div class="viewcode-block" id="Fms">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.fms.Fms">[docs]</a>
-<span class="k">class</span> <span class="nc">Fms</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Fms</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fms function implementation for optimization problems.</span>
 
@@ -297,7 +297,7 @@
 
 <div class="viewcode-block" id="Fms.__init__">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.fms.Fms.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the Fms problem.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -311,7 +311,7 @@
 
 <div class="viewcode-block" id="Fms.f">
 <a class="viewcode-back" href="../../../../../pycellga.problems.single_objective.continuous.html#pycellga.problems.single_objective.continuous.fms.Fms.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the Fms function value for a single solution.</span>
 
@@ -331,7 +331,7 @@
         <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="mf">100.0</span>
         <span class="n">a1</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">w3</span> <span class="o">=</span> <span class="n">x</span>
 
-        <span class="k">def</span> <span class="nf">yzero</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">yzero</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">sin</span><span class="p">((</span><span class="mf">5.0</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">sin</span><span class="p">((</span><span class="mf">4.8</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mf">4.9</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">t</span><span class="p">)))))</span>
 
         <span class="n">partial_fitness</span> <span class="o">=</span> <span class="mf">0.0</span>

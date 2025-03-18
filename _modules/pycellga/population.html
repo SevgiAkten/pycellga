@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycellga.population &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
 
   
@@ -262,20 +262,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pycellga.population</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span> 
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span> 
 
-<span class="kn">from</span> <span class="nn">pycellga.grid</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pycellga.individual</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pycellga.byte_operators</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pycellga.neighborhoods.linear_9</span> <span class="kn">import</span> <span class="n">Linear9</span>
-<span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.grid</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.individual</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.byte_operators</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.neighborhoods.linear_9</span><span class="w"> </span><span class="kn">import</span> <span class="n">Linear9</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.problems.abstract_problem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProblem</span>
 
 
 
 <div class="viewcode-block" id="OptimizationMethod">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.population.OptimizationMethod">[docs]</a>
-<span class="k">class</span> <span class="nc">OptimizationMethod</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OptimizationMethod</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    OptimizationMethod is an enumeration class that represents the optimization methods used in an evolutionary algorithm.</span>
 <span class="sd">    The five optimization methods are CGA, SYNCGA, ALPHA_CGA, CCGA, and MCCCGA.</span>
@@ -291,7 +291,7 @@
 
 <div class="viewcode-block" id="Population">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.population.Population">[docs]</a>
-<span class="k">class</span> <span class="nc">Population</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Population</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class to represent a population in an evolutionary algorithm.</span>
 
@@ -314,7 +314,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Population.__init__">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.population.Population.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
                  <span class="n">method_name</span><span class="p">:</span> <span class="n">OptimizationMethod</span> <span class="o">=</span> <span class="n">OptimizationMethod</span><span class="o">.</span><span class="n">CGA</span><span class="p">,</span> 
                  <span class="n">ch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
                  <span class="n">n_rows</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
@@ -362,7 +362,7 @@
 
 <div class="viewcode-block" id="Population.initial_population">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.population.Population.initial_population">[docs]</a>
-    <span class="k">def</span> <span class="nf">initial_population</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Individual</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initial_population</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Individual</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate the initial population of individuals.</span>
 

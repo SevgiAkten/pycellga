@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycellga.problems.single_objective.discrete.binary.maxcut20_01 &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
 
   
@@ -262,14 +262,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pycellga.problems.single_objective.discrete.binary.maxcut20_01</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
-<span class="kn">from</span> <span class="nn">pycellga.common</span> <span class="kn">import</span> <span class="n">GeneType</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.problems.abstract_problem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneType</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 
 <div class="viewcode-block" id="Maxcut20_01">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_01.Maxcut20_01">[docs]</a>
-<span class="k">class</span> <span class="nc">Maxcut20_01</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Maxcut20_01</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Maximum Cut (MAXCUT) function implementation for optimization problems.</span>
 
@@ -291,7 +291,7 @@
 
 <div class="viewcode-block" id="Maxcut20_01.__init__">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_01.Maxcut20_01.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the MAXCUT problem with binary variables and adjacency matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -349,7 +349,7 @@
 
 <div class="viewcode-block" id="Maxcut20_01.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_01.Maxcut20_01.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the MAXCUT function value for a given list of binary variables.</span>
 
@@ -376,7 +376,7 @@
 
 <div class="viewcode-block" id="Maxcut20_01.evaluate">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.binary.html#pycellga.problems.single_objective.discrete.binary.maxcut20_01.Maxcut20_01.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">out</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">out</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluate function for compatibility with pymoo&#39;s optimizer.</span>
 

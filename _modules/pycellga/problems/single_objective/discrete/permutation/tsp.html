@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycellga.problems.single_objective.discrete.permutation.tsp &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
 
   
@@ -262,19 +262,19 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pycellga.problems.single_objective.discrete.permutation.tsp</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
-<span class="kn">from</span> <span class="nn">pycellga.common</span> <span class="kn">import</span> <span class="n">GeneType</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.problems.abstract_problem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneType</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">tsplib95</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tsplib95</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geopy.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">geodesic</span>
 
 
 <div class="viewcode-block" id="Tsp">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp">[docs]</a>
-<span class="k">class</span> <span class="nc">Tsp</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tsp</span><span class="p">(</span><span class="n">AbstractProblem</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents the Traveling Salesman Problem (TSP).</span>
 
@@ -294,7 +294,7 @@
 
 <div class="viewcode-block" id="Tsp.__init__">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_var</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_var</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the TSP problem with default attributes.</span>
 
@@ -319,7 +319,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">distances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_distances</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_compute_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Precomputes the geographical distances between all node pairs.</span>
 
@@ -337,7 +337,7 @@
 
 <div class="viewcode-block" id="Tsp.f">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.f">[docs]</a>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates the fitness of a given chromosome (route) for the TSP.</span>
 
@@ -361,7 +361,7 @@
 
 <div class="viewcode-block" id="Tsp.geographical_dist">
 <a class="viewcode-back" href="../../../../../../pycellga.problems.single_objective.discrete.permutation.html#pycellga.problems.single_objective.discrete.permutation.tsp.Tsp.geographical_dist">[docs]</a>
-    <span class="k">def</span> <span class="nf">geographical_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">geographical_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the geographical distance between two nodes using the geodesic distance.</span>
 

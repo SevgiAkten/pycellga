@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycellga.individual &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
 
   
@@ -263,17 +263,17 @@
              
   <h1>Source code for pycellga.individual</h1><div class="highlight"><pre>
 <span></span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">rd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rd</span>
 
-<span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
-<span class="kn">from</span> <span class="nn">pycellga.common</span> <span class="kn">import</span> <span class="n">GeneType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.problems.abstract_problem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneType</span>
 
 
 <div class="viewcode-block" id="Individual">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual">[docs]</a>
-<span class="k">class</span> <span class="nc">Individual</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Individual</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class to represent an individual in an evolutionary algorithm.</span>
 
@@ -297,7 +297,7 @@
 
 <div class="viewcode-block" id="Individual.__init__">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
                  <span class="n">gen_type</span><span class="p">:</span> <span class="n">GeneType</span> <span class="o">=</span> <span class="n">GeneType</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span> 
                  <span class="n">ch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
                  <span class="n">mins</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
@@ -339,7 +339,7 @@
 
 <div class="viewcode-block" id="Individual.randomize">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual.randomize">[docs]</a>
-    <span class="k">def</span> <span class="nf">randomize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">randomize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Randomly initialize the chromosome based on the genome type.</span>
 
@@ -378,7 +378,7 @@
 
 <div class="viewcode-block" id="Individual.generate_candidate">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual.generate_candidate">[docs]</a>
-    <span class="k">def</span> <span class="nf">generate_candidate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probvector</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_candidate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probvector</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a candidate chromosome based on the given probability vector.</span>
 
@@ -398,7 +398,7 @@
 
 <div class="viewcode-block" id="Individual.getneighbors_positions">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual.getneighbors_positions">[docs]</a>
-    <span class="k">def</span> <span class="nf">getneighbors_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getneighbors_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the positions of the individual&#39;s neighbors.</span>
 
@@ -412,7 +412,7 @@
 
 <div class="viewcode-block" id="Individual.setneighbors_positions">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual.setneighbors_positions">[docs]</a>
-    <span class="k">def</span> <span class="nf">setneighbors_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">positions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setneighbors_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">positions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the positions of the individual&#39;s neighbors.</span>
 
@@ -426,7 +426,7 @@
 
 <div class="viewcode-block" id="Individual.getneighbors">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual.getneighbors">[docs]</a>
-    <span class="k">def</span> <span class="nf">getneighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getneighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the list of neighbors for the individual.</span>
 
@@ -440,7 +440,7 @@
 
 <div class="viewcode-block" id="Individual.setneighbors">
 <a class="viewcode-back" href="../../pycellga.html#pycellga.individual.Individual.setneighbors">[docs]</a>
-    <span class="k">def</span> <span class="nf">setneighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setneighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the list of neighbors for the individual.</span>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycellga.recombination.linear_crossover &mdash; PYCELLGA Documentation 1.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
   
@@ -262,16 +262,16 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pycellga.recombination.linear_crossover</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 
-<span class="kn">from</span> <span class="nn">pycellga.individual</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pycellga.problems.abstract_problem</span> <span class="kn">import</span> <span class="n">AbstractProblem</span>
-<span class="kn">from</span> <span class="nn">pycellga.recombination.recombination_operator</span> <span class="kn">import</span> <span class="n">RecombinationOperator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.individual</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.problems.abstract_problem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProblem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycellga.recombination.recombination_operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecombinationOperator</span>
 
 <div class="viewcode-block" id="LinearCrossover">
 <a class="viewcode-back" href="../../../pycellga.recombination.html#pycellga.recombination.linear_crossover.LinearCrossover">[docs]</a>
-<span class="k">class</span> <span class="nc">LinearCrossover</span><span class="p">(</span><span class="n">RecombinationOperator</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LinearCrossover</span><span class="p">(</span><span class="n">RecombinationOperator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    LinearCrossover performs a linear crossover on a pair of parent individuals</span>
 <span class="sd">    to produce offspring individuals.</span>
@@ -286,7 +286,7 @@
 
 <div class="viewcode-block" id="LinearCrossover.__init__">
 <a class="viewcode-back" href="../../../pycellga.recombination.html#pycellga.recombination.linear_crossover.LinearCrossover.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parents</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">problem</span><span class="p">:</span> <span class="n">AbstractProblem</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parents</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">problem</span><span class="p">:</span> <span class="n">AbstractProblem</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the LinearCrossover object.</span>
 
@@ -303,7 +303,7 @@
 
 <div class="viewcode-block" id="LinearCrossover.combine">
 <a class="viewcode-back" href="../../../pycellga.recombination.html#pycellga.recombination.linear_crossover.LinearCrossover.combine">[docs]</a>
-    <span class="k">def</span> <span class="nf">combine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span> <span class="n">Individual</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="n">Individual</span><span class="p">,</span> <span class="n">locationsource</span><span class="p">:</span> <span class="n">Individual</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Individual</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">combine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span> <span class="n">Individual</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="n">Individual</span><span class="p">,</span> <span class="n">locationsource</span><span class="p">:</span> <span class="n">Individual</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Individual</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Combine two parent individuals using linear crossover to produce a single offspring.</span>
 
@@ -352,7 +352,7 @@
 
 <div class="viewcode-block" id="LinearCrossover.get_recombinations">
 <a class="viewcode-back" href="../../../pycellga.recombination.html#pycellga.recombination.linear_crossover.LinearCrossover.get_recombinations">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_recombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Individual</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_recombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Individual</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Perform the linear crossover on the parent individuals to produce offspring.</span>
 
